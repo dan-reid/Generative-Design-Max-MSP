@@ -19,7 +19,7 @@ var finished = false;
 var tilecount;
 
 var red = 1;
-var green = 1;
+var green = 0.5;
 var blue = 1;
 var alpha = 1;
 
