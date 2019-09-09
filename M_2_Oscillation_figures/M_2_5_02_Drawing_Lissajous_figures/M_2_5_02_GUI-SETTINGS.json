@@ -1,0 +1,209 @@
+{
+	"pattrstorage" : 	{
+		"name" : "M_2_5_02_GUI-SETTINGS",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"FreqX" : [ 13.0 ],
+					"FreqY" : [ 11.0 ],
+					"alpha" : [ 20 ],
+					"brightness" : [ 0 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 110.0 ],
+					"invert_background" : [ 0.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 100 ],
+					"min_hue" : [ 0 ],
+					"mod_freq2_amp" : [ 0.0 ],
+					"mod_freq2_x" : [ 0.0 ],
+					"mod_freq2_y" : [ 0.0 ],
+					"mod_freq_x" : [ 0.0 ],
+					"mod_freq_y" : [ 0.0 ],
+					"phi" : [ 97 ],
+					"point_count" : [ 1500 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"data" : 				{
+					"FreqX" : [ 12.0 ],
+					"FreqY" : [ 6.0 ],
+					"alpha" : [ 20 ],
+					"brightness" : [ 0 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 110.0 ],
+					"invert_background" : [ 0.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 100 ],
+					"min_hue" : [ 0 ],
+					"mod_freq2_amp" : [ 0.0 ],
+					"mod_freq2_x" : [ 0.0 ],
+					"mod_freq2_y" : [ 0.0 ],
+					"mod_freq_x" : [ 11.0 ],
+					"mod_freq_y" : [ 0.0 ],
+					"phi" : [ 97 ],
+					"point_count" : [ 1500 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"data" : 				{
+					"FreqX" : [ 12.0 ],
+					"FreqY" : [ 6.0 ],
+					"alpha" : [ 20 ],
+					"brightness" : [ 35 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 110.0 ],
+					"invert_background" : [ 0.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 100 ],
+					"min_hue" : [ 0 ],
+					"mod_freq2_amp" : [ 0.05 ],
+					"mod_freq2_x" : [ 0.0 ],
+					"mod_freq2_y" : [ 7.0 ],
+					"mod_freq_x" : [ 5.0 ],
+					"mod_freq_y" : [ 0.0 ],
+					"phi" : [ 97 ],
+					"point_count" : [ 1500 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"4" : 			{
+				"id" : 4,
+				"data" : 				{
+					"FreqX" : [ 33.0 ],
+					"FreqY" : [ 12.0 ],
+					"alpha" : [ 25 ],
+					"brightness" : [ 64 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 110.0 ],
+					"invert_background" : [ 0.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 307 ],
+					"min_hue" : [ 177 ],
+					"mod_freq2_amp" : [ 0.0 ],
+					"mod_freq2_x" : [ 9.0 ],
+					"mod_freq2_y" : [ 1.3 ],
+					"mod_freq_x" : [ 4.3 ],
+					"mod_freq_y" : [ 10.0 ],
+					"phi" : [ 88 ],
+					"point_count" : [ 3000 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"5" : 			{
+				"id" : 5,
+				"data" : 				{
+					"FreqX" : [ 0.5 ],
+					"FreqY" : [ 2.0 ],
+					"alpha" : [ 57 ],
+					"brightness" : [ 10 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 110.0 ],
+					"invert_background" : [ 1.0 ],
+					"invert_hue" : [ 1.0 ],
+					"max_hue" : [ 110 ],
+					"min_hue" : [ 0 ],
+					"mod_freq2_amp" : [ 0.05 ],
+					"mod_freq2_x" : [ 3.0 ],
+					"mod_freq2_y" : [ 14.0 ],
+					"mod_freq_x" : [ 15.0 ],
+					"mod_freq_y" : [ 10.0 ],
+					"phi" : [ 97 ],
+					"point_count" : [ 3000 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"6" : 			{
+				"id" : 6,
+				"data" : 				{
+					"FreqX" : [ 12.0 ],
+					"FreqY" : [ 3.0 ],
+					"alpha" : [ 87 ],
+					"brightness" : [ 10 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 300.0 ],
+					"invert_background" : [ 1.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 162 ],
+					"min_hue" : [ 0 ],
+					"mod_freq2_amp" : [ 0.05 ],
+					"mod_freq2_x" : [ 3.0 ],
+					"mod_freq2_y" : [ 14.0 ],
+					"mod_freq_x" : [ 15.0 ],
+					"mod_freq_y" : [ 10.0 ],
+					"phi" : [ 97 ],
+					"point_count" : [ 1500 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"7" : 			{
+				"id" : 7,
+				"data" : 				{
+					"FreqX" : [ 2.0 ],
+					"FreqY" : [ 4.0 ],
+					"alpha" : [ 87 ],
+					"brightness" : [ 10 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 150.0 ],
+					"invert_background" : [ 1.0 ],
+					"invert_hue" : [ 1.0 ],
+					"max_hue" : [ 231 ],
+					"min_hue" : [ 151 ],
+					"mod_freq2_amp" : [ 0.05 ],
+					"mod_freq2_x" : [ 0.0 ],
+					"mod_freq2_y" : [ 0.0 ],
+					"mod_freq_x" : [ 0.0 ],
+					"mod_freq_y" : [ 0.0 ],
+					"phi" : [ 0 ],
+					"point_count" : [ 1500 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+,
+			"8" : 			{
+				"id" : 8,
+				"data" : 				{
+					"FreqX" : [ 2.2 ],
+					"FreqY" : [ 6.0 ],
+					"alpha" : [ 17 ],
+					"brightness" : [ 10 ],
+					"connect_all_points" : [ 1.0 ],
+					"connection_radius" : [ 150.0 ],
+					"invert_background" : [ 1.0 ],
+					"invert_hue" : [ 0.0 ],
+					"max_hue" : [ 231 ],
+					"min_hue" : [ 151 ],
+					"mod_freq2_amp" : [ 0.09 ],
+					"mod_freq2_x" : [ 3.4 ],
+					"mod_freq2_y" : [ 20.0 ],
+					"mod_freq_x" : [ 17.0 ],
+					"mod_freq_y" : [ 18.0 ],
+					"phi" : [ 0 ],
+					"point_count" : [ 4000 ],
+					"saturation" : [ 80 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}
