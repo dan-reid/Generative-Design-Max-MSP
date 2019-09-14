@@ -1,39 +1,47 @@
 autowatch = 1;
 var mg;
-var mgframe;
-var datapath;
-var bg; // background color
+var pc;
+var outputmatrix;
+
 var width;
 var height;
+
+var datapath;
+
 var centrex;
 var centrey;
 var offsetx;
 var offsety;
 var zoom;
+
 var mousex;
 var mousey;
 var on_click_x = 0;
 var on_click_y = 0;
 var mousepressed = 0;
+
 var framecount = 0;
 
 var font;
 var text;
+
 var BACKSPACE = 127;
 var RETURN = 13;
-var seed;
-var s = 0;
+
+var seed = Math.random()*100000;
+
 var index = 0
 
 setup();
 
 function setup() {
-  datapath = getpath();
+  	datapath = getpath();
 	width = 1000;
 	height = 1000;
 	mg = new JitterObject("jit.mgraphics", width, height);
-	mgframe = new JitterMatrix("text_bp", 4, "char", width, height);
-	bg = [1, 1, 1, 1];
+	outputmatrix = new JitterMatrix(4, "char", width, height);
+	pc = new PClone();
+
 	centrex = width/2;
 	centrey = height/2;
 	offsetx = 0;
@@ -45,21 +53,20 @@ function setup() {
 	text += "in composition you have all the time you want to think about what you want to say in fifteen seconds,\n\n"
 	text += "while in improvisation you have only fifteen seconds.\n\n"
 	text += "- Steve Lacy"
-  // text = '';
-  clear();
 }
 
 
 function draw() {
-	clear();
+	background(1, 1, 1, 1);
 
-	seed = s;
+	pc.randomseed(seed);
 
 	if (mousepressed) {
 		centrex = mousex - offsetx;
 		centrey = mousey - offsety;
 	}
-  var drawEndTime = millis() + 10;
+
+	  
 	with(mg) {
 		select_font_face(font);
 		set_font_size(25);
@@ -74,14 +81,14 @@ function draw() {
 
   		switch(letter) {
   			case ' ': //space
-  				var dir = Math.floor(random(2));
+  				var dir = Math.floor(pc.random(2));
   				if(dir == 0) {
-  					mg.svg_render(datapath+"space.svg");
+  					svg_render(datapath+"space.svg");
   					translate(1.9, 0);
   					rotate(Math.PI/4);
   				}
   				if(dir == 1) {
-  					mg.svg_render(datapath+"space2.svg");
+  					svg_render(datapath+"space2.svg");
   					translate(13, -5);
   					rotate(-Math.PI/4);
   				}
@@ -130,7 +137,8 @@ function draw() {
     stroke();
 	}
 
-	mg.matrixcalc(mgframe, mgframe);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
 function load_strings(f) {
@@ -144,11 +152,6 @@ function load_strings(f) {
 	}
 	tf.close();
 	return strings;
-}
-
-function millis() {
-	var ms = new Date().getTime();
-	return ms;
 }
 
 function keypressed(k) {
@@ -186,16 +189,6 @@ function set_zoom(z) {
 	zoom = z;
 }
 
-function random(v) {
-    var x = Math.sin(seed++) * 1000;
-    x -= Math.floor(x);
-    return x * v;
-}
-
-function newseed() {
-  s = Math.floor(Math.random()*1000);
-}
-
 function getpath() {
 	var p = this.patcher.filepath;
 	var n = this.patcher.name;
@@ -208,13 +201,15 @@ function set_new_text(t) {
   text = t;
 }
 
-function clear() {
-	with(mg) {
-		set_source_rgba(bg);
-	  paint();
-	  set_source_rgba(0, 0, 0, 1); // default stroke/ fill color
-	  identity_matrix();
-	  move_to(0, 0);
-    matrixcalc(mgframe, mgframe);
-	}
+function new_random_seed() {
+	seed = Math.random()*99999;
+}
+
+function background(r, g, b, a) {
+	mg.set_source_rgba(r, g, b, a);
+	mg.paint();
+	mg.set_source_rgba(0, 0, 0, 255);
+	mg.identity_matrix();
+	mg.move_to(0, 0);
+  	mg.matrixcalc(outputmatrix, outputmatrix);
 }
