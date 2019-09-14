@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -173,7 +173,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 0,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -481,7 +481,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 70.0, 433.0, 77.0, 22.0 ],
+					"patching_rect" : [ 149.0, 363.0, 77.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -493,7 +493,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 70.0, 464.0, 111.0, 22.0 ],
+					"patching_rect" : [ 149.0, 394.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -550,18 +550,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 35.0, 396.0, 254.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_3_1_3 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -592,7 +580,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 44.5, 373.0, 15.0, 373.0, 15.0, 189.0, 48.5, 189.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -764,7 +753,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_1_3.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_3_Hello_Type/P_3_1_3_Text_image",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_3_Hello_Type/P_3_1_3_Text_image",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
