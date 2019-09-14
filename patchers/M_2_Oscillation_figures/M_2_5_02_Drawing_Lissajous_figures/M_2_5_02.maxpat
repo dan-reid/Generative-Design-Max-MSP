@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 6,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -88,7 +88,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 416.0, 464.0, 240.0 ],
+					"patching_rect" : [ 53.0, 392.0, 464.0, 240.0 ],
 					"varname" : "M_2_5_02_GUI",
 					"viewvisibility" : 1
 				}
@@ -104,7 +104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 239.0, 186.0, 80.0, 35.0 ]
+					"patching_rect" : [ 244.5, 184.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -147,18 +147,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 53.0, 383.0, 263.0, 22.0 ],
-					"text" : "jit.gl.videoplane M_2_5_02 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -189,7 +177,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 62.5, 381.0, 33.0, 381.0, 33.0, 120.0, 87.5, 120.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -284,21 +273,21 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "M_2_5_02.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "M_2_5_02_GUI.maxpat",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "M_2_5_02_GUI-SETTINGS.json",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
