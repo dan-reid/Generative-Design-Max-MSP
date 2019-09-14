@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,12 +40,25 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 572.0, 221.0, 54.0, 22.0 ],
+					"text" : "deferlow"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"hidden" : 1,
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 589.0, 217.0, 70.0, 22.0 ],
+					"patching_rect" : [ 572.0, 187.0, 70.0, 22.0 ],
 					"text" : "loadmess 1"
 				}
 
@@ -231,7 +244,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 305.0, 271.0, 80.0, 35.0 ]
+					"patching_rect" : [ 269.0, 260.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -268,7 +281,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 92.0, 384.0, 100.0, 22.0 ],
+					"patching_rect" : [ 123.0, 350.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -280,7 +293,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 64.0, 412.0, 53.0, 22.0 ],
+					"patching_rect" : [ 95.0, 378.0, 53.0, 22.0 ],
 					"text" : "jit.matrix"
 				}
 
@@ -333,18 +346,6 @@
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 34.0, 187.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 34.0, 346.5, 254.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_3_1_4 @transform_reset 2"
 				}
 
 			}
@@ -422,7 +423,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 43.5, 336.0, 8.0, 336.0, 8.0, 225.0, 43.5, 225.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -550,6 +552,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"hidden" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-43", 0 ],
 					"source" : [ "obj-45", 0 ]
 				}
@@ -564,7 +574,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-4", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-8", 0 ]
 				}
@@ -573,7 +583,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_1_4.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_3_Hello_Type/P_3_1_4_Text_diagram",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_3_Hello_Type/P_3_1_4_Text_diagram",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
