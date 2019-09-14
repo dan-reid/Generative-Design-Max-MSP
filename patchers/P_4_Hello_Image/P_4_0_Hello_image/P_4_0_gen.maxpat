@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 38.0, 79.0, 462.0, 482.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 38.0, 79.0, 437.0, 405.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -43,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "preset", "int", "preset", "int" ],
-					"patching_rect" : [ 221.0, 217.0, 100.0, 40.0 ],
+					"patching_rect" : [ 220.0, 214.359802000000059, 68.0, 18.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
 							"data" : [ 5, "obj-24", "flonum", "float", 1.0, 5, "obj-25", "flonum", "float", 1.0 ]
@@ -64,8 +65,7 @@
 							"number" : 5,
 							"data" : [ 5, "obj-24", "flonum", "float", 2.0, 5, "obj-25", "flonum", "float", -1.0 ]
 						}
- ],
-					"style" : ""
+ ]
 				}
 
 			}
@@ -78,7 +78,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 19.5, 16.0, 225.0, 50.0 ],
-					"style" : "",
 					"text" : "Hello, image"
 				}
 
@@ -92,9 +91,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 289.0, 290.0, 50.0, 22.0 ],
-					"presentation_rect" : [ 292.0, 241.0, 0.0, 0.0 ],
-					"style" : ""
+					"patching_rect" : [ 288.0, 250.359802000000059, 50.0, 22.0 ]
 				}
 
 			}
@@ -107,8 +104,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 221.0, 290.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 220.0, 250.359802000000059, 50.0, 22.0 ]
 				}
 
 			}
@@ -134,21 +130,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 48.0, 103.0, 24.0, 24.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-12",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 88.0, 436.0, 241.0, 22.0 ],
-					"style" : "",
-					"text" : "jit.gl.videoplane P_4_0 @transform_reset 2"
+					"patching_rect" : [ 48.0, 103.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -160,7 +142,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
 					"patching_rect" : [ 48.0, 149.0, 367.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world P_4_0 @floating 1 @size 640 480 @dim 640 480 @fsaa 1"
 				}
 
@@ -172,9 +153,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 289.0, 329.640198, 53.0, 22.0 ],
-					"presentation_rect" : [ 532.0, 187.0, 0.0, 0.0 ],
-					"style" : "",
+					"patching_rect" : [ 288.0, 290.000000000000057, 53.0, 22.0 ],
 					"text" : "gridy $1"
 				}
 
@@ -186,8 +165,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 221.0, 329.640198, 53.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 220.0, 290.000000000000057, 53.0, 22.0 ],
 					"text" : "gridx $1"
 				}
 
@@ -202,15 +180,15 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "jit.gen",
 						"rect" : [ 63.0, 104.0, 592.0, 209.0 ],
-						"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -245,7 +223,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 397.0, 30.0, 84.0, 22.0 ],
-									"style" : "",
 									"text" : "param gridy 4"
 								}
 
@@ -258,7 +235,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 249.0, 30.0, 84.0, 22.0 ],
-									"style" : "",
 									"text" : "param gridx 4"
 								}
 
@@ -271,7 +247,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 249.0, 106.0, 167.0, 22.0 ],
-									"style" : "",
 									"text" : "vec 0 0"
 								}
 
@@ -284,7 +259,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 144.0, 65.0, 29.5, 22.0 ],
-									"style" : "",
 									"text" : "*"
 								}
 
@@ -297,7 +271,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 144.0, 30.0, 38.0, 22.0 ],
-									"style" : "",
 									"text" : "norm"
 								}
 
@@ -310,7 +283,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 108.0, 113.0, 22.0 ],
-									"style" : "",
 									"text" : "sample"
 								}
 
@@ -323,7 +295,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 14.0, 30.0, 22.0 ],
-									"style" : "",
 									"text" : "in 1"
 								}
 
@@ -335,7 +306,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 50.0, 155.0, 37.0, 22.0 ],
-									"style" : "",
 									"text" : "out 1"
 								}
 
@@ -390,11 +360,11 @@
 								}
 
 							}
- ]
+ ],
+						"editing_bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ]
 					}
 ,
-					"patching_rect" : [ 88.0, 388.0, 43.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 88.0, 350.0, 43.0, 22.0 ],
 					"text" : "jit.gen"
 				}
 
@@ -402,7 +372,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
+					"destination" : [ "obj-11", 0 ],
+					"midpoints" : [ 97.5, 390.0, 30.0, 390.0, 30.0, 135.0, 57.5, 135.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -472,13 +443,7 @@
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

@@ -1,6 +1,6 @@
 autowatch = 1;
 var mg;
-var mgmatrix;
+var outputmatirc;
 var pc;
 var cam;
 
@@ -23,13 +23,12 @@ function setup() {
 	mg = new JitterObject("jit.mgraphics", width, height);
 	// the alpha channel is sliced off from the output of jit.grab
 	// so we only need a 3 plane matrix
-	mgmatrix = new JitterMatrix(3, "char", width, height);
+	outputmatrix = new JitterMatrix(3, "char", width, height);
 	pc = new PClone();
 
 	/*
 	this is lets us access the matrix named "cam" located in the main patch
 	in which the pixel values from our camera are stored.
-	we are setting it's dimentions from the script.
 	*/
 	cam = new JitterMatrix("cam", 3, "char", width, height);
 	background(1, 1, 1, 1);
@@ -68,8 +67,8 @@ function draw() {
 		x = curvePointX;
 		y = curvePointY;
 	}
-	mg.matrixcalc(mgmatrix, mgmatrix);
-	outlet(0, "jit_matrix", mgmatrix.name);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
 function brightness(c) {
@@ -93,12 +92,12 @@ function clear() {
 	background(1, 1, 1, 1);
 }
 
-// sets the default state of [jit.mgraphics]
+
 function background(r, g, b, a) {
 	mg.set_source_rgba(r, g, b, a);
 	mg.paint();
 	mg.set_source_rgba(0, 0, 0, 1); // default drawing color = black
 	mg.identity_matrix();
 	mg.move_to(0, 0);
-  mg.matrixcalc(mgmatrix, mgmatrix);
+  	mg.matrixcalc(outputmatrix, outputmatrix);
 }

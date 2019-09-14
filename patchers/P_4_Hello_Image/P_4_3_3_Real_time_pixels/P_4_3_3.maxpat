@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 852.0, 646.0 ],
+		"rect" : [ 38.0, 79.0, 667.0, 586.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 78.0, 281.0, 96.0, 78.0 ],
+					"patching_rect" : [ 78.0, 304.662871999999993, 96.0, 78.0 ],
 					"text" : "for some reason the cam matrix will be null without this. I'm not sure why"
 				}
 
@@ -58,7 +58,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 314.0, 54.0, 22.0 ],
+					"patching_rect" : [ 19.0, 341.662871999999993, 54.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -70,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 19.0, 281.0, 58.0, 22.0 ],
+					"patching_rect" : [ 19.0, 308.662871999999993, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -82,7 +82,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 19.0, 342.0, 50.0, 22.0 ],
+					"patching_rect" : [ 19.0, 369.662871999999993, 50.0, 22.0 ],
 					"text" : "compile"
 				}
 
@@ -144,7 +144,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 684.0, 458.0, 65.0, 35.0 ],
+					"patching_rect" : [ 628.0, 471.0, 65.0, 35.0 ],
 					"text" : "loadmess 50"
 				}
 
@@ -157,7 +157,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 541.0, 458.0, 72.0, 22.0 ],
+					"patching_rect" : [ 485.0, 471.0, 72.0, 22.0 ],
 					"text" : "loadmess 1"
 				}
 
@@ -170,7 +170,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 424.0, 458.0, 79.0, 22.0 ],
+					"patching_rect" : [ 368.0, 471.0, 79.0, 22.0 ],
 					"text" : "loadmess 10"
 				}
 
@@ -197,7 +197,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 594.0, 341.662871999999993, 101.0, 21.0 ],
+					"patching_rect" : [ 538.0, 354.662871999999993, 101.0, 21.0 ],
 					"text" : "Area of Squiggle"
 				}
 
@@ -210,7 +210,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 444.0, 341.662871999999993, 132.0, 21.0 ],
+					"patching_rect" : [ 388.0, 354.662871999999993, 132.0, 21.0 ],
 					"text" : "Num points in squiggle"
 				}
 
@@ -223,7 +223,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 343.0, 341.662871999999993, 94.0, 21.0 ],
+					"patching_rect" : [ 287.0, 354.662871999999993, 94.0, 21.0 ],
 					"text" : "Drawing speed"
 				}
 
@@ -238,7 +238,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 364.0, 366.0, 50.0, 22.0 ]
+					"patching_rect" : [ 308.0, 379.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -249,7 +249,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 364.0, 408.0, 83.0, 22.0 ],
+					"patching_rect" : [ 308.0, 421.0, 83.0, 22.0 ],
 					"text" : "set_speed $1"
 				}
 
@@ -264,7 +264,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 614.0, 366.0, 50.0, 22.0 ]
+					"patching_rect" : [ 558.0, 379.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -278,7 +278,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 476.0, 366.0, 50.0, 22.0 ]
+					"patching_rect" : [ 420.0, 379.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -289,7 +289,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 614.0, 408.0, 94.0, 22.0 ],
+					"patching_rect" : [ 558.0, 421.0, 94.0, 22.0 ],
 					"text" : "set_diffusion $1"
 				}
 
@@ -301,7 +301,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 476.0, 408.0, 112.0, 22.0 ],
+					"patching_rect" : [ 420.0, 421.0, 112.0, 22.0 ],
 					"text" : "set_point_count $1"
 				}
 
@@ -313,7 +313,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 313.0, 408.0, 37.0, 22.0 ],
+					"patching_rect" : [ 257.0, 421.0, 37.0, 22.0 ],
 					"text" : "clear"
 				}
 
@@ -338,7 +338,7 @@
 					"maxclass" : "jit.pwindow",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 451.0, 235.0, 86.5, 63.325755999999998 ]
 				}
 
@@ -379,7 +379,7 @@
 						"appversion" : 						{
 							"major" : 8,
 							"minor" : 0,
-							"revision" : 1,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -556,7 +556,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 420.662871999999993, 37.0, 22.0 ],
+					"patching_rect" : [ 162.0, 411.662871999999993, 37.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -570,18 +570,6 @@
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 78.0, 154.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 53.0, 594.0, 254.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_4_3_3 @transform_reset 2"
 				}
 
 			}
@@ -659,6 +647,15 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 62.5, 513.0, 6.0, 513.0, 6.0, 183.0, 87.5, 183.0 ],
+					"order" : 1,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
@@ -667,15 +664,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
-					"order" : 1,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 266.5, 474.0, 62.5, 474.0 ],
 					"source" : [ "obj-10", 0 ]
 				}
 
@@ -683,6 +673,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 429.5, 456.0, 62.5, 456.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -690,6 +681,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 567.5, 456.0, 62.5, 456.0 ],
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -764,7 +756,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 244.0, 405.0, 62.5, 405.0 ],
+					"midpoints" : [ 244.0, 405.0, 171.5, 405.0 ],
 					"source" : [ "obj-23", 0 ]
 				}
 
@@ -787,6 +779,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 317.5, 474.0, 62.5, 474.0 ],
 					"source" : [ "obj-25", 0 ]
 				}
 
@@ -865,7 +858,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_4_3_3.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_4_Hello_Image/P_4_3_3_Real_time_pixels",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_4_Hello_Image/P_4_3_3_Real_time_pixels",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

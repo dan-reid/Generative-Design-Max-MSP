@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 1,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 1208.0, 687.0 ],
+		"rect" : [ 38.0, 79.0, 728.0, 612.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 103.0, 605.0, 111.0, 22.0 ],
+					"patching_rect" : [ 76.0, 525.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -58,7 +58,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 495.0, 369.0, 169.0, 64.0 ],
+					"patching_rect" : [ 494.0, 366.0, 169.0, 64.0 ],
 					"text" : "there are some issues with drawmodes 5 & 9, see the proccessing gd library for how these should actually look..."
 				}
 
@@ -69,7 +69,7 @@
 					"maxclass" : "jit.pwindow",
 					"numinlets" : 1,
 					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 439.0, 188.0, 70.0, 60.0 ]
 				}
 
@@ -122,7 +122,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 114.0, 576.0, 100.0, 22.0 ],
+					"patching_rect" : [ 87.0, 496.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -150,7 +150,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 548.0, 471.0, 125.0, 64.0 ],
+					"patching_rect" : [ 444.5, 445.0, 125.0, 64.0 ],
 					"text" : "drawing time is quite slow, so these are set to send their value on mouse up."
 				}
 
@@ -177,7 +177,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 386.5, 350.0, 29.5, 22.0 ],
+					"patching_rect" : [ 376.0, 338.0, 29.5, 22.0 ],
 					"text" : "1"
 				}
 
@@ -189,7 +189,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 168.0, 449.0, 37.0, 22.0 ],
+					"patching_rect" : [ 193.0, 434.0, 37.0, 22.0 ],
 					"text" : "open"
 				}
 
@@ -202,7 +202,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 386.5, 304.0, 56.0, 22.0 ],
+					"patching_rect" : [ 376.0, 292.0, 56.0, 22.0 ],
 					"text" : "deferlow"
 				}
 
@@ -215,7 +215,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 350.0, 449.0, 67.0, 21.0 ],
+					"patching_rect" : [ 246.5, 409.0, 67.0, 21.0 ],
 					"text" : "drawmode"
 				}
 
@@ -228,7 +228,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 490.0, 449.0, 50.0, 21.0 ],
+					"patching_rect" : [ 386.5, 409.0, 50.0, 21.0 ],
 					"text" : "Scale 2"
 				}
 
@@ -241,7 +241,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 424.0, 449.0, 50.0, 21.0 ],
+					"patching_rect" : [ 320.5, 409.0, 50.0, 21.0 ],
 					"text" : "Scale 1"
 				}
 
@@ -254,7 +254,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 386.5, 275.0, 60.0, 22.0 ],
+					"patching_rect" : [ 376.0, 263.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -266,7 +266,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "preset", "int", "preset", "int" ],
-					"patching_rect" : [ 386.5, 381.0, 100.0, 40.0 ],
+					"patching_rect" : [ 376.0, 369.0, 113.0, 18.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
 							"data" : [ 5, "obj-27", "number", "int", 1, 5, "obj-33", "flonum", "float", 1.0, 5, "obj-34", "flonum", "float", 1.0 ]
@@ -317,7 +317,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 490.0, 474.0, 50.0, 22.0 ]
+					"patching_rect" : [ 386.5, 434.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -331,7 +331,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 423.0, 474.0, 50.0, 22.0 ]
+					"patching_rect" : [ 319.5, 434.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -346,7 +346,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 356.0, 474.0, 50.0, 22.0 ]
+					"patching_rect" : [ 252.5, 434.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -357,7 +357,7 @@
 					"numinlets" : 3,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 356.0, 522.0, 153.0, 22.0 ],
+					"patching_rect" : [ 252.5, 466.0, 153.0, 22.0 ],
 					"text" : "pak 1 0.5 0.5"
 				}
 
@@ -369,7 +369,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 356.0, 556.0, 123.0, 22.0 ],
+					"patching_rect" : [ 252.5, 500.0, 123.0, 22.0 ],
 					"text" : "set_params $1 $2 $3"
 				}
 
@@ -409,19 +409,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 77.0, 184.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 52.0, 492.0, 274.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_4_3_1_01 @transform_reset 2"
+					"patching_rect" : [ 77.0, 164.0, 44.0, 44.0 ]
 				}
 
 			}
@@ -444,7 +432,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 52.0, 449.0, 101.0, 22.0 ],
+					"patching_rect" : [ 77.0, 434.0, 101.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_4_3_1_01.js",
 						"parameter_enable" : 0
@@ -457,7 +445,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 86.5, 474.0, 39.0, 474.0, 39.0, 214.0, 86.5, 214.0 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -465,7 +454,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-3", 0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -596,7 +585,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_4_3_1_01.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_4_Hello_Image/P_4_3_1_Graphic_from_image",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_4_Hello_Image/P_4_3_1_Graphic_from_image",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

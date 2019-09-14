@@ -13,7 +13,7 @@
 
 autowatch = 1;
 var mg;// jit.mgraphics
-var mgframe;
+var outputmatrix;
 var bg; // background color
 var width;
 var height;
@@ -36,11 +36,9 @@ function setup() {
 	width = 500;
 	height = 500;
 	mg = new JitterObject("jit.mgraphics", width, height);
-	mgframe = new JitterMatrix("mgframe", 4, "char", width, height);
-	bg = [1, 1, 1, 1]; // background color
+	outputmatrix = new JitterMatrix(4, "char", width, height);
 	letter = 'O';
 	fontsize = 12;
-	clear();
 }
 
 function mousedragged(x, y){
@@ -57,11 +55,13 @@ function mousedragged(x, y){
 		show_text(letter);
 		fill();
 	}
-	mg.matrixcalc(mgframe, mgframe);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
+	
 }
 
 function mousemoved(x, y) {
-	clear();
+	background(1, 1, 1, 1);
 	mousex = x;
 	mousey = y;
 	with(mg) {
@@ -75,7 +75,8 @@ function mousemoved(x, y) {
 		show_text(letter);
 		fill();
 	}
-	mg.matrixcalc(mgframe, mgframe);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
 function keypressed(k) {
@@ -83,12 +84,12 @@ function keypressed(k) {
 	if(k !== 32) letter = String.fromCharCode(k);
 }
 
-function clear() {
-	with(mg) {
-		set_source_rgba(bg);
-	  paint();
-	  set_source_rgba(0, 0, 0, 1); // default drawing color
-	  identity_matrix();
-	  move_to(0, 0);
-	}
+function background(r, g, b, a) {
+	mg.set_source_rgba(r, g, b, a);
+	mg.paint();
+	mg.set_source_rgba(0, 0, 0, 1); // default drawing color = black
+	mg.identity_matrix();
+	mg.move_to(0, 0);
+  	mg.matrixcalc(outputmatrix, outputmatrix);
 }
+

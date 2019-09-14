@@ -293,8 +293,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 95.0, 378.0, 53.0, 22.0 ],
-					"text" : "jit.matrix"
+					"patching_rect" : [ 95.0, 378.0, 109.0, 22.0 ],
+					"text" : "jit.matrix @adapt 1"
 				}
 
 			}
