@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 38.0, 155.0, 530.0, 428.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -45,7 +46,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 26.75, 65.0, 448.0, 26.0 ],
-					"style" : "",
 					"text" : "A stable structure results from a set of simple rules."
 				}
 
@@ -58,7 +58,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 225.0, 352.0, 77.0, 22.0 ],
-					"style" : "",
 					"text" : "exportimage"
 				}
 
@@ -71,7 +70,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 199.0, 381.0, 111.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -85,7 +83,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 23.5, 13.0, 508.0, 50.0 ],
-					"style" : "",
 					"text" : "Growth structure from agents"
 				}
 
@@ -97,7 +94,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 210.0, 283.0, 81.5, 20.0 ],
-					"style" : "",
 					"text" : "current count"
 				}
 
@@ -111,7 +107,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 327.0, 232.0, 92.0, 22.0 ],
-					"style" : "",
 					"text" : "loadmess 1000"
 				}
 
@@ -123,7 +118,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 379.0, 282.0, 131.0, 20.0 ],
-					"style" : "",
 					"text" : "max number of circles"
 				}
 
@@ -136,8 +130,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 327.0, 282.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 327.0, 282.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -149,7 +142,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 327.0, 321.0, 95.0, 22.0 ],
-					"style" : "",
 					"text" : "setmaxcount $1"
 				}
 
@@ -162,7 +154,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 102.0, 245.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "reset"
 				}
 
@@ -177,8 +168,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 216.0, 202.0, 80.0, 35.0 ],
-					"style" : ""
+					"patching_rect" : [ 216.0, 202.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -190,8 +180,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 149.0, 282.0, 59.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 149.0, 282.0, 59.0, 22.0 ]
 				}
 
 			}
@@ -203,7 +192,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 56.0, 245.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "draw"
 				}
 
@@ -216,8 +204,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 59.5, 119.0, 24.0, 24.0 ],
-					"style" : ""
+					"patching_rect" : [ 59.5, 119.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -234,21 +221,7 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js P_2_2_4.js"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 56.0, 321.0, 254.0, 22.0 ],
-					"style" : "",
-					"text" : "jit.gl.videoplane P_2_2_4 @transform_reset 2"
 				}
 
 			}
@@ -260,7 +233,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
 					"patching_rect" : [ 59.5, 157.0, 332.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world P_2_2_4 @floating 1 @size 500 500 @dim 500 500"
 				}
 
@@ -344,7 +316,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-3", 0 ],
+					"midpoints" : [ 65.5, 328.0, 25.0, 328.0, 25.0, 153.0, 69.0, 153.0 ],
 					"order" : 1,
 					"source" : [ "obj-6", 0 ]
 				}
@@ -360,19 +333,13 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_2_2_4.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_2_4_Growth_structure",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_2_4_Growth_structure",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

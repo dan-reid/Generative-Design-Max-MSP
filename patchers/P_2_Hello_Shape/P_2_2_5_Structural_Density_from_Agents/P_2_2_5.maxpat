@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -153,7 +153,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 65.0, 503.0, 64.0 ],
-					"text" : "An iterative process serves as a shape-giver: Generate a new circle. If this circle does not intersect with any other circle in the display, make it as large as possible; if it intersects with another circle shrink it to fit."
+					"text" : "An iterative process serves as a shape-giver: Generate a new circle. If this circle does not intersect with any other circle in the display, make it as large; if it intersects with another circle shrink it to fit."
 				}
 
 			}
@@ -164,7 +164,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 293.0, 413.0, 75.0, 22.0 ],
+					"patching_rect" : [ 182.0, 379.0, 75.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -176,7 +176,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 293.0, 450.0, 109.0, 22.0 ],
+					"patching_rect" : [ 182.0, 416.0, 109.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -234,18 +234,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 150.0, 379.0, 252.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_2_2_5 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -276,7 +264,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 159.5, 363.0, 21.0, 363.0, 21.0, 199.0, 45.0, 199.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -373,8 +362,8 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-14" : [ "live.text", "live.text", 0 ],
 			"obj-15" : [ "live.text[1]", "live.text", 0 ],
+			"obj-14" : [ "live.text", "live.text", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -383,7 +372,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_2_2_5.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_2_5_Structural_Density_from_Agents",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_2_5_Structural_Density_from_Agents",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

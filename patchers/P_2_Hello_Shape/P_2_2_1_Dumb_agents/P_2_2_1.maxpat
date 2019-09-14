@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 623.0, 451.0 ],
+		"rect" : [ 38.0, 79.0, 392.0, 459.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 344.0, 372.0, 100.0, 22.0 ],
+					"patching_rect" : [ 131.0, 394.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -56,8 +56,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 321.0, 400.0, 55.0, 22.0 ],
-					"text" : "jit.matrix"
+					"patching_rect" : [ 108.0, 422.0, 109.0, 22.0 ],
+					"text" : "jit.matrix @adapt 1"
 				}
 
 			}
@@ -96,7 +96,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 283.0, 273.0, 85.0, 22.0 ],
+					"patching_rect" : [ 163.0, 282.0, 85.0, 22.0 ],
 					"text" : "loadmess 250"
 				}
 
@@ -107,7 +107,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 217.0, 245.0, 79.0, 20.0 ],
+					"patching_rect" : [ 97.0, 254.0, 79.0, 20.0 ],
 					"text" : "Agent Speed"
 				}
 
@@ -120,7 +120,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 228.0, 273.0, 50.0, 22.0 ]
+					"patching_rect" : [ 108.0, 282.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -131,7 +131,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 228.0, 312.0, 76.0, 22.0 ],
+					"patching_rect" : [ 108.0, 321.0, 76.0, 22.0 ],
 					"text" : "setspeed $1"
 				}
 
@@ -143,7 +143,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 228.0, 356.0, 37.0, 22.0 ],
+					"patching_rect" : [ 144.0, 360.0, 37.0, 22.0 ],
 					"text" : "clear"
 				}
 
@@ -192,25 +192,13 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 50.0, 400.0, 254.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_2_2_1 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-3",
 					"maxclass" : "toggle",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 50.0, 120.0, 24.0, 24.0 ]
+					"patching_rect" : [ 50.0, 102.0, 30.0, 30.0 ]
 				}
 
 			}
@@ -289,7 +277,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 59.5, 392.0, 19.0, 392.0, 19.0, 145.0, 59.5, 145.0 ],
 					"order" : 1,
 					"source" : [ "obj-7", 0 ]
 				}
@@ -313,7 +302,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_2_2_1.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_2_1_Dumb_agents",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_2_1_Dumb_agents",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

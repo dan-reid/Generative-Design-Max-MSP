@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 39.0, 79.0, 447.0, 426.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 39.0, 79.0, 426.0, 461.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -53,11 +54,12 @@
 					"patching_rect" : [ 155.0, 235.0, 113.0, 21.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "live.tab",
-							"parameter_shortname" : "live.tab",
-							"parameter_type" : 2,
 							"parameter_enum" : [ "Black", "Blue", "Gold" ],
-							"parameter_unitstyle" : 0
+							"parameter_type" : 2,
+							"parameter_unitstyle" : 0,
+							"parameter_longname" : "live.tab",
+							"parameter_mmax" : 2,
+							"parameter_shortname" : "live.tab"
 						}
 
 					}
@@ -74,7 +76,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 139.0, 350.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "open"
 				}
 
@@ -86,8 +87,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 343.0, 360.0, 77.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 189.0, 374.0, 77.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -99,8 +99,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 309.0, 391.0, 111.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 155.0, 405.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -114,7 +113,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 61.0, 182.0, 26.0 ],
-					"style" : "",
 					"text" : "Click and drag to draw."
 				}
 
@@ -127,7 +125,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 155.0, 272.0, 76.0, 22.0 ],
-					"style" : "",
 					"text" : "set_color $1"
 				}
 
@@ -140,7 +137,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 108.0, 272.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "clear"
 				}
 
@@ -155,13 +151,14 @@
 					"patcher" : 					{
 						"fileversion" : 1,
 						"appversion" : 						{
-							"major" : 7,
-							"minor" : 3,
-							"revision" : 5,
+							"major" : 8,
+							"minor" : 0,
+							"revision" : 8,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
+						"classnamespace" : "box",
 						"rect" : [ 63.0, 104.0, 150.0, 243.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
@@ -197,7 +194,6 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 23.0, 139.0, 109.0, 22.0 ],
-									"style" : "",
 									"text" : "mousexy $1 $2 $3"
 								}
 
@@ -210,7 +206,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 23.0, 106.0, 57.0, 22.0 ],
-									"style" : "",
 									"text" : "zl.slice 4"
 								}
 
@@ -223,7 +218,6 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 23.0, 71.0, 77.0, 22.0 ],
-									"style" : "",
 									"text" : "route mouse"
 								}
 
@@ -237,8 +231,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 23.0, 11.0, 30.0, 30.0 ],
-									"style" : ""
+									"patching_rect" : [ 23.0, 11.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -250,8 +243,7 @@
 									"maxclass" : "outlet",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 23.0, 181.0, 30.0, 30.0 ],
-									"style" : ""
+									"patching_rect" : [ 23.0, 181.0, 30.0, 30.0 ]
 								}
 
 							}
@@ -292,11 +284,9 @@
 						"description" : "",
 						"digest" : "",
 						"globalpatchername" : "",
-						"style" : "",
 						"tags" : ""
 					}
 ,
-					"style" : "",
 					"text" : "p mouse"
 				}
 
@@ -310,7 +300,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 9.0, 345.0, 50.0 ],
-					"style" : "",
 					"text" : "Hello, shape"
 				}
 
@@ -323,7 +312,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 39.0, 272.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "draw"
 				}
 
@@ -336,21 +324,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 64.0, 99.0, 24.0, 24.0 ],
-					"style" : ""
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 39.0, 391.0, 252.0, 22.0 ],
-					"style" : "",
-					"text" : "jit.gl.videoplane template @transform_reset 2"
+					"patching_rect" : [ 64.0, 99.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -362,7 +336,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
 					"patching_rect" : [ 64.0, 141.0, 248.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world template @floating 1 @size 640 480"
 				}
 
@@ -380,7 +353,6 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js P_2_0_02.js"
 				}
 
@@ -388,16 +360,17 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-26", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 48.5, 398.0, 19.0, 398.0, 19.0, 135.0, 73.5, 135.0 ],
+					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-26", 0 ],
+					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -476,24 +449,22 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-8" : [ "live.tab", "live.tab", 0 ]
+			"obj-8" : [ "live.tab", "live.tab", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_2_0_02.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_0_Hello_shape",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_0_Hello_shape",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

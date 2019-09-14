@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 5,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 220.0, 79.0, 555.0, 467.0 ],
+		"rect" : [ 48.0, 79.0, 555.0, 467.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 320.0, 238.0, 92.0, 20.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Draw Mode"
 				}
 
@@ -255,18 +254,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 78.0, 358.0, 252.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_2_2_2 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -305,7 +292,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 87.5, 354.0, 44.0, 354.0, 44.0, 126.0, 87.5, 126.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -417,7 +405,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_2_2_2.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_2_2_Intelligent_agents",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_2_2_Intelligent_agents",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -38,18 +38,6 @@
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
-				"box" : 				{
-					"id" : "obj-13",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 10.0, 342.0, 37.0, 22.0 ],
-					"text" : "open"
-				}
-
-			}
-, 			{
 				"box" : 				{
 					"id" : "obj-14",
 					"maxclass" : "message",
@@ -386,18 +374,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 53.0, 383.0, 254.0, 22.0 ],
-					"text" : "jit.gl.videoplane P_2_1_2 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -436,7 +412,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 62.5, 384.0, 17.0, 384.0, 17.0, 127.0, 87.5, 127.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -447,13 +424,6 @@
 					"destination" : [ "obj-3", 0 ],
 					"hidden" : 1,
 					"source" : [ "obj-10", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -628,7 +598,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_2_1_2.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_2_Hello_Shape/P_2_1_2_Movement_in_a_grid",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_1_2_Movement_in_a_grid",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

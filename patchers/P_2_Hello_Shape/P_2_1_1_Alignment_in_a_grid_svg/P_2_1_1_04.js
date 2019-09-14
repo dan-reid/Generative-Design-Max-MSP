@@ -1,16 +1,16 @@
 autowatch = 1;
 var datapath;
 var mg;
-var mgframe;
-var bg;
+var pc;
+var outputmatrix;
 var width;
 var height;
 var tilecount;
 var maxdist;
 var tilewidth;
 var tileheight;
-var mouseX = 0;
-var mouseY = 0;
+var mousex = 0;
+var mousey = 0;
 var sizemode = 0;
 var shapesize = 0.5;
 var newshapesize = shapesize;
@@ -24,26 +24,25 @@ function setup() {
 	width = 500;
 	height = 500;
 	mg = new JitterObject("jit.mgraphics", width, height);
-	mgframe = new JitterMatrix("grid_svg", 4, "char", width, height);
-	bg = [1, 1, 1, 1];
+	outputmatrix = new JitterMatrix(4, "char", width, height);
+	pc = new PClone();
 	tilecount = 10;
 	tilewidth = width/tilecount;
 	tileheight = height/tilecount;
 	maxdist = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
-	clear();
 }
 
 function draw() {
-	clear();
+	background(1, 1, 1, 1);
 	with(mg) {
 		for(var y = 0; y < tilecount; y++) {
 			for(var x = 0; x < tilecount; x++) {
 				var posX = tilewidth * x + tilewidth/2;
 				var posY = tileheight * y + tilewidth/2;
-				var angle = Math.atan2(mouseY-posY, mouseX-posX + radians(shapeangle));
+				var angle = Math.atan2(mousey-posY, mousex-posX + pc.radians(shapeangle));
 				if (sizemode == 0) newshapesize = shapesize;
-				if (sizemode == 1) newshapesize = shapesize*1.5-map(dist(mouseX, mouseY, posX, posY), 0, maxdist, 0.15, shapesize);
-				if (sizemode == 2) newshapesize = map(dist(mouseX, mouseY, posX, posY), 0, maxdist, 0.15, shapesize);
+				if (sizemode == 1) newshapesize = shapesize*1.5-map(dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+				if (sizemode == 2) newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
 				set_source_rgba(0, 1, 0, 1);
 				translate(posX, posY);
 				rotate(angle);
@@ -53,19 +52,8 @@ function draw() {
 			}
 		}
 	}
-	mg.matrixcalc(mgframe, mgframe);
-}
-
-function dist(x1, y1, x2, y2) {
-	return Math.sqrt(Math.pow(x1-x2,2)+Math.pow(y1-y2,2));
-}
-
-function radians(angle) {
-	return angle * Math.PI / 180;
-}
-
-function map(value, low1, high1, low2, high2) {
-    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
 function setscale(s) {
@@ -86,9 +74,9 @@ function setmodule(m) {
 	if (m == 7) shape = 'module_7.svg';
 }
 
-function mouseXY(x, y) {
-	mouseX = x;
-	mouseY = y;
+function mousexy(x, y) {
+	mousex = x;
+	mousey = y;
 }
 
 function getpath() {
@@ -99,15 +87,13 @@ function getpath() {
   return p;
 }
 
-function clear() {
-	with(mg) {
-		set_source_rgba(1, 1, 1, 1);
-	  paint();
-	  set_source_rgba(0, 0, 0, 1);
-	  identity_matrix();
-	  move_to(0, 0);
-		matrixcalc(mgframe, mgframe);
-	}
+function background(r, g, b, a) {
+	mg.set_source_rgba(r, g, b, a);
+	mg.paint();
+	mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill color
+	mg.identity_matrix();
+	mg.move_to(0, 0);
+	mg.matrixcalc(outputmatrix, outputmatrix);
 }
 
 
