@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 2,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 1208.0, 687.0 ],
+		"rect" : [ 38.0, 79.0, 923.0, 618.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -44,7 +44,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 147.5, 516.0, 100.0, 22.0 ],
+					"patching_rect" : [ 67.5, 412.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -56,7 +56,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 120.0, 555.0, 111.0, 22.0 ],
+					"patching_rect" : [ 40.0, 451.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -378,18 +378,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 40.0, 412.0, 236.0, 22.0 ],
-					"text" : "jit.gl.videoplane name @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -420,7 +408,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-24", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 49.5, 403.0, 14.0, 403.0, 14.0, 141.0, 50.5, 141.0 ],
 					"order" : 0,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -428,7 +417,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-24", 0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -604,7 +593,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_1_5_3.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_1_Randomness_and_noise/M_1_5_3_Noisy_Motion",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_5_3_Noisy_Motion",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

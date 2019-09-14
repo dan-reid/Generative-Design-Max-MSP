@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 2,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -44,7 +44,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 104.0, 319.0, 37.0, 22.0 ],
+					"patching_rect" : [ 317.0, 302.0, 37.0, 22.0 ],
 					"text" : "open"
 				}
 
@@ -57,7 +57,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 139.0, 170.0, 43.0, 43.0 ]
+					"patching_rect" : [ 352.0, 153.0, 43.0, 43.0 ]
 				}
 
 			}
@@ -69,7 +69,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 26.0, 170.0, 43.0, 43.0 ]
+					"patching_rect" : [ 239.0, 153.0, 43.0, 43.0 ]
 				}
 
 			}
@@ -80,7 +80,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 242.0, 99.0, 22.0 ],
+					"patching_rect" : [ 239.0, 225.0, 99.0, 22.0 ],
 					"text" : "plot_perlin_noise"
 				}
 
@@ -92,7 +92,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 139.0, 242.0, 75.0, 22.0 ],
+					"patching_rect" : [ 352.0, 225.0, 75.0, 22.0 ],
 					"text" : "plot_random"
 				}
 
@@ -104,7 +104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 26.0, 319.0, 69.0, 22.0 ],
+					"patching_rect" : [ 239.0, 302.0, 69.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "M_3_1.js",
 						"parameter_enable" : 0
@@ -141,18 +141,6 @@
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 26.0, 362.0, 243.0, 22.0 ],
-					"text" : "jit.gl.videoplane M_1_3 @transform_reset 2"
-				}
-
-			}
-, 			{
-				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
@@ -177,7 +165,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 94.5, 181.5, 20.0, 20.0 ],
+					"patching_rect" : [ 307.5, 164.5, 20.0, 20.0 ],
 					"rounded" : 60.0,
 					"text" : "2",
 					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -215,7 +203,8 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 248.5, 327.0, 12.0, 327.0, 12.0, 108.0, 35.5, 108.0 ],
 					"source" : [ "obj-28", 0 ]
 				}
 
@@ -258,7 +247,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_3_1.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_1_Randomness_and_noise/M_1_3_Noise_vs_Randomness",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_3_Noise_vs_Randomness",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
