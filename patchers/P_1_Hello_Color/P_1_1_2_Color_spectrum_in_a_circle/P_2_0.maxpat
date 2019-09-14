@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 38.0, 81.0, 591.0, 413.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -44,7 +45,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 221.5, 352.0, 77.0, 22.0 ],
-					"style" : "",
 					"text" : "exportimage"
 				}
 
@@ -57,7 +57,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 106.0, 352.0, 111.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -72,8 +71,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 219.0, 153.0, 80.0, 35.0 ],
-					"style" : ""
+					"patching_rect" : [ 251.0, 151.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -86,7 +84,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 464.0, 206.0, 106.0, 21.0 ],
-					"style" : "",
 					"text" : "Brightness (0. - 1.)"
 				}
 
@@ -100,7 +97,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 350.0, 206.0, 102.0, 21.0 ],
-					"style" : "",
 					"text" : "Saturation (0. - 1.)"
 				}
 
@@ -114,7 +110,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 218.0, 206.0, 102.0, 21.0 ],
-					"style" : "",
 					"text" : "No. of Segments"
 				}
 
@@ -128,7 +123,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 26.0, 7.0, 417.0, 50.0 ],
-					"style" : "",
 					"text" : "Color spectrum in a circle"
 				}
 
@@ -142,7 +136,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 537.0, 236.0, 75.0, 22.0 ],
-					"style" : "",
 					"text" : "loadmess 1."
 				}
 
@@ -155,9 +148,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 142.0, 236.0, 85.0, 22.0 ],
-					"style" : "",
-					"text" : "loadmess 360"
+					"patching_rect" : [ 142.0, 236.0, 77.0, 22.0 ],
+					"text" : "loadmess 16"
 				}
 
 			}
@@ -170,8 +162,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 478.0, 236.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 478.0, 236.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -184,8 +175,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 371.0, 236.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 371.0, 236.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -199,8 +189,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 235.0, 236.0, 50.0, 22.0 ],
-					"style" : ""
+					"patching_rect" : [ 235.0, 236.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -212,7 +201,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 235.0, 271.0, 123.0, 22.0 ],
-					"style" : "",
 					"text" : "setSegmentCount $1"
 				}
 
@@ -225,7 +213,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 478.0, 271.0, 100.0, 22.0 ],
-					"style" : "",
 					"text" : "setBrightness $1"
 				}
 
@@ -238,7 +225,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 371.0, 271.0, 98.0, 22.0 ],
-					"style" : "",
 					"text" : "setSaturation $1"
 				}
 
@@ -251,7 +237,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 48.0, 246.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "draw"
 				}
 
@@ -269,21 +254,7 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js P_2.js"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 48.0, 382.0, 227.0, 22.0 ],
-					"style" : "",
-					"text" : "jit.gl.videoplane P_2 @transform_reset 2"
 				}
 
 			}
@@ -295,8 +266,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 59.0, 82.0, 24.0, 24.0 ],
-					"style" : ""
+					"patching_rect" : [ 59.0, 67.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -308,7 +278,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
 					"patching_rect" : [ 59.0, 122.0, 272.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world P_2 @floating 1 @size 500 500 @fsaa 1"
 				}
 
@@ -418,16 +387,17 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-3", 0 ],
-					"order" : 0,
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 57.5, 332.0, 14.0, 332.0, 14.0, 106.0, 68.5, 106.0 ],
+					"order" : 1,
 					"source" : [ "obj-6", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-3", 0 ],
+					"order" : 0,
 					"source" : [ "obj-6", 0 ]
 				}
 
@@ -442,19 +412,13 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_2.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_1_Hello_Color/P_1_1_2_Color_spectrum_in_a_circle",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_1_Hello_Color/P_1_1_2_Color_spectrum_in_a_circle",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

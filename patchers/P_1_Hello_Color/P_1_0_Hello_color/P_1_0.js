@@ -45,7 +45,7 @@ function draw() {
 	outlet(0, "jit_matrix", output_matrix.name);
 }
 
-function mousexy(x, y) {
+function mousemoved(x, y) {
 	mouse_x = x;
 	mouse_y = y;
 }

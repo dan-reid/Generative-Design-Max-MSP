@@ -2,13 +2,14 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
+		"classnamespace" : "box",
 		"rect" : [ 38.0, 79.0, 628.0, 415.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
@@ -38,6 +39,18 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 94.0, 274.0, 35.0, 22.0 ],
+					"text" : "open"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontface" : 0,
 					"fontname" : "Arial",
 					"fontsize" : 12.0,
@@ -46,8 +59,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 276.5, 169.0, 80.0, 35.0 ],
-					"style" : ""
+					"patching_rect" : [ 249.0, 175.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -60,20 +72,19 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.0, 8.0, 591.0, 50.0 ],
-					"style" : "",
 					"text" : "Color palettes through interpolation"
 				}
 
 			}
 , 			{
 				"box" : 				{
+					"hidden" : 1,
 					"id" : "obj-39",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 347.0, 227.0, 79.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 367.0, 167.0, 79.0, 22.0 ],
 					"text" : "loadmess 10"
 				}
 
@@ -85,8 +96,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 347.0, 336.0, 98.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 367.0, 276.0, 98.0, 22.0 ],
 					"text" : "pak 10 10"
 				}
 
@@ -99,16 +109,16 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 426.0, 274.0, 44.0, 47.0 ],
+					"patching_rect" : [ 446.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_linknames" : 1,
-							"parameter_longname" : "GridY",
-							"parameter_shortname" : "GridY",
 							"parameter_type" : 1,
+							"parameter_unitstyle" : 0,
+							"parameter_linknames" : 1,
 							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridY",
 							"parameter_mmax" : 10.0,
-							"parameter_unitstyle" : 0
+							"parameter_shortname" : "GridY"
 						}
 
 					}
@@ -125,16 +135,16 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "float" ],
 					"parameter_enable" : 1,
-					"patching_rect" : [ 347.0, 274.0, 44.0, 47.0 ],
+					"patching_rect" : [ 367.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_linknames" : 1,
-							"parameter_longname" : "GridX",
-							"parameter_shortname" : "GridX",
 							"parameter_type" : 1,
+							"parameter_unitstyle" : 0,
+							"parameter_linknames" : 1,
 							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridX",
 							"parameter_mmax" : 100.0,
-							"parameter_unitstyle" : 0
+							"parameter_shortname" : "GridX"
 						}
 
 					}
@@ -150,8 +160,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 347.0, 368.0, 98.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 367.0, 308.0, 98.0, 22.0 ],
 					"text" : "setGridXY $1 $2"
 				}
 
@@ -163,8 +172,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 118.0, 293.0, 75.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 194.0, 225.0, 75.0, 22.0 ],
 					"text" : "shakecolors"
 				}
 
@@ -176,22 +184,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 61.0, 293.0, 37.0, 22.0 ],
-					"style" : "",
+					"patching_rect" : [ 137.0, 225.0, 37.0, 22.0 ],
 					"text" : "draw"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-6",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 61.0, 374.0, 269.0, 22.0 ],
-					"style" : "",
-					"text" : "jit.gl.videoplane color_interp @transform_reset 2"
 				}
 
 			}
@@ -203,8 +197,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 61.0, 81.0, 24.0, 24.0 ],
-					"style" : ""
+					"patching_rect" : [ 61.0, 68.0, 37.0, 37.0 ]
 				}
 
 			}
@@ -216,7 +209,6 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
 					"patching_rect" : [ 61.0, 123.0, 395.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world color_interp @floating 1 @dim 500 500 @size 500 500 @fsaa 1"
 				}
 
@@ -228,13 +220,12 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 61.0, 342.0, 83.0, 22.0 ],
+					"patching_rect" : [ 137.0, 274.0, 83.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_1_2_1.js",
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js P_1_2_1.js"
 				}
 
@@ -242,7 +233,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
+					"destination" : [ "obj-3", 0 ],
+					"midpoints" : [ 146.5, 366.0, 33.0, 366.0, 33.0, 109.0, 70.5, 109.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -264,6 +256,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 376.5, 333.0, 231.0, 333.0, 231.0, 261.0, 146.5, 261.0 ],
 					"source" : [ "obj-22", 0 ]
 				}
 
@@ -308,6 +301,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-36", 0 ],
+					"hidden" : 1,
 					"order" : 1,
 					"source" : [ "obj-39", 0 ]
 				}
@@ -316,6 +310,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-37", 0 ],
+					"hidden" : 1,
 					"order" : 0,
 					"source" : [ "obj-39", 0 ]
 				}
@@ -328,27 +323,32 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
  ],
 		"parameters" : 		{
 			"obj-37" : [ "GridY", "GridY", 0 ],
-			"obj-36" : [ "GridX", "GridX", 0 ]
+			"obj-36" : [ "GridX", "GridX", 0 ],
+			"parameterbanks" : 			{
+
+			}
+
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_1_2_1.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_1_Hello_Color/P_1_2_1_Color_interpolation",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_1_Hello_Color/P_1_2_1_Color_interpolation",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

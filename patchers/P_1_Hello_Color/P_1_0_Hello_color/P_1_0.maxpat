@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 0,
-			"revision" : 0,
+			"revision" : 8,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -39,6 +39,20 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 194.0, 215.0, 80.0, 35.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Lato Regular",
 					"fontsize" : 16.0,
 					"id" : "obj-10",
@@ -57,7 +71,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 229.5, 341.0, 77.0, 22.0 ],
+					"patching_rect" : [ 179.0, 309.0, 77.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -69,7 +83,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 195.5, 368.0, 111.0, 22.0 ],
+					"patching_rect" : [ 145.0, 336.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -93,8 +107,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 283.5, 265.0, 92.0, 22.0 ],
-					"text" : "mousexy $1 $2"
+					"patching_rect" : [ 283.5, 247.0, 114.0, 22.0 ],
+					"text" : "mousemoved $1 $2"
 				}
 
 			}
@@ -142,7 +156,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 54.5, 289.0, 37.0, 22.0 ],
+					"patching_rect" : [ 54.5, 247.0, 37.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -155,19 +169,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 54.5, 134.0, 24.0, 24.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-4",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 54.5, 394.0, 252.0, 22.0 ],
-					"text" : "jit.gl.videoplane template @transform_reset 2"
+					"patching_rect" : [ 54.5, 116.0, 37.0, 37.0 ]
 				}
 
 			}
@@ -203,7 +205,8 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 64.0, 360.0, 39.0, 360.0, 39.0, 171.0, 64.0, 171.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -227,6 +230,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 293.0, 288.0, 64.0, 288.0 ],
 					"source" : [ "obj-12", 0 ]
 				}
 
@@ -234,6 +238,16 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"midpoints" : [ 178.5, 234.0, 64.0, 234.0 ],
+					"order" : 1,
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"order" : 0,
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -283,7 +297,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_1_0.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/P_1_Hello_Color/P_1_0_Hello_color",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_1_Hello_Color/P_1_0_Hello_color",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
