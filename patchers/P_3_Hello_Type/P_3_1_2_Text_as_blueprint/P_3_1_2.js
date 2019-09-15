@@ -25,9 +25,6 @@ var framecount = 0;
 var font;
 var text;
 
-var BACKSPACE = 127;
-var RETURN = 13;
-
 var seed = Math.random()*100000;
 
 var index = 0

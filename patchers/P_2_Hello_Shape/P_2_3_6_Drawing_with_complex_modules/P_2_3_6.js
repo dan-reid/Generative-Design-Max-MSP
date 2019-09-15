@@ -6,8 +6,9 @@ var height;
 var outputmatrix;
 var datapath;
 
-var leftmousebutton = 0;
-var rightmousebutton = 0;
+var leftclick = 0;
+var rightclick = 0;
+var mousedown = false;
 var mousex = 0;
 var mousey = 0;
 
@@ -38,9 +39,10 @@ function setup() {
 function draw() {
 	background(1, 1, 1, 1);
 
-	if(mousepressed) {
-		if (leftmousebutton) set_tile();
-		if (rightmousebutton) unset_tile();
+	if(mousedown) {
+
+		if (leftclick) set_tile();
+		if (rightclick) unset_tile();
 	}
 
 	if (do_draw_grid) draw_grid();
@@ -189,18 +191,17 @@ function module(module) {
 	}
 }
 
-function mousemoved(x, y) {
-	mousex = x;
-	mousey = y;
-}
+function mousemoved(x, y, left, right) {
+	leftclick = left;
+	rightclick = right;
 
-function mousedragged(x, y) {
-	mousex = x;
-	mousey = y;
-}
+	if (leftclick) {
+		mousedown = true;
+		mousex = x;
+		mousey = y;
+	} else {
+		mousedown = false;
+	}
 
-function mousepressed(left, right) {
-	leftmousebutton = left;
-	rightmousebutton = right;
-	if (left || right) return true;
+
 }

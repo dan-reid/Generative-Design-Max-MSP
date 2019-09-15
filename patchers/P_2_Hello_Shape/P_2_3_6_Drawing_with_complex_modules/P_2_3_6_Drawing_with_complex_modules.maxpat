@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 578.0, 430.0 ],
+		"rect" : [ 34.0, 79.0, 545.0, 394.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -75,7 +75,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 61.0, 570.0, 45.0 ],
+					"patching_rect" : [ 25.0, 61.0, 259.5, 45.0 ],
 					"text" : "Left-click and drag to draw.\nRight-click and drag to erase."
 				}
 
@@ -148,7 +148,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 9.0, 570.0, 50.0 ],
+					"patching_rect" : [ 25.0, 9.0, 528.0, 50.0 ],
 					"text" : "Drawing with complex modules"
 				}
 
@@ -253,13 +253,6 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-6", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-85", 1 ]
 				}
 
 			}
