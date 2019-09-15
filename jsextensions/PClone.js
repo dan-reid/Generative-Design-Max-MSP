@@ -1,5 +1,6 @@
 function PClone() {
   this.seeded = false;
+  this.color_mode = ('RGB');
 };
 
 
@@ -1016,7 +1017,13 @@ PClone.prototype.hsb_to_rgb = function (hsb) {
   return rgba.slice(0, 3);
 }
 
+PClone.prototype.set_color_mode = function(mode) {
+
+}
+
 PClone.Color = function (c1, c2, c3, c4) {
+
+  
 
   this.channel_1;
   this.channel_2;
@@ -1035,22 +1042,28 @@ PClone.Color = function (c1, c2, c3, c4) {
     this.channel_4 = c4 || 100;
   }
 
-  this.max_hue = 360;
-  this.max_saturation = 100;
-  this.max_brightness = 100;
-  this.color_mode = ('RGB');
 
-  PClone.Color.set_color_mode(mode, max_c1, max_c2, max_c3, max_4) {
-    if (mode.toLowCase() === 'hsb') {
-      this.max_hue = max_c1 || 360;
-      this.max_saturation = max_c2 || 100;
-      this.max_brightness = max_c3 || 100;
-      this.max_alpha = max_c4 || 100;
+  
+
+  PClone.Color.set_color_mode(mode, max_c1, max_c2, max_c3, max_4) = function() {
+    if (mode.toLowCase() === 'hsb' || mode.toLowCase() === 'hsl') {
+      this.max_value_1 = max_c1 || 360;
+      this.max_value_2 = max_c2 || 100;
+      this.max_value_3 = max_c3 || 100;
+      this.max_value_4 = max_c4 || 100;
+    } else if(mode.toLowCase() === 'rgb') {
+      this.max_value_1 = max_c1 || 360;
+      this.max_value_2 = max_c2 || 100;
+      this.max_value_3 = max_c3 || 100;
+      this.max_value_4 = max_c4 || 100;
     }
   }
 
   PClone.Color.normalize = function () {
-
+        this.channel_1 / this.max_value_1;
+        this.channel_2 / this.max_value_2;
+        this.channel_3 / this.max_value_3;
+        this.channel_4 / this.max_value_4;
   }
 
 }
