@@ -18,7 +18,7 @@ var mousex;
 var mousey;
 var on_click_x = 0;
 var on_click_y = 0;
-var mousepressed = 0;
+var mousedown = 0;
 
 var framecount = 0;
 
@@ -61,7 +61,7 @@ function draw() {
 
 	pc.randomseed(seed);
 
-	if (mousepressed) {
+	if (mousedown) {
 		centrex = mousex - offsetx;
 		centrey = mousey - offsety;
 	}
@@ -154,27 +154,33 @@ function load_strings(f) {
 	return strings;
 }
 
-function keypressed(k) {
-  switch(k) {
-    case BACKSPACE:
-      text = text.substring(0, Math.max(0, text.length - 1));
-      break;
-    case RETURN:
-      text += "\n";
-      break;
-    default:
-      text += String.fromCharCode(k);
-}
+function keypressed(key, caps, shift) {
+  	switch(key) {
+    	case 'BACKSPACE':
+      		text = text.substring(0, Math.max(0, text.length - 1));
+      		break;
+    	case 'RETURN':
+      		text += "\n";
+      		break;
+		case 'SPACE':
+			text += ' ';
+			break;
+    	default:
+      		text += key;
+	}
 
 }
 
-function mousexy(x, y, mp) {
-	mousex = x;
-	mousey = y;
-	mousepressed = mp;
+function mousemoved(x, y, leftclick, rightclick) {
+	mousedown = leftclick;
+	if (mousedown) {
+		mousex = x;
+		mousey = y;		
+	}
+	
 }
 
-function mousexy_on_click(x, y){
+function mousepressed(x, y) {
 	on_click_x = x;
 	on_click_y = y;
 	offsetx = on_click_x - centrex;
