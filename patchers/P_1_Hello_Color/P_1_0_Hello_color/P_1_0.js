@@ -1,7 +1,7 @@
 autowatch = 1;
 var mg;
 var pc;
-var output_matrix;
+var outputmatrix;
 var mu;
 var width;
 var height;
@@ -17,7 +17,7 @@ function setup() {
 	// jit.mgraphics
 	mg = new JitterObject("jit.mgraphics", width, height);
 	// the matrix to store and display jit.mgraphics's output
-	output_matrix = new JitterMatrix(4, "char", width, height);
+	outputmatrix = new JitterMatrix(4, "char", width, height);
 
 	pc = new PClone();
 }
@@ -41,8 +41,8 @@ function draw() {
 	mg.fill();
 
 	// this should always be last in the draw function
-	mg.matrixcalc(output_matrix, output_matrix);
-	outlet(0, "jit_matrix", output_matrix.name);
+	mg.matrixcalc(outputmatrix, outputmatrix);
+	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
 function mousemoved(x, y) {
@@ -56,5 +56,5 @@ function background(r, g, b, a) {
 	mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill bg_color
 	mg.identity_matrix();
 	mg.move_to(0, 0);
-	mg.matrixcalc(output_matrix, output_matrix);
+	mg.matrixcalc(outputmatrix, outputmatrix);
 }

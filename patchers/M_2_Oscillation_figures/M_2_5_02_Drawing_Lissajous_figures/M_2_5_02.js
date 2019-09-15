@@ -47,13 +47,10 @@ function setup() {
 	mg = new JitterObject("jit.mgraphics", width, height);
 	// the matrix to store and display jit.mgraphics's output
 	outputmatrix = new JitterMatrix(4, "char", width, height);
-	// have the matrix automatically adapt if we change the
-	// dimentions from the patch
-	outputmatrix.adapt = 1;
 
 	pc = new PClone();
 	calculate_lissajous_points();
-	// 255, 251, 224
+
 	background(1, 1, 1, 1);
 	if (invert_background) background(0, 0, 0, 1);
 
@@ -78,7 +75,7 @@ function draw() {
 		if (pointindex >= pointcount-1) finished = true;
 	}
 
-	// this should always be last in the draw function
+
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, "jit_matrix", outputmatrix.name);
 }
@@ -151,7 +148,6 @@ function set_style_params(pc, cr, minh, maxh, sat, bri, alp, cp, invb, invh) {
 }
 
 function reset() {
-	//background(1, 1, 1, 1);
 	background(1, 1, 1, 1);
 	if (invert_background) background(0, 0, 0, 1);
 	pointindex = 0;
@@ -179,7 +175,7 @@ function println() {
 function background(r, g, b, a) {
 	mg.set_source_rgba(r, g, b, a);
 	mg.paint();
-	mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill color
+	mg.set_source_rgba(0, 0, 0, 1);
 	mg.identity_matrix();
 	mg.move_to(0, 0);
 	mg.matrixcalc(outputmatrix, outputmatrix);

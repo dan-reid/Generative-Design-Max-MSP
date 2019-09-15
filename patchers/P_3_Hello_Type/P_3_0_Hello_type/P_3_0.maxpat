@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 628.0, 498.0 ],
+		"rect" : [ 38.0, 79.0, 680.0, 519.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,12 +39,36 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 226.5, 358.0, 35.0, 22.0 ],
+					"text" : "draw"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 468.0, 353.0, 63.0, 22.0 ],
+					"text" : "gd.keyinfo"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-12",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 464.0, 348.0, 35.0, 22.0 ],
+					"patching_rect" : [ 335.0, 415.0, 35.0, 22.0 ],
 					"text" : "open"
 				}
 
@@ -56,7 +80,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 390.0, 286.0, 81.0, 22.0 ],
+					"patching_rect" : [ 382.0, 353.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
 
@@ -68,7 +92,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 493.0, 379.0, 100.0, 22.0 ],
+					"patching_rect" : [ 544.0, 382.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -80,7 +104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 493.0, 428.0, 53.0, 22.0 ],
+					"patching_rect" : [ 544.0, 415.0, 53.0, 22.0 ],
 					"text" : "jit.matrix"
 				}
 
@@ -90,12 +114,12 @@
 					"fontname" : "Lato Regular",
 					"fontsize" : 16.0,
 					"id" : "obj-78",
-					"linecount" : 3,
+					"linecount" : 6,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 61.0, 499.0, 64.0 ],
-					"text" : "The mouse's x position controls letter size while the mouse's y position controls its vertical placement. The keyboard selects the letter. Click a drag to draw. "
+					"patching_rect" : [ 25.0, 61.0, 491.0, 122.0 ],
+					"text" : "The mouse's x position controls letter size while the mouse's y position controls its vertical placement. \n\nThe keyboard selects the letter. \n\nClick a drag to draw. "
 				}
 
 			}
@@ -106,7 +130,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 263.0, 187.0, 60.0, 22.0 ],
+					"patching_rect" : [ 255.0, 254.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -118,44 +142,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 263.0, 215.0, 146.0, 22.0 ],
+					"patching_rect" : [ 255.0, 282.0, 146.0, 22.0 ],
 					"text" : "sendwindow idlemouse 1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-15",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 483.0, 286.0, 89.0, 22.0 ],
-					"text" : "keypressed $1"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 483.0, 250.0, 50.0, 22.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-5",
-					"maxclass" : "newobj",
-					"numinlets" : 0,
-					"numoutlets" : 4,
-					"outlettype" : [ "int", "int", "int", "int" ],
-					"patching_rect" : [ 483.0, 222.0, 92.5, 22.0 ],
-					"text" : "key"
 				}
 
 			}
@@ -180,7 +168,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 79.0, 187.0, 35.0, 35.0 ]
+					"patching_rect" : [ 71.0, 254.0, 35.0, 35.0 ]
 				}
 
 			}
@@ -191,7 +179,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 79.0, 247.0, 330.0, 22.0 ],
+					"patching_rect" : [ 71.0, 314.0, 330.0, 22.0 ],
 					"text" : "jit.world P_3_0 @floating 1 @size 500 500 @dim 500 500"
 				}
 
@@ -203,7 +191,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 390.0, 348.0, 67.0, 22.0 ],
+					"patching_rect" : [ 382.0, 415.0, 67.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_3_0.js",
 						"parameter_enable" : 0
@@ -217,7 +205,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 399.5, 392.0, 44.0, 392.0, 44.0, 238.0, 88.5, 238.0 ],
+					"midpoints" : [ 391.5, 459.0, 36.0, 459.0, 36.0, 305.0, 80.5, 305.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -248,7 +236,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-15", 0 ]
+					"source" : [ "obj-13", 0 ]
 				}
 
 			}
@@ -261,6 +249,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-13", 0 ],
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"source" : [ "obj-2", 2 ]
 				}
@@ -268,15 +263,15 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-10", 0 ],
-					"source" : [ "obj-44", 0 ]
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"source" : [ "obj-5", 0 ]
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-44", 0 ]
 				}
 
 			}
@@ -294,13 +289,6 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-15", 0 ],
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_0.js",
@@ -311,6 +299,13 @@
 			}
 , 			{
 				"name" : "gd.mouseinfo.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/interaction",
+				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/Generative Design/patchers/interaction",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gd.keyinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/interaction",
 				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/Generative Design/patchers/interaction",
 				"type" : "JSON",
