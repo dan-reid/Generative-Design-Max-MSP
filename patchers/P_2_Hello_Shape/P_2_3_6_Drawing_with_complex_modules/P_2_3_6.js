@@ -152,8 +152,8 @@ function background(r, g, b, a) {
 	mg.matrixcalc(outputmatrix, outputmatrix);
 }
 
-function module(module) {
-	switch (module) {
+function module(m) {
+	switch (m) {
 		case 0:
 			return datapath + '00.svg';
 		case 1:

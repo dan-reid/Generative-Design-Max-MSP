@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!--
+		Tests for browser.
+		Open this file in browser via web server.
+
+		Tun run tests in node run "npm run test".
+
+		Before opening this file you need to compile tests.
+		To compile tests run "grunt".
+
+		To automatically recompile files needed for tests when files
+		are edited, run "grunt watch"
+
+		Important: this file should be ran from web server, not file://
+	-->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<title>Tests</title>
+    <link href="./node_modules/mocha/mocha.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="mocha"></div>
+    <script src="https://cdn.rawgit.com/Automattic/expect.js/0.3.1/index.js"></script>
+    <script src="./node_modules/mocha/mocha.js"></script>
+	<script src="./node_modules/chai/chai.js"></script>
+	<script>
+		/**
+		 * Test for ES6.
+		 *
+		 * Unit tests use ES6 arrow functions, so they won't work with old Safari anyway.
+		 * This detection is used as example and to allow unit tests in old Firefox.
+		 *
+		 * @returns {boolean}
+         */
+		function testES6() {
+			function check(code) {
+				try {
+					eval(code);
+				} catch (e) {
+					return false;
+				}
+				return true;
+			}
+
+			return check('var foo=(a)=>a+1') &&
+					check('let a=5') &&
+					check('var t; class cl{constructor(){}} t=new cl()') &&
+					check('((...p)=>{})(1, 2)') &&
+					check('var a={["b"+1]:2};a.b1++');
+		}
+
+		(function() {
+		    var es = testES6() ? '6' : '5';
+            document.write('<' + 'script src="./dist/full/tokenizer-es' + es + '.js"></' + 'script>');
+		})();
+	</script>
+	<script>mocha.setup('bdd');</script>
+	<script src="./tests/browser.js"></script>
+	<script>
+		mocha.checkLeaks();
+		mocha.run();
+	</script>
+</body>
+</html>

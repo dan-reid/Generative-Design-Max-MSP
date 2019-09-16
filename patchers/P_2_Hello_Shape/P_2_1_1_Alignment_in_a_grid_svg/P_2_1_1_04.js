@@ -84,7 +84,7 @@ function getpath() {
 	var n = this.patcher.name;
 	n += '.maxpat'
 	p = p.replace(n, 'data/');
-  return p;
+  	return p;
 }
 
 function background(r, g, b, a) {

@@ -39,6 +39,20 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 95.0, 253.0, 80.0, 35.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-4",
 					"maxclass" : "message",
 					"numinlets" : 2,
@@ -216,7 +230,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"order" : 1,
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"order" : 0,
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -273,8 +296,8 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "gd.mouseinfo.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/interaction",
-				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/Generative Design/patchers/interaction",
+				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/abstractions",
+				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}

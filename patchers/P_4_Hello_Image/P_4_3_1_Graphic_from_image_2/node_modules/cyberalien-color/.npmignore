@@ -1,0 +1,7 @@
+.idea
+.git
+.babelrc
+node_modules
+npm-debug.log
+tests
+test.html
