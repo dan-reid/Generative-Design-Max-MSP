@@ -9,12 +9,14 @@ var img;
 var datafolder;
 
 var shapes;
+var pointindex = 0;
+var binary = false;
 
 setup();
 
 function setup() {
-	width = 670;
-	height = 970;
+	width = 600;
+	height = 900;
 	// jit.mgraphics
 	mg = new JitterObject("jit.mgraphics", width, height);
 	// the matrix to store and output the frame
@@ -23,41 +25,47 @@ function setup() {
 	pc = new PClone();
 	var pic = prepend_path('pic.png')
 	img = new Image(pic);
-	shapes = loadfiles(prepend_path());
-	post(shapes[1]);
-	var a = [1, 1, 1, 1];
-
+	shapes = load_svg_files(prepend_path());
+	background(1, 1, 1, 1);
 }
 
-function draw() {
-	background(1, 1, 1, 1);
+function drawgraphic() {
 
-	for (x = 0; x < img.size[0]; x++) {
-		for (y = 0; y < img.size[1]; y++) {
-			var tilewidth = width / img.size[0];
-			var tileheight = height / img.size[1];
-			var pos_x = tilewidth * x;
-			var pos_y = tileheight * y;
-			var c = img.getpixel(x, y);
-			// post(c);
-			var grayscale = c[0] * 0.222 + c[1] * 0.707 + c[2] * 0.071;
-			var gradient_to_index = Math.floor(pc.map(grayscale, 0, 1, 1, shapes.length - 2, 1));
-			// post(gradient_to_index+'\n');
-			mg.translate(pos_x, pos_y);
-			mg.scale(0.125, 0.125);
-			mg.svg_render(prepend_path(shapes[gradient_to_index]));
-			mg.identity_matrix();
+	if (pointindex <= img.size[1] - 1) {
+		var currenttime = Math.floor(millis());
+		var drawendtime = Math.floor(millis() + 100);
+		for (y = pointindex; y < img.size[1] && millis() <= drawendtime; y++) {
+			//post(y);
+			for (x = 0; x < img.size[0]; x++) {
+				var tilewidth = width / img.size[0];
+				var tileheight = height / img.size[1];
+				var pos_x = tilewidth * x;
+				var pos_y = tileheight * y;
+				var c = img.getpixel(x, y);
 
+				var grayscale = c[0] * 0.222 + c[1] * 0.707 + c[2] * 0.071;
+				if (binary)
+					grayscale = Math.round(grayscale);
+				
+				var gradient_to_index = Math.round(grayscale * (shapes.length - 1));
+
+				mg.translate(pos_x, pos_y);
+				mg.scale(1 / tilewidth, 1 / tileheight);
+				mg.svg_render(prepend_path(shapes[gradient_to_index]));
+				mg.identity_matrix();
+			}
+			pointindex = y;
 		}
 	}
+	//if (pointindex >= pointcount-1) finished = true;
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, "jit_matrix", outputmatrix.name);
 }
 
-function println() {
-	for (var i = 0; i < arguments.length; i++) {
-		post(arguments[i] + "\n");
-	}
+function msg_int(i) {
+	background(1, 1, 1, 1);
+	binary = i;
+	pointindex = 0;	
 }
 
 function prepend_path(f) {
@@ -79,8 +87,12 @@ function background(r, g, b, a) {
 	mg.matrixcalc(outputmatrix, outputmatrix);
 }
 
-function loadfiles(folder) {
+function millis() {
+	var d = new Date().getTime();
+	return d;
+}
 
+function load_svg_files(folder) {
 
 	var f = new Folder(folder);
 	var files = [];
@@ -88,13 +100,15 @@ function loadfiles(folder) {
 	f.reset();
 	while (!f.end) {
 		var thefile = new File(f.pathname + "/" + f.filename);
-		if (thefile.isopen) {
-			thefile.close();
-		} else {
+		if (thefile.isopen) thefile.close();
+		var filetype = f.filename.split(".")[1];
+
+		// f.filetype returns a string with a space at the end.
+		// "svg "
+		// so you can use f.filetype === "svg " either
+		if (filetype === "svg") {
+			files.push(f.filename);
 		}
-
-		files.push(f.filename);
-
 		f.next();
 	}
 	f.close();

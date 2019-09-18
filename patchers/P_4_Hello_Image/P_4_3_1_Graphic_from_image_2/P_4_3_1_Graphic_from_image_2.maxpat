@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 572.0, 687.0 ],
+		"rect" : [ 674.0, 79.0, 440.0, 467.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,53 @@
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 104.0, 285.0, 88.0, 20.0 ],
+					"text" : "Binary Image"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 197.0, 285.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 350.0, 285.0, 75.0, 22.0 ],
+					"text" : "exportimage"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "jit_matrix", "" ],
+					"patching_rect" : [ 316.0, 315.0, 109.0, 22.0 ],
+					"text" : "jit.matrix @adapt 1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-8",
 					"maxclass" : "button",
@@ -80,8 +127,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -109,8 +154,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 190.5, 276.0, 37.0, 22.0 ],
-					"text" : "draw"
+					"patching_rect" : [ 230.5, 285.0, 74.0, 22.0 ],
+					"text" : "drawgraphic"
 				}
 
 			}
@@ -122,7 +167,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 76.0, 160.0, 37.0, 37.0 ]
+					"patching_rect" : [ 76.0, 150.0, 49.0, 49.0 ]
 				}
 
 			}
@@ -133,8 +178,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 76.0, 230.0, 246.0, 22.0 ],
-					"text" : "jit.world template @floating 1 @size 670 970"
+					"patching_rect" : [ 76.0, 230.0, 328.0, 22.0 ],
+					"text" : "jit.world template @floating 1 @size 300 450 @dim 600 900"
 				}
 
 			}
@@ -145,7 +190,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 190.5, 306.0, 81.0, 22.0 ],
+					"patching_rect" : [ 230.5, 315.0, 81.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_4_3_1.js",
 						"parameter_enable" : 0
@@ -159,8 +204,38 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 200.0, 350.0, 35.0, 350.0, 35.0, 212.0, 85.5, 212.0 ],
+					"midpoints" : [ 240.0, 401.0, 35.0, 401.0, 35.0, 212.0, 85.5, 212.0 ],
+					"order" : 1,
 					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"order" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"source" : [ "obj-2", 1 ]
 				}
 
 			}
