@@ -1,8 +1,16 @@
-//var pc = new PClone();
+var PClone = require("PClone").PClone;
 
-//post(pc.random(1, 10));
+function GenerativeDesign() {
+  this.PClone = new PClone();
+};
 
-function GenerativeDesign() {};
+GenerativeDesign.prototype.test_function = function() {
+  var val = this.PClone.random(0, 10);
+  post("random val: "+val);
+}
+GenerativeDesign.prototype.test_function2 = function() {
+  post("Hello from Generative Design!");
+}
 
 
 /*
@@ -21,10 +29,7 @@ the p5js Generative Design library except for some minor changes:
 4: Method names have been edited to fit the naming conventions in max
 */
 
-// GenerativeDesign.prototype.test_function = function() {
-//   var val = pc.random(0, 10);
-//   post("random val: "+val);
-// }
+
 
 GenerativeDesign.Treemap = function() {
   this.parent;
@@ -951,102 +956,3 @@ GenerativeDesign.Mesh.prototype.vertex_matrix = function vertex_matrix() {
   outputmatrix.frommatrix(this.points);
   return outputmatrix;
 };
-
-var color_converter = (function() {
-
-  return {
-    rgba2hsba: function(rgba) {
-      var red = rgba[0]/255;
-      var green = rgba[1]/255;
-      var blue = rgba[2]/255;
-
-      if(typeof rgba[3] === 'undefined') {
-        rgba[3] = 1;
-      }
-
-      var val = Math.max(red, green, blue);
-      var chroma = val - Math.min(red, green, blue);
-
-      var hue, sat;
-      if (chroma === 0) {
-        // Return early if grayscale.
-        hue = 0;
-        sat = 0;
-      } else {
-        sat = chroma / val;
-        if (red === val) {
-          // Magenta to yellow.
-          hue = (green - blue) / chroma;
-        } else if (green === val) {
-          // Yellow to cyan.
-          hue = 2 + (blue - red) / chroma;
-        } else if (blue === val) {
-          // Cyan to magenta.
-          hue = 4 + (red - green) / chroma;
-        }
-        if (hue < 0) {
-          // Confine hue to the interval [0, 1).
-          hue += 6;
-        } else if (hue >= 6) {
-          hue -= 6;
-        }
-      }
-      return [hue / 6, sat, val, rgba[3]];
-    },
-
-    hsba2rgba: function(hsba) {
-      var hue = (hsba[0]/360) * 6; // We will split hue into 6 sectors.
-      var sat = hsba[1]/100;
-      var val = hsba[2]/100;
-
-      if(typeof hsba[3] === 'undefined') {
-        hsba[3] = 1;
-      }
-
-      var RGBA = [];
-
-      if (sat === 0) {
-        RGBA = [val, val, val, hsba[3]]; // Return early if grayscale.
-      } else {
-        var sector = Math.floor(hue);
-        var tint1 = val * (1 - sat);
-        var tint2 = val * (1 - sat * (hue - sector));
-        var tint3 = val * (1 - sat * (1 + sector - hue));
-        var red, green, blue;
-        if (sector === 1) {
-          // Yellow to green.
-          red = tint2;
-          green = val;
-          blue = tint1;
-        } else if (sector === 2) {
-          // Green to cyan.
-          red = tint1;
-          green = val;
-          blue = tint3;
-        } else if (sector === 3) {
-          // Cyan to blue.
-          red = tint1;
-          green = tint2;
-          blue = val;
-        } else if (sector === 4) {
-          // Blue to magenta.
-          red = tint3;
-          green = tint1;
-          blue = val;
-        } else if (sector === 5) {
-          // Magenta to red.
-          red = val;
-          green = tint1;
-          blue = tint2;
-        } else {
-          // Red to yellow (sector could be 0 or 6).
-          red = val;
-          green = tint3;
-          blue = tint1;
-        }
-        RGBA = [red, green, blue, hsba[3]];
-      }
-      return RGBA;
-    }
-  };
-})();

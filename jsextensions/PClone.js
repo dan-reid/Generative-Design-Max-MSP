@@ -1017,7 +1017,7 @@ PClone.prototype.hsb_to_rgb = function (hsb) {
   return rgba.slice(0, 3);
 }
 
-PClone.prototype.load_image = function(img) {
+PClone.prototype.load_image = function (img) {
   return new Image(this.img);
 }
 
@@ -1142,3 +1142,5 @@ function hypot(x, y, z) {
 var scaled_cosine = function (i) {
   return 0.5 * (1.0 - Math.cos(i * Math.PI));
 };
+
+exports.PClone = PClone;
