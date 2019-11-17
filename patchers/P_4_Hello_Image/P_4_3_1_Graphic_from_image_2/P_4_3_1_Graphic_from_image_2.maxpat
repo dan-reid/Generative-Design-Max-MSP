@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 674.0, 79.0, 440.0, 467.0 ],
+		"rect" : [ 112.0, 119.0, 440.0, 467.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,11 +39,25 @@
 		"subpatcher_template" : "Default Max 7",
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-9",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 268.0, 268.0, 80.0, 35.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-13",
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 104.0, 285.0, 88.0, 20.0 ],
+					"patching_rect" : [ 105.0, 327.0, 88.0, 20.0 ],
 					"text" : "Binary Image"
 				}
 
@@ -56,7 +70,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 197.0, 285.0, 24.0, 24.0 ]
+					"patching_rect" : [ 198.0, 327.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -67,7 +81,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 350.0, 285.0, 75.0, 22.0 ],
+					"patching_rect" : [ 351.0, 327.0, 75.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -79,7 +93,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 316.0, 315.0, 109.0, 22.0 ],
+					"patching_rect" : [ 317.0, 357.0, 109.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -154,7 +168,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 230.5, 285.0, 74.0, 22.0 ],
+					"patching_rect" : [ 231.5, 327.0, 74.0, 22.0 ],
 					"text" : "drawgraphic"
 				}
 
@@ -190,7 +204,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 230.5, 315.0, 81.0, 22.0 ],
+					"patching_rect" : [ 231.5, 357.0, 81.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_4_3_1.js",
 						"parameter_enable" : 0
@@ -204,7 +218,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 240.0, 401.0, 35.0, 401.0, 35.0, 212.0, 85.5, 212.0 ],
+					"midpoints" : [ 241.0, 401.0, 35.0, 401.0, 35.0, 212.0, 85.5, 212.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -235,6 +249,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"order" : 1,
+					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"order" : 0,
 					"source" : [ "obj-2", 1 ]
 				}
 

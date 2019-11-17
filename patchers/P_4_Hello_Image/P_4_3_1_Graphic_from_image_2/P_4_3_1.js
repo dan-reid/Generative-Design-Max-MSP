@@ -11,6 +11,7 @@ var datafolder;
 var shapes;
 var pointindex = 0;
 var binary = false;
+var finished = false;
 
 setup();
 
@@ -31,8 +32,7 @@ function setup() {
 
 function drawgraphic() {
 
-	if (pointindex <= img.size[1] - 1) {
-		var currenttime = Math.floor(millis());
+	if (!finished) {
 		var drawendtime = Math.floor(millis() + 100);
 		for (y = pointindex; y < img.size[1] && millis() <= drawendtime; y++) {
 			//post(y);
@@ -44,9 +44,11 @@ function drawgraphic() {
 				var c = img.getpixel(x, y);
 
 				var grayscale = c[0] * 0.222 + c[1] * 0.707 + c[2] * 0.071;
-				if (binary)
-					grayscale = Math.round(grayscale);
-				
+				if (binary) {
+					// make pixels either 0 or 1
+					grayscale = Math.round(grayscale);					
+				}
+		
 				var gradient_to_index = Math.round(grayscale * (shapes.length - 1));
 
 				mg.translate(pos_x, pos_y);
@@ -56,8 +58,9 @@ function drawgraphic() {
 			}
 			pointindex = y;
 		}
+		if (pointindex >= img.size[1]-1) finished = true;
 	}
-	//if (pointindex >= pointcount-1) finished = true;
+	
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, "jit_matrix", outputmatrix.name);
 }
@@ -65,6 +68,7 @@ function drawgraphic() {
 function msg_int(i) {
 	background(1, 1, 1, 1);
 	binary = i;
+	finished = false;
 	pointindex = 0;	
 }
 
