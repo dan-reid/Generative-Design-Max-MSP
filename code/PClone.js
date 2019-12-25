@@ -2,9 +2,6 @@ function PClone() {
   this.seeded = false;
   this.color_mode = ('RGB');
 };
-
-
-
 /////////////////////// MATH //////////////////////////////
 
 /*
