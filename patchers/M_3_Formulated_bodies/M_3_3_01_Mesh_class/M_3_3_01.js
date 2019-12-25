@@ -1,8 +1,8 @@
 autowatch = 1;
 outlets = 2;
 
+var { GenerativeDesign } = require('GenerativeDesign');
 var gd = new GenerativeDesign();
-
 
 // returns an Array of all mesh forms contained within the class
 var forms = gd.get_mesh_forms();

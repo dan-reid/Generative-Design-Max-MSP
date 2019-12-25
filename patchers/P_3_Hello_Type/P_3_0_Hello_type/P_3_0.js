@@ -11,6 +11,7 @@
  */
 
 autowatch = 1;
+var { PClone } = require('PClone');
 var mg;// jit.mgraphics
 var outputmatrix;
 var bg; // background color

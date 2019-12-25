@@ -1,4 +1,5 @@
 autowatch = 1;
+var { PClone } = require('PClone');
 var mg; // jit.mgraphics
 var bg = [1, 1, 1, 1]; // background color
 var width = 1024;

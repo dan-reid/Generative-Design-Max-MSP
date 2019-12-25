@@ -1,4 +1,5 @@
 autowatch = 1;
+var { PClone } = require('PClone');
 var width = 1280;
 var height = 800;
 
