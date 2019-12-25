@@ -156,4 +156,8 @@ PerlinNoise.prototype.set_detail = function (lod, falloff) {
     }
 };
 
+var scaled_cosine = function (i) {
+    return 0.5 * (1.0 - Math.cos(i * Math.PI));
+  };
+
 exports.PerlinNoise = PerlinNoise;
