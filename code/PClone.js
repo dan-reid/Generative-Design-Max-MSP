@@ -1,75 +1,23 @@
 var { Vector } = require('Vector');
 var { PerlinNoise } = require('PerlinNoise');
-// var { MathUtils } = require('MathUtils');
+var { constrain, dist, lerp, mag, radians, degrees, map, norm } = require('math-utils');
 
 function PClone() {
   this.seeded = false;
   this.color_mode = ('RGB');
-  // this._mathUtils = new MathUtils();
 };
 
 /*
 ********************** Calculations **************************
 */
-
-// PClone.prototype.constrain = this._mathUtils.constrain();
-// PClone.prototype.dist = this._mathUtils.dist();
-// PClone.prototype.lerp = this._mathUtils.lerp();
-// PClone.prototype.degrees = this._mathUtils.degrees();
-// PClone.prototype.radians = this._mathUtils.radians();
-// PClone.prototype.map = this._mathUtils.map();
-// PClone.prototype.mag = this._mathUtils.mag();
-// PClone.prototype.norm = this._mathUtils.norm();
-
-
-PClone.prototype.constrain = function (val, min, max) {
-  return Math.min(Math.max(val, min), max);
-};
-
-PClone.prototype.dist = function () {
-  if (arguments.length === 4) {
-    return hypot(arguments[2] - arguments[0], arguments[3] - arguments[1]);
-  } else if (arguments.length === 6) {
-    return hypot(
-      arguments[3] - arguments[0],
-      arguments[4] - arguments[1],
-      arguments[5] - arguments[2]
-    );
-  }
-};
-
-PClone.prototype.lerp = function (start, stop, amt) {
-  return amt * (stop - start) + start;
-};
-
-PClone.prototype.mag = function (x, y) {
-  return hypot(x, y);
-};
-
-PClone.prototype.radians = function (degrees) {
-  return degrees * Math.PI / 180;
-};
-
-PClone.prototype.degrees = function (radians) {
-  return radians * 180 / Math.PI;
-};
-
-PClone.prototype.map = function (n, start1, stop1, start2, stop2, withinBounds) {
-  var newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
-  if (!withinBounds) {
-    return newval;
-  }
-  if (start2 < stop2) {
-    return this.constrain(newval, start2, stop2);
-  } else {
-    return this.constrain(newval, stop2, start2);
-  }
-};
-
-PClone.prototype.norm = function (n, start, stop) {
-  return this.map(n, start, stop, 0, 1);
-};
-
+PClone.prototype.constrain = constrain;
+PClone.prototype.dist = dist;
+PClone.prototype.lerp = lerp;
+PClone.prototype.degrees = degrees;
+PClone.prototype.radians = radians;
+PClone.prototype.map = map;
+PClone.prototype.mag = mag;
+PClone.prototype.norm = norm;
 
 /*
 ********************** random() **********************
