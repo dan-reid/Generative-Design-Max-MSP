@@ -35,27 +35,28 @@ function setup() {
 
 function draw() {
   background(1, 1, 1, 1);
-  with (mg) {
-    for (var y = 0; y < tilecount; y++) {
-      for (var x = 0; x < tilecount; x++) {
-        var posX = tilewidth * x + tilewidth / 2;
-        var posY = tileheight * y + tilewidth / 2;
-        var angle = Math.atan2(mousey - posY, mousex - posX + pc.radians(shapeangle));
-        if (sizemode == 0) newshapesize = shapesize;
-        if (sizemode == 1)
-          newshapesize =
-            shapesize * 1.5 - map(dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
-        if (sizemode == 2)
-          newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
-        set_source_rgba(0, 1, 0, 1);
-        translate(posX, posY);
-        rotate(angle);
-        scale(newshapesize, newshapesize);
-        svg_render(datapath + shape);
-        identity_matrix();
-      }
+
+  for (var y = 0; y < tilecount; y++) {
+    for (var x = 0; x < tilecount; x++) {
+      var posX = tilewidth * x + tilewidth / 2;
+      var posY = tileheight * y + tilewidth / 2;
+      var angle = Math.atan2(mousey - posY, mousex - posX + pc.radians(shapeangle));
+      if (sizemode == 0) newshapesize = shapesize;
+      if (sizemode == 1)
+        newshapesize =
+          shapesize * 1.5 -
+          pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+      if (sizemode == 2)
+        newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+      mg.set_source_rgba(0, 1, 0, 1);
+      mg.translate(posX, posY);
+      mg.rotate(angle);
+      mg.scale(newshapesize, newshapesize);
+      mg.svg_render(datapath + shape);
+      mg.identity_matrix();
     }
   }
+
   mg.matrixcalc(outputmatrix, outputmatrix);
   outlet(0, 'jit_matrix', outputmatrix.name);
 }
