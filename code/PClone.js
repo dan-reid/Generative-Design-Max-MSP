@@ -1,8 +1,7 @@
 function PClone() {
   this.seeded = false;
-  this.color_mode = 'RGB';
+  this.color_mode = 'rgb';
 }
-/////////////////////// MATH //////////////////////////////
 
 /*
  ********************** Calculations **************************
@@ -727,7 +726,6 @@ PClone.Vector.mag = function mag(vecT) {
 };
 
 /////////////////////// COLOR //////////////////////////////
-///////////////////////////////////////////////////////////
 
 /**
  * Convert an HSBA array to HSLA.
@@ -998,48 +996,158 @@ PClone.prototype.load_image = function(img) {
   return new Image(this.img);
 };
 
-PClone.prototype.set_color_mode = function(mode) {};
-
-PClone.Color = function(c1, c2, c3, c4) {
-  this.channel_1;
-  this.channel_2;
-  this.channel_3;
-  this.channel_4;
-
-  if (arguments[0] instanceof Array) {
-    this.channel_1 = arguments[0][0] || 0;
-    this.channel_2 = arguments[0][1] || 0;
-    this.channel_3 = arguments[0][2] || 0;
-    this.channel_4 = arguments[0][3] || 100;
-  } else {
-    this.channel_1 = c1 || 0;
-    this.channel_2 = c2 || 0;
-    this.channel_3 = c3 || 0;
-    this.channel_4 = c4 || 100;
-  }
-
-  PClone.Color.set_color_mode(mode, max_c1, max_c2, max_c3, max_4) = function() {
-    if (mode.toLowCase() === 'hsb' || mode.toLowCase() === 'hsl') {
-      this.max_value_1 = max_c1 || 360;
-      this.max_value_2 = max_c2 || 100;
-      this.max_value_3 = max_c3 || 100;
-      this.max_value_4 = max_c4 || 100;
-    } else if (mode.toLowCase() === 'rgb') {
-      this.max_value_1 = max_c1 || 360;
-      this.max_value_2 = max_c2 || 100;
-      this.max_value_3 = max_c3 || 100;
-      this.max_value_4 = max_c4 || 100;
-    }
-  };
-
-  PClone.Color.normalize = function() {
-    this.channel_1 / this.max_value_1;
-    this.channel_2 / this.max_value_2;
-    this.channel_3 / this.max_value_3;
-    this.channel_4 / this.max_value_4;
-  };
+PClone.prototype.set_color_mode = function(mode) {
+  this.color_mode = mode;
 };
 
+PClone.prototype.create_color = function(r, g, b, a) {
+  if (this instanceof PClone) {
+    return new PClone.Color(this, arguments);
+  } else {
+    return new PClone.Color(r, g, b, a);
+  }
+};
+
+PClone.Color = function() {
+  var arr = [];
+
+  if (arguments[0] instanceof PClone) {
+    arr.push.apply(arr, arguments[1]);
+    arr.__proto__ = PClone.Color.prototype;
+    arr.PClone = arguments[0];
+    arr.mode = arr.PClone.color_mode;
+    return arr;
+  }
+  arr.push.apply(arr, arguments[0]);
+  arr.__proto__ = PClone.Color.prototype;
+  arr.mode = 'rgb';
+  return arr;
+};
+
+PClone.Color.prototype = new Array();
+
+PClone.Color.prototype.set_mode = function(mode) {
+  this.mode = mode;
+};
+
+PClone.Color.prototype.get_mode = function(mode) {
+  return this.mode.toLowerCase();
+};
+
+/**
+ * Returns the red channel
+ */
+
+PClone.Color.prototype.get_red = function() {
+  if (this.get_mode() !== 'rgb') {
+    error(
+      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[0];
+};
+
+/**
+ * Returns the green channel
+ */
+
+PClone.Color.prototype.get_green = function() {
+  if (this.get_mode() !== 'rgb') {
+    error(
+      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[1];
+};
+
+/**
+ * Returns the blue channel
+ */
+
+PClone.Color.prototype.get_blue = function() {
+  if (this.get_mode() !== 'rgb') {
+    error(
+      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[2];
+};
+
+/**
+ * Returns the hue value
+ */
+
+PClone.Color.prototype.get_hue = function() {
+  if (this.get_mode() !== 'hsb') {
+    error(
+      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[0];
+};
+
+/**
+ * Returns the saturation value
+ */
+
+PClone.Color.prototype.get_saturation = function() {
+  if (this.get_mode() !== 'hsb') {
+    error(
+      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[1];
+};
+
+/**
+ * Returns the brightness value
+ */
+
+PClone.Color.prototype.get_brightness = function() {
+  if (this.get_mode() !== 'hsb') {
+    error(
+      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[2];
+};
+
+/**
+ * Returns the luminosity value
+ */
+
+PClone.Color.prototype.get_luminosity = function() {
+  if (this.get_mode() !== 'hsl') {
+    error(
+      'PClone.Color.prototype: you are accessing a HSL property but color_mode is currently set to ' +
+        this.get_mode() +
+        '\n'
+    );
+  }
+  return this[2];
+};
+
+/**
+ * Returns the alpha value
+ */
+
+PClone.Color.prototype.get_alpha = function() {
+  return this[3];
+};
+
+PClone.Color.prototype.normalize = function() {};
 // Linear Congruential Generator
 // Variant of a Lehman Generator
 var lcg = (function() {
