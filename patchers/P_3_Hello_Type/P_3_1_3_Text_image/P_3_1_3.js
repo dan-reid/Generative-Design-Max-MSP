@@ -5,21 +5,21 @@ var outputmatrix;
 var pc;
 var width;
 var height;
-var mousex = 0,
-  mousey = 0,
-  mousepressed = 0;
+var mousex = 0;
+var mousey = 0;
+var mousepressed = 0;
 var font = 'Ariel';
 var joined_text = '';
 var char_set = [];
 var tracking = 30;
 var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ,.;:!? ';
 var counters = [];
-var posx = 90,
-  posy = 250;
-var drawalpha = true,
-  drawlines = true;
-var drawellipses = true,
-  drawtext = true;
+var posx = 90;
+var posy = 250;
+var drawalpha = true;
+var drawlines = true;
+var drawellipses = true;
+var drawtext = true;
 var mx = 0;
 var my = 0;
 
