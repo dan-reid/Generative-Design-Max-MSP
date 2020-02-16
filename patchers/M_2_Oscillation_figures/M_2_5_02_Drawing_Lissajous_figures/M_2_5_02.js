@@ -1,5 +1,6 @@
 autowatch = 1;
 outlets = 2;
+var { PClone } = require('PClone');
 var mg;
 var outputmatrix;
 var pc;

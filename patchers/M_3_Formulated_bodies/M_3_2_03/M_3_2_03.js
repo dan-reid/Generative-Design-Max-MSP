@@ -1,4 +1,5 @@
 autowatch = 1;
+var { PClone } = require('PClone');
 
 var pc = new PClone();
 var vertices = new JitterMatrix(3, "float32", u_count, v_count);
