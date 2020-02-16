@@ -2,13 +2,12 @@ var { PClone } = require('PClone');
 
 function GenerativeDesign() {
   this.PClone = new PClone();
-};
-
-GenerativeDesign.prototype.usePClone = function () {
-  var val = this.PClone.random(0, 10);
-  post("random val: " + val);
 }
 
+GenerativeDesign.prototype.usePClone = function() {
+  var val = this.PClone.random(0, 10);
+  post('random val: ' + val);
+};
 
 /*
 The Treemap class has just been pretty much copy and pasted from
@@ -26,29 +25,27 @@ the p5js Generative Design library except for some minor changes:
 4: Method names have been edited to fit the naming conventions in max
 */
 
-
-
-GenerativeDesign.Treemap = function () {
+GenerativeDesign.Treemap = function() {
   this.parent;
   this.data;
   this.count = 0;
   this.items = [];
 
   /**
-  * x position of the rectangle.
-  */
+   * x position of the rectangle.
+   */
   this.x = 0;
   /**
-  * y position of the rectangle.
-  */
+   * y position of the rectangle.
+   */
   this.y = 0;
   /**
-  * width of the rectangle.
-  */
+   * width of the rectangle.
+   */
   this.w = 0;
   /**
-  * height of the rectangle.
-  */
+   * height of the rectangle.
+   */
   this.h = 0;
   this.options;
 
@@ -70,33 +67,33 @@ GenerativeDesign.Treemap = function () {
   this.h = this.h || 0;
 
   /**
-  * the minimum count value of the items in the items array
-  */
+   * the minimum count value of the items in the items array
+   */
   this.minCount = 0;
   /**
-  * the maximum count value of the items in the items array
-  */
+   * the maximum count value of the items in the items array
+   */
   this.maxCount = 0;
 
   /**
-  * level of the item; the root node has level 0
-  */
+   * level of the item; the root node has level 0
+   */
   if (this.parent) this.level = this.parent.level + 1;
   else this.level = 0;
 
   /**
-  * the depth of the branch; end nodes have depth 0
-  */
+   * the depth of the branch; end nodes have depth 0
+   */
   this.depth = 0;
 
   /**
-  * the number of items in the complete branch
-  */
+   * the number of items in the complete branch
+   */
   this.itemCount = 1;
 
   /**
-  * index of the item in the sorted items array..
-  */
+   * index of the item in the sorted items array..
+   */
   this.index = 0;
 
   this.root = this;
@@ -104,29 +101,29 @@ GenerativeDesign.Treemap = function () {
   if (this.parent) {
     this.root = this.parent.root;
     this.isRoot = false;
-  };
+  }
   this.options = this.options || this.root.options;
 
   this.ignored = false;
 };
 
 /**
-  * Adds data to the Treemap. If you give just one parameter, this value will be added to the items array.
-  * If there is already an item which has this value as data, just increase the counter of that item.
-  * If not, create a new Treemap with that data and init the counter with 1.
-  * If you have a complex object or array of nested subitems, you can give a second parameter,
-  * which defines what keys should be used to build the Treemap. This second parameter is in the form
-  * {children:"items", count:"size", data:"name"}.
-  * The key 'children' defines, where to find the nested arrays. If you have a plain nested array, just leave this out.
-  * The key 'count' defines, which value to map to the size of the rectangles of the Treemap.
-  * The key 'data' defines, which data to store. If omitted, the complete object or array branch is stored.
-  * This might be the way to choose in most cases. That way you keep all the information accessible when drawing the treemap.
-  *
-  *
-  * the data element (e.g. a String)
-  * which keys should be used to build the Treemap: e.g. {children:"items", count:"size", data:"name"}. See the example for different ways how to use that.
-  * returns true, if a new treemap was created
-*/
+ * Adds data to the Treemap. If you give just one parameter, this value will be added to the items array.
+ * If there is already an item which has this value as data, just increase the counter of that item.
+ * If not, create a new Treemap with that data and init the counter with 1.
+ * If you have a complex object or array of nested subitems, you can give a second parameter,
+ * which defines what keys should be used to build the Treemap. This second parameter is in the form
+ * {children:"items", count:"size", data:"name"}.
+ * The key 'children' defines, where to find the nested arrays. If you have a plain nested array, just leave this out.
+ * The key 'count' defines, which value to map to the size of the rectangles of the Treemap.
+ * The key 'data' defines, which data to store. If omitted, the complete object or array branch is stored.
+ * This might be the way to choose in most cases. That way you keep all the information accessible when drawing the treemap.
+ *
+ *
+ * the data element (e.g. a String)
+ * which keys should be used to build the Treemap: e.g. {children:"items", count:"size", data:"name"}. See the example for different ways how to use that.
+ * returns true, if a new treemap was created
+ */
 
 GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
   if (keys) {
@@ -135,7 +132,7 @@ GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
     else this.data = data;
 
     // store counter. if data is a number, just use that as a counter. if data is an object, store what's given at the key 'count'.
-    if (typeof data === "number") this.count = data;
+    if (typeof data === 'number') this.count = data;
     else this.count = data[keys.count] || 0;
 
     // get children. if the key 'children' is defined use that. otherwise data might be just an array, so use it directly.
@@ -143,15 +140,16 @@ GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
     if (keys.children) children = data[keys.children];
 
     if (children instanceof Array) {
-      children.forEach(function (child) {
-        var t = new Treemap(this);
-        this.items.push(t);
-        t.add_data(child, keys);
-      }.bind(this));
+      children.forEach(
+        function(child) {
+          var t = new Treemap(this);
+          this.items.push(t);
+          t.add_data(child, keys);
+        }.bind(this)
+      );
       return true;
     }
     return false;
-
   } else {
     // data is a "simple" value (String, Number, small Object or Array) which should be counted.
 
@@ -176,23 +174,23 @@ GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
   }
   // There should have been reached one of the other returns. If not:
   return false;
-}
+};
 
 /**
-  * Adds an empty treemap to this treemap. If data is given, this could be used
-  * to show and hide a complete sub-treemap from the diagram. There is no check,
-  * if there is already another treemap with that data.
-  *
-  * add_treemap
-  * the data element (e.g. a String)
-  * the initial counter
-  * returns the new Treemap
-*/
+ * Adds an empty treemap to this treemap. If data is given, this could be used
+ * to show and hide a complete sub-treemap from the diagram. There is no check,
+ * if there is already another treemap with that data.
+ *
+ * add_treemap
+ * the data element (e.g. a String)
+ * the initial counter
+ * returns the new Treemap
+ */
 GenerativeDesign.Treemap.prototype.add_treemap = function add_treemap(data, count) {
   var t = new Treemap(this, data, count);
   this.items.push(t);
   return t;
-}
+};
 
 // The size of a rectangle depends on the counter. So it's important to sum
 // up all the counters recursively. Only called internally.
@@ -209,7 +207,6 @@ GenerativeDesign.Treemap.prototype.sum_up_counters = function sum_up_counters() 
   // return count or 0 depending on this.ignored
   if (this.items.length == 0) {
     if (this.ignored) return 0;
-
   } else {
     this.minCount = Number.MAX_VALUE;
     this.maxCount = 0;
@@ -229,12 +226,12 @@ GenerativeDesign.Treemap.prototype.sum_up_counters = function sum_up_counters() 
     }
   }
   return this.count;
-}
+};
 
 /**
-  * Calculates the rectangles of each item. While doing this, all counters
-  * and ignore flags are updated.
-*/
+ * Calculates the rectangles of each item. While doing this, all counters
+ * and ignore flags are updated.
+ */
 GenerativeDesign.Treemap.prototype.calculate = function calculate() {
   // Stop immediately, if it's an empty array
   if (this.items.length == 0) return;
@@ -254,7 +251,7 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
   // sort or shuffle according to the given option
   if (this.options.sort == true || this.options.sort == undefined) {
     // sort items
-    this.items.sort(function (a, b) {
+    this.items.sort(function(a, b) {
       if (a.count < b.count) return 1;
       if (a.count > b.count) return -1;
       else return 0;
@@ -305,7 +302,7 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
       // a * bLen is the rect of the row
       var percentage = rowSum / restSum;
       var bLen = b * percentage;
-      var avRel = (a / rowCount) / bLen;
+      var avRel = a / rowCount / bLen;
 
       // Let's assume it's a horizontal row. The rects are as square as possible,
       // as soon as the average width (a / rowCount) gets smaller than the row height (bLen).
@@ -315,7 +312,7 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
           // previous fitting is better, so revert to that
           rowSum -= this.items[i].count;
           rowCount--;
-          bLen = b * rowSum / restSum;
+          bLen = (b * rowSum) / restSum;
           i--;
         }
 
@@ -332,7 +329,7 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
         // now we can transform the counters between index actIndex and i to rects (in fact to treemaps)
         for (var j = actIndex; j <= i; j++) {
           // map aLen according to the value of the counter
-          var aPart = aLen * this.items[j].count / rowSum;
+          var aPart = (aLen * this.items[j].count) / rowSum;
           if (isHorizontal) {
             this.items[j].x = aPos;
             this.items[j].y = bPos;
@@ -386,18 +383,42 @@ function shuffle_array(array) {
   }
 }
 
-
-GenerativeDesign.prototype.get_mesh_forms = function () {
+GenerativeDesign.prototype.get_mesh_forms = function() {
   var forms = [
-    'CUSTOM', 'TUBE', 'SPHERE', 'TORUS', 'PARABOLOID', 'STEINBACH_SCREW',
-    'SINE', 'FIGURE8TORUS', 'ELLIPTIC_TORUS', 'CORKSCREW', 'BOHEMIAN_DOME',
-    'BOW', 'MAEDERS_OWL', 'ASTROIDAL_ELLIPSOID', 'TRIAXIAL_TRITORUS',
-    'LIMPET_TORUS', 'HORN', 'SHELL', 'KIDNEY', 'LEMNISCAPE', 'SUPERFORMULA'
+    'CUSTOM',
+    'TUBE',
+    'SPHERE',
+    'TORUS',
+    'PARABOLOID',
+    'STEINBACH_SCREW',
+    'SINE',
+    'FIGURE8TORUS',
+    'ELLIPTIC_TORUS',
+    'CORKSCREW',
+    'BOHEMIAN_DOME',
+    'BOW',
+    'MAEDERS_OWL',
+    'ASTROIDAL_ELLIPSOID',
+    'TRIAXIAL_TRITORUS',
+    'LIMPET_TORUS',
+    'HORN',
+    'SHELL',
+    'KIDNEY',
+    'LEMNISCAPE',
+    'SUPERFORMULA',
   ];
   return forms;
 };
 
-GenerativeDesign.prototype.create_mesh = function (form, u_count, v_count, u_min, u_max, v_min, v_max) {
+GenerativeDesign.prototype.create_mesh = function(
+  form,
+  u_count,
+  v_count,
+  u_min,
+  u_max,
+  v_min,
+  v_max
+) {
   if (this instanceof GenerativeDesign) {
     return new GenerativeDesign.Mesh(this, arguments);
   } else {
@@ -408,9 +429,7 @@ GenerativeDesign.prototype.create_mesh = function (form, u_count, v_count, u_min
 GenerativeDesign.Mesh = function Mesh() {
   var form, u_count, v_count, u_min, u_max, v_min, v_max;
 
-  this.form, this.u_count, this.v_count,
-    this.u_min, this.u_max, this.v_min,
-    this.v_max;
+  this.form, this.u_count, this.v_count, this.u_min, this.u_max, this.v_min, this.v_max;
 
   if (arguments[0] instanceof GenerativeDesign) {
     // save reference to GenerativeDesign if passed in
@@ -439,7 +458,7 @@ GenerativeDesign.Mesh = function Mesh() {
   // JitterMatrix to store the normals
   this.normals;
   // JitterMatrix to store the color
-  this.meshcolor = new JitterMatrix(4, "float32", this.u_count, this.v_count);
+  this.meshcolor = new JitterMatrix(4, 'float32', this.u_count, this.v_count);
   // These can be used to affect the mesh form
   // although in most cases only param[0] is used
   // in the calculation.
@@ -464,15 +483,14 @@ GenerativeDesign.Mesh = function Mesh() {
 GenerativeDesign.Mesh.prototype.update = function update() {
   this.update_vertices();
   this.update_color();
-}
-
+};
 
 GenerativeDesign.Mesh.prototype.update_vertices = function update_vertices() {
-  this.points = new JitterMatrix(3, "float32", this.u_count + 1, this.v_count + 1);
+  this.points = new JitterMatrix(3, 'float32', this.u_count + 1, this.v_count + 1);
   var u, v;
   var verts;
-  var map = function (n, start1, stop1, start2, stop2) {
-    var newval = (n - start1) / (stop1 - start1) * (stop2 - start2) + start2;
+  var map = function(n, start1, stop1, start2, stop2) {
+    var newval = ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
     return newval;
   };
   for (var iv = 0; iv <= this.v_count; iv++) {
@@ -570,9 +588,9 @@ GenerativeDesign.Mesh.prototype.update_vertices = function update_vertices() {
       }
     }
   }
-  this.points.op("*", this.mesh_scale);
+  this.points.op('*', this.mesh_scale);
   // this.update_color();
-}
+};
 
 GenerativeDesign.Mesh.prototype.update_color = function update_color() {
   this.meshcolor.dim = [this.u_count, this.v_count];
@@ -589,14 +607,18 @@ GenerativeDesign.Mesh.prototype.update_color = function update_color() {
   var maxbri = this.max_brightness;
   if (Math.abs(maxbri - minbri) < 10) maxbri = minbri;
 
-  var randomrange = function (max, min) {
+  var randomrange = function(max, min) {
     return Math.random() * (max - min) + min;
-  }
+  };
 
   for (var y = 0; y < this.meshcolor.dim[1]; y++) {
     for (var x = 0; x < this.meshcolor.dim[0]; x++) {
-
-      var HSBA = [randomrange(minhue, maxhue), randomrange(minsat, maxsat), randomrange(minbri, maxbri), this.alpha];
+      var HSBA = [
+        randomrange(minhue, maxhue),
+        randomrange(minsat, maxsat),
+        randomrange(minbri, maxbri),
+        this.alpha,
+      ];
       // var HSBA = [1, 2, 3, 4];
       this.meshcolor.setcell2d(x, y, HSBA[0] / 360, HSBA[1] / 100, HSBA[2] / 100, HSBA[3] / 100);
       // this.meshcolor.setcell2d(x, y, HSBA[0], HSBA[1], HSBA[2], HSBA[3]);
@@ -650,9 +672,9 @@ GenerativeDesign.Mesh.prototype.Paraboloid = function Paraboloid(u, v) {
   var pd = this.params[0];
   if (pd == 0) pd = 0.0001;
 
-  var x = this.power((v / pd), 0.5) * Math.sin(u);
+  var x = this.power(v / pd, 0.5) * Math.sin(u);
   var y = v;
-  var z = this.power((v / pd), 0.5) * Math.cos(u);
+  var z = this.power(v / pd, 0.5) * Math.cos(u);
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -674,9 +696,15 @@ GenerativeDesign.Mesh.prototype.Sine = function Sine(u, v) {
 };
 
 GenerativeDesign.Mesh.prototype.Figure8Torus = function Figure8Torus(u, v) {
-  var x = 1.5 * Math.cos(u) * (this.params[0] + Math.sin(v) * Math.cos(u) - Math.sin(2 * v) * Math.sin(u) / 2);
-  var y = 1.5 * Math.sin(u) * (this.params[0] + Math.sin(v) * Math.cos(u) - Math.sin(2 * v) * Math.sin(u) / 2);
-  var z = 1.5 * Math.sin(u) * Math.sin(v) + Math.cos(u) * Math.sin(2 * v) / 2;
+  var x =
+    1.5 *
+    Math.cos(u) *
+    (this.params[0] + Math.sin(v) * Math.cos(u) - (Math.sin(2 * v) * Math.sin(u)) / 2);
+  var y =
+    1.5 *
+    Math.sin(u) *
+    (this.params[0] + Math.sin(v) * Math.cos(u) - (Math.sin(2 * v) * Math.sin(u)) / 2);
+  var z = 1.5 * Math.sin(u) * Math.sin(v) + (Math.cos(u) * Math.sin(2 * v)) / 2;
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -718,7 +746,7 @@ GenerativeDesign.Mesh.prototype.Bow = function Bow(u, v) {
 GenerativeDesign.Mesh.prototype.Maeders_Owl = function Maeders_Owl(u, v) {
   var x = 0.4 * (v * Math.cos(u) - 0.5 * this.params[0] * this.power(v, 2) * Math.cos(2 * u));
   var y = 0.4 * (-v * Math.sin(u) - 0.5 * this.params[0] * this.power(v, 2) * Math.sin(2 * u));
-  var z = 0.4 * (4 * this.power(v, 1.5) * Math.cos(3 * u / 2) / 3);
+  var z = 0.4 * ((4 * this.power(v, 1.5) * Math.cos((3 * u) / 2)) / 3);
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -734,16 +762,22 @@ GenerativeDesign.Mesh.prototype.Astroidal_Ellipsoid = function Astroidal_Ellipso
 
 GenerativeDesign.Mesh.prototype.Triaxial_Tritorus = function Triaxial_Tritorus(u, v) {
   var x = 1.5 * Math.sin(u) * (1 + Math.cos(v));
-  var y = 1.5 * Math.sin(u + Math.PI * 2 / 3 * this.params[0]) * (1 + Math.cos(v + (Math.PI * 2) / 3 * this.params[0]));
-  var z = 1.5 * Math.sin(u + ((Math.PI * 2) * 2) / 3 * this.params[0]) * (1 + Math.cos(v + (Math.PI * 2) / 3 * this.params[0]));
+  var y =
+    1.5 *
+    Math.sin(u + ((Math.PI * 2) / 3) * this.params[0]) *
+    (1 + Math.cos(v + ((Math.PI * 2) / 3) * this.params[0]));
+  var z =
+    1.5 *
+    Math.sin(u + ((Math.PI * 2 * 2) / 3) * this.params[0]) *
+    (1 + Math.cos(v + ((Math.PI * 2) / 3) * this.params[0]));
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
 
 GenerativeDesign.Mesh.prototype.Limpet_Torus = function Limpet_Torus(u, v) {
-  var x = 1.5 * this.params[0] * Math.cos(u) / (Math.sqrt(2) + Math.sin(v));
-  var y = 1.5 * this.params[0] * Math.sin(u) / (Math.sqrt(2) + Math.sin(v));
-  var z = 1.5 * 1 / (Math.sqrt(2) + Math.cos(v));
+  var x = (1.5 * this.params[0] * Math.cos(u)) / (Math.sqrt(2) + Math.sin(v));
+  var y = (1.5 * this.params[0] * Math.sin(u)) / (Math.sqrt(2) + Math.sin(v));
+  var z = (1.5 * 1) / (Math.sqrt(2) + Math.cos(v));
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -759,9 +793,14 @@ GenerativeDesign.Mesh.prototype.Horn = function Horn(u, v) {
 };
 
 GenerativeDesign.Mesh.prototype.Shell = function Shell(u, v) {
-  var x = this.params[1] * (1 - (u / (Math.PI * 2))) * Math.cos(this.params[0] * u) * (1 + Math.cos(v)) + this.params[3] * Math.cos(this.params[0] * u);
-  var y = this.params[1] * (1 - (u / (Math.PI * 2))) * Math.sin(this.params[0] * u) * (1 + Math.cos(v)) + this.params[3] * Math.sin(this.params[0] * u);
-  var z = this.params[2] * (u / (Math.PI * 2)) + this.params[0] * (1 - (u / (Math.PI * 2))) * Math.sin(v);
+  var x =
+    this.params[1] * (1 - u / (Math.PI * 2)) * Math.cos(this.params[0] * u) * (1 + Math.cos(v)) +
+    this.params[3] * Math.cos(this.params[0] * u);
+  var y =
+    this.params[1] * (1 - u / (Math.PI * 2)) * Math.sin(this.params[0] * u) * (1 + Math.cos(v)) +
+    this.params[3] * Math.sin(this.params[0] * u);
+  var z =
+    this.params[2] * (u / (Math.PI * 2)) + this.params[0] * (1 - u / (Math.PI * 2)) * Math.sin(v);
 
   return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -797,7 +836,11 @@ GenerativeDesign.Mesh.prototype.Superformula = function Superformula(u, v) {
   var n1 = this.params[3];
   var n2 = this.params[4];
   var n3 = this.params[5];
-  var r1 = Math.pow(Math.pow(Math.abs(Math.cos(m * u / 4) / a), n2) + Math.pow(Math.abs(Math.sin(m * u / 4) / b), n3), -1 / n1);
+  var r1 = Math.pow(
+    Math.pow(Math.abs(Math.cos((m * u) / 4) / a), n2) +
+      Math.pow(Math.abs(Math.sin((m * u) / 4) / b), n3),
+    -1 / n1
+  );
 
   // Superformel 2
   a = this.params[6];
@@ -806,7 +849,11 @@ GenerativeDesign.Mesh.prototype.Superformula = function Superformula(u, v) {
   n1 = this.params[9];
   n2 = this.params[10];
   n3 = this.params[11];
-  var r2 = Math.pow(Math.pow(Math.abs(Math.cos(m * v / 4) / a), n2) + Math.pow(Math.abs(Math.sin(m * v / 4) / b), n3), -1 / n1);
+  var r2 = Math.pow(
+    Math.pow(Math.abs(Math.cos((m * v) / 4) / a), n2) +
+      Math.pow(Math.abs(Math.sin((m * v) / 4) / b), n3),
+    -1 / n1
+  );
 
   var x = 2 * (r1 * Math.sin(u) * r2 * Math.cos(v));
   var y = 2 * (r2 * Math.sin(v));
@@ -822,7 +869,7 @@ GenerativeDesign.Mesh.prototype.scale = function scale(scale) {
 };
 
 // calculates the surface normals
-GenerativeDesign.Mesh.prototype.calculate_noramals = function (source) {
+GenerativeDesign.Mesh.prototype.calculate_noramals = function(source) {
   // todo...
 };
 
@@ -831,21 +878,17 @@ GenerativeDesign.Mesh.prototype.get_form = function get_form() {
   return this.form;
 };
 
-
 GenerativeDesign.Mesh.prototype.get_u_count = function get_u_count() {
   return this.u_count;
 };
-
 
 GenerativeDesign.Mesh.prototype.get_v_count = function get_v_count() {
   return this.v_count;
 };
 
-
 GenerativeDesign.Mesh.prototype.get_u_range = function get_u_range() {
   return [this.u_min, this.u_max];
 };
-
 
 GenerativeDesign.Mesh.prototype.get_v_range = function get_v_range() {
   return [this.v_min, this.v_max];
@@ -913,24 +956,22 @@ GenerativeDesign.Mesh.prototype.set_params = function set_params() {
   var num_args = arguments.length;
 
   if (num_args > this.params.length) {
-    num_args = this.params.length
+    num_args = this.params.length;
   }
 
   for (var i = 0; i < num_args; i++) {
     this.params[i] = arguments[i];
   }
-
 };
 
 GenerativeDesign.Mesh.prototype.set_scale = function set_scale(scale) {
   this.mesh_scale = scale;
 };
 
-GenerativeDesign.Mesh.prototype.power = function (b, e) {
+GenerativeDesign.Mesh.prototype.power = function(b, e) {
   if (b >= 0 || Math.floor(e) == e) {
     return Math.pow(b, e);
-  }
-  else {
+  } else {
     return -Math.pow(-b, e);
   }
 };
@@ -943,10 +984,8 @@ GenerativeDesign.Mesh.prototype.normals_matrix = function normals_matrix() {
   //todo..
 };
 
-
 GenerativeDesign.Mesh.prototype.vertex_matrix = function vertex_matrix() {
-
-  var outputmatrix = new JitterMatrix(3, "float32", this.u_count, this.v_count);
+  var outputmatrix = new JitterMatrix(3, 'float32', this.u_count, this.v_count);
 
   outputmatrix.interp = 1;
   outputmatrix.adapt = 0;
