@@ -21,83 +21,84 @@ var shape = 'module_1.svg';
 setup();
 
 function setup() {
-	datapath = getpath();
-	width = 500;
-	height = 500;
-	mg = new JitterObject("jit.mgraphics", width, height);
-	outputmatrix = new JitterMatrix(4, "char", width, height);
-	pc = new PClone();
-	tilecount = 10;
-	tilewidth = width/tilecount;
-	tileheight = height/tilecount;
-	maxdist = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
+  datapath = getpath();
+  width = 500;
+  height = 500;
+  mg = new JitterObject('jit.mgraphics', width, height);
+  outputmatrix = new JitterMatrix(4, 'char', width, height);
+  pc = new PClone();
+  tilecount = 10;
+  tilewidth = width / tilecount;
+  tileheight = height / tilecount;
+  maxdist = Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2));
 }
 
 function draw() {
-	background(1, 1, 1, 1);
-	with(mg) {
-		for(var y = 0; y < tilecount; y++) {
-			for(var x = 0; x < tilecount; x++) {
-				var posX = tilewidth * x + tilewidth/2;
-				var posY = tileheight * y + tilewidth/2;
-				var angle = Math.atan2(mousey-posY, mousex-posX + pc.radians(shapeangle));
-				if (sizemode == 0) newshapesize = shapesize;
-				if (sizemode == 1) newshapesize = shapesize*1.5-map(dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
-				if (sizemode == 2) newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
-				set_source_rgba(0, 1, 0, 1);
-				translate(posX, posY);
-				rotate(angle);
-				scale(newshapesize, newshapesize);
-				svg_render(datapath+shape);
-				identity_matrix();
-			}
-		}
-	}
-	mg.matrixcalc(outputmatrix, outputmatrix);
-	outlet(0, "jit_matrix", outputmatrix.name);
+  background(1, 1, 1, 1);
+  with (mg) {
+    for (var y = 0; y < tilecount; y++) {
+      for (var x = 0; x < tilecount; x++) {
+        var posX = tilewidth * x + tilewidth / 2;
+        var posY = tileheight * y + tilewidth / 2;
+        var angle = Math.atan2(mousey - posY, mousex - posX + pc.radians(shapeangle));
+        if (sizemode == 0) newshapesize = shapesize;
+        if (sizemode == 1)
+          newshapesize =
+            shapesize * 1.5 - map(dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+        if (sizemode == 2)
+          newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+        set_source_rgba(0, 1, 0, 1);
+        translate(posX, posY);
+        rotate(angle);
+        scale(newshapesize, newshapesize);
+        svg_render(datapath + shape);
+        identity_matrix();
+      }
+    }
+  }
+  mg.matrixcalc(outputmatrix, outputmatrix);
+  outlet(0, 'jit_matrix', outputmatrix.name);
 }
 
 function setscale(s) {
-	shapesize = s;
+  shapesize = s;
 }
 
 function setsizemode(m) {
-	sizemode = m;
+  sizemode = m;
 }
 
 function setmodule(m) {
-	if (m == 1) shape = 'module_1.svg';
-	if (m == 2) shape = 'module_2.svg';
-	if (m == 3) shape = 'module_3.svg';
-	if (m == 4) shape = 'module_4.svg';
-	if (m == 5) shape = 'module_5.svg';
-	if (m == 6) shape = 'module_6.svg';
-	if (m == 7) shape = 'module_7.svg';
+  if (m == 1) shape = 'module_1.svg';
+  if (m == 2) shape = 'module_2.svg';
+  if (m == 3) shape = 'module_3.svg';
+  if (m == 4) shape = 'module_4.svg';
+  if (m == 5) shape = 'module_5.svg';
+  if (m == 6) shape = 'module_6.svg';
+  if (m == 7) shape = 'module_7.svg';
 }
 
 function mousexy(x, y) {
-	mousex = x;
-	mousey = y;
+  mousex = x;
+  mousey = y;
 }
 
 function getpath() {
-	var p = this.patcher.filepath;
-	var n = this.patcher.name;
-	n += '.maxpat'
-	p = p.replace(n, 'data/');
-  	return p;
+  var p = this.patcher.filepath;
+  var n = this.patcher.name;
+  n += '.maxpat';
+  p = p.replace(n, 'data/');
+  return p;
 }
 
 function background(r, g, b, a) {
-	mg.set_source_rgba(r, g, b, a);
-	mg.paint();
-	mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill color
-	mg.identity_matrix();
-	mg.move_to(0, 0);
-	mg.matrixcalc(outputmatrix, outputmatrix);
+  mg.set_source_rgba(r, g, b, a);
+  mg.paint();
+  mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill color
+  mg.identity_matrix();
+  mg.move_to(0, 0);
+  mg.matrixcalc(outputmatrix, outputmatrix);
 }
-
-
 
 /*
 you can also copy and paste the svg code straight into the script as text,
