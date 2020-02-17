@@ -18,7 +18,7 @@ function setup() {
   // the matrix to store and display jit.mgraphics's output
   outputmatrix = new JitterMatrix(4, 'char', width, height);
   pc = new PClone();
-  pc.set_color_mode('HSB', 360, 100, 100, 100);
+  pc.color_mode('HSB', 360, 100, 100, 100);
 }
 
 function draw() {

@@ -1002,7 +1002,7 @@ PClone.prototype.load_image = function(img) {
   return new Image(this.img);
 };
 
-PClone.prototype.set_color_mode = function() {
+PClone.prototype.color_mode = function() {
   if (arguments.length === 1) {
     this.color_properties.mode = arguments[0];
   } else if (arguments.length === 2) {
@@ -1018,7 +1018,7 @@ PClone.prototype.set_color_mode = function() {
     this.color_properties.MAX_3 = arguments[3];
     this.color_properties.MAX_4 = arguments[4];
   } else {
-    error('PClone.prototype.set_color_mode: invalid arguments');
+    error('PClone.prototype.color_mode: invalid arguments');
   }
 };
 
