@@ -1,6 +1,12 @@
 function PClone() {
   this.seeded = false;
-  this.color_mode = 'rgb';
+  this.color_properties = {
+    mode: 'rgb',
+    MAX_1: 255,
+    MAX_2: 255,
+    MAX_3: 255,
+    MAX_4: 255,
+  };
 }
 
 /*
@@ -356,7 +362,7 @@ PClone.Vector.prototype.sub = function sub(x, y, z) {
 
 PClone.Vector.prototype.mult = function mult(n) {
   if (!(typeof n === 'number' && isFinite(n))) {
-    error('PClone.Vector.prototype.mult:', 'n is undefined or not a finite number');
+    error('PClone.Vector.prototype.mult: n is undefined or not a finite number + \n');
     return this;
   }
   this.x *= n;
@@ -996,11 +1002,27 @@ PClone.prototype.load_image = function(img) {
   return new Image(this.img);
 };
 
-PClone.prototype.set_color_mode = function(mode) {
-  this.color_mode = mode;
+PClone.prototype.set_color_mode = function() {
+  if (arguments.length === 1) {
+    this.color_properties.mode = arguments[0];
+  } else if (arguments.length === 2) {
+    this.color_properties.mode = arguments[0];
+    this.color_properties.MAX_1 = arguments[1];
+    this.color_properties.MAX_2 = arguments[1];
+    this.color_properties.MAX_3 = arguments[1];
+    this.color_properties.MAX_4 = arguments[1];
+  } else if (arguments.length === 5) {
+    this.color_properties.mode = arguments[0];
+    this.color_properties.MAX_1 = arguments[1];
+    this.color_properties.MAX_2 = arguments[2];
+    this.color_properties.MAX_3 = arguments[3];
+    this.color_properties.MAX_4 = arguments[4];
+  } else {
+    error('PClone.prototype.set_color_mode: invalid arguments');
+  }
 };
 
-PClone.prototype.create_color = function(r, g, b, a) {
+PClone.prototype.color = function(r, g, b, a) {
   if (this instanceof PClone) {
     return new PClone.Color(this, arguments);
   } else {
@@ -1009,29 +1031,97 @@ PClone.prototype.create_color = function(r, g, b, a) {
 };
 
 PClone.Color = function() {
-  var arr = [];
+  var ColorArray = [];
 
   if (arguments[0] instanceof PClone) {
-    arr.push.apply(arr, arguments[1]);
-    arr.__proto__ = PClone.Color.prototype;
-    arr.PClone = arguments[0];
-    arr.mode = arr.PClone.color_mode;
-    return arr;
+    ColorArray.push.apply(ColorArray, arguments[1]);
+    ColorArray.__proto__ = PClone.Color.prototype;
+    ColorArray.PClone = arguments[0];
+    ColorArray.props = ColorArray.PClone.color_properties;
+  } else {
+    ColorArray.push.apply(ColorArray, arguments[0]);
+    ColorArray.__proto__ = PClone.Color.prototype;
+    ColorArray.mode = 'rgb';
   }
-  arr.push.apply(arr, arguments[0]);
-  arr.__proto__ = PClone.Color.prototype;
-  arr.mode = 'rgb';
-  return arr;
+
+  ColorArray.red = ColorArray[0] || 0;
+  ColorArray.green = ColorArray[1] || 0;
+  ColorArray.blue = ColorArray[2] || 0;
+
+  ColorArray.hue = ColorArray[0] || 0;
+  ColorArray.saturation = ColorArray[1] || 0;
+  ColorArray.brightness = ColorArray[2] || 0;
+  ColorArray.luminosity = ColorArray[2] || 0;
+  ColorArray.alpha = ColorArray[3] || 255;
+
+  return ColorArray;
 };
 
 PClone.Color.prototype = new Array();
 
+PClone.Color.prototype.normalize = function() {
+  this[0] = this.PClone.map(this[0], 0, this.props.MAX_1, 0, 1);
+  this[1] = this.PClone.map(this[1], 0, this.props.MAX_2, 0, 1);
+  this[2] = this.PClone.map(this[2], 0, this.props.MAX_3, 0, 1);
+  this[3] = this.PClone.map(this[3], 0, this.props.MAX_4, 0, 1);
+  return this;
+};
+
+PClone.Color.prototype.to_hsb = function() {
+  var a = [this[0], this[1], this[2], this[3]];
+  if (this.get_mode() === 'hsb') {
+    return this;
+  } else if (this.get_mode() === 'rgb') {
+    var rgb = this.PClone.rgba_to_hsba(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else if (this.get_mode() === 'hsl') {
+    var rgb = this.PClone.hsla_to_hsba(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else {
+    error('PClone.Color.prototype.to_hsb: invalid color_mode: ' + this.get_mode() + '\n');
+  }
+};
+
+PClone.Color.prototype.to_rgb = function() {
+  var a = [this[0], this[1], this[2], this[3]];
+  if (this.get_mode() === 'rgb') {
+    return this;
+  } else if (this.get_mode() === 'hsb') {
+    var rgb = this.PClone.hsba_to_rgba(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else if (this.get_mode() === 'hsl') {
+    var rgb = this.PClone.hsla_to_rgba(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else {
+    error('PClone.Color.prototype.to_rgb: invalid color_mode: ' + this.get_mode() + '\n');
+  }
+};
+
+PClone.Color.prototype.to_hsl = function() {
+  var a = [this[0], this[1], this[2], this[3]];
+  if (this.get_mode() === 'hsl') {
+    return this;
+  } else if (this.get_mode() === 'hsb') {
+    var rgb = this.PClone.hsba_to_hsla(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else if (this.get_mode() === 'rgb') {
+    var rgb = this.PClone.rgba_to_hsla(a);
+    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+  } else {
+    error('PClone.Color.prototype.to_hsl: invalid color_mode: ' + this.get_mode() + '\n');
+  }
+};
+
 PClone.Color.prototype.set_mode = function(mode) {
-  this.mode = mode;
+  this.props.mode = mode;
+};
+
+PClone.Color.prototype.get_props = function(mode) {
+  return this.red;
 };
 
 PClone.Color.prototype.get_mode = function(mode) {
-  return this.mode.toLowerCase();
+  return this.props.mode.toLowerCase();
 };
 
 /**
@@ -1041,12 +1131,12 @@ PClone.Color.prototype.get_mode = function(mode) {
 PClone.Color.prototype.get_red = function() {
   if (this.get_mode() !== 'rgb') {
     error(
-      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_red: you are accessing an RGB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[0];
+  return this.red;
 };
 
 /**
@@ -1056,12 +1146,12 @@ PClone.Color.prototype.get_red = function() {
 PClone.Color.prototype.get_green = function() {
   if (this.get_mode() !== 'rgb') {
     error(
-      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_green: you are accessing an RGB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[1];
+  return this.green;
 };
 
 /**
@@ -1071,12 +1161,12 @@ PClone.Color.prototype.get_green = function() {
 PClone.Color.prototype.get_blue = function() {
   if (this.get_mode() !== 'rgb') {
     error(
-      'PClone.Color.prototype: you are accessing an RGB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_blue: you are accessing an RGB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[2];
+  return this.blue;
 };
 
 /**
@@ -1086,12 +1176,12 @@ PClone.Color.prototype.get_blue = function() {
 PClone.Color.prototype.get_hue = function() {
   if (this.get_mode() !== 'hsb') {
     error(
-      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_hue: you are accessing a HSB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[0];
+  return this.hue;
 };
 
 /**
@@ -1101,12 +1191,12 @@ PClone.Color.prototype.get_hue = function() {
 PClone.Color.prototype.get_saturation = function() {
   if (this.get_mode() !== 'hsb') {
     error(
-      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_saturation: you are accessing a HSB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[1];
+  return this.saturation;
 };
 
 /**
@@ -1116,12 +1206,12 @@ PClone.Color.prototype.get_saturation = function() {
 PClone.Color.prototype.get_brightness = function() {
   if (this.get_mode() !== 'hsb') {
     error(
-      'PClone.Color.prototype: you are accessing a HSB property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_brightness: you are accessing a HSB property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[2];
+  return this.brightness;
 };
 
 /**
@@ -1131,12 +1221,12 @@ PClone.Color.prototype.get_brightness = function() {
 PClone.Color.prototype.get_luminosity = function() {
   if (this.get_mode() !== 'hsl') {
     error(
-      'PClone.Color.prototype: you are accessing a HSL property but color_mode is currently set to ' +
+      'PClone.Color.prototype.get_luminosity: you are accessing a HSL property but color_mode is currently set to ' +
         this.get_mode() +
         '\n'
     );
   }
-  return this[2];
+  return this.luminosity;
 };
 
 /**
@@ -1144,10 +1234,9 @@ PClone.Color.prototype.get_luminosity = function() {
  */
 
 PClone.Color.prototype.get_alpha = function() {
-  return this[3];
+  return this.alpha;
 };
 
-PClone.Color.prototype.normalize = function() {};
 // Linear Congruential Generator
 // Variant of a Lehman Generator
 var lcg = (function() {
