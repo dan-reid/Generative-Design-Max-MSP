@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Lato Regular",
@@ -172,8 +173,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 8,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -206,6 +207,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-16",
@@ -554,7 +556,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 39.0, 195.0, 387.0, 22.0 ],
 					"text" : "jit.world P_3_1_3 @floating 1 @size 700 400 @dim 1400 800 @fsaa 1"
 				}
@@ -753,7 +755,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_1_3.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_3_Hello_Type/P_3_1_3_Text_image",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_3_Hello_Type/P_3_1_3_Text_image",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

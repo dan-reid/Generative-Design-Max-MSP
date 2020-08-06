@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,7 +37,22 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-3",
+					"maxclass" : "jit.fpsgui",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 178.5, 172.0, 80.0, 35.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"activebgcolor" : [ 0.6, 0.6, 0.6, 0.03 ],
 					"activebgoncolor" : [ 0.541176, 0.815686, 0.913725, 1.0 ],
@@ -54,12 +69,12 @@
 					"patching_rect" : [ 155.0, 235.0, 113.0, 21.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmax" : 2,
+							"parameter_shortname" : "live.tab",
 							"parameter_enum" : [ "Black", "Blue", "Gold" ],
 							"parameter_type" : 2,
 							"parameter_unitstyle" : 0,
-							"parameter_longname" : "live.tab",
-							"parameter_mmax" : 2,
-							"parameter_shortname" : "live.tab"
+							"parameter_longname" : "live.tab"
 						}
 
 					}
@@ -87,7 +102,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 189.0, 374.0, 77.0, 22.0 ],
+					"patching_rect" : [ 197.0, 377.0, 77.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -99,7 +114,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 155.0, 405.0, 111.0, 22.0 ],
+					"patching_rect" : [ 163.0, 408.0, 111.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -152,8 +167,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 8,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -186,6 +201,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "Default Max 7",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-20",
@@ -279,7 +295,7 @@
  ]
 					}
 ,
-					"patching_rect" : [ 293.0, 185.0, 57.0, 22.0 ],
+					"patching_rect" : [ 293.0, 172.0, 57.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"description" : "",
 						"digest" : "",
@@ -334,7 +350,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 64.0, 141.0, 248.0, 22.0 ],
 					"text" : "jit.world template @floating 1 @size 640 480"
 				}
@@ -347,7 +363,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 350.0, 89.0, 22.0 ],
+					"patching_rect" : [ 39.0, 350.0, 87.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_2_0_02.js",
 						"parameter_enable" : 0
@@ -384,8 +400,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 188.0, 199.0, 48.5, 199.0 ],
+					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -408,6 +423,14 @@
 				"patchline" : 				{
 					"destination" : [ "obj-26", 0 ],
 					"source" : [ "obj-28", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"midpoints" : [ 188.0, 222.0, 48.5, 222.0 ],
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -453,12 +476,13 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_2_0_02.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_0_Hello_shape",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_2_Hello_Shape/P_2_0_Hello_shape",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

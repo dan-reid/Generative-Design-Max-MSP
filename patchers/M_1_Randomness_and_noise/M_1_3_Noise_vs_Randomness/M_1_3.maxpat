@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-21",
@@ -145,7 +146,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 26.0, 118.0, 369.0, 22.0 ],
 					"text" : "jit.world M_1_3 @floating 1 @size 512 128 @dim 512 128 @fsaa 1"
 				}
@@ -247,7 +248,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_3_1.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_3_Noise_vs_Randomness",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_1_Randomness_and_noise/M_1_3_Noise_vs_Randomness",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
