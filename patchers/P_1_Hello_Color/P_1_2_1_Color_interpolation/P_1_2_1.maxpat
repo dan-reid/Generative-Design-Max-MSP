@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -112,13 +112,13 @@
 					"patching_rect" : [ 446.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_shortname" : "GridY",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
 							"parameter_linknames" : 1,
 							"parameter_mmin" : 2.0,
 							"parameter_longname" : "GridY",
-							"parameter_mmax" : 10.0,
-							"parameter_shortname" : "GridY"
+							"parameter_mmax" : 10.0
 						}
 
 					}
@@ -138,13 +138,13 @@
 					"patching_rect" : [ 367.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_shortname" : "GridX",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
 							"parameter_linknames" : 1,
 							"parameter_mmin" : 2.0,
 							"parameter_longname" : "GridX",
-							"parameter_mmax" : 100.0,
-							"parameter_shortname" : "GridX"
+							"parameter_mmax" : 100.0
 						}
 
 					}
@@ -332,8 +332,8 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-37" : [ "GridY", "GridY", 0 ],
 			"obj-36" : [ "GridX", "GridX", 0 ],
+			"obj-37" : [ "GridY", "GridY", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -342,7 +342,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_1_2_1.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_1_Hello_Color/P_1_2_1_Color_interpolation",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_1_Hello_Color/P_1_2_1_Color_interpolation",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
