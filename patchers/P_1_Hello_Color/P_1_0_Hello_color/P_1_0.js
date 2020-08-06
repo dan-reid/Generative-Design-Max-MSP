@@ -3,7 +3,6 @@ var { PClone } = require('PClone');
 var mg;
 var pc;
 var outputmatrix;
-var mu;
 var width;
 var height;
 var mouse_x = 360;
@@ -18,26 +17,18 @@ function setup() {
   mg = new JitterObject('jit.mgraphics', width, height);
   // the matrix to store and display jit.mgraphics's output
   outputmatrix = new JitterMatrix(4, 'char', width, height);
-
   pc = new PClone();
+  pc.color_mode('HSB', 360, 100, 100, 100);
 }
 
 function draw() {
-  var param_y = mouse_y;
-  var param_x = mouse_x;
-  param_y = pc.map(param_y, 0, height, 0, 1);
+  var bg_col = pc.color(mouse_y / 2, 100, 100, 100);
+  background(bg_col.normalize().to_rgb());
 
-  var bg_col = [param_y * 0.5, 1, 1];
-  bg_col = pc.hsb_to_rgb(bg_col);
+  var fg_col = pc.color(360 - mouse_y / 2, 100, 100, 100);
+  mg.set_source_rgb(fg_col.normalize().to_rgb());
 
-  background(bg_col[0], bg_col[1], bg_col[2], 1);
-
-  var fg_col = [1 - param_y * 0.5, 1, 1];
-  fg_col = pc.hsb_to_rgb(fg_col);
-
-  mg.set_source_rgb(fg_col);
-
-  mg.rectangle(360 - (param_x + 1) / 2, 360 - (param_x + 1) / 2, param_x + 1, param_x + 1);
+  mg.rectangle(360 - (mouse_x + 1) / 2, 360 - (mouse_x + 1) / 2, mouse_x + 1, mouse_x + 1);
   mg.fill();
 
   // this should always be last in the draw function
@@ -50,8 +41,8 @@ function mousemoved(x, y) {
   mouse_y = y;
 }
 
-function background(r, g, b, a) {
-  mg.set_source_rgba(r, g, b, a);
+function background(c) {
+  mg.set_source_rgba(c);
   mg.paint();
   mg.set_source_rgba(0, 0, 0, 1); // default stroke/ fill bg_color
   mg.identity_matrix();

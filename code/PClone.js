@@ -1,100 +1,98 @@
+var { constants } = require('constants');
+
 function PClone() {
-  this.seeded = false;
-  this.color_properties = {
-    mode: 'rgb',
-    MAX_1: 255,
-    MAX_2: 255,
-    MAX_3: 255,
-    MAX_4: 255,
-  };
+	this.seeded = false;
+	this.color_properties = {
+		mode: constants.RGB,
+		MAX_1: 255,
+		MAX_2: 255,
+		MAX_3: 255,
+		MAX_4: 255,
+	};
 }
 
 /*
  ********************** Calculations **************************
  */
 
-PClone.prototype.constrain = function(val, min, max) {
-  return Math.min(Math.max(val, min), max);
+PClone.prototype.constrain = function (val, min, max) {
+	return Math.min(Math.max(val, min), max);
 };
 
-PClone.prototype.dist = function() {
-  if (arguments.length === 4) {
-    return hypot(arguments[2] - arguments[0], arguments[3] - arguments[1]);
-  } else if (arguments.length === 6) {
-    return hypot(
-      arguments[3] - arguments[0],
-      arguments[4] - arguments[1],
-      arguments[5] - arguments[2]
-    );
-  }
+PClone.prototype.dist = function () {
+	if (arguments.length === 4) {
+		return hypot(arguments[2] - arguments[0], arguments[3] - arguments[1]);
+	} else if (arguments.length === 6) {
+		return hypot(arguments[3] - arguments[0], arguments[4] - arguments[1], arguments[5] - arguments[2]);
+	}
 };
 
-PClone.prototype.lerp = function(start, stop, amt) {
-  return amt * (stop - start) + start;
+PClone.prototype.lerp = function (start, stop, amt) {
+	return amt * (stop - start) + start;
 };
 
-PClone.prototype.mag = function(x, y) {
-  return hypot(x, y);
+PClone.prototype.mag = function (x, y) {
+	return hypot(x, y);
 };
 
-PClone.prototype.radians = function(degrees) {
-  return (degrees * Math.PI) / 180;
+PClone.prototype.radians = function (degrees) {
+	return (degrees * Math.PI) / 180;
 };
 
-PClone.prototype.degrees = function(radians) {
-  return (radians * 180) / Math.PI;
+PClone.prototype.degrees = function (radians) {
+	return (radians * 180) / Math.PI;
 };
 
-PClone.prototype.map = function(n, start1, stop1, start2, stop2, withinBounds) {
-  var newval = ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
-  if (!withinBounds) {
-    return newval;
-  }
-  if (start2 < stop2) {
-    return this.constrain(newval, start2, stop2);
-  } else {
-    return this.constrain(newval, stop2, start2);
-  }
+PClone.prototype.map = function (n, start1, stop1, start2, stop2, withinBounds) {
+	var newval = ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
+	if (!withinBounds) {
+		return newval;
+	}
+	if (start2 < stop2) {
+		return this.constrain(newval, start2, stop2);
+	} else {
+		return this.constrain(newval, stop2, start2);
+	}
 };
 
-PClone.prototype.norm = function(n, start, stop) {
-  return this.map(n, start, stop, 0, 1);
+PClone.prototype.norm = function (n, start, stop) {
+	return this.map(n, start, stop, 0, 1);
 };
 
 /*
  ********************** random() **********************
  */
 
-PClone.prototype.random = function(min, max) {
-  var rand;
-  if (this.seeded) {
-    rand = lcg.rand();
-  } else {
-    rand = Math.random();
-  }
-  if (typeof min === 'undefined') {
-    return rand;
-  } else if (typeof max === 'undefined') {
-    if (min instanceof Array) {
-      return min[Math.floor(rand * min.length)];
-    } else {
-      return rand * min;
-    }
-  } else {
-    if (min > max) {
-      var tmp = min;
-      min = max;
-      max = tmp;
-    }
+PClone.prototype.random = function (min, max) {
+	var rand;
+	if (this.seeded) {
+		rand = lcg.rand();
+	} else {
+		rand = Math.random();
+	}
+	if (typeof min === 'undefined') {
+		return rand;
+	} else if (typeof max === 'undefined') {
+		if (min instanceof Array) {
+			return min[Math.floor(rand * min.length)];
+		} else {
+			return rand * min;
+		}
+	} else {
+		if (min > max) {
+			var tmp = min;
+			min = max;
+			max = tmp;
+		}
 
-    return rand * (max - min) + min;
-  }
+		return rand * (max - min) + min;
+	}
 };
 
-PClone.prototype.randomseed = function(seed) {
-  lcg.setSeed(seed);
-  this.seeded = true;
-  previous = false;
+PClone.prototype.randomseed = function (seed) {
+	lcg.setSeed(seed);
+	this.seeded = true;
+	previous = false;
 };
 
 /*
@@ -110,84 +108,84 @@ var perlin_octaves = 4; // default to medium smooth
 var perlin_amp_falloff = 0.5; // 50% reduction/octave
 var perlin; // will be initialized lazily by noise() or noise_seed()
 
-PClone.prototype.noise = function(x, y, z) {
-  y = y || 0;
-  z = z || 0;
+PClone.prototype.noise = function (x, y, z) {
+	y = y || 0;
+	z = z || 0;
 
-  if (perlin == null) {
-    perlin = new Array(PERLIN_SIZE + 1);
-    for (var i = 0; i < PERLIN_SIZE + 1; i++) {
-      perlin[i] = Math.random();
-    }
-  }
+	if (perlin == null) {
+		perlin = new Array(PERLIN_SIZE + 1);
+		for (var i = 0; i < PERLIN_SIZE + 1; i++) {
+			perlin[i] = Math.random();
+		}
+	}
 
-  if (x < 0) {
-    x = -x;
-  }
-  if (y < 0) {
-    y = -y;
-  }
-  if (z < 0) {
-    z = -z;
-  }
+	if (x < 0) {
+		x = -x;
+	}
+	if (y < 0) {
+		y = -y;
+	}
+	if (z < 0) {
+		z = -z;
+	}
 
-  var xi = Math.floor(x),
-    yi = Math.floor(y),
-    zi = Math.floor(z);
-  var xf = x - xi;
-  var yf = y - yi;
-  var zf = z - zi;
-  var rxf, ryf;
+	var xi = Math.floor(x),
+		yi = Math.floor(y),
+		zi = Math.floor(z);
+	var xf = x - xi;
+	var yf = y - yi;
+	var zf = z - zi;
+	var rxf, ryf;
 
-  var r = 0;
-  var ampl = 0.5;
+	var r = 0;
+	var ampl = 0.5;
 
-  var n1, n2, n3;
+	var n1, n2, n3;
 
-  for (var o = 0; o < perlin_octaves; o++) {
-    var of = xi + (yi << PERLIN_YWRAPB) + (zi << PERLIN_ZWRAPB);
+	for (var o = 0; o < perlin_octaves; o++) {
+		var of = xi + (yi << PERLIN_YWRAPB) + (zi << PERLIN_ZWRAPB);
 
-    rxf = scaled_cosine(xf);
-    ryf = scaled_cosine(yf);
+		rxf = scaled_cosine(xf);
+		ryf = scaled_cosine(yf);
 
-    n1 = perlin[of & PERLIN_SIZE];
-    n1 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n1);
-    n2 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-    n2 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n2);
-    n1 += ryf * (n2 - n1);
+		n1 = perlin[of & PERLIN_SIZE];
+		n1 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n1);
+		n2 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
+		n2 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n2);
+		n1 += ryf * (n2 - n1);
 
-    of += PERLIN_ZWRAP;
-    n2 = perlin[of & PERLIN_SIZE];
-    n2 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n2);
-    n3 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-    n3 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n3);
-    n2 += ryf * (n3 - n2);
+		of += PERLIN_ZWRAP;
+		n2 = perlin[of & PERLIN_SIZE];
+		n2 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n2);
+		n3 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
+		n3 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n3);
+		n2 += ryf * (n3 - n2);
 
-    n1 += scaled_cosine(zf) * (n2 - n1);
+		n1 += scaled_cosine(zf) * (n2 - n1);
 
-    r += n1 * ampl;
-    ampl *= perlin_amp_falloff;
-    xi <<= 1;
-    xf *= 2;
-    yi <<= 1;
-    yf *= 2;
-    zi <<= 1;
-    zf *= 2;
+		r += n1 * ampl;
+		ampl *= perlin_amp_falloff;
+		xi <<= 1;
+		xf *= 2;
+		yi <<= 1;
+		yf *= 2;
+		zi <<= 1;
+		zf *= 2;
 
-    if (xf >= 1.0) {
-      xi++;
-      xf--;
-    }
-    if (yf >= 1.0) {
-      yi++;
-      yf--;
-    }
-    if (zf >= 1.0) {
-      zi++;
-      zf--;
-    }
-  }
-  return r;
+		if (xf >= 1.0) {
+			xi++;
+			xf--;
+		}
+		if (yf >= 1.0) {
+			yi++;
+			yf--;
+		}
+		if (zf >= 1.0) {
+			zi++;
+			zf--;
+		}
+	}
+	return r;
 };
 
 /**
@@ -209,13 +207,13 @@ PClone.prototype.noise = function(x, y, z) {
  * function can be adapted to fit very specific needs and characteristics.
  */
 
-PClone.prototype.noise_detail = function(lod, falloff) {
-  if (lod > 0) {
-    perlin_octaves = lod;
-  }
-  if (falloff > 0) {
-    perlin_amp_falloff = falloff;
-  }
+PClone.prototype.noise_detail = function (lod, falloff) {
+	if (lod > 0) {
+		perlin_octaves = lod;
+	}
+	if (falloff > 0) {
+		perlin_amp_falloff = falloff;
+	}
 };
 
 /**
@@ -225,150 +223,150 @@ PClone.prototype.noise_detail = function(lod, falloff) {
  * numbers each time the software is run.
  */
 
-PClone.prototype.noise_seed = function(seed) {
-  // Linear Congruential Generator
-  // Variant of a Lehman Generator
-  var lcg = (function() {
-    // Set to values from http://en.wikipedia.org/wiki/Numerical_Recipes
-    // m is basically chosen to be large (as it is the max period)
-    // and for its relationships to a and c
-    var m = 4294967296;
-    // a - 1 should be divisible by m's prime factors
-    var a = 1664525;
-    // c and m should be co-prime
-    var c = 1013904223;
-    var seed, z;
-    return {
-      setSeed: function(val) {
-        // pick a random seed if val is undefined or null
-        // the >>> 0 casts the seed to an unsigned 32-bit integer
-        z = seed = (val == null ? Math.random() * m : val) >>> 0;
-      },
-      getSeed: function() {
-        return seed;
-      },
-      rand: function() {
-        // define the recurrence relationship
-        z = (a * z + c) % m;
-        // return a float in [0, 1)
-        // if z = m then z / m = 0 therefore (z % m) / m < 1 always
-        return z / m;
-      },
-    };
-  })();
+PClone.prototype.noise_seed = function (seed) {
+	// Linear Congruential Generator
+	// Variant of a Lehman Generator
+	var lcg = (function () {
+		// Set to values from http://en.wikipedia.org/wiki/Numerical_Recipes
+		// m is basically chosen to be large (as it is the max period)
+		// and for its relationships to a and c
+		var m = 4294967296;
+		// a - 1 should be divisible by m's prime factors
+		var a = 1664525;
+		// c and m should be co-prime
+		var c = 1013904223;
+		var seed, z;
+		return {
+			setSeed: function (val) {
+				// pick a random seed if val is undefined or null
+				// the >>> 0 casts the seed to an unsigned 32-bit integer
+				z = seed = (val == null ? Math.random() * m : val) >>> 0;
+			},
+			getSeed: function () {
+				return seed;
+			},
+			rand: function () {
+				// define the recurrence relationship
+				z = (a * z + c) % m;
+				// return a float in [0, 1)
+				// if z = m then z / m = 0 therefore (z % m) / m < 1 always
+				return z / m;
+			},
+		};
+	})();
 };
 
 /***************************** Vector *********************************/
 
-PClone.prototype.create_vector = function(x, y, z) {
-  if (this instanceof PClone) {
-    return new PClone.Vector(this, arguments);
-  } else {
-    return new PClone.Vector(x, y, z);
-  }
+PClone.prototype.create_vector = function (x, y, z) {
+	if (this instanceof PClone) {
+		return new PClone.Vector(this, arguments);
+	} else {
+		return new PClone.Vector(x, y, z);
+	}
 };
 
 PClone.Vector = function Vector() {
-  var x, y, z;
-  // This is how it comes in with create_vector()
-  if (arguments[0] instanceof PClone) {
-    // save reference to PClone if passed in
-    this.PClone = arguments[0];
-    x = arguments[1][0] || 0;
-    y = arguments[1][1] || 0;
-    z = arguments[1][2] || 0;
+	var x, y, z;
+	// This is how it comes in with create_vector()
+	if (arguments[0] instanceof PClone) {
+		// save reference to PClone if passed in
+		this.PClone = arguments[0];
+		x = arguments[1][0] || 0;
+		y = arguments[1][1] || 0;
+		z = arguments[1][2] || 0;
 
-    // This is what we'll get with new p5.Vector()
-  } else {
-    x = arguments[0] || 0;
-    y = arguments[1] || 0;
-    z = arguments[2] || 0;
-  }
+		// This is what we'll get with new p5.Vector()
+	} else {
+		x = arguments[0] || 0;
+		y = arguments[1] || 0;
+		z = arguments[2] || 0;
+	}
 
-  /**
-   * The x component of the vector
-   */
-  this.x = x;
-  /**
-   * The y component of the vector
-   */
-  this.y = y;
-  /**
-   * The z component of the vector
-   */
-  this.z = z;
+	/**
+	 * The x component of the vector
+	 */
+	this.x = x;
+	/**
+	 * The y component of the vector
+	 */
+	this.y = y;
+	/**
+	 * The z component of the vector
+	 */
+	this.z = z;
 };
 
 PClone.Vector.prototype.set = function set(x, y, z) {
-  if (x instanceof PClone.Vector) {
-    this.x = x.x || 0;
-    this.y = x.y || 0;
-    this.z = x.z || 0;
-    return this;
-  }
-  if (x instanceof Array) {
-    this.x = x[0] || 0;
-    this.y = x[1] || 0;
-    this.z = x[2] || 0;
-    return this;
-  }
-  this.x = x || 0;
-  this.y = y || 0;
-  this.z = z || 0;
-  return this;
+	if (x instanceof PClone.Vector) {
+		this.x = x.x || 0;
+		this.y = x.y || 0;
+		this.z = x.z || 0;
+		return this;
+	}
+	if (x instanceof Array) {
+		this.x = x[0] || 0;
+		this.y = x[1] || 0;
+		this.z = x[2] || 0;
+		return this;
+	}
+	this.x = x || 0;
+	this.y = y || 0;
+	this.z = z || 0;
+	return this;
 };
 
 PClone.Vector.prototype.copy = function copy() {
-  return new PClone.Vector(this.x, this.y, this.z);
+	return new PClone.Vector(this.x, this.y, this.z);
 };
 
 PClone.Vector.prototype.add = function add(x, y, z) {
-  if (x instanceof PClone.Vector) {
-    this.x += x.x || 0;
-    this.y += x.y || 0;
-    this.z += x.z || 0;
-    return this;
-  }
-  if (x instanceof Array) {
-    this.x += x[0] || 0;
-    this.y += x[1] || 0;
-    this.z += x[2] || 0;
-    return this;
-  }
-  this.x += x || 0;
-  this.y += y || 0;
-  this.z += z || 0;
-  return this;
+	if (x instanceof PClone.Vector) {
+		this.x += x.x || 0;
+		this.y += x.y || 0;
+		this.z += x.z || 0;
+		return this;
+	}
+	if (x instanceof Array) {
+		this.x += x[0] || 0;
+		this.y += x[1] || 0;
+		this.z += x[2] || 0;
+		return this;
+	}
+	this.x += x || 0;
+	this.y += y || 0;
+	this.z += z || 0;
+	return this;
 };
 
 PClone.Vector.prototype.sub = function sub(x, y, z) {
-  if (x instanceof PClone.Vector) {
-    this.x -= x.x || 0;
-    this.y -= x.y || 0;
-    this.z -= x.z || 0;
-    return this;
-  }
-  if (x instanceof Array) {
-    this.x -= x[0] || 0;
-    this.y -= x[1] || 0;
-    this.z -= x[2] || 0;
-    return this;
-  }
-  this.x -= x || 0;
-  this.y -= y || 0;
-  this.z -= z || 0;
-  return this;
+	if (x instanceof PClone.Vector) {
+		this.x -= x.x || 0;
+		this.y -= x.y || 0;
+		this.z -= x.z || 0;
+		return this;
+	}
+	if (x instanceof Array) {
+		this.x -= x[0] || 0;
+		this.y -= x[1] || 0;
+		this.z -= x[2] || 0;
+		return this;
+	}
+	this.x -= x || 0;
+	this.y -= y || 0;
+	this.z -= z || 0;
+	return this;
 };
 
 PClone.Vector.prototype.mult = function mult(n) {
-  if (!(typeof n === 'number' && isFinite(n))) {
-    error('PClone.Vector.prototype.mult: n is undefined or not a finite number + \n');
-    return this;
-  }
-  this.x *= n;
-  this.y *= n;
-  this.z *= n;
-  return this;
+	if (!(typeof n === 'number' && isFinite(n))) {
+		error('PClone.Vector.prototype.mult: n is undefined or not a finite number + \n');
+		return this;
+	}
+	this.x *= n;
+	this.y *= n;
+	this.z *= n;
+	return this;
 };
 
 /**
@@ -376,18 +374,18 @@ PClone.Vector.prototype.mult = function mult(n) {
  * new PClone.Vector while the non static version acts on the vector directly.
  */
 PClone.Vector.prototype.div = function div(n) {
-  if (!(typeof n === 'number' && isFinite(n))) {
-    error('PClone.Vector.prototype.div:', 'n is undefined or not a finite number');
-    return this;
-  }
-  if (n === 0) {
-    error('PClone.Vector.prototype.div:', 'divide by 0');
-    return this;
-  }
-  this.x /= n;
-  this.y /= n;
-  this.z /= n;
-  return this;
+	if (!(typeof n === 'number' && isFinite(n))) {
+		error('PClone.Vector.prototype.div:', 'n is undefined or not a finite number');
+		return this;
+	}
+	if (n === 0) {
+		error('PClone.Vector.prototype.div:', 'divide by 0');
+		return this;
+	}
+	this.x /= n;
+	this.y /= n;
+	this.z /= n;
+	return this;
 };
 
 /**
@@ -396,7 +394,7 @@ PClone.Vector.prototype.div = function div(n) {
  */
 
 PClone.Vector.prototype.mag = function mag() {
-  return Math.sqrt(this.magsq());
+	return Math.sqrt(this.magsq());
 };
 
 /**
@@ -407,10 +405,10 @@ PClone.Vector.prototype.mag = function mag() {
  */
 
 PClone.Vector.prototype.magsq = function magsq() {
-  var x = this.x;
-  var y = this.y;
-  var z = this.z;
-  return x * x + y * y + z * z;
+	var x = this.x;
+	var y = this.y;
+	var z = this.z;
+	return x * x + y * y + z * z;
 };
 
 /**
@@ -420,10 +418,10 @@ PClone.Vector.prototype.magsq = function magsq() {
  */
 
 PClone.Vector.prototype.dot = function dot(x, y, z) {
-  if (x instanceof PClone.Vector) {
-    return this.dot(x.x, x.y, x.z);
-  }
-  return this.x * (x || 0) + this.y * (y || 0) + this.z * (z || 0);
+	if (x instanceof PClone.Vector) {
+		return this.dot(x.x, x.y, x.z);
+	}
+	return this.x * (x || 0) + this.y * (y || 0) + this.z * (z || 0);
 };
 
 /**
@@ -433,14 +431,14 @@ PClone.Vector.prototype.dot = function dot(x, y, z) {
  */
 
 PClone.Vector.prototype.cross = function cross(v) {
-  var x = this.y * v.z - this.z * v.y;
-  var y = this.z * v.x - this.x * v.z;
-  var z = this.x * v.y - this.y * v.x;
-  if (this.PClone) {
-    return new PClone.Vector(this.PClone, [x, y, z]);
-  } else {
-    return new PClone.Vector(x, y, z);
-  }
+	var x = this.y * v.z - this.z * v.y;
+	var y = this.z * v.x - this.x * v.z;
+	var z = this.x * v.y - this.y * v.x;
+	if (this.PClone) {
+		return new PClone.Vector(this.PClone, [x, y, z]);
+	} else {
+		return new PClone.Vector(x, y, z);
+	}
 };
 
 /**
@@ -449,10 +447,7 @@ PClone.Vector.prototype.cross = function cross(v) {
  */
 
 PClone.Vector.prototype.dist = function dist(v) {
-  return v
-    .copy()
-    .sub(this)
-    .mag();
+	return v.copy().sub(this).mag();
 };
 
 /**
@@ -460,11 +455,11 @@ PClone.Vector.prototype.dist = function dist(v) {
  */
 
 PClone.Vector.prototype.normalize = function normalize() {
-  var len = this.mag();
-  // here we multiply by the reciprocal instead of calling 'div()'
-  // since div duplicates this zero check.
-  if (len !== 0) this.mult(1 / len);
-  return this;
+	var len = this.mag();
+	// here we multiply by the reciprocal instead of calling 'div()'
+	// since div duplicates this zero check.
+	if (len !== 0) this.mult(1 / len);
+	return this;
 };
 
 /**
@@ -473,12 +468,12 @@ PClone.Vector.prototype.normalize = function normalize() {
  */
 
 PClone.Vector.prototype.limit = function limit(max) {
-  var mSq = this.magsq();
-  if (mSq > max * max) {
-    this.div(Math.sqrt(mSq)) //normalize it
-      .mult(max);
-  }
-  return this;
+	var mSq = this.magsq();
+	if (mSq > max * max) {
+		this.div(Math.sqrt(mSq)) //normalize it
+			.mult(max);
+	}
+	return this;
 };
 
 /**
@@ -487,7 +482,7 @@ PClone.Vector.prototype.limit = function limit(max) {
  */
 
 PClone.Vector.prototype.set_mag = function set_mag(n) {
-  return this.normalize().mult(n);
+	return this.normalize().mult(n);
 };
 
 /**
@@ -495,9 +490,9 @@ PClone.Vector.prototype.set_mag = function set_mag(n) {
  */
 
 PClone.Vector.prototype.heading = function heading() {
-  var h = Math.atan2(this.y, this.x);
-  if (this.PClone) return this.radians(h);
-  return h;
+	var h = Math.atan2(this.y, this.x);
+	if (this.PClone) return this.radians(h);
+	return h;
 };
 
 /**
@@ -506,12 +501,12 @@ PClone.Vector.prototype.heading = function heading() {
  */
 
 PClone.Vector.prototype.rotate = function rotate(a) {
-  var newHeading = this.heading() + a;
-  if (this.PClone) newHeading = this.radians(newHeading);
-  var mag = this.mag();
-  this.x = Math.cos(newHeading) * mag;
-  this.y = Math.sin(newHeading) * mag;
-  return this;
+	var newHeading = this.heading() + a;
+	if (this.PClone) newHeading = this.radians(newHeading);
+	var mag = this.mag();
+	this.x = Math.cos(newHeading) * mag;
+	this.y = Math.sin(newHeading) * mag;
+	return this;
 };
 
 /**
@@ -519,15 +514,15 @@ PClone.Vector.prototype.rotate = function rotate(a) {
  */
 
 PClone.Vector.prototype.angle_between = function angle_between(v) {
-  var dotmagmag = this.dot(v) / (this.mag() * v.mag());
-  // Mathematically speaking: the dotmagmag variable will be between -1 and 1
-  // inclusive. Practically though it could be slightly outside this range due
-  // to floating-point rounding issues. This can make Math.acos return NaN.
-  //
-  // Solution: we'll clamp the value to the -1,1 range
-  var angle = Math.acos(Math.min(1, Math.max(-1, dotmagmag)));
-  if (this.PClone) return this.radians(angle);
-  return angle;
+	var dotmagmag = this.dot(v) / (this.mag() * v.mag());
+	// Mathematically speaking: the dotmagmag variable will be between -1 and 1
+	// inclusive. Practically though it could be slightly outside this range due
+	// to floating-point rounding issues. This can make Math.acos return NaN.
+	//
+	// Solution: we'll clamp the value to the -1,1 range
+	var angle = Math.acos(Math.min(1, Math.max(-1, dotmagmag)));
+	if (this.PClone) return this.radians(angle);
+	return angle;
 };
 
 /**
@@ -535,13 +530,13 @@ PClone.Vector.prototype.angle_between = function angle_between(v) {
  */
 
 PClone.Vector.prototype.lerp = function lerp(x, y, z, amt) {
-  if (x instanceof PClone.Vector) {
-    return this.lerp(x.x, x.y, x.z, y);
-  }
-  this.x += (x - this.x) * amt || 0;
-  this.y += (y - this.y) * amt || 0;
-  this.z += (z - this.z) * amt || 0;
-  return this;
+	if (x instanceof PClone.Vector) {
+		return this.lerp(x.x, x.y, x.z, y);
+	}
+	this.x += (x - this.x) * amt || 0;
+	this.y += (y - this.y) * amt || 0;
+	this.z += (z - this.z) * amt || 0;
+	return this;
 };
 
 /**
@@ -549,7 +544,7 @@ PClone.Vector.prototype.lerp = function lerp(x, y, z, amt) {
  */
 
 PClone.Vector.prototype.array = function array() {
-  return [this.x || 0, this.y || 0, this.z || 0];
+	return [this.x || 0, this.y || 0, this.z || 0];
 };
 
 /**
@@ -557,21 +552,21 @@ PClone.Vector.prototype.array = function array() {
  */
 
 PClone.Vector.prototype.equals = function equals(x, y, z) {
-  var a, b, c;
-  if (x instanceof PClone.Vector) {
-    a = x.x || 0;
-    b = x.y || 0;
-    c = x.z || 0;
-  } else if (x instanceof Array) {
-    a = x[0] || 0;
-    b = x[1] || 0;
-    c = x[2] || 0;
-  } else {
-    a = x || 0;
-    b = y || 0;
-    c = z || 0;
-  }
-  return this.x === a && this.y === b && this.z === c;
+	var a, b, c;
+	if (x instanceof PClone.Vector) {
+		a = x.x || 0;
+		b = x.y || 0;
+		c = x.z || 0;
+	} else if (x instanceof Array) {
+		a = x[0] || 0;
+		b = x[1] || 0;
+		c = x[2] || 0;
+	} else {
+		a = x || 0;
+		b = y || 0;
+		c = z || 0;
+	}
+	return this.x === a && this.y === b && this.z === c;
 };
 
 // Static Methods //
@@ -581,30 +576,26 @@ PClone.Vector.prototype.equals = function equals(x, y, z) {
  */
 
 PClone.Vector.from_angle = function from_angle(angle, length) {
-  if (typeof length === 'undefined') {
-    length = 1;
-  }
-  return new PClone.Vector(length * Math.cos(angle), length * Math.sin(angle), 0);
+	if (typeof length === 'undefined') {
+		length = 1;
+	}
+	return new PClone.Vector(length * Math.cos(angle), length * Math.sin(angle), 0);
 };
 
 /**
  * Make a new 3D vector from a pair of ISO spherical angles
  */
 
-PClone.Vector.from_angles = function(theta, phi, length) {
-  if (typeof length === 'undefined') {
-    length = 1;
-  }
-  var cosPhi = Math.cos(phi);
-  var sinPhi = Math.sin(phi);
-  var cosTheta = Math.cos(theta);
-  var sinTheta = Math.sin(theta);
+PClone.Vector.from_angles = function (theta, phi, length) {
+	if (typeof length === 'undefined') {
+		length = 1;
+	}
+	var cosPhi = Math.cos(phi);
+	var sinPhi = Math.sin(phi);
+	var cosTheta = Math.cos(theta);
+	var sinTheta = Math.sin(theta);
 
-  return new PClone.Vector(
-    length * sinTheta * sinPhi,
-    -length * cosTheta,
-    length * sinTheta * cosPhi
-  );
+	return new PClone.Vector(length * sinTheta * sinPhi, -length * cosTheta, length * sinTheta * cosPhi);
 };
 
 /**
@@ -612,7 +603,7 @@ PClone.Vector.from_angles = function(theta, phi, length) {
  */
 
 PClone.Vector.random2D = function random2D() {
-  return this.from_angle(Math.random() * (Math.PI * 2));
+	return this.from_angle(Math.random() * (Math.PI * 2));
 };
 
 /**
@@ -620,24 +611,24 @@ PClone.Vector.random2D = function random2D() {
  */
 
 PClone.Vector.random3D = function random3D() {
-  var angle = Math.random() * (Math.PI * 2);
-  var vz = Math.random() * 2 - 1;
-  var vzBase = Math.sqrt(1 - vz * vz);
-  var vx = vzBase * Math.cos(angle);
-  var vy = vzBase * Math.sin(angle);
-  return new PClone.Vector(vx, vy, vz);
+	var angle = Math.random() * (Math.PI * 2);
+	var vz = Math.random() * 2 - 1;
+	var vzBase = Math.sqrt(1 - vz * vz);
+	var vx = vzBase * Math.cos(angle);
+	var vy = vzBase * Math.sin(angle);
+	return new PClone.Vector(vx, vy, vz);
 };
 
 // Adds two vectors together and returns a new one.
 
 PClone.Vector.add = function add(v1, v2, target) {
-  if (!target) {
-    target = v1.copy();
-  } else {
-    target.set(v1);
-  }
-  target.add(v2);
-  return target;
+	if (!target) {
+		target = v1.copy();
+	} else {
+		target.set(v1);
+	}
+	target.add(v2);
+	return target;
 };
 
 /*
@@ -646,13 +637,13 @@ PClone.Vector.add = function add(v1, v2, target) {
  */
 
 PClone.Vector.sub = function sub(v1, v2, target) {
-  if (!target) {
-    target = v1.copy();
-  } else {
-    target.set(v1);
-  }
-  target.sub(v2);
-  return target;
+	if (!target) {
+		target = v1.copy();
+	} else {
+		target.set(v1);
+	}
+	target.sub(v2);
+	return target;
 };
 
 /**
@@ -660,13 +651,13 @@ PClone.Vector.sub = function sub(v1, v2, target) {
  */
 
 PClone.Vector.mult = function mult(v, n, target) {
-  if (!target) {
-    target = v.copy();
-  } else {
-    target.set(v);
-  }
-  target.mult(n);
-  return target;
+	if (!target) {
+		target = v.copy();
+	} else {
+		target.set(v);
+	}
+	target.mult(n);
+	return target;
 };
 
 /**
@@ -674,13 +665,13 @@ PClone.Vector.mult = function mult(v, n, target) {
  */
 
 PClone.Vector.div = function div(v, n, target) {
-  if (!target) {
-    target = v.copy();
-  } else {
-    target.set(v);
-  }
-  target.div(n);
-  return target;
+	if (!target) {
+		target = v.copy();
+	} else {
+		target.set(v);
+	}
+	target.div(n);
+	return target;
 };
 
 /**
@@ -688,7 +679,7 @@ PClone.Vector.div = function div(v, n, target) {
  */
 
 PClone.Vector.dot = function dot(v1, v2) {
-  return v1.dot(v2);
+	return v1.dot(v2);
 };
 
 /**
@@ -696,7 +687,7 @@ PClone.Vector.dot = function dot(v1, v2) {
  */
 
 PClone.Vector.cross = function cross(v1, v2) {
-  return v1.cross(v2);
+	return v1.cross(v2);
 };
 
 /**
@@ -705,7 +696,7 @@ PClone.Vector.cross = function cross(v1, v2) {
  */
 
 PClone.Vector.dist = function dist(v1, v2) {
-  return v1.dist(v2);
+	return v1.dist(v2);
 };
 
 /**
@@ -714,70 +705,78 @@ PClone.Vector.dist = function dist(v1, v2) {
  */
 
 PClone.Vector.lerp = function lerp(v1, v2, amt, target) {
-  if (!target) {
-    target = v1.copy();
-  } else {
-    target.set(v1);
-  }
-  target.lerp(v2, amt);
-  return target;
+	if (!target) {
+		target = v1.copy();
+	} else {
+		target.set(v1);
+	}
+	target.lerp(v2, amt);
+	return target;
 };
 
 PClone.Vector.mag = function mag(vecT) {
-  var x = vecT.x,
-    y = vecT.y,
-    z = vecT.z;
-  var magsq = x * x + y * y + z * z;
-  return Math.sqrt(magsq);
+	var x = vecT.x,
+		y = vecT.y,
+		z = vecT.z;
+	var magsq = x * x + y * y + z * z;
+	return Math.sqrt(magsq);
 };
 
 /////////////////////// COLOR //////////////////////////////
 
+PClone.prototype.lerp_color = function (col1, col2, a) {
+	var mix1 = pc.lerp(col1[0], col2[0], a);
+	var mix2 = pc.lerp(col1[1], col2[1], a);
+	var mix3 = pc.lerp(col1[2], col2[2], a);
+	var mix4 = pc.lerp(col1[3], col2[3], a);
+	return this.color(mix1, mix2, mix3, mix4);
+};
+
 /**
  * Convert an HSBA array to HSLA.
  */
-PClone.prototype.hsba_to_hsla = function(hsba) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsba_to_hsla:', 'input should be an array of normalized [H,S,B,A]');
-    post();
-    return null;
-  }
+PClone.prototype.hsba_to_hsla = function (hsba) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsba_to_hsla:', 'input should be an array of normalized [H,S,B,A]');
+		post();
+		return null;
+	}
 
-  var hue = hsba[0];
-  var sat = hsba[1];
-  var val = hsba[2];
+	var hue = hsba[0];
+	var sat = hsba[1];
+	var val = hsba[2];
 
-  // if the array is missing the alpha channel
-  // we just set it to 1;
-  if (typeof hsba[3] === 'undefined') {
-    hsba[3] = 1;
-  }
+	// if the array is missing the alpha channel
+	// we just set it to 1;
+	if (typeof hsba[3] === 'undefined') {
+		hsba[3] = 1;
+	}
 
-  // Calculate lightness.
-  var li = ((2 - sat) * val) / 2;
+	// Calculate lightness.
+	var li = ((2 - sat) * val) / 2;
 
-  // Convert saturation.
-  if (li !== 0) {
-    if (li === 1) {
-      sat = 0;
-    } else if (li < 0.5) {
-      sat = sat / (2 - sat);
-    } else {
-      sat = (sat * val) / (2 - li * 2);
-    }
-  }
-  // Hue and alpha stay the same.
-  return [hue, sat, li, hsba[3]];
+	// Convert saturation.
+	if (li !== 0) {
+		if (li === 1) {
+			sat = 0;
+		} else if (li < 0.5) {
+			sat = sat / (2 - sat);
+		} else {
+			sat = (sat * val) / (2 - li * 2);
+		}
+	}
+	// Hue and alpha stay the same.
+	return [hue, sat, li, hsba[3]];
 };
 
-PClone.prototype.hsb_to_hsl = function(hsb) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsb_to_hsl expects an array of normalized [H,S,B] as input');
-    post();
-    return null;
-  }
-  var hsla = this.hsba_to_hsla(hsb);
-  return hsla.slice(0, 3);
+PClone.prototype.hsb_to_hsl = function (hsb) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsb_to_hsl expects an array of normalized [H,S,B] as input');
+		post();
+		return null;
+	}
+	var hsla = this.hsba_to_hsla(hsb);
+	return hsla.slice(0, 3);
 };
 
 /**
@@ -788,521 +787,516 @@ PClone.prototype.hsb_to_hsl = function(hsb) {
  * components, and pick a convenient third one ('zest') so that we don't need
  * to calculate formal HSBA saturation.
  */
-PClone.prototype.hsla_to_rgba = function(hsla) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsla_to_rgba expects an array of normalized [H,S,L,A] as input');
-    post();
-    return null;
-  }
+PClone.prototype.hsla_to_rgba = function (hsla) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsla_to_rgba expects an array of normalized [H,S,L,A] as input');
+		post();
+		return null;
+	}
 
-  var hue = hsla[0] * 6; // We will split hue into 6 sectors.
-  var sat = hsla[1];
-  var li = hsla[2];
+	var hue = hsla[0] * 6; // We will split hue into 6 sectors.
+	var sat = hsla[1];
+	var li = hsla[2];
 
-  // if the array is missing the alpha channel
-  // we just set it to 1;
-  if (typeof hsla[3] === 'undefined') {
-    hsla[3] = 1;
-  }
+	// if the array is missing the alpha channel
+	// we just set it to 1;
+	if (typeof hsla[3] === 'undefined') {
+		hsla[3] = 1;
+	}
 
-  var RGBA = [];
+	var RGBA = [];
 
-  if (sat === 0) {
-    RGBA = [li, li, li, hsla[3]]; // Return early if grayscale.
-  } else {
-    // Calculate brightness.
-    var val;
-    if (li < 0.5) {
-      val = (1 + sat) * li;
-    } else {
-      val = li + sat - li * sat;
-    }
+	if (sat === 0) {
+		RGBA = [li, li, li, hsla[3]]; // Return early if grayscale.
+	} else {
+		// Calculate brightness.
+		var val;
+		if (li < 0.5) {
+			val = (1 + sat) * li;
+		} else {
+			val = li + sat - li * sat;
+		}
 
-    // Define zest.
-    var zest = 2 * li - val;
+		// Define zest.
+		var zest = 2 * li - val;
 
-    // Implement projection (project onto green by default).
-    var hzvToRGB = function(hue, zest, val) {
-      if (hue < 0) {
-        // Hue must wrap to allow projection onto red and blue.
-        hue += 6;
-      } else if (hue >= 6) {
-        hue -= 6;
-      }
-      if (hue < 1) {
-        // Red to yellow (increasing green).
-        return zest + (val - zest) * hue;
-      } else if (hue < 3) {
-        // Yellow to cyan (greatest green).
-        return val;
-      } else if (hue < 4) {
-        // Cyan to blue (decreasing green).
-        return zest + (val - zest) * (4 - hue);
-      } else {
-        // Blue to red (least green).
-        return zest;
-      }
-    };
+		// Implement projection (project onto green by default).
+		var hzvToRGB = function (hue, zest, val) {
+			if (hue < 0) {
+				// Hue must wrap to allow projection onto red and blue.
+				hue += 6;
+			} else if (hue >= 6) {
+				hue -= 6;
+			}
+			if (hue < 1) {
+				// Red to yellow (increasing green).
+				return zest + (val - zest) * hue;
+			} else if (hue < 3) {
+				// Yellow to cyan (greatest green).
+				return val;
+			} else if (hue < 4) {
+				// Cyan to blue (decreasing green).
+				return zest + (val - zest) * (4 - hue);
+			} else {
+				// Blue to red (least green).
+				return zest;
+			}
+		};
 
-    // Perform projections, offsetting hue as necessary.
-    RGBA = [
-      hzvToRGB(hue + 2, zest, val),
-      hzvToRGB(hue, zest, val),
-      hzvToRGB(hue - 2, zest, val),
-      hsla[3],
-    ];
-  }
+		// Perform projections, offsetting hue as necessary.
+		RGBA = [hzvToRGB(hue + 2, zest, val), hzvToRGB(hue, zest, val), hzvToRGB(hue - 2, zest, val), hsla[3]];
+	}
 };
 
-PClone.prototype.hsl_to_rgb = function(hsl) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsl_to_rgb expects an array of normalized [H,S,L] as input');
-    post();
-    return null;
-  }
-  var rgba = this.hsla_to_rbga(hsl);
-  return rgba.slice(0, 3);
+PClone.prototype.hsl_to_rgb = function (hsl) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsl_to_rgb expects an array of normalized [H,S,L] as input');
+		post();
+		return null;
+	}
+	var rgba = this.hsla_to_rbga(hsl);
+	return rgba.slice(0, 3);
 };
 
 /**
  * Convert an RGBA array to HSBA array.
  */
-PClone.rgba_to_hsba = function(rgba) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.rgba_to_hsba expects an array of normalized [R,G,B,A] as input');
-    post();
-    return null;
-  }
-  var red = rgba[0];
-  var green = rgba[1];
-  var blue = rgba[2];
+PClone.rgba_to_hsba = function (rgba) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.rgba_to_hsba expects an array of normalized [R,G,B,A] as input');
+		post();
+		return null;
+	}
+	var red = rgba[0];
+	var green = rgba[1];
+	var blue = rgba[2];
 
-  if (typeof rgba[3] === 'undefined') {
-    rgba[3] = 1;
-  }
+	if (typeof rgba[3] === 'undefined') {
+		rgba[3] = 1;
+	}
 
-  var val = Math.max(red, green, blue);
-  var chroma = val - Math.min(red, green, blue);
+	var val = Math.max(red, green, blue);
+	var chroma = val - Math.min(red, green, blue);
 
-  var hue, sat;
-  if (chroma === 0) {
-    // Return early if grayscale.
-    hue = 0;
-    sat = 0;
-  } else {
-    sat = chroma / val;
-    if (red === val) {
-      // Magenta to yellow.
-      hue = (green - blue) / chroma;
-    } else if (green === val) {
-      // Yellow to cyan.
-      hue = 2 + (blue - red) / chroma;
-    } else if (blue === val) {
-      // Cyan to magenta.
-      hue = 4 + (red - green) / chroma;
-    }
-    if (hue < 0) {
-      // Confine hue to the interval [0, 1).
-      hue += 6;
-    } else if (hue >= 6) {
-      hue -= 6;
-    }
-  }
-  return [hue / 6, sat, val, rgba[3]];
+	var hue, sat;
+	if (chroma === 0) {
+		// Return early if grayscale.
+		hue = 0;
+		sat = 0;
+	} else {
+		sat = chroma / val;
+		if (red === val) {
+			// Magenta to yellow.
+			hue = (green - blue) / chroma;
+		} else if (green === val) {
+			// Yellow to cyan.
+			hue = 2 + (blue - red) / chroma;
+		} else if (blue === val) {
+			// Cyan to magenta.
+			hue = 4 + (red - green) / chroma;
+		}
+		if (hue < 0) {
+			// Confine hue to the interval [0, 1).
+			hue += 6;
+		} else if (hue >= 6) {
+			hue -= 6;
+		}
+	}
+	return [hue / 6, sat, val, rgba[3]];
 };
 
-PClone.prototype.rgb_to_hsb = function(rgb) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.rgb_to_hsb expects an array of normalized [R,G,B] as input');
-    post();
-    return null;
-  }
-  var hsba = this.rgba_to_hsba(rgb);
-  return hsba.slice(0, 3);
+PClone.prototype.rgb_to_hsb = function (rgb) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.rgb_to_hsb expects an array of normalized [R,G,B] as input');
+		post();
+		return null;
+	}
+	var hsba = this.rgba_to_hsba(rgb);
+	return hsba.slice(0, 3);
 };
 
 /**
  * Convert an HSBA array to RGBA.
  */
-PClone.prototype.hsba_to_rgba = function(hsba) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsba_to_rgba expects an array of normalized [H,S,B,A] as input');
-    post();
-    return null;
-  }
+PClone.prototype.hsba_to_rgba = function (hsba) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsba_to_rgba expects an array of normalized [H,S,B,A] as input');
+		post();
+		return null;
+	}
 
-  var hue = hsba[0] * 6; // We will split hue into 6 sectors.
-  var sat = hsba[1];
-  var val = hsba[2];
+	var hue = hsba[0] * 6; // We will split hue into 6 sectors.
+	var sat = hsba[1];
+	var val = hsba[2];
 
-  if (typeof hsba[3] === 'undefined') {
-    hsba[3] = 1;
-  }
+	if (typeof hsba[3] === 'undefined') {
+		hsba[3] = 1;
+	}
 
-  var RGBA = [];
+	var RGBA = [];
 
-  if (sat === 0) {
-    RGBA = [val, val, val, hsba[3]]; // Return early if grayscale.
-  } else {
-    var sector = Math.floor(hue);
-    var tint1 = val * (1 - sat);
-    var tint2 = val * (1 - sat * (hue - sector));
-    var tint3 = val * (1 - sat * (1 + sector - hue));
-    var red, green, blue;
-    if (sector === 1) {
-      // Yellow to green.
-      red = tint2;
-      green = val;
-      blue = tint1;
-    } else if (sector === 2) {
-      // Green to cyan.
-      red = tint1;
-      green = val;
-      blue = tint3;
-    } else if (sector === 3) {
-      // Cyan to blue.
-      red = tint1;
-      green = tint2;
-      blue = val;
-    } else if (sector === 4) {
-      // Blue to magenta.
-      red = tint3;
-      green = tint1;
-      blue = val;
-    } else if (sector === 5) {
-      // Magenta to red.
-      red = val;
-      green = tint1;
-      blue = tint2;
-    } else {
-      // Red to yellow (sector could be 0 or 6).
-      red = val;
-      green = tint3;
-      blue = tint1;
-    }
-    RGBA = [red, green, blue, hsba[3]];
-  }
+	if (sat === 0) {
+		RGBA = [val, val, val, hsba[3]]; // Return early if grayscale.
+	} else {
+		var sector = Math.floor(hue);
+		var tint1 = val * (1 - sat);
+		var tint2 = val * (1 - sat * (hue - sector));
+		var tint3 = val * (1 - sat * (1 + sector - hue));
+		var red, green, blue;
+		if (sector === 1) {
+			// Yellow to green.
+			red = tint2;
+			green = val;
+			blue = tint1;
+		} else if (sector === 2) {
+			// Green to cyan.
+			red = tint1;
+			green = val;
+			blue = tint3;
+		} else if (sector === 3) {
+			// Cyan to blue.
+			red = tint1;
+			green = tint2;
+			blue = val;
+		} else if (sector === 4) {
+			// Blue to magenta.
+			red = tint3;
+			green = tint1;
+			blue = val;
+		} else if (sector === 5) {
+			// Magenta to red.
+			red = val;
+			green = tint1;
+			blue = tint2;
+		} else {
+			// Red to yellow (sector could be 0 or 6).
+			red = val;
+			green = tint3;
+			blue = tint1;
+		}
+		RGBA = [red, green, blue, hsba[3]];
+	}
 
-  return RGBA;
+	return RGBA;
 };
 
-PClone.prototype.hsb_to_rgb = function(hsb) {
-  if (!(arguments[0] instanceof Array)) {
-    error('PClone.prototype.hsb_to_rgb expects an array of normalized [H,S,B] as input');
-    post();
-    return null;
-  }
+PClone.prototype.hsb_to_rgb = function (hsb) {
+	if (!(arguments[0] instanceof Array)) {
+		error('PClone.prototype.hsb_to_rgb expects an array of normalized [H,S,B] as input');
+		post();
+		return null;
+	}
 
-  var hsba = [hsb[0], hsb[1], hsb[2], 1];
-  var rgba = this.hsba_to_rgba(hsba);
-  return rgba.slice(0, 3);
+	var hsba = [hsb[0], hsb[1], hsb[2], 1];
+	var rgba = this.hsba_to_rgba(hsba);
+	return rgba.slice(0, 3);
 };
 
-PClone.prototype.load_image = function(img) {
-  return new Image(this.img);
+PClone.prototype.load_image = function (img) {
+	return new Image(this.img);
 };
 
-PClone.prototype.set_color_mode = function() {
-  if (arguments.length === 1) {
-    this.color_properties.mode = arguments[0];
-  } else if (arguments.length === 2) {
-    this.color_properties.mode = arguments[0];
-    this.color_properties.MAX_1 = arguments[1];
-    this.color_properties.MAX_2 = arguments[1];
-    this.color_properties.MAX_3 = arguments[1];
-    this.color_properties.MAX_4 = arguments[1];
-  } else if (arguments.length === 5) {
-    this.color_properties.mode = arguments[0];
-    this.color_properties.MAX_1 = arguments[1];
-    this.color_properties.MAX_2 = arguments[2];
-    this.color_properties.MAX_3 = arguments[3];
-    this.color_properties.MAX_4 = arguments[4];
-  } else {
-    error('PClone.prototype.set_color_mode: invalid arguments');
-  }
+PClone.prototype.color_mode = function () {
+	if (typeof arguments[0] !== 'string') {
+		error('PClone.prototype.color_mode: first argument must specify the color mode and be of type: string');
+	} else {
+		var valid_modes = [constants.RGB, constants.HSB, constants.HSL];
+		if (valid_modes.indexOf(arguments[0]) < 0)
+			error('PClone.prototype.color_mode: ' + arguments[0] + ' is not a valid mode. Color mode must be either: RGB, HSB, or HSL');
+	}
+	if (arguments.length === 1) {
+		// only mode specified, set all props to defaults
+		this.color_properties.mode = arguments[0];
+		switch (arguments[0]) {
+			case constants.RGB:
+				this.color_properties.MAX_1 = 255;
+				this.color_properties.MAX_2 = 255;
+				this.color_properties.MAX_3 = 255;
+				this.color_properties.MAX_4 = 255;
+				break;
+			case constants.HSL:
+			case constants.HSB:
+				this.color_properties.MAX_1 = 360;
+				this.color_properties.MAX_2 = 100;
+				this.color_properties.MAX_3 = 100;
+				this.color_properties.MAX_4 = 100;
+		}
+	} else if (arguments.length === 2) {
+		// mode and one value specified, set all props to value
+		this.color_properties.mode = arguments[0];
+		this.color_properties.MAX_1 = arguments[1];
+		this.color_properties.MAX_2 = arguments[1];
+		this.color_properties.MAX_3 = arguments[1];
+		this.color_properties.MAX_4 = arguments[1];
+	} else if (arguments.length === 4) {
+		// mode and 3 value specified, set alpha to default value
+		this.color_properties.mode = arguments[0];
+		this.color_properties.MAX_1 = arguments[1];
+		this.color_properties.MAX_2 = arguments[2];
+		this.color_properties.MAX_3 = arguments[3];
+		this.color_properties.MAX_4 = arguments[0] === constants.RGB ? 255 : 100;
+	} else if (arguments.length === 5) {
+		this.color_properties.mode = arguments[0];
+		this.color_properties.MAX_1 = arguments[1];
+		this.color_properties.MAX_2 = arguments[2];
+		this.color_properties.MAX_3 = arguments[3];
+		this.color_properties.MAX_4 = arguments[4];
+	} else {
+		error('PClone.prototype.color_mode: invalid arguments');
+	}
 };
 
-PClone.prototype.color = function(r, g, b, a) {
-  if (this instanceof PClone) {
-    return new PClone.Color(this, arguments);
-  } else {
-    return new PClone.Color(r, g, b, a);
-  }
+PClone.prototype.color = function (r, g, b, a) {
+	if (this instanceof PClone) {
+		return new PClone.Color(this, arguments);
+	} else {
+		return new PClone.Color(r, g, b, a);
+	}
 };
 
-PClone.Color = function() {
-  var ColorArray = [];
+PClone.Color = function () {
+	var ColorArray = [];
+	if (arguments[0] instanceof PClone) {
+		ColorArray.push.apply(ColorArray, arguments[1]);
+		ColorArray.__proto__ = PClone.Color.prototype;
+		ColorArray.PClone = arguments[0];
+		ColorArray.props = ColorArray.PClone.color_properties;
+	} else {
+		ColorArray.push.apply(ColorArray, arguments[0]);
+		ColorArray.__proto__ = PClone.Color.prototype;
+		ColorArray.mode = constants.RGB;
+	}
 
-  if (arguments[0] instanceof PClone) {
-    ColorArray.push.apply(ColorArray, arguments[1]);
-    ColorArray.__proto__ = PClone.Color.prototype;
-    ColorArray.PClone = arguments[0];
-    ColorArray.props = ColorArray.PClone.color_properties;
-  } else {
-    ColorArray.push.apply(ColorArray, arguments[0]);
-    ColorArray.__proto__ = PClone.Color.prototype;
-    ColorArray.mode = 'rgb';
-  }
+	if (!ColorArray[3]) {
+		ColorArray[3] = ColorArray.props.MAX_4;
+	}
 
-  ColorArray.red = ColorArray[0] || 0;
-  ColorArray.green = ColorArray[1] || 0;
-  ColorArray.blue = ColorArray[2] || 0;
+	ColorArray.red = ColorArray[0] || 0;
+	ColorArray.green = ColorArray[1] || 0;
+	ColorArray.blue = ColorArray[2] || 0;
 
-  ColorArray.hue = ColorArray[0] || 0;
-  ColorArray.saturation = ColorArray[1] || 0;
-  ColorArray.brightness = ColorArray[2] || 0;
-  ColorArray.luminosity = ColorArray[2] || 0;
-  ColorArray.alpha = ColorArray[3] || 255;
-
-  return ColorArray;
+	ColorArray.hue = ColorArray[0] || 0;
+	ColorArray.saturation = ColorArray[1] || 0;
+	ColorArray.brightness = ColorArray[2] || 0;
+	ColorArray.luminosity = ColorArray[2] || 0;
+	ColorArray.alpha = ColorArray[3];
+	return ColorArray;
 };
 
 PClone.Color.prototype = new Array();
 
-PClone.Color.prototype.normalize = function() {
-  this[0] = this.PClone.map(this[0], 0, this.props.MAX_1, 0, 1);
-  this[1] = this.PClone.map(this[1], 0, this.props.MAX_2, 0, 1);
-  this[2] = this.PClone.map(this[2], 0, this.props.MAX_3, 0, 1);
-  this[3] = this.PClone.map(this[3], 0, this.props.MAX_4, 0, 1);
-  return this;
+PClone.Color.prototype.normalize = function () {
+	this[0] = this.PClone.map(this[0], 0, this.PClone.color_properties.MAX_1, 0, 1);
+	this[1] = this.PClone.map(this[1], 0, this.PClone.color_properties.MAX_2, 0, 1);
+	this[2] = this.PClone.map(this[2], 0, this.PClone.color_properties.MAX_3, 0, 1);
+	this[3] = this.PClone.map(this[3], 0, this.PClone.color_properties.MAX_4, 0, 1);
+	return this;
 };
 
-PClone.Color.prototype.to_hsb = function() {
-  var a = [this[0], this[1], this[2], this[3]];
-  if (this.get_mode() === 'hsb') {
-    return this;
-  } else if (this.get_mode() === 'rgb') {
-    var rgb = this.PClone.rgba_to_hsba(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else if (this.get_mode() === 'hsl') {
-    var rgb = this.PClone.hsla_to_hsba(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else {
-    error('PClone.Color.prototype.to_hsb: invalid color_mode: ' + this.get_mode() + '\n');
-  }
+PClone.Color.prototype.to_hsb = function () {
+	var a = [this[0], this[1], this[2], this[3]];
+	if (this.get_mode() === constants.HSB) {
+		return this;
+	} else if (this.get_mode() === constants.RGB) {
+		var rgb = this.PClone.rgba_to_hsba(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else if (this.get_mode() === constants.HSL) {
+		var rgb = this.PClone.hsla_to_hsba(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else {
+		error('PClone.Color.prototype.to_hsb: invalid color_mode: ' + this.get_mode() + '\n');
+	}
 };
 
-PClone.Color.prototype.to_rgb = function() {
-  var a = [this[0], this[1], this[2], this[3]];
-  if (this.get_mode() === 'rgb') {
-    return this;
-  } else if (this.get_mode() === 'hsb') {
-    var rgb = this.PClone.hsba_to_rgba(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else if (this.get_mode() === 'hsl') {
-    var rgb = this.PClone.hsla_to_rgba(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else {
-    error('PClone.Color.prototype.to_rgb: invalid color_mode: ' + this.get_mode() + '\n');
-  }
+PClone.Color.prototype.to_rgb = function () {
+	var a = [this[0], this[1], this[2], this[3]];
+	if (this.get_mode() === constants.RGB) {
+		return this;
+	} else if (this.get_mode() === constants.HSB) {
+		var rgb = this.PClone.hsba_to_rgba(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else if (this.get_mode() === constants.HSL) {
+		var rgb = this.PClone.hsla_to_rgba(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else {
+		error('PClone.Color.prototype.to_rgb: invalid color_mode: ' + this.get_mode() + '\n');
+	}
 };
 
-PClone.Color.prototype.to_hsl = function() {
-  var a = [this[0], this[1], this[2], this[3]];
-  if (this.get_mode() === 'hsl') {
-    return this;
-  } else if (this.get_mode() === 'hsb') {
-    var rgb = this.PClone.hsba_to_hsla(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else if (this.get_mode() === 'rgb') {
-    var rgb = this.PClone.rgba_to_hsla(a);
-    return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-  } else {
-    error('PClone.Color.prototype.to_hsl: invalid color_mode: ' + this.get_mode() + '\n');
-  }
+PClone.Color.prototype.to_hsl = function () {
+	var a = [this[0], this[1], this[2], this[3]];
+	if (this.get_mode() === constants.HSL) {
+		return this;
+	} else if (this.get_mode() === constants.HSB) {
+		var rgb = this.PClone.hsba_to_hsla(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else if (this.get_mode() === constants.RGB) {
+		var rgb = this.PClone.rgba_to_hsla(a);
+		return this.PClone.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+	} else {
+		error('PClone.Color.prototype.to_hsl: invalid color_mode: ' + this.get_mode() + '\n');
+	}
 };
 
-PClone.Color.prototype.set_mode = function(mode) {
-  this.props.mode = mode;
+PClone.Color.prototype.get_props = function () {
+	return this.PClone.color_properties;
 };
 
-PClone.Color.prototype.get_props = function(mode) {
-  return this.red;
-};
-
-PClone.Color.prototype.get_mode = function(mode) {
-  return this.props.mode.toLowerCase();
+PClone.Color.prototype.get_mode = function () {
+	return this.PClone.color_properties.mode;
 };
 
 /**
  * Returns the red channel
  */
 
-PClone.Color.prototype.get_red = function() {
-  if (this.get_mode() !== 'rgb') {
-    error(
-      'PClone.Color.prototype.get_red: you are accessing an RGB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.red;
+PClone.Color.prototype.get_red = function () {
+	if (this.get_mode() !== constants.RGB) {
+		error('PClone.Color.prototype.get_red: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.red;
 };
 
 /**
  * Returns the green channel
  */
 
-PClone.Color.prototype.get_green = function() {
-  if (this.get_mode() !== 'rgb') {
-    error(
-      'PClone.Color.prototype.get_green: you are accessing an RGB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.green;
+PClone.Color.prototype.get_green = function () {
+	if (this.get_mode() !== constants.RGB) {
+		error('PClone.Color.prototype.get_green: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.green;
 };
 
 /**
  * Returns the blue channel
  */
 
-PClone.Color.prototype.get_blue = function() {
-  if (this.get_mode() !== 'rgb') {
-    error(
-      'PClone.Color.prototype.get_blue: you are accessing an RGB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.blue;
+PClone.Color.prototype.get_blue = function () {
+	if (this.get_mode() !== constants.RGB) {
+		error('PClone.Color.prototype.get_blue: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.blue;
 };
 
 /**
  * Returns the hue value
  */
 
-PClone.Color.prototype.get_hue = function() {
-  if (this.get_mode() !== 'hsb') {
-    error(
-      'PClone.Color.prototype.get_hue: you are accessing a HSB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.hue;
+PClone.Color.prototype.get_hue = function () {
+	if (this.get_mode() !== constants.HSB) {
+		error('PClone.Color.prototype.get_hue: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.hue;
 };
 
 /**
  * Returns the saturation value
  */
 
-PClone.Color.prototype.get_saturation = function() {
-  if (this.get_mode() !== 'hsb') {
-    error(
-      'PClone.Color.prototype.get_saturation: you are accessing a HSB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.saturation;
+PClone.Color.prototype.get_saturation = function () {
+	if (this.get_mode() !== constants.HSB) {
+		error('PClone.Color.prototype.get_saturation: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.saturation;
 };
 
 /**
  * Returns the brightness value
  */
 
-PClone.Color.prototype.get_brightness = function() {
-  if (this.get_mode() !== 'hsb') {
-    error(
-      'PClone.Color.prototype.get_brightness: you are accessing a HSB property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.brightness;
+PClone.Color.prototype.get_brightness = function () {
+	if (this.get_mode() !== constants.HSB) {
+		error('PClone.Color.prototype.get_brightness: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.brightness;
 };
 
 /**
  * Returns the luminosity value
  */
 
-PClone.Color.prototype.get_luminosity = function() {
-  if (this.get_mode() !== 'hsl') {
-    error(
-      'PClone.Color.prototype.get_luminosity: you are accessing a HSL property but color_mode is currently set to ' +
-        this.get_mode() +
-        '\n'
-    );
-  }
-  return this.luminosity;
+PClone.Color.prototype.get_luminosity = function () {
+	if (this.get_mode() !== constants.HSL) {
+		error('PClone.Color.prototype.get_luminosity: you are accessing a HSL property but color_mode is currently set to ' + this.get_mode() + '\n');
+	}
+	return this.luminosity;
 };
 
 /**
  * Returns the alpha value
  */
 
-PClone.Color.prototype.get_alpha = function() {
-  return this.alpha;
+PClone.Color.prototype.get_alpha = function () {
+	return this.alpha;
 };
 
 // Linear Congruential Generator
 // Variant of a Lehman Generator
-var lcg = (function() {
-  // Set to values from http://en.wikipedia.org/wiki/Numerical_Recipes
-  // m is basically chosen to be large (as it is the max period)
-  // and for its relationships to a and c
-  var m = 4294967296,
-    // a - 1 should be divisible by m's prime factors
-    a = 1664525,
-    // c and m should be co-prime
-    c = 1013904223,
-    seed,
-    z;
-  return {
-    setSeed: function(val) {
-      // pick a random seed if val is undefined or null
-      // the >>> 0 casts the seed to an unsigned 32-bit integer
-      z = seed = (val == null ? Math.random() * m : val) >>> 0;
-    },
-    getSeed: function() {
-      return seed;
-    },
-    rand: function() {
-      // define the recurrence relationship
-      z = (a * z + c) % m;
-      // return a float in [0, 1)
-      // if z = m then z / m = 0 therefore (z % m) / m < 1 always
-      return z / m;
-    },
-  };
+var lcg = (function () {
+	// Set to values from http://en.wikipedia.org/wiki/Numerical_Recipes
+	// m is basically chosen to be large (as it is the max period)
+	// and for its relationships to a and c
+	var m = 4294967296,
+		// a - 1 should be divisible by m's prime factors
+		a = 1664525,
+		// c and m should be co-prime
+		c = 1013904223,
+		seed,
+		z;
+	return {
+		setSeed: function (val) {
+			// pick a random seed if val is undefined or null
+			// the >>> 0 casts the seed to an unsigned 32-bit integer
+			z = seed = (val == null ? Math.random() * m : val) >>> 0;
+		},
+		getSeed: function () {
+			return seed;
+		},
+		rand: function () {
+			// define the recurrence relationship
+			z = (a * z + c) % m;
+			// return a float in [0, 1)
+			// if z = m then z / m = 0 therefore (z % m) / m < 1 always
+			return z / m;
+		},
+	};
 })();
 
 function hypot(x, y, z) {
-  var length = arguments.length;
-  var args = [];
-  var max = 0;
-  for (var i = 0; i < length; i++) {
-    var n = arguments[i];
-    n = +n;
-    if (n === Infinity || n === -Infinity) {
-      return Infinity;
-    }
-    n = Math.abs(n);
-    if (n > max) {
-      max = n;
-    }
-    args[i] = n;
-  }
+	var length = arguments.length;
+	var args = [];
+	var max = 0;
+	for (var i = 0; i < length; i++) {
+		var n = arguments[i];
+		n = +n;
+		if (n === Infinity || n === -Infinity) {
+			return Infinity;
+		}
+		n = Math.abs(n);
+		if (n > max) {
+			max = n;
+		}
+		args[i] = n;
+	}
 
-  if (max === 0) {
-    max = 1;
-  }
-  var sum = 0;
-  var compensation = 0;
-  for (var j = 0; j < length; j++) {
-    var m = args[j] / max;
-    var summand = m * m - compensation;
-    var preliminary = sum + summand;
-    compensation = preliminary - sum - summand;
-    sum = preliminary;
-  }
-  return Math.sqrt(sum) * max;
+	if (max === 0) {
+		max = 1;
+	}
+	var sum = 0;
+	var compensation = 0;
+	for (var j = 0; j < length; j++) {
+		var m = args[j] / max;
+		var summand = m * m - compensation;
+		var preliminary = sum + summand;
+		compensation = preliminary - sum - summand;
+		sum = preliminary;
+	}
+	return Math.sqrt(sum) * max;
 }
 
-var scaled_cosine = function(i) {
-  return 0.5 * (1.0 - Math.cos(i * Math.PI));
+var scaled_cosine = function (i) {
+	return 0.5 * (1.0 - Math.cos(i * Math.PI));
 };
 
 exports.PClone = PClone;
