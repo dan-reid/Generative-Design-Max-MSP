@@ -394,7 +394,10 @@
 			}
  ],
 		"parameters" : 		{
+<<<<<<< HEAD
 			"obj-4" : [ "live.text", "live.text", 0 ],
+=======
+>>>>>>> e70f757bcc96f140d94cf384779dddb1a4059544
 			"obj-36" : [ "GridX", "GridX", 0 ],
 			"obj-37" : [ "GridY", "GridY", 0 ],
 			"parameterbanks" : 			{
