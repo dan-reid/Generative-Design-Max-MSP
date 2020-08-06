@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 923.0, 618.0 ],
+		"rect" : [ 549.0, 160.0, 923.0, 618.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-26",
@@ -94,7 +95,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "preset", "int", "preset", "int" ],
-					"patching_rect" : [ 454.0, 220.0, 44.0, 19.0 ],
+					"patching_rect" : [ 454.0, 220.0, 56.0, 18.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
 							"data" : [ 5, "obj-108", "flonum", "float", 0.1, 5, "obj-109", "flonum", "float", 1.0, 5, "obj-9", "flonum", "float", 10.0, 5, "obj-10", "flonum", "float", 100.0, 5, "obj-13", "number", "int", 2000, 5, "obj-20", "flonum", "float", 0.1 ]
@@ -106,6 +107,10 @@
 , 						{
 							"number" : 3,
 							"data" : [ 5, "obj-108", "flonum", "float", 0.100000001490116, 5, "obj-109", "flonum", "float", 1.0, 5, "obj-9", "flonum", "float", -10.0, 5, "obj-10", "flonum", "float", 10.0, 5, "obj-13", "number", "int", 1500, 5, "obj-20", "flonum", "float", 1.0 ]
+						}
+, 						{
+							"number" : 4,
+							"data" : [ 5, "obj-108", "flonum", "float", 0.0, 5, "obj-109", "flonum", "float", 0.25, 5, "obj-9", "flonum", "float", 10.0, 5, "obj-10", "flonum", "float", 89.0, 5, "obj-13", "number", "int", 3000, 5, "obj-20", "flonum", "float", 0.100000001490116 ]
 						}
  ]
 				}
@@ -270,7 +275,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 471.0, 372.5, 83.0, 21.0 ],
+					"patching_rect" : [ 490.0, 372.5, 83.0, 21.0 ],
 					"text" : "Overlay Alpha"
 				}
 
@@ -382,9 +387,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 41.0, 146.0, 357.0, 22.0 ],
-					"text" : "jit.world name @floating 1 dim 1280 800 @size 640 400 @fsaa 1"
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"patching_rect" : [ 41.0, 146.0, 375.0, 22.0 ],
+					"text" : "jit.world M_1_5_3 @floating 1 dim 1280 800 @size 640 400 @fsaa 1"
 				}
 
 			}
@@ -447,7 +452,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 359.5, 453.0, 288.0, 453.0, 288.0, 345.0, 49.5, 345.0 ],
+					"midpoints" : [ 359.5, 463.0, 288.0, 463.0, 288.0, 345.0, 49.5, 345.0 ],
 					"source" : [ "obj-11", 0 ]
 				}
 
@@ -478,7 +483,7 @@
 				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"hidden" : 1,
-					"midpoints" : [ 480.166666666666629, 270.0, 408.0, 270.0, 408.0, 102.0, 50.5, 102.0 ],
+					"midpoints" : [ 488.166666666666686, 270.0, 408.0, 270.0, 408.0, 102.0, 50.5, 102.0 ],
 					"source" : [ "obj-14", 2 ]
 				}
 
@@ -510,7 +515,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 219.5, 300.0, 49.5, 300.0 ],
+					"midpoints" : [ 228.5, 300.0, 49.5, 300.0 ],
 					"order" : 1,
 					"source" : [ "obj-2", 1 ]
 				}
@@ -541,7 +546,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 359.5, 591.0, 288.0, 591.0, 288.0, 345.0, 49.5, 345.0 ],
+					"midpoints" : [ 359.5, 600.0, 288.0, 600.0, 288.0, 345.0, 49.5, 345.0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -593,7 +598,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_1_5_3.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_5_3_Noisy_Motion",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_1_Randomness_and_noise/M_1_5_3_Noisy_Motion",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
