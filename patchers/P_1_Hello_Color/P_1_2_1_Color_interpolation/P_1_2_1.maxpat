@@ -41,12 +41,37 @@
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-9",
-					"maxclass" : "toggle",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "int" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 51.0, 173.0, 35.0, 35.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 51.0, 152.0, 150.0, 20.0 ],
+					"text" : "not working correctly..."
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "live.text",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 51.0, 174.0, 98.0, 33.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "live.text",
+							"parameter_enum" : [ "val1", "val2" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "live.text",
+							"parameter_mmax" : 1
+						}
+
+					}
+,
+					"text" : "interpolate shortest",
+					"texton" : "interpolate shortest",
+					"varname" : "live.text"
 				}
 
 			}
@@ -84,7 +109,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 239.0, 167.0, 80.0, 35.0 ]
+					"patching_rect" : [ 239.0, 174.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -137,13 +162,13 @@
 					"patching_rect" : [ 446.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_mmin" : 2.0,
-							"parameter_longname" : "GridY",
-							"parameter_mmax" : 10.0,
 							"parameter_shortname" : "GridY",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
-							"parameter_linknames" : 1
+							"parameter_linknames" : 1,
+							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridY",
+							"parameter_mmax" : 10.0
 						}
 
 					}
@@ -163,13 +188,13 @@
 					"patching_rect" : [ 367.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_mmin" : 2.0,
-							"parameter_longname" : "GridX",
-							"parameter_mmax" : 100.0,
 							"parameter_shortname" : "GridX",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
-							"parameter_linknames" : 1
+							"parameter_linknames" : 1,
+							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridX",
+							"parameter_mmax" : 100.0
 						}
 
 					}
@@ -280,6 +305,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-12", 0 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 376.5, 333.0, 231.0, 333.0, 231.0, 261.0, 146.5, 261.0 ],
 					"source" : [ "obj-22", 0 ]
@@ -334,6 +366,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
 					"source" : [ "obj-5", 0 ]
 				}
@@ -353,15 +392,9 @@
 				}
 
 			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-7", 0 ],
-					"source" : [ "obj-9", 0 ]
-				}
-
-			}
  ],
 		"parameters" : 		{
+			"obj-4" : [ "live.text", "live.text", 0 ],
 			"obj-36" : [ "GridX", "GridX", 0 ],
 			"obj-37" : [ "GridY", "GridY", 0 ],
 			"parameterbanks" : 			{

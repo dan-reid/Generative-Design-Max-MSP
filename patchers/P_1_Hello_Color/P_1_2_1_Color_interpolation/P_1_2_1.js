@@ -9,7 +9,7 @@ var tilecount_x;
 var tilecount_y;
 var colors_left = [];
 var colors_right = [];
-var interpolate_shortest = true;
+var interpolate_shortest = false;
 
 setup();
 
