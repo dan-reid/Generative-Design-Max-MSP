@@ -15,17 +15,17 @@ var freq = 5;
 var amp = 0.2;
 
 function calc_mesh() {
-  for (var iv = 0; iv < v_count; iv++) {
-    for (var iu = 0; iu < u_count; iu++) {
-      var u = pc.map(iu, 0, u_count, u_min, u_max);
-      var v = pc.map(iv, 0, v_count, v_min, v_max);
+	for (var iv = 0; iv < v_count; iv++) {
+		for (var iu = 0; iu < u_count; iu++) {
+			var u = pc.map(iu, 0, u_count, u_min, u_max);
+			var v = pc.map(iv, 0, v_count, v_min, v_max);
 
-      var x = u;
-      var y = v;
-      var z = Math.cos(Math.sqrt(u * u + v * v) * freq) * amp;
+			var x = u;
+			var y = v;
+			var z = Math.cos(Math.sqrt(u * u + v * v) * freq) * amp;
 
-      vertices.setcell2d(iu, iv, x / Math.PI, y / Math.PI, z / Math.PI);
-    }
-  }
-  outlet(0, 'jit_matrix', vertices.name);
+			vertices.setcell2d(iu, iv, x / Math.PI, y / Math.PI, z / Math.PI);
+		}
+	}
+	outlet(0, 'jit_matrix', vertices.name);
 }

@@ -20,19 +20,18 @@ function setup() {
 	width = 600;
 	height = 900;
 	// jit.mgraphics
-	mg = new JitterObject("jit.mgraphics", width, height);
+	mg = new JitterObject('jit.mgraphics', width, height);
 	// the matrix to store and output the frame
-	outputmatrix = new JitterMatrix(4, "char", width, height);
+	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 	pc = new PClone();
-	var pic = prepend_path('pic.png')
+	var pic = prepend_path('pic.png');
 	img = new Image(pic);
 	shapes = load_svg_files(prepend_path());
 	background(1, 1, 1, 1);
 }
 
 function drawgraphic() {
-
 	if (!finished) {
 		var drawendtime = Math.floor(millis() + 100);
 		for (y = pointindex; y < img.size[1] && millis() <= drawendtime; y++) {
@@ -47,9 +46,9 @@ function drawgraphic() {
 				var grayscale = c[0] * 0.222 + c[1] * 0.707 + c[2] * 0.071;
 				if (binary) {
 					// make pixels either 0 or 1
-					grayscale = Math.round(grayscale);					
+					grayscale = Math.round(grayscale);
 				}
-		
+
 				var gradient_to_index = Math.round(grayscale * (shapes.length - 1));
 
 				mg.translate(pos_x, pos_y);
@@ -59,24 +58,24 @@ function drawgraphic() {
 			}
 			pointindex = y;
 		}
-		if (pointindex >= img.size[1]-1) finished = true;
+		if (pointindex >= img.size[1] - 1) finished = true;
 	}
-	
+
 	mg.matrixcalc(outputmatrix, outputmatrix);
-	outlet(0, "jit_matrix", outputmatrix.name);
+	outlet(0, 'jit_matrix', outputmatrix.name);
 }
 
 function msg_int(i) {
 	background(1, 1, 1, 1);
 	binary = i;
 	finished = false;
-	pointindex = 0;	
+	pointindex = 0;
 }
 
 function prepend_path(f) {
 	var p = this.patcher.filepath;
 	var n = this.patcher.name;
-	n += '.maxpat'
+	n += '.maxpat';
 	p = p.replace(n, 'data/');
 
 	if (f) return p + f;
@@ -98,20 +97,19 @@ function millis() {
 }
 
 function load_svg_files(folder) {
-
 	var f = new Folder(folder);
 	var files = [];
 
 	f.reset();
 	while (!f.end) {
-		var thefile = new File(f.pathname + "/" + f.filename);
+		var thefile = new File(f.pathname + '/' + f.filename);
 		if (thefile.isopen) thefile.close();
-		var filetype = f.filename.split(".")[1];
+		var filetype = f.filename.split('.')[1];
 
 		// f.filetype returns a string with a space at the end.
 		// "svg "
 		// so you can use f.filetype === "svg " either
-		if (filetype === "svg") {
+		if (filetype === 'svg') {
 			files.push(f.filename);
 		}
 		f.next();
