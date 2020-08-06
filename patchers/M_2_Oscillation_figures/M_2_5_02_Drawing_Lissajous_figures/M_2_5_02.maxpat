@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 1208.0, 687.0 ],
+		"rect" : [ 89.0, 113.0, 693.0, 414.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-11",
@@ -88,7 +89,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 53.0, 392.0, 464.0, 240.0 ],
+					"patching_rect" : [ 283.0, 68.0, 388.0, 238.0 ],
 					"varname" : "M_2_5_02_GUI",
 					"viewvisibility" : 1
 				}
@@ -104,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 244.5, 184.0, 80.0, 35.0 ]
+					"patching_rect" : [ 53.0, 215.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -141,18 +142,19 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 78.0, 91.0, 24.0, 24.0 ]
+					"patching_rect" : [ 53.0, 107.0, 41.0, 41.0 ]
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"id" : "obj-2",
+					"linecount" : 2,
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 78.0, 133.0, 352.0, 22.0 ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"patching_rect" : [ 53.0, 162.0, 185.5, 35.0 ],
 					"text" : "jit.world M_2_5_02 @floating 1 @size 512 512 @dim 1024 1024"
 				}
 
@@ -178,7 +180,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 62.5, 381.0, 33.0, 381.0, 33.0, 120.0, 87.5, 120.0 ],
+					"midpoints" : [ 62.5, 373.0, 39.0, 373.0, 39.0, 156.0, 62.5, 156.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -209,7 +211,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"order" : 0,
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -217,9 +218,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 254.0, 177.0, 62.5, 177.0 ],
-					"order" : 1,
-					"source" : [ "obj-2", 1 ]
+					"source" : [ "obj-3", 0 ]
 				}
 
 			}
@@ -233,7 +232,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 62.5, 669.0, 21.0, 669.0, 21.0, 322.0, 62.5, 322.0 ],
+					"midpoints" : [ 292.5, 309.0, 264.0, 309.0, 264.0, 291.0, 93.0, 291.0, 93.0, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -247,20 +246,20 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-5::obj-21" : [ "live.text[1]", "live.text", 0 ],
 			"obj-5::obj-13" : [ "live.text", "live.text", 0 ],
+			"obj-5::obj-21" : [ "live.text[1]", "live.text", 0 ],
 			"obj-5::obj-22" : [ "live.text[2]", "live.text", 0 ],
 			"parameterbanks" : 			{
 
 			}
 ,
 			"parameter_overrides" : 			{
-				"obj-5::obj-21" : 				{
-					"parameter_longname" : "live.text[1]"
-				}
-,
 				"obj-5::obj-13" : 				{
 					"parameter_longname" : "live.text"
+				}
+,
+				"obj-5::obj-21" : 				{
+					"parameter_longname" : "live.text[1]"
 				}
 ,
 				"obj-5::obj-22" : 				{
@@ -268,26 +267,27 @@
 				}
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "M_2_5_02.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "M_2_5_02_GUI.maxpat",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "M_2_5_02_GUI-SETTINGS.json",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_2_Oscillation_figures/M_2_5_02_Drawing_Lissajous_figures",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
