@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 2,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,7 +37,32 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 51.0, 173.0, 35.0, 35.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 51.0, 225.0, 78.0, 22.0 ],
+					"text" : "set_mode $1"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-6",
 					"maxclass" : "message",
@@ -59,7 +84,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 249.0, 175.0, 80.0, 35.0 ]
+					"patching_rect" : [ 239.0, 167.0, 80.0, 35.0 ]
 				}
 
 			}
@@ -112,13 +137,13 @@
 					"patching_rect" : [ 446.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridY",
+							"parameter_mmax" : 10.0,
 							"parameter_shortname" : "GridY",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
-							"parameter_linknames" : 1,
-							"parameter_mmin" : 2.0,
-							"parameter_longname" : "GridY",
-							"parameter_mmax" : 10.0
+							"parameter_linknames" : 1
 						}
 
 					}
@@ -138,13 +163,13 @@
 					"patching_rect" : [ 367.0, 214.0, 44.0, 48.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_mmin" : 2.0,
+							"parameter_longname" : "GridX",
+							"parameter_mmax" : 100.0,
 							"parameter_shortname" : "GridX",
 							"parameter_type" : 1,
 							"parameter_unitstyle" : 0,
-							"parameter_linknames" : 1,
-							"parameter_mmin" : 2.0,
-							"parameter_longname" : "GridX",
-							"parameter_mmax" : 100.0
+							"parameter_linknames" : 1
 						}
 
 					}
@@ -197,7 +222,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 61.0, 68.0, 37.0, 37.0 ]
+					"patching_rect" : [ 51.0, 68.0, 37.0, 37.0 ]
 				}
 
 			}
@@ -207,8 +232,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
-					"patching_rect" : [ 61.0, 123.0, 395.0, 22.0 ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"patching_rect" : [ 51.0, 123.0, 395.0, 22.0 ],
 					"text" : "jit.world color_interp @floating 1 @dim 500 500 @size 500 500 @fsaa 1"
 				}
 
@@ -234,7 +259,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-3", 0 ],
-					"midpoints" : [ 146.5, 366.0, 33.0, 366.0, 33.0, 109.0, 70.5, 109.0 ],
+					"midpoints" : [ 146.5, 366.0, 33.0, 366.0, 33.0, 109.0, 60.5, 109.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -263,16 +288,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-12", 0 ],
-					"order" : 1,
-					"source" : [ "obj-3", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"order" : 0,
 					"source" : [ "obj-3", 1 ]
 				}
 
@@ -330,6 +346,20 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"parameters" : 		{
 			"obj-36" : [ "GridX", "GridX", 0 ],
@@ -337,7 +367,8 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
