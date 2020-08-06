@@ -9,9 +9,7 @@ var tilecount_x;
 var tilecount_y;
 var colors_left = [];
 var colors_right = [];
-var max_hue;
-var max_saturation;
-var max_brightness;
+var interpolate_shortest = true;
 
 setup();
 
@@ -24,10 +22,7 @@ function setup() {
   tilecount_x = 10;
   tilecount_y = 10;
 
-  max_hue = 360;
-  max_saturation = 100;
-  max_brightness = 100;
-
+  pc.color_mode('HSB');
   shakecolors();
 }
 
@@ -43,15 +38,18 @@ function draw() {
       var posX = tilewidth * x;
       var posY = tileheight * y;
       var amount = pc.map(x, 0, tilecount_x - 1, 0, 1);
-      var interp_col_HSBA = lerpcolor(col1, col2, amount);
-      var interp_col_HSBA_norm = [
-        interp_col_HSBA.channels[0] / max_hue,
-        interp_col_HSBA.channels[1] / max_saturation,
-        interp_col_HSBA.channels[2] / max_brightness,
-        1,
-      ];
-      var interp_col_RGBA = pc.hsba_to_rgba(interp_col_HSBA_norm);
-      mg.set_source_rgba(interp_col_RGBA);
+      var col;
+      if (interpolate_shortest) {
+        pc.color_mode('RGB');
+        col = pc.lerp_color(col1, col2, amount);
+        post(col + '\n');
+      } else {
+        pc.color_mode('HSB');
+        col = pc.lerp_color(col1, col2, amount);
+        post(col[3] + '\n');
+      }
+
+      mg.set_source_rgba(col.normalize().to_rgb());
 
       mg.rectangle(posX, posY, tilewidth, tileheight);
       mg.fill();
@@ -71,29 +69,30 @@ function background(r, g, b, a) {
 }
 
 function shakecolors() {
+  pc.color_mode('HSB');
   for (var i = 0; i < tilecount_y; i++) {
-    colors_left[i] = new Color(pc.random(0, 60), pc.random(0, 100), 100, 255);
-    colors_right[i] = new Color(pc.random(160, 190), 100, pc.random(0, 100), 255);
+    colors_left[i] = pc.color(pc.random(0, 60), pc.random(0, 100), 100);
+    colors_right[i] = pc.color(pc.random(160, 190), 100, pc.random(0, 100));
   }
 }
 
-function Color(chnl1, chnl2, chnl3, chnl4) {
-  this.channels = [chnl1, chnl2, chnl3, chnl4];
-}
+// function Color(chnl1, chnl2, chnl3, chnl4) {
+//   this.channels = [chnl1, chnl2, chnl3, chnl4];
+// }
 
 function setGridXY(x, y) {
   tilecount_x = x;
   tilecount_y = y;
 }
 
-function lerpcolor(c1, c2, a) {
-  var col1 = c1.channels;
-  var col2 = c2.channels;
-  var c = new Color(
-    pc.lerp(col1[0], col2[0], a),
-    pc.lerp(col1[1], col2[1], a),
-    pc.lerp(col1[2], col2[2], a),
-    255
-  );
-  return c;
-}
+// function lerpcolor(c1, c2, a) {
+//   var col1 = c1.channels;
+//   var col2 = c2.channels;
+//   var c = new Color(
+//     pc.lerp(col1[0], col2[0], a),
+//     pc.lerp(col1[1], col2[1], a),
+//     pc.lerp(col1[2], col2[2], a),
+//     255
+//   );
+//   return c;
+// }

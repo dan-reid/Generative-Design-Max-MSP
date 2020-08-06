@@ -733,6 +733,15 @@ PClone.Vector.mag = function mag(vecT) {
 
 /////////////////////// COLOR //////////////////////////////
 
+PClone.prototype.lerp_color = function(col1, col2, a) {
+  return this.color(
+    pc.lerp(col1[0], col2[0], a),
+    pc.lerp(col1[1], col2[1], a),
+    pc.lerp(col1[2], col2[2], a),
+    pc.lerp(col1[3], col2[3], a)
+  );
+};
+
 /**
  * Convert an HSBA array to HSLA.
  */
@@ -1005,12 +1014,33 @@ PClone.prototype.load_image = function(img) {
 PClone.prototype.color_mode = function() {
   if (arguments.length === 1) {
     this.color_properties.mode = arguments[0];
+    switch (arguments[0].toLowerCase()) {
+      case 'rgb':
+        this.color_properties.MAX_1 = 255;
+        this.color_properties.MAX_2 = 255;
+        this.color_properties.MAX_3 = 255;
+        this.color_properties.MAX_4 = 100;
+        break;
+      case 'hsl':
+      case 'hsb':
+        this.color_properties.MAX_1 = 360;
+        this.color_properties.MAX_2 = 100;
+        this.color_properties.MAX_3 = 100;
+        this.color_properties.MAX_4 = 100;
+        break;
+    }
   } else if (arguments.length === 2) {
     this.color_properties.mode = arguments[0];
     this.color_properties.MAX_1 = arguments[1];
     this.color_properties.MAX_2 = arguments[1];
     this.color_properties.MAX_3 = arguments[1];
     this.color_properties.MAX_4 = arguments[1];
+  } else if (arguments.length === 4) {
+    this.color_properties.mode = arguments[0];
+    this.color_properties.MAX_1 = arguments[1];
+    this.color_properties.MAX_2 = arguments[2];
+    this.color_properties.MAX_3 = arguments[3];
+    this.color_properties.MAX_4 = arguments[0].toLowerCase() === 'rgb' ? 255 : 100;
   } else if (arguments.length === 5) {
     this.color_properties.mode = arguments[0];
     this.color_properties.MAX_1 = arguments[1];
@@ -1032,7 +1062,6 @@ PClone.prototype.color = function(r, g, b, a) {
 
 PClone.Color = function() {
   var ColorArray = [];
-
   if (arguments[0] instanceof PClone) {
     ColorArray.push.apply(ColorArray, arguments[1]);
     ColorArray.__proto__ = PClone.Color.prototype;
@@ -1044,6 +1073,10 @@ PClone.Color = function() {
     ColorArray.mode = 'rgb';
   }
 
+  if (!ColorArray[3]) {
+    ColorArray[3] = ColorArray.props.MAX_4;
+  }
+
   ColorArray.red = ColorArray[0] || 0;
   ColorArray.green = ColorArray[1] || 0;
   ColorArray.blue = ColorArray[2] || 0;
@@ -1052,8 +1085,7 @@ PClone.Color = function() {
   ColorArray.saturation = ColorArray[1] || 0;
   ColorArray.brightness = ColorArray[2] || 0;
   ColorArray.luminosity = ColorArray[2] || 0;
-  ColorArray.alpha = ColorArray[3] || 255;
-
+  ColorArray.alpha = ColorArray[3];
   return ColorArray;
 };
 
@@ -1117,7 +1149,7 @@ PClone.Color.prototype.set_mode = function(mode) {
 };
 
 PClone.Color.prototype.get_props = function(mode) {
-  return this.red;
+  return this.props;
 };
 
 PClone.Color.prototype.get_mode = function(mode) {
