@@ -270,7 +270,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 137.0, 274.0, 83.0, 22.0 ],
+					"patching_rect" : [ 137.0, 274.0, 81.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_1_2_1.js",
 						"parameter_enable" : 0
@@ -394,10 +394,7 @@
 			}
  ],
 		"parameters" : 		{
-<<<<<<< HEAD
 			"obj-4" : [ "live.text", "live.text", 0 ],
-=======
->>>>>>> e70f757bcc96f140d94cf384779dddb1a4059544
 			"obj-36" : [ "GridX", "GridX", 0 ],
 			"obj-37" : [ "GridY", "GridY", 0 ],
 			"parameterbanks" : 			{
