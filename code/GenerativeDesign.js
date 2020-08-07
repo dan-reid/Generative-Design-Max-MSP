@@ -1,9 +1,9 @@
 var { PClone } = require('PClone');
 var { constants } = require('constants');
 
-function GenerativeDesign() {
-	this.pclone = new PClone();
-}
+var pclone = new PClone();
+
+function GenerativeDesign() {}
 
 GenerativeDesign.prototype.usePClone = function () {
 	var val = this.pclone.random(0, 10);
@@ -482,8 +482,8 @@ GenerativeDesign.Mesh.prototype.update_vertices = function update_vertices() {
 
 	for (var iv = 0; iv <= this.v_count; iv++) {
 		for (var iu = 0; iu <= this.u_count; iu++) {
-			u = this.GenerativeDesign.pclone.map(iu, 0, this.u_count, this.u_min, this.u_max);
-			v = this.GenerativeDesign.pclone.map(iv, 0, this.v_count, this.v_min, this.v_max);
+			u = pclone.map(iu, 0, this.u_count, this.u_min, this.u_max);
+			v = pclone.map(iv, 0, this.v_count, this.v_min, this.v_max);
 			switch (this.form) {
 				case 'CUSTOM':
 					verts = this.calculate_points(u, v);

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 0,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 631.0, 687.0 ],
+		"rect" : [ 38.0, 79.0, 634.0, 701.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,27 +37,16 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-31",
-					"maxclass" : "newobj",
+					"id" : "obj-27",
+					"linecount" : 4,
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 491.0, 574.0, 69.0, 22.0 ],
-					"text" : "gd.rgb2hsb"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-29",
-					"maxclass" : "number",
-					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 172.0, 465.0, 50.0, 22.0 ]
+					"numoutlets" : 0,
+					"patching_rect" : [ 233.0, 630.0, 150.0, 60.0 ],
+					"text" : "number of instances of poly should match the value for mesh_count inside [js]"
 				}
 
 			}
@@ -68,7 +57,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 70.0, 504.0, 116.0, 22.0 ],
+					"patching_rect" : [ 74.0, 509.0, 116.0, 22.0 ],
 					"text" : "jit.op @op * @val -1"
 				}
 
@@ -78,9 +67,9 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 204.0, 575.0, 171.0, 22.0 ],
+					"numoutlets" : 1,
+					"outlettype" : [ "jit_matrix" ],
+					"patching_rect" : [ 211.0, 560.0, 171.0, 22.0 ],
 					"text" : "gd.hsb2rgb @channel_order 1"
 				}
 
@@ -294,8 +283,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 39.0, 632.0, 184.0, 22.0 ],
-					"text" : "poly~ mesh.poly 6 @args M_3_4"
+					"patching_rect" : [ 39.0, 632.0, 191.0, 22.0 ],
+					"text" : "poly~ mesh.poly 20 @args M_3_4"
 				}
 
 			}
@@ -346,11 +335,11 @@
 					"patching_rect" : [ 39.0, 370.0, 52.0, 16.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
-							"data" : [ 5, "obj-28", "umenu", "int", 17, 5, "obj-35", "toggle", "int", 1, 5, "obj-24", "number", "int", 16, 5, "obj-26", "number", "int", 8, 5, "obj-49", "flonum", "float", 1.0 ]
+							"data" : [ 5, "obj-28", "umenu", "int", 17, 5, "obj-35", "toggle", "int", 1, 5, "obj-24", "number", "int", 16, 5, "obj-26", "number", "int", 16, 5, "obj-49", "flonum", "float", 1.0, 5, "<invalid>", "number", "int", 0 ]
 						}
 , 						{
 							"number" : 2,
-							"data" : [ 5, "obj-28", "umenu", "int", 2, 5, "obj-35", "toggle", "int", 1, 5, "obj-24", "number", "int", 16, 5, "obj-26", "number", "int", 8, 5, "obj-49", "flonum", "float", 0.0 ]
+							"data" : [ 5, "obj-28", "umenu", "int", 2, 5, "obj-35", "toggle", "int", 1, 5, "obj-24", "number", "int", 50, 5, "obj-26", "number", "int", 50, 5, "obj-49", "flonum", "float", 0.0, 5, "<invalid>", "number", "int", 0 ]
 						}
 , 						{
 							"number" : 3,
@@ -470,7 +459,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 36.25, 215.0, 498.0, 22.0 ],
 					"text" : "jit.world M_3_4 @size 500 500 @dim 1080 1080 @floating 1 @erase_color 1 1 1 1 @fsaa 1"
 				}
@@ -556,6 +545,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 279.5, 417.0, 150.0, 417.0, 150.0, 447.0, 111.0, 447.0, 111.0, 456.0, 48.5, 456.0 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
@@ -634,13 +624,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-5", 1 ],
-					"source" : [ "obj-29", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-11", 1 ],
 					"source" : [ "obj-3", 0 ]
 				}
@@ -671,6 +654,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
+					"midpoints" : [ 426.0, 393.0, 384.0, 393.0, 384.0, 408.0, 150.0, 408.0, 150.0, 447.0, 111.0, 447.0, 111.0, 456.0, 48.5, 456.0 ],
 					"source" : [ "obj-39", 0 ]
 				}
 
@@ -729,29 +713,22 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_3_4_02.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_3_Formulated_bodies/M_3_4_Deconstructing_the_mesh",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_3_Formulated_bodies/M_3_4_Deconstructing_the_mesh",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "mesh.poly.maxpat",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_3_Formulated_bodies/M_3_4_Deconstructing_the_mesh",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_3_Formulated_bodies/M_3_4_Deconstructing_the_mesh",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gd.hsb2rgb.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/color conversion",
-				"patcherrelativepath" : "../../../Max 8/Packages/Generative Design/patchers/color conversion",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "gd.rgb2hsb.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/color conversion",
-				"patcherrelativepath" : "../../../Max 8/Packages/Generative Design/patchers/color conversion",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
+				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}

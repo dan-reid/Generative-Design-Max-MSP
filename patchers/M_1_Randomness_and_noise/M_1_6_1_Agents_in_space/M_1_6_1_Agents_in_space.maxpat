@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 598.0, 629.0 ],
+		"rect" : [ 44.0, 242.0, 598.0, 629.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontname" : "Lato Bold",
@@ -226,7 +227,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 30.0, 205.0, 417.0, 22.0 ],
 					"text" : "jit.world M_1_6_1 @fsaa 1 @floating 1 @size 700 700 @erase_color 1 1 1 1"
 				}
@@ -337,19 +338,20 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "M_1_6_1.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_6_1_Agents_in_space",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_1_Randomness_and_noise/M_1_6_1_Agents_in_space",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "M_1_6_1_Controls.maxpat",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/M_1_Randomness_and_noise/M_1_6_1_Agents_in_space",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_1_Randomness_and_noise/M_1_6_1_Agents_in_space",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
