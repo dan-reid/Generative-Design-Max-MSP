@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"hidden" : 1,
@@ -355,7 +356,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 34.0, 229.0, 489.0, 22.0 ],
 					"text" : "jit.world P_3_1_4 @floating 1 @size 512 512 @dim 1024 1024 @windowposition 740 100"
 				}
@@ -424,7 +425,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 43.5, 336.0, 8.0, 336.0, 8.0, 225.0, 43.5, 225.0 ],
+					"midpoints" : [ 43.5, 351.0, 8.0, 351.0, 8.0, 221.0, 43.5, 221.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -583,7 +584,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_1_4.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_3_Hello_Type/P_3_1_4_Text_diagram",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_3_Hello_Type/P_3_1_4_Text_diagram",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

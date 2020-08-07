@@ -26,7 +26,7 @@ the p5js Generative Design library except for some minor changes:
 4: Method names have been edited to fit the naming conventions in max
 */
 
-GenerativeDesign.Treemap = function () {
+GenerativeDesign.Treemap = function Treemap() {
 	this.parent;
 	this.data;
 	this.count = 0;
@@ -126,7 +126,7 @@ GenerativeDesign.Treemap = function () {
  * returns true, if a new treemap was created
  */
 
-GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
+GenerativeDesign.Treemap.prototype.add_data = function (data, keys) {
 	if (keys) {
 		// store data. If a key is given, just store that part of the object, otherwise the whole branch.
 		if (keys.data) this.data = data[keys.data];
@@ -169,12 +169,10 @@ GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
 			return false;
 		} else {
 			// the element is not found, so create a new Treemap for it
-			this.items.push(new Treemap(this, data, 1));
+			this.items.push(new GenerativeDesign.Treemap(this, data, 1));
 		}
 		return true;
 	}
-	// There should have been reached one of the other returns. If not:
-	return false;
 };
 
 /**
@@ -187,7 +185,7 @@ GenerativeDesign.Treemap.prototype.add_data = function add_data(data, keys) {
  * the initial counter
  * returns the new Treemap
  */
-GenerativeDesign.Treemap.prototype.add_treemap = function add_treemap(data, count) {
+GenerativeDesign.Treemap.prototype.add_treemap = function (data, count) {
 	var t = new Treemap(this, data, count);
 	this.items.push(t);
 	return t;
@@ -195,7 +193,7 @@ GenerativeDesign.Treemap.prototype.add_treemap = function add_treemap(data, coun
 
 // The size of a rectangle depends on the counter. So it's important to sum
 // up all the counters recursively. Only called internally.
-GenerativeDesign.Treemap.prototype.sum_up_counters = function sum_up_counters() {
+GenerativeDesign.Treemap.prototype.sum_up_counters = function () {
 	// Adjust parameter this.ignore: if ignore option is defined and this.data is listed in that ignored=true
 	if (this.options.ignore instanceof Array) {
 		if (this.options.ignore.indexOf(this.data) >= 0) {
@@ -233,7 +231,7 @@ GenerativeDesign.Treemap.prototype.sum_up_counters = function sum_up_counters() 
  * Calculates the rectangles of each item. While doing this, all counters
  * and ignore flags are updated.
  */
-GenerativeDesign.Treemap.prototype.calculate = function calculate() {
+GenerativeDesign.Treemap.prototype.calculate = function () {
 	// Stop immediately, if it's an empty array
 	if (this.items.length == 0) return;
 
@@ -259,7 +257,7 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
 		});
 	} else {
 		// shuffle explicitly
-		shuffle_array(this.items);
+		this._shuffle_array(this.items);
 	}
 
 	// give every child an index. could be handy for drawing
@@ -375,14 +373,14 @@ GenerativeDesign.Treemap.prototype.calculate = function calculate() {
  * Randomize array element order in-place.
  * Using Durstenfeld shuffle algorithm.
  */
-function shuffle_array(array) {
+GenerativeDesign.Treemap.prototype._shuffle_array = function (array) {
 	for (var i = array.length - 1; i > 0; i--) {
 		var j = Math.floor(Math.random() * (i + 1));
 		var temp = array[i];
 		array[i] = array[j];
 		array[j] = temp;
 	}
-}
+};
 
 GenerativeDesign.prototype.get_mesh_forms = function () {
 	var forms = [
