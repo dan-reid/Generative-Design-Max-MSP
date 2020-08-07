@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 0,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-47",
@@ -103,8 +104,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 0,
+							"minor" : 1,
+							"revision" : 4,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -137,6 +138,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-12",
@@ -668,7 +670,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 24.25, 175.0, 423.0, 22.0 ],
 					"text" : "jit.world M_3_3_01 @size 500 500 @floating 1 @erase_color 1 1 1 1 @fsaa 1"
 				}
@@ -906,7 +908,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_3_3_01.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_3_Formulated_bodies/M_3_3_01_Mesh_class",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_3_Formulated_bodies/M_3_3_01_Mesh_class",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
