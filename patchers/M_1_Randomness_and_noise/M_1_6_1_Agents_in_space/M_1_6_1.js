@@ -8,7 +8,7 @@ var spacesize_y = 0.75;
 var spacesize_z = 0.5;
 
 var agentcount = 150;
-var maxagents = 250;
+var maxagents = 750;
 var agents = [maxagents];
 var agent_alpha = 0.298;
 var max_ribbon_points = 150;
