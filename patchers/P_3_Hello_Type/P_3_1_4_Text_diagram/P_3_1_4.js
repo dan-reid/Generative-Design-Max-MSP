@@ -3,7 +3,7 @@ var { GenerativeDesign } = require('GenerativeDesign');
 var { Treemap } = GenerativeDesign;
 var mg;
 var outputmatrix;
-var bg; // background color
+
 var datapath;
 var width;
 var height;
@@ -31,7 +31,6 @@ function setup() {
 	height = 1024;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	bg = [1, 1, 1, 1];
 
 	clear();
 }
@@ -75,7 +74,7 @@ function analyse_text(t) {
 		for (var i = 0; i < words.length; i++) {
 			var w = words[i].toLowerCase();
 			if (w.length < minwordlength || w.length > maxwordlength) continue;
-			treemap.addData(w);
+			treemap.add_data(w);
 		}
 	}
 	treemap.calculate();
@@ -167,26 +166,11 @@ function change_font(f) {
 
 function clear() {
 	with (mg) {
-		set_source_rgba(bg);
+		set_source_rgba(1, 1, 1, 1);
 		paint();
 		set_source_rgba(0, 0, 0, 1); // default drawing color
 		move_to(0, 0);
 		identity_matrix();
 		matrixcalc(outputmatrix, outputmatrix);
-	}
-}
-
-/**
- * Randomize array element order in-place.
- * Using Durstenfeld shuffle algorithm.
- *
- * @ignore
- */
-function shuffleArray(array) {
-	for (var i = array.length - 1; i > 0; i--) {
-		var j = Math.floor(Math.random() * (i + 1));
-		var temp = array[i];
-		array[i] = array[j];
-		array[j] = temp;
 	}
 }
