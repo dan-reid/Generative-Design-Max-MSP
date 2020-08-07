@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 1,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 63.0, 104.0, 618.0, 337.0 ],
+		"rect" : [ 17.0, 79.0, 558.0, 355.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
@@ -83,7 +84,7 @@
 					"numinlets" : 9,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 55.0, 242.0, 465.0, 35.0 ],
+					"patching_rect" : [ 55.0, 292.0, 465.0, 35.0 ],
 					"text" : "jit.gl.mesh M_3_2_03 @draw_mode quad_grid @auto_normals 1 @lighting_enable 1 @smooth_shading 1 @poly_mode 1 1"
 				}
 
@@ -94,7 +95,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 55.0, 78.0, 375.0, 22.0 ],
 					"text" : "jit.world M_3_2_03 @size 500 500 @floating 1 @erase_color 1 1 1 1"
 				}
@@ -107,7 +108,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 55.0, 182.0, 66.0, 22.0 ],
+					"patching_rect" : [ 55.0, 205.0, 66.0, 22.0 ],
 					"text" : "calc_mesh"
 				}
 
@@ -119,7 +120,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 55.0, 213.0, 89.0, 22.0 ],
+					"patching_rect" : [ 55.0, 236.0, 89.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "M_3_2_03.js",
 						"parameter_enable" : 0
@@ -137,7 +138,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 147.0, 212.0, 150.0, 22.0 ]
+					"patching_rect" : [ 147.0, 235.0, 150.0, 22.0 ]
 				}
 
 			}
@@ -152,15 +153,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
-					"order" : 0,
-					"source" : [ "obj-10", 1 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-6", 0 ],
-					"order" : 1,
 					"source" : [ "obj-10", 1 ]
 				}
 
@@ -188,6 +180,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"midpoints" : [ 242.5, 192.0, 64.5, 192.0 ],
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-6", 0 ]
 				}
@@ -196,7 +196,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "M_3_2_03.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/M_3_Formulated_bodies/M_3_2_03",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_3_Formulated_bodies/M_3_2_03",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

@@ -2,7 +2,7 @@ autowatch = 1;
 var { PClone } = require('PClone');
 
 var pc = new PClone();
-var vertices = new JitterMatrix(3, 'float32', u_count, v_count);
+
 var u_count = 40;
 var u_min = -Math.PI;
 var u_max = Math.PI;
@@ -13,6 +13,8 @@ var v_max = Math.PI;
 
 var freq = 5;
 var amp = 0.2;
+
+var vertices = new JitterMatrix(3, 'float32', u_count, v_count);
 
 function calc_mesh() {
 	for (var iv = 0; iv < v_count; iv++) {
