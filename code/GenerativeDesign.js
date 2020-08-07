@@ -1,11 +1,12 @@
 var { PClone } = require('PClone');
+var { constants } = require('constants');
 
 function GenerativeDesign() {
-	this.PClone = new PClone();
+	this.pclone = new PClone();
 }
 
 GenerativeDesign.prototype.usePClone = function () {
-	var val = this.PClone.random(0, 10);
+	var val = this.pclone.random(0, 10);
 	post('random val: ' + val);
 };
 
@@ -480,14 +481,11 @@ GenerativeDesign.Mesh.prototype.update = function update() {
 GenerativeDesign.Mesh.prototype.update_vertices = function update_vertices() {
 	var u, v;
 	var verts;
-	var map = function (n, start1, stop1, start2, stop2) {
-		var newval = ((n - start1) / (stop1 - start1)) * (stop2 - start2) + start2;
-		return newval;
-	};
+
 	for (var iv = 0; iv <= this.v_count; iv++) {
 		for (var iu = 0; iu <= this.u_count; iu++) {
-			u = map(iu, 0, this.u_count, this.u_min, this.u_max);
-			v = map(iv, 0, this.v_count, this.v_min, this.v_max);
+			u = this.GenerativeDesign.pclone.map(iu, 0, this.u_count, this.u_min, this.u_max);
+			v = this.GenerativeDesign.pclone.map(iv, 0, this.v_count, this.v_min, this.v_max);
 			switch (this.form) {
 				case 'CUSTOM':
 					verts = this.calculate_points(u, v);
@@ -714,11 +712,11 @@ GenerativeDesign.Mesh.prototype.Bohemian_Dome = function Bohemian_Dome(u, v) {
 };
 
 GenerativeDesign.Mesh.prototype.Bow = function Bow(u, v) {
-	u /= Math.PI * 2;
-	v /= Math.PI * 2;
-	var x = (2 + this.params[0] * Math.sin(Math.PI * 2 * u)) * Math.sin(2 * Math.PI * 2 * v);
-	var y = (2 + this.params[0] * Math.sin(Math.PI * 2 * u)) * Math.cos(2 * Math.PI * 2 * v);
-	var z = this.params[0] * Math.cos(Math.PI * 2 * u) + 3 * Math.cos(Math.PI * 2 * v);
+	u /= constants.TWO_PI;
+	v /= constants.TWO_PI;
+	var x = (2 + this.params[0] * Math.sin(constants.TWO_PI * u)) * Math.sin(2 * constants.TWO_PI * v);
+	var y = (2 + this.params[0] * Math.sin(constants.TWO_PI * u)) * Math.cos(2 * constants.TWO_PI * v);
+	var z = this.params[0] * Math.cos(constants.TWO_PI * u) + 3 * Math.cos(constants.TWO_PI * v);
 
 	return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
@@ -742,8 +740,8 @@ GenerativeDesign.Mesh.prototype.Astroidal_Ellipsoid = function Astroidal_Ellipso
 
 GenerativeDesign.Mesh.prototype.Triaxial_Tritorus = function Triaxial_Tritorus(u, v) {
 	var x = 1.5 * Math.sin(u) * (1 + Math.cos(v));
-	var y = 1.5 * Math.sin(u + ((Math.PI * 2) / 3) * this.params[0]) * (1 + Math.cos(v + ((Math.PI * 2) / 3) * this.params[0]));
-	var z = 1.5 * Math.sin(u + ((Math.PI * 2 * 2) / 3) * this.params[0]) * (1 + Math.cos(v + ((Math.PI * 2) / 3) * this.params[0]));
+	var y = 1.5 * Math.sin(u + (constants.TWO_PI / 3) * this.params[0]) * (1 + Math.cos(v + (constants.TWO_PI / 3) * this.params[0]));
+	var z = 1.5 * Math.sin(u + ((constants.TWO_PI * 2) / 3) * this.params[0]) * (1 + Math.cos(v + (constants.TWO_PI / 3) * this.params[0]));
 
 	return [x / Math.PI, y / Math.PI, z / Math.PI];
 };
