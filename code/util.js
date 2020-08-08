@@ -1,5 +1,3 @@
-var { constants } = require('constants');
-
 var lcg = (function () {
 	// Linear Congruential Generator
 	// Variant of a Lehman Generator
@@ -32,9 +30,17 @@ var lcg = (function () {
 	};
 })();
 
-function isInstanceOfM4X(c) {
-	return c && typeof c === 'object' && c.constructor && c.constructor.name === constants.CLASS_NAME;
+function isInstanceOf(inst, name) {
+	return inst && name && typeof inst === 'object' && inst.constructor && inst.constructor.name === name;
+}
+
+function isInstanceOfM4X(inst) {
+	return isInstanceOf(inst, 'm4x');
+}
+function isInstanceOfGenerativeDesign(inst) {
+	return isInstanceOf(inst, 'GenerativeDesign');
 }
 
 exports.lcg = lcg;
 exports.isInstanceOfM4X = isInstanceOfM4X;
+exports.isInstanceOfGenerativeDesign = isInstanceOfGenerativeDesign;
