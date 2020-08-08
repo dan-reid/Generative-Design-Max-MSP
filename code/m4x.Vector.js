@@ -2,7 +2,7 @@ var { isInstanceOfM4X } = require('util');
 
 function Vector() {
 	var x, y, z;
-	// This is how it comes in with M4X.create_vector()
+	// This is how it comes in with m4x.create_vector()
 	if (isInstanceOfM4X(arguments[0])) {
 		// save reference to M4X if passed in
 		this.m4 = arguments[0];

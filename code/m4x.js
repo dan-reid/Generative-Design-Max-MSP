@@ -6,18 +6,6 @@ var { Vector } = require('m4x.Vector');
 var { ColorConverter } = require('m4x.color.converter');
 var { Color } = require('m4x.Color');
 
-function bindToClass(functionsObject, thisClass) {
-	for (var methodName in functionsObject) {
-		var method = functionsObject[methodName];
-		if (typeof method === 'function') {
-			thisClass[methodName] = method.bind(thisClass);
-		}
-	}
-}
-
-var m4xMethods = [calculation, noise, random, ColorConverter];
-var m4xSubClasses = [Vector, Color];
-
 function m4x() {
 	this.seeded = false;
 	this.color_properties = {
@@ -28,10 +16,25 @@ function m4x() {
 		MAX_4: 255,
 	};
 
-	bindToClass(calculation, this);
-	bindToClass(random, this);
-	bindToClass(noise, this);
-	bindToClass(ColorConverter, this);
+	var m4xMethodObjects = [calculation, noise, random, ColorConverter];
+	var m4xSubClasses = [Vector, Color];
+
+	for (var i = 0; i < m4xMethodObjects.length; i++) {
+		var methodObject = m4xMethodObjects[i];
+		for (var methodName in methodObject) {
+			var method = methodObject[methodName];
+			if (typeof method === 'function') {
+				this[methodName] = method.bind(this);
+			}
+		}
+	}
+
+	for (var i = 0; i < m4xSubClasses.length; i++) {
+		var subClass = m4xSubClasses[i];
+		if (subClass.name) {
+			m4x[subClass.name] = subClass;
+		}
+	}
 }
 
 m4x.prototype.create_vector = function (x, y, z) {
@@ -42,21 +45,12 @@ m4x.prototype.create_vector = function (x, y, z) {
 	}
 };
 
-m4x.Vector = Vector;
-m4x.Color = Color;
-
-/////////////////////// COLOR //////////////////////////////
-
 m4x.prototype.lerp_color = function (col1, col2, a) {
 	var mix1 = this.lerp(col1[0], col2[0], a);
 	var mix2 = this.lerp(col1[1], col2[1], a);
 	var mix3 = this.lerp(col1[2], col2[2], a);
 	var mix4 = this.lerp(col1[3], col2[3], a);
 	return this.color(mix1, mix2, mix3, mix4);
-};
-
-m4x.prototype.load_image = function (img) {
-	return new Image(this.img);
 };
 
 m4x.prototype.color_mode = function () {
