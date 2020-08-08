@@ -1,4 +1,4 @@
-var { PClone } = require('PClone');
+var { PClone } = require('m4x');
 var { constants } = require('constants');
 
 var pclone = new PClone();

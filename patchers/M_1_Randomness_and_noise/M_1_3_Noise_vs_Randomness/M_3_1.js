@@ -1,5 +1,5 @@
 autowatch = 1;
-var { PClone } = require('PClone');
+var { PClone } = require('m4x');
 var width = 512;
 var height = 128;
 var mg = new JitterObject('jit.mgraphics', width, height); // jit.mgraphics

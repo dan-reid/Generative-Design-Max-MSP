@@ -1,5 +1,5 @@
 autowatch = 1;
-var { PClone } = require('PClone');
+var { PClone } = require('m4x');
 var pc;
 var mg; // jit.mgraphics
 var bg = [1, 1, 1, 1]; // background color

@@ -1,9 +1,9 @@
 autowatch = 1;
 outlets = 3;
 
-var { PClone } = require('PClone');
+var { PClone } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');
-	
+
 var gd = new GenerativeDesign();
 var pc = new PClone();
 
@@ -15,7 +15,6 @@ var mesh_count = 20;
 var seed = 2343;
 var form;
 
-
 function draw_mesh() {
 	pc.randomseed(seed);
 
@@ -24,7 +23,7 @@ function draw_mesh() {
 		var u_max = u_min + pc.random(2, 3);
 		var v_min = pc.random(-6, 6);
 		var v_max = v_min + pc.random(1, 2);
-		
+
 		var mesh = gd.create_mesh(form, u_count, v_count, u_min, u_max, v_min, v_max);
 
 		mesh.set_hue_range(192, 192);

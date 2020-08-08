@@ -1,6 +1,8 @@
-// Linear Congruential Generator
-// Variant of a Lehman Generator
+var { constants } = require('constants');
+
 var lcg = (function () {
+	// Linear Congruential Generator
+	// Variant of a Lehman Generator
 	// Set to values from http://en.wikipedia.org/wiki/Numerical_Recipes
 	// m is basically chosen to be large (as it is the max period)
 	// and for its relationships to a and c
@@ -31,7 +33,7 @@ var lcg = (function () {
 })();
 
 function isInstanceOfM4X(c) {
-	return c && typeof c === 'object' && c.constructor && c.constructor.name === 'PClone';
+	return c && typeof c === 'object' && c.constructor && c.constructor.name === constants.CLASS_NAME;
 }
 
 exports.lcg = lcg;
