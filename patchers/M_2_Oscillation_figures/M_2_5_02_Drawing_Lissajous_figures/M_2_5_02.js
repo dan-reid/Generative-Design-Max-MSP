@@ -1,9 +1,9 @@
 autowatch = 1;
 outlets = 2;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
 var outputmatrix;
-var pc;
+var m4;
 var width;
 var height;
 
@@ -48,8 +48,8 @@ function setup() {
 	// the matrix to store and display jit.mgraphics's output
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	pc = new PClone();
-	pc.color_mode('HSB', 360, 100, 100, 100);
+	m4 = new m4x();
+	m4.color_mode('HSB', 360, 100, 100, 100);
 	calculate_lissajous_points();
 
 	background(1, 1, 1, 1);
@@ -80,23 +80,23 @@ function draw() {
 }
 
 function calculate_lissajous_points() {
-	pc.randomseed(0);
+	m4.randomseed(0);
 
 	for (var i = 0; i <= pointcount; i++) {
-		var angle = pc.map(i, 0, pointcount, 0, Math.PI * 2);
+		var angle = m4.map(i, 0, pointcount, 0, Math.PI * 2);
 		var fmx = Math.sin(angle * mod_freq2X) * mod_freq2_strength + 1;
 		var fmy = Math.sin(angle * mod_freq2Y) * mod_freq2_strength + 1;
 
-		var x = Math.sin(angle * freqX * fmx + pc.radians(phi)) * Math.cos(angle * mod_freqX);
+		var x = Math.sin(angle * freqX * fmx + m4.radians(phi)) * Math.cos(angle * mod_freqX);
 		var y = Math.sin(angle * freqY * fmy) * Math.cos(angle * mod_freqY);
 
-		var rx = pc.random(-randomoffset, randomoffset);
-		var ry = pc.random(-randomoffset, randomoffset);
+		var rx = m4.random(-randomoffset, randomoffset);
+		var ry = m4.random(-randomoffset, randomoffset);
 
 		x = x * (width / 2 - 30 - randomoffset) + width / 2 + rx;
 		y = y * (height / 2 - 30 - randomoffset) + height / 2 + ry;
 
-		lissajous_points[i] = pc.create_vector(x, y);
+		lissajous_points[i] = m4.create_vector(x, y);
 	}
 }
 
@@ -105,10 +105,10 @@ function drawline(vector1, vector2) {
 	var angle = Math.pow(1 / (distance / connection_radius + 1), 6);
 
 	if (distance <= connection_radius) {
-		var hue = pc.lerp(min_hue_value, max_hue_value, invert_hue ? 1 - angle : angle) % 360;
+		var hue = m4.lerp(min_hue_value, max_hue_value, invert_hue ? 1 - angle : angle) % 360;
 		var brightness = invert_background ? 100 - brightness_value : brightness_value;
 		var alpha = angle * line_alpha + (pointindex % 2) * 2;
-		var col = pc.color(hue, saturation_value, brightness, alpha);
+		var col = m4.color(hue, saturation_value, brightness, alpha);
 
 		mg.set_source_rgba(col.normalize().to_rgb());
 		mg.set_line_width(line_weight);

@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -17,15 +17,15 @@ function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	// the matrix to store and display jit.mgraphics's output
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
-	pc.color_mode('HSB', 360, 100, 100, 100);
+	m4 = new m4x();
+	m4.color_mode('HSB', 360, 100, 100, 100);
 }
 
 function draw() {
-	var bg_col = pc.color(mouse_y / 2, 100, 100, 100);
+	var bg_col = m4.color(mouse_y / 2, 100, 100, 100);
 	background(bg_col.normalize().to_rgb());
 
-	var fg_col = pc.color(360 - mouse_y / 2, 100, 100, 100);
+	var fg_col = m4.color(360 - mouse_y / 2, 100, 100, 100);
 	mg.set_source_rgb(fg_col.normalize().to_rgb());
 
 	mg.rectangle(360 - (mouse_x + 1) / 2, 360 - (mouse_x + 1) / 2, mouse_x + 1, mouse_x + 1);

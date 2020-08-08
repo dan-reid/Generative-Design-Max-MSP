@@ -1,6 +1,6 @@
 autowatch = 1;
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -23,7 +23,7 @@ function setup() {
 	// dist(), map(), constrain(), radians(), degrees(), lerp()
 	// normalize(), hsba_to_rgba()
 	// random(), noise(), and Vector();
-	pc = new PClone();
+	m4 = new m4x();
 }
 
 function draw() {

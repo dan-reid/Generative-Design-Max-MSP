@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -31,25 +31,25 @@ function setup() {
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 	outputmatrix.adapt = 1;
 
-	pc = new PClone();
+	m4 = new m4x();
 }
 
 function draw() {
 	background(1, 1, 1, 1);
 
 	// Choose a random or the current mouse position
-	var new_x = pc.random(max_radius, width - max_radius);
-	var new_y = pc.random(max_radius, height - max_radius);
+	var new_x = m4.random(max_radius, width - max_radius);
+	var new_y = m4.random(max_radius, height - max_radius);
 	if (mousepressed) {
-		new_x = pc.random(mouse_x - mouse_rect, mouse_x + mouse_rect);
-		new_y = pc.random(mouse_y - mouse_rect, mouse_y + mouse_rect);
+		new_x = m4.random(mouse_x - mouse_rect, mouse_x + mouse_rect);
+		new_y = m4.random(mouse_y - mouse_rect, mouse_y + mouse_rect);
 	}
 
 	// Try to fit the largest possible circle at the current location without overlapping
 	var intersection = false;
 	for (var new_r = max_radius; new_r >= min_radius; new_r--) {
 		for (var i = 0; i < circles.length; i++) {
-			var d = pc.dist(new_x, new_y, circles[i].x, circles[i].y);
+			var d = m4.dist(new_x, new_y, circles[i].x, circles[i].y);
 			intersection = d < circles[i].r + new_r;
 			if (intersection) {
 				break;
@@ -66,14 +66,14 @@ function draw() {
 			// Try to find an adjacent circle to the current one and draw a connection line between the two
 			var closest_circle;
 			for (var j = 0; j < circles.length; j++) {
-				var d = pc.dist(circles[i].x, circles[i].y, circles[j].x, circles[j].y);
+				var d = m4.dist(circles[i].x, circles[i].y, circles[j].x, circles[j].y);
 				if (d <= circles[i].r + circles[j].r + 1) {
 					closest_circle = circles[j];
 					break;
 				}
 			}
 			if (closest_circle) {
-				var col = pc.color(102, 229, 102);
+				var col = m4.color(102, 229, 102);
 				mg.set_source_rgb(col.normalize());
 				mg.move_to(circles[i].x, circles[i].y);
 				mg.line_to(closest_circle.x, closest_circle.y);

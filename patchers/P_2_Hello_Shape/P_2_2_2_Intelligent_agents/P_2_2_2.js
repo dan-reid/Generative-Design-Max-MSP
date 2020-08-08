@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -35,21 +35,21 @@ function setup() {
 	width = 500;
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 
 	angle = get_random_angle(direction);
 
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	pc.color_mode('HSB', 360, 100, 100, 100);
+	m4.color_mode('HSB', 360, 100, 100, 100);
 
 	background(1, 1, 1, 1);
 }
 
 function draw() {
 	for (var i = 0; i < speed; i++) {
-		pos_x += Math.cos(pc.radians(angle)) * stepsize;
-		pos_y += Math.sin(pc.radians(angle)) * stepsize;
+		pos_x += Math.cos(m4.radians(angle)) * stepsize;
+		pos_y += Math.sin(m4.radians(angle)) * stepsize;
 
 		var reached_border = false;
 
@@ -68,22 +68,22 @@ function draw() {
 		}
 
 		// if the agent is crossing its path or the border is reached
-		var px = pc.constrain(Math.floor(pos_x), 0, width - 1);
-		var py = pc.constrain(Math.floor(pos_y), 0, height - 1);
+		var px = m4.constrain(Math.floor(pos_x), 0, width - 1);
+		var py = m4.constrain(Math.floor(pos_y), 0, height - 1);
 		var c = outputmatrix.getcell(px, py);
 
 		if (c[1] != white[1] || reached_border) {
 			angle = get_random_angle(direction);
-			var distance = pc.dist(pos_x, pos_y, x_cross, y_cross);
+			var distance = m4.dist(pos_x, pos_y, x_cross, y_cross);
 			if (distance >= minlength) {
 				mg.set_line_width(distance / dweight);
 				if (drawmode === 1) {
 					mg.set_source_rgb(0, 0, 0);
 				} else if (drawmode === 2) {
-					var col = pc.color(52, 100, distance / dstroke);
+					var col = m4.color(52, 100, distance / dstroke);
 					mg.set_source_rgb(col.normalize().to_rgb());
 				} else if (drawmode === 3) {
-					var col = pc.color(192, 100, 64, distance / dstroke);
+					var col = m4.color(192, 100, 64, distance / dstroke);
 					mg.set_source_rgb(col.normalize().to_rgb());
 				}
 				mg.move_to(pos_x, pos_y);
@@ -100,7 +100,7 @@ function draw() {
 }
 
 function get_random_angle(dir) {
-	var a = ((Math.floor(pc.random(-anglecount, anglecount)) + 0.5) * 90) / anglecount;
+	var a = ((Math.floor(m4.random(-anglecount, anglecount)) + 0.5) * 90) / anglecount;
 
 	if (dir == north) return a - 90;
 	if (dir == east) return a;
@@ -118,7 +118,7 @@ function reset() {
 }
 
 function set_speed(v) {
-	speed = pc.constrain(v, 1, width);
+	speed = m4.constrain(v, 1, width);
 }
 
 function background(r, g, b, a) {

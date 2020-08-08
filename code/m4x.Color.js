@@ -9,10 +9,7 @@ function Color() {
 		ColorArray.m4 = arguments[0];
 		ColorArray.props = ColorArray.color_properties;
 	} else {
-		error('m4x.Color: warning - calling new m4x.Color() directly is not supported. Use m4x.color()');
-		ColorArray.push.apply(ColorArray, arguments[0]);
-		ColorArray.__proto__ = Color.prototype;
-		ColorArray.mode = constants.RGB;
+		error('Color: calling new Color() directly is not supported. Use m4x.color()');
 	}
 
 	if (!ColorArray[3]) {

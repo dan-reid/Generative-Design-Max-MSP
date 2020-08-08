@@ -1,8 +1,8 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
 var outputmatrix;
-var pc;
+var m4;
 var cam;
 
 var width;
@@ -25,7 +25,7 @@ function setup() {
 	// the alpha channel is sliced off from the output of jit.grab
 	// so we only need a 3 plane matrix
 	outputmatrix = new JitterMatrix(3, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 
 	/*
 	this is lets us access the matrix named "cam" located in the main patch
@@ -45,21 +45,21 @@ function draw() {
 		// the line width is decided by the brightness of the pixel
 		// dark = big, bright = small
 		var b = brightness(c) / 20;
-		b = pc.constrain(b, 1, 5);
+		b = m4.constrain(b, 1, 5);
 		var lw = 6 - b;
 		mg.set_line_width(lw);
 
 		// set the line color to the current pixel's color
-		var col = pc.color(c[0], c[1], c[2]);
+		var col = m4.color(c[0], c[1], c[2]);
 		mg.set_source_rgb(col.normalize());
 
 		// move the cursor to the current point and draw the squiggle
 		mg.move_to(x, y);
 		for (var i = 0; i < pointCount; i++) {
-			var rx = pc.random(-diffusion, diffusion);
-			curvePointX = pc.constrain(x + rx, 0, width - 1);
-			var ry = pc.random(-diffusion, diffusion);
-			curvePointY = pc.constrain(y + ry, 0, height - 1);
+			var rx = m4.random(-diffusion, diffusion);
+			curvePointX = m4.constrain(x + rx, 0, width - 1);
+			var ry = m4.random(-diffusion, diffusion);
+			curvePointY = m4.constrain(y + ry, 0, height - 1);
 			mg.line_to(curvePointX, curvePointY);
 		}
 		mg.stroke();

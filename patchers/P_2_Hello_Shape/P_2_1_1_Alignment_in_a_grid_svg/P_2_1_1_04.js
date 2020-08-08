@@ -1,8 +1,8 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var datapath;
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -26,7 +26,7 @@ function setup() {
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	tilecount = 10;
 	tilewidth = width / tilecount;
 	tileheight = height / tilecount;
@@ -40,13 +40,13 @@ function draw() {
 		for (var x = 0; x < tilecount; x++) {
 			var posX = tilewidth * x + tilewidth / 2;
 			var posY = tileheight * y + tilewidth / 2;
-			var angle = Math.atan2(mousey - posY, mousex - posX + pc.radians(shapeangle));
+			var angle = Math.atan2(mousey - posY, mousex - posX + m4.radians(shapeangle));
 			if (sizemode == 0) {
 				newshapesize = shapesize;
 			} else if (sizemode == 1) {
-				newshapesize = shapesize * 1.5 - pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+				newshapesize = shapesize * 1.5 - m4.map(m4.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
 			} else if (sizemode == 2) {
-				newshapesize = pc.map(pc.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
+				newshapesize = m4.map(m4.dist(mousex, mousey, posX, posY), 0, maxdist, 0.15, shapesize);
 			}
 			mg.set_source_rgba(0, 1, 0, 1);
 			mg.translate(posX, posY);

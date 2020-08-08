@@ -1,9 +1,9 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 outlets = 2;
 var mg;
 var output_matrix;
-var pc;
+var m4;
 var width;
 var height;
 var x = [];
@@ -22,7 +22,7 @@ function setup() {
 	output_matrix = new JitterMatrix(4, 'char', width, height);
 
 	// this script uses the PClone.random() and PClone.dist()
-	pc = new PClone();
+	m4 = new m4x();
 	x = [];
 	y = [];
 	r = [];
@@ -36,15 +36,15 @@ function setup() {
 function draw() {
 	if (!finished) {
 		background(1, 1, 1, 1);
-		var newR = pc.random(1, 7);
-		var newX = pc.random(newR, width - newR);
-		var newY = pc.random(newR, height - newR);
+		var newR = m4.random(1, 7);
+		var newX = m4.random(newR, width - newR);
+		var newY = m4.random(newR, height - newR);
 
 		var closestDist = 100000000;
 		var closestIndex = 0;
 
 		for (var i = 0; i < currentcount; i++) {
-			var newDist = pc.dist(newX, newY, x[i], y[i]);
+			var newDist = m4.dist(newX, newY, x[i], y[i]);
 			if (newDist < closestDist) {
 				closestDist = newDist;
 				closestIndex = i;

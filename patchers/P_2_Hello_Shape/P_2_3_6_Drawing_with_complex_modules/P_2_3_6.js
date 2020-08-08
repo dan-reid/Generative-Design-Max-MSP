@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var width;
 var height;
 var outputmatrix;
@@ -28,7 +28,7 @@ function setup() {
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	datapath = getpath();
 
 	grid_resolution_x = Math.round(width / tilesize) + 2;
@@ -64,17 +64,17 @@ function init_tiles() {
 function set_tile() {
 	// // convert mouse position to grid coordinates
 	var x = Math.floor(mousex / tilesize) + 1;
-	x = pc.constrain(x, 1, grid_resolution_x - 2);
+	x = m4.constrain(x, 1, grid_resolution_x - 2);
 	var y = Math.floor(mousey / tilesize) + 1;
-	y = pc.constrain(y, 1, grid_resolution_y - 2);
+	y = m4.constrain(y, 1, grid_resolution_y - 2);
 	tiles[x][y] = 1;
 }
 
 function unset_tile() {
 	var x = Math.floor(mousex / tilesize) + 1;
-	x = pc.constrain(x, 1, grid_resolution_x - 2);
+	x = m4.constrain(x, 1, grid_resolution_x - 2);
 	var y = Math.floor(mousey / tilesize) + 1;
-	y = pc.constrain(y, 1, grid_resolution_y - 2);
+	y = m4.constrain(y, 1, grid_resolution_y - 2);
 	tiles[x][y] = 0;
 }
 

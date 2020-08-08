@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 
 var width;
@@ -37,7 +37,7 @@ function setup() {
 	height = 1000;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 
 	centrex = width / 2;
 	centrey = height / 2;
@@ -55,7 +55,7 @@ function setup() {
 function draw() {
 	background(1, 1, 1, 1);
 
-	pc.randomseed(seed);
+	m4.randomseed(seed);
 
 	if (mousedown) {
 		centrex = mousex - offsetx;
@@ -76,7 +76,7 @@ function draw() {
 
 			switch (letter) {
 				case ' ': //space
-					var dir = Math.floor(pc.random(2));
+					var dir = Math.floor(m4.random(2));
 					if (dir == 0) {
 						svg_render(datapath + 'space.svg');
 						translate(1.9, 0);

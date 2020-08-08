@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -24,7 +24,7 @@ function setup() {
 	// the matrix to store and output the frame
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	pc = new PClone();
+	m4 = new m4x();
 	var pic = prepend_path('pic.png');
 	img = new Image(pic);
 	shapes = load_svg_files(prepend_path());

@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -20,11 +20,11 @@ function setup() {
 	// the matrix to store and display jit.mgraphics's output
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	pc = new PClone();
-	pc.color_mode('HSB', 360, 100, 100, 100);
+	m4 = new m4x();
+	m4.color_mode('HSB', 360, 100, 100, 100);
 
 	background(1, 1, 1, 1);
-	col = pc.color(0, 0, 0, 10);
+	col = m4.color(0, 0, 0, 10);
 }
 
 function draw() {
@@ -32,17 +32,17 @@ function draw() {
 		mg.save(); // pushMatrix();
 		var vertices = [];
 		mg.translate(width / 2, height / 2);
-		var circle_resolution = Math.floor(pc.map(mouseY + 100, 0, height, 2, 10));
+		var circle_resolution = Math.floor(m4.map(mouseY + 100, 0, height, 2, 10));
 		var radius = mouseX - width / 2 + 0.5;
 		var angle = (Math.PI * 2) / circle_resolution;
 
 		var c;
 		if (col === 'black') {
-			c = pc.color(0, 0, 0, 10);
+			c = m4.color(0, 0, 0, 10);
 		} else if (col === 'blue') {
-			c = pc.color(192, 100, 64, 10);
+			c = m4.color(192, 100, 64, 10);
 		} else if (col === 'gold') {
-			c = pc.color(52, 100, 71, 10);
+			c = m4.color(52, 100, 71, 10);
 		}
 
 		mg.set_source_rgba(c.normalize().to_rgb());
@@ -50,7 +50,7 @@ function draw() {
 		for (var i = 0; i <= circle_resolution; i++) {
 			var x = Math.cos(angle * i) * radius;
 			var y = Math.sin(angle * i) * radius;
-			vertices[i] = pc.create_vector(x, y);
+			vertices[i] = m4.create_vector(x, y);
 		}
 
 		for (var i = 0; i < vertices.length - 1; i++) {

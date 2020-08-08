@@ -1,20 +1,20 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var width = 512;
 var height = 128;
 var mg = new JitterObject('jit.mgraphics', width, height); // jit.mgraphics
-var pc = new PClone(); // PClone library
+var m4 = new PClone(); // PClone library
 var outputmatrix = new JitterMatrix(4, 'char', width, height);
 var noise_offset = 0;
 
 function plot_perlin_noise() {
 	background(1, 1, 1, 1);
-	var random_offset = pc.random(10000);
+	var random_offset = m4.random(10000);
 	mg.move_to(-1, -1);
 	for (var x = 0; x < width; x += 10) {
 		noise_offset = x / 150;
-		y = pc.noise(noise_offset + random_offset) * height; // scale to height
-		var col = pc.color(0, 130, 164);
+		y = m4.noise(noise_offset + random_offset) * height; // scale to height
+		var col = m4.color(0, 130, 164);
 		mg.set_source_rgb(col.normalize());
 		mg.line_to(x, y);
 		mg.stroke();
@@ -32,7 +32,7 @@ function plot_random() {
 
 	mg.move_to(-1, -1);
 	for (var x = 0; x < width; x += 10) {
-		y = pc.random() * height;
+		y = m4.random() * height;
 		mg.set_source_rgb(0, 0.5, 0.64);
 		mg.line_to(x, y);
 		mg.stroke();

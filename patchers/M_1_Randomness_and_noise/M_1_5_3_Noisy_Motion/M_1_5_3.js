@@ -1,11 +1,11 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var width = 1280;
 var height = 800;
 
 var mg; // jit.mgraphics
 var outputmatrix;
-var pc;
+var m4;
 
 var overlay_aplha = 0.1;
 var agent_alpha = 1;
@@ -22,7 +22,7 @@ setup();
 function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 
 	for (var i = 0; i < maxagents; i++) {
 		agents[i] = new Agent();
@@ -50,7 +50,7 @@ function background(r, g, b, a) {
 }
 
 function set_agent_count(v) {
-	agentcount = pc.constrain(v, 0, maxagents);
+	agentcount = m4.constrain(v, 0, maxagents);
 }
 
 function set_noise_scale(v) {
@@ -68,28 +68,28 @@ function set_noiseZ_range(v) {
 }
 
 function set_overlay_alpha(a) {
-	overlay_aplha = pc.constrain(a, 0, 1);
+	overlay_aplha = m4.constrain(a, 0, 1);
 }
 
 function set_agent_alpha(a) {
-	agent_alpha = pc.constrain(a, 0, 1);
+	agent_alpha = m4.constrain(a, 0, 1);
 }
 
 function Agent() {
-	this.p = pc.create_vector(pc.random(0, width), pc.random(0, height));
-	this.p_old = pc.create_vector(this.p.x, this.p.y);
+	this.p = m4.create_vector(m4.random(0, width), m4.random(0, height));
+	this.p_old = m4.create_vector(this.p.x, this.p.y);
 	this.noiseZVelocity = 0.01;
-	this.stepsize = pc.random(1, 5);
+	this.stepsize = m4.random(1, 5);
 	this.angle = 0;
 	this.alpha = 1;
-	this.noiseZ = pc.random(0.3);
+	this.noiseZ = m4.random(0.3);
 
 	Agent.prototype.set_alpha = function (a) {
 		this.alpha = a;
 	};
 
 	Agent.prototype.update1 = function () {
-		this.angle = pc.noise(this.p.x / noise_scale, this.p.y / noise_scale, this.noiseZ) * noise_strength;
+		this.angle = m4.noise(this.p.x / noise_scale, this.p.y / noise_scale, this.noiseZ) * noise_strength;
 
 		this.p.x += Math.cos(this.angle) * this.stepsize;
 		this.p.y += Math.sin(this.angle) * this.stepsize;
@@ -111,7 +111,7 @@ function Agent() {
 	};
 
 	Agent.prototype.set_noiseZ_range = function (r) {
-		this.noiseZ = pc.random(r);
+		this.noiseZ = m4.random(r);
 	};
 
 	// Agent.prototype.update2 = function() {

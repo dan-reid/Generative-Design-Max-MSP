@@ -15,6 +15,9 @@ function bindToClass(functionsObject, thisClass) {
 	}
 }
 
+var m4xMethods = [calculation, noise, random, ColorConverter];
+var m4xSubClasses = [Vector, Color];
+
 function m4x() {
 	this.seeded = false;
 	this.color_properties = {
@@ -45,10 +48,10 @@ m4x.Color = Color;
 /////////////////////// COLOR //////////////////////////////
 
 m4x.prototype.lerp_color = function (col1, col2, a) {
-	var mix1 = pc.lerp(col1[0], col2[0], a);
-	var mix2 = pc.lerp(col1[1], col2[1], a);
-	var mix3 = pc.lerp(col1[2], col2[2], a);
-	var mix4 = pc.lerp(col1[3], col2[3], a);
+	var mix1 = m4.lerp(col1[0], col2[0], a);
+	var mix2 = m4.lerp(col1[1], col2[1], a);
+	var mix3 = m4.lerp(col1[2], col2[2], a);
+	var mix4 = m4.lerp(col1[3], col2[3], a);
 	return this.color(mix1, mix2, mix3, mix4);
 };
 
@@ -114,4 +117,4 @@ m4x.prototype.color = function (r, g, b, a) {
 	}
 };
 
-exports.PClone = m4x;
+exports.m4x = m4x;

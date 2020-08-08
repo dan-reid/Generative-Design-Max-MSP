@@ -1,8 +1,8 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg; // jit.mgraphics
 var outputmatrix;
-var pc;
+var m4;
 var width;
 var height;
 var mousex = 0;
@@ -31,7 +31,7 @@ function setup() {
 	height = 800;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	joined_text = '';
 	var f = new File('cage.txt');
 	f.open();
@@ -53,7 +53,7 @@ function draw() {
 		set_font_size(35);
 		posx = 90;
 		posy = 250;
-		pc.randomseed(seed);
+		m4.randomseed(seed);
 
 		for (var i = 0; i < joined_text.length; i++) {
 			var char_uppercase = joined_text.charAt(i).toUpperCase();
@@ -66,27 +66,27 @@ function draw() {
 			var charsize = counters[index] * my * 7;
 
 			var line_length = charsize;
-			var line_angle = pc.random(-Math.PI, Math.PI) * mx - Math.PI / 2;
+			var line_angle = m4.random(-Math.PI, Math.PI) * mx - Math.PI / 2;
 			var new_posx = line_length * Math.cos(line_angle);
 			var new_posy = line_length * Math.sin(line_angle);
 			var col;
 
 			translate(posx, posy);
-			col = pc.color(139, 39, 221, char_alpha);
+			col = m4.color(139, 39, 221, char_alpha);
 			set_source_rgba(col.normalize());
 			if (drawlines) {
 				move_to(0, 0);
 				line_to(new_posx, new_posy);
 				stroke();
 			}
-			col = pc.color(212, 175, 55, char_alpha);
+			col = m4.color(212, 175, 55, char_alpha);
 			set_source_rgba(col.normalize());
 			if (drawellipses) {
 				ellipse(0, 0, charsize / 10, charsize / 10);
 				fill();
 			}
 			if (drawtext) {
-				col = pc.color(0, 0, 0, char_alpha);
+				col = m4.color(0, 0, 0, char_alpha);
 				set_source_rgba(col.normalize());
 				move_to(new_posx, new_posy);
 				text_path(joined_text.charAt(i));

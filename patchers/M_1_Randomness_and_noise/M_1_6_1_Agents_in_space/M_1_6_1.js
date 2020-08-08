@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var sketch;
-var pc;
+var m4;
 
 var spacesize_x = 0.5;
 var spacesize_y = 0.75;
@@ -27,7 +27,7 @@ function setup() {
 	sketch.blend = 'alphablend';
 	sketch.automatic = 0;
 
-	pc = new PClone();
+	m4 = new m4x();
 
 	for (var i = 0; i < maxagents; i++) {
 		agents[i] = new Agent();
@@ -45,7 +45,7 @@ function draw() {
 }
 
 function set_agent_count(v) {
-	agentcount = pc.constrain(v, 0, maxagents);
+	agentcount = m4.constrain(v, 0, maxagents);
 }
 
 function set_noise_scale(v) {
@@ -57,7 +57,7 @@ function set_noise_strength(v) {
 }
 
 function set_max_ribbon_points(v) {
-	max_ribbon_points = pc.constrain(v, min_ribbon_points + 1, 100);
+	max_ribbon_points = m4.constrain(v, min_ribbon_points + 1, 100);
 }
 
 function set_line_width(v) {
@@ -73,27 +73,27 @@ function freeze_positions(n) {
 }
 
 function Agent() {
-	this.p = pc.create_vector(pc.random(-spacesize_x, spacesize_x), pc.random(-spacesize_y, spacesize_y), pc.random(-spacesize_z, spacesize_z));
-	this.stepsize = pc.random(0.002, 0.05);
+	this.p = m4.create_vector(m4.random(-spacesize_x, spacesize_x), m4.random(-spacesize_y, spacesize_y), m4.random(-spacesize_z, spacesize_z));
+	this.stepsize = m4.random(0.002, 0.05);
 	this.angle_y = 0;
 	this.angle_z = 0;
 	this.alpha = 0.298;
 	this.outside = false;
 	this.col = [0, 0, 0, this.alpha];
-	this.ribbon = new Ribbon3d(this.p, Math.floor(pc.random(min_ribbon_points, max_ribbon_points)));
+	this.ribbon = new Ribbon3d(this.p, Math.floor(m4.random(min_ribbon_points, max_ribbon_points)));
 
 	Agent.prototype.update = function () {
 		// a range of -1 1 doesn't work well for the
 		// perlin noise function, so we remap it.
-		var offset_x = pc.map(this.p.x, -1, 1, 0, 1000);
-		var offset_y = pc.map(this.p.y, -1, 1, 0, 1000);
-		var offset_z = pc.map(this.p.z, -1, 1, 0, 1000);
+		var offset_x = m4.map(this.p.x, -1, 1, 0, 1000);
+		var offset_y = m4.map(this.p.y, -1, 1, 0, 1000);
+		var offset_z = m4.map(this.p.z, -1, 1, 0, 1000);
 		this.angle_y =
-			pc.noise(offset_x / Math.max(1, noise_scale), offset_y / Math.max(1, noise_scale), offset_z / Math.max(1, noise_scale)) * noise_strength;
+			m4.noise(offset_x / Math.max(1, noise_scale), offset_y / Math.max(1, noise_scale), offset_z / Math.max(1, noise_scale)) * noise_strength;
 
 		// offset angle_z by another amount for variation
 		this.angle_z =
-			pc.noise(
+			m4.noise(
 				offset_x / Math.max(1, noise_scale) + 10000,
 				offset_y / Math.max(1, noise_scale) + 10000,
 				offset_z / Math.max(1, noise_scale) + 10000
@@ -139,9 +139,9 @@ function Agent() {
 	};
 
 	Agent.prototype.set_random_position = function () {
-		this.p.x = pc.random(-spacesize_x, spacesize_x);
-		this.p.y = pc.random(-spacesize_y, spacesize_y);
-		this.p.z = pc.random(-spacesize_z, spacesize_z);
+		this.p.x = m4.random(-spacesize_x, spacesize_x);
+		this.p.y = m4.random(-spacesize_y, spacesize_y);
+		this.p.z = m4.random(-spacesize_z, spacesize_z);
 	};
 }
 
@@ -151,7 +151,7 @@ function Ribbon3d(p, n) {
 	this.is_gap = [];
 
 	for (var i = 0; i < this.count; i++) {
-		this.points[i] = pc.create_vector(p.x, p.y, p.z);
+		this.points[i] = m4.create_vector(p.x, p.y, p.z);
 		this.is_gap[i] = false;
 	}
 

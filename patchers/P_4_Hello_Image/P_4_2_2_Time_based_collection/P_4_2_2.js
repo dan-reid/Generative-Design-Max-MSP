@@ -1,6 +1,6 @@
 autowatch = 1;
-var { PClone } = require('m4x');
-var pc;
+var { m4x } = require('m4x');
+var m4;
 var mg; // jit.mgraphics
 var bg = [1, 1, 1, 1]; // background color
 var width = 1024;
@@ -25,7 +25,7 @@ setup();
 function setup() {
 	// get jit.mgraphics by it's scripting name
 	mg = this.patcher.getnamed('P_4_2_2');
-	pc = new PClone();
+	m4 = new m4x();
 
 	// get jit.movie by it's scripting name
 	movie = this.patcher.getnamed('mymovie');
@@ -60,7 +60,7 @@ function draw() {
 			for (var y = 0; y < frame.dim[1]; y++) {
 				for (var x = 0; x < frame.dim[0]; x++) {
 					var c = frame.getcell(x, y);
-					var col = pc.color(c[0], c[1], c[2]);
+					var col = m4.color(c[0], c[1], c[2]);
 					set_source_rgb(col.normalize());
 					rectangle(posX + x, posY + y, 1, 1);
 					fill();

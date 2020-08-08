@@ -1,11 +1,11 @@
 autowatch = 1;
 outlets = 3;
 
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');
 
 var gd = new GenerativeDesign();
-var pc = new PClone();
+var m4 = new PClone();
 
 var u_count = 10;
 var v_count = 10;
@@ -16,13 +16,13 @@ var seed = 2343;
 var form;
 
 function draw_mesh() {
-	pc.randomseed(seed);
+	m4.randomseed(seed);
 
 	for (var i = 0; i < mesh_count; i++) {
-		var u_min = pc.random(-6, 6);
-		var u_max = u_min + pc.random(2, 3);
-		var v_min = pc.random(-6, 6);
-		var v_max = v_min + pc.random(1, 2);
+		var u_min = m4.random(-6, 6);
+		var u_max = u_min + m4.random(2, 3);
+		var v_min = m4.random(-6, 6);
+		var v_max = v_min + m4.random(1, 2);
 
 		var mesh = gd.create_mesh(form, u_count, v_count, u_min, u_max, v_min, v_max);
 
@@ -30,7 +30,7 @@ function draw_mesh() {
 		mesh.set_saturation_range(50, 50);
 		mesh.set_brightness_range(100, 100);
 		mesh.set_alpha(100);
-		mesh.set_scale(pc.random(0.9, 1.2));
+		mesh.set_scale(m4.random(0.9, 1.2));
 		mesh.update();
 		//my_meshes[i].update_color();
 

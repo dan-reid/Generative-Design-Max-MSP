@@ -1,8 +1,8 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
 var mgmatrix;
-var pc;
+var m4;
 var width;
 var height;
 var tilecount_x;
@@ -18,11 +18,11 @@ function setup() {
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	mgmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	tilecount_x = 10;
 	tilecount_y = 10;
 
-	pc.color_mode('HSB');
+	m4.color_mode('HSB');
 	shakecolors();
 }
 
@@ -37,15 +37,15 @@ function draw() {
 		for (var x = 0; x < tilecount_x; x++) {
 			var posX = tilewidth * x;
 			var posY = tileheight * y;
-			var amount = pc.map(x, 0, tilecount_x - 1, 0, 1);
+			var amount = m4.map(x, 0, tilecount_x - 1, 0, 1);
 			var col;
 			if (interpolate_shortest) {
-				pc.color_mode('RGB');
-				col = pc.lerp_color(col1, col2, amount);
+				m4.color_mode('RGB');
+				col = m4.lerp_color(col1, col2, amount);
 				mg.set_source_rgba(col.normalize());
 			} else {
-				pc.color_mode('HSB');
-				col = pc.lerp_color(col1, col2, amount);
+				m4.color_mode('HSB');
+				col = m4.lerp_color(col1, col2, amount);
 				mg.set_source_rgba(col.normalize().to_rgb());
 			}
 
@@ -67,10 +67,10 @@ function background(r, g, b, a) {
 }
 
 function shakecolors() {
-	pc.color_mode('HSB');
+	m4.color_mode('HSB');
 	for (var i = 0; i < tilecount_y; i++) {
-		colors_left[i] = pc.color(pc.random(0, 60), pc.random(0, 100), 100);
-		colors_right[i] = pc.color(pc.random(160, 190), 100, pc.random(0, 100));
+		colors_left[i] = m4.color(m4.random(0, 60), m4.random(0, 100), 100);
+		colors_right[i] = m4.color(m4.random(160, 190), 100, m4.random(0, 100));
 	}
 }
 
@@ -91,9 +91,9 @@ function set_mode(val) {
 //   var col1 = c1.channels;
 //   var col2 = c2.channels;
 //   var c = new Color(
-//     pc.lerp(col1[0], col2[0], a),
-//     pc.lerp(col1[1], col2[1], a),
-//     pc.lerp(col1[2], col2[2], a),
+//     m4.lerp(col1[0], col2[0], a),
+//     m4.lerp(col1[1], col2[1], a),
+//     m4.lerp(col1[2], col2[2], a),
 //     255
 //   );
 //   return c;

@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -31,7 +31,7 @@ function setup() {
 	// the matrix to store and display jit.mgraphics's output
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	pc = new PClone();
+	m4 = new m4x();
 
 	module_color_bg = [0, 0, 0, module_alpha_bg];
 	module_color_fg = [1, 1, 1, module_alpha_fg];
@@ -39,15 +39,15 @@ function setup() {
 
 function draw() {
 	background(1, 1, 1, 1);
-	pc.randomseed(seed);
+	m4.randomseed(seed);
 
 	for (var y = 0; y < tilecount; y++) {
 		for (var x = 0; x < tilecount; x++) {
 			var px = (width / tilecount) * x + module_radius_bg / 2;
 			var py = (height / tilecount) * y + module_radius_bg / 2;
 
-			var offx = pc.random(-1, 1) * offsetx;
-			var offy = pc.random(-1, 1) * offsety;
+			var offx = m4.random(-1, 1) * offsetx;
+			var offy = m4.random(-1, 1) * offsety;
 
 			mg.set_source_rgba(module_color_bg);
 

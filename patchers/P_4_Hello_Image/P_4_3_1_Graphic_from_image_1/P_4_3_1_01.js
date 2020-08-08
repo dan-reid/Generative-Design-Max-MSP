@@ -1,8 +1,8 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg; // jit.mgraphics
 var outputmatrix; // the matrix output from the [js] object
-var pc;
+var m4;
 var width;
 var height;
 var scale_1;
@@ -24,7 +24,7 @@ function setup() {
 
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	img = new Image('laurie.png');
 	img_width = img.size[0];
 	img_height = img.size[1];
@@ -57,7 +57,7 @@ function draw() {
 
 				switch (drawmode) {
 					case 1:
-						var w1 = pc.map(greyscale, 0, 1, 15, 0.1);
+						var w1 = m4.map(greyscale, 0, 1, 15, 0.1);
 						set_source_rgb(0, 0, 0);
 						set_line_width(w1 * scale_1);
 						move_to(px, py);
@@ -74,16 +74,16 @@ function draw() {
 					case 3:
 						set_source_rgb(0, 0, 0);
 						set_line_width(10 * scale_2);
-						var l3 = pc.map(greyscale, 0, 1, 30, 0.1);
+						var l3 = m4.map(greyscale, 0, 1, 30, 0.1);
 						l3 = l3 * scale_1;
 						move_to(px, py);
 						line_to(px + l3, py + l3);
 						stroke();
 						break;
 					case 4:
-						var w4 = pc.map(greyscale, 0, 1, 5, 0);
+						var w4 = m4.map(greyscale, 0, 1, 5, 0);
 						set_line_width(w4 * scale_1 + 0.1);
-						var l4 = pc.map(greyscale, 0, 1, 35, 0);
+						var l4 = m4.map(greyscale, 0, 1, 35, 0);
 						l4 = l4 * scale_2;
 						translate(px, py);
 						rotate(greyscale * Math.PI);
@@ -93,27 +93,27 @@ function draw() {
 						stroke();
 						break;
 					case 5:
-						var w5 = pc.map(greyscale, 0, 1, 3, 0.2);
+						var w5 = m4.map(greyscale, 0, 1, 3, 0.2);
 						set_line_width(w5 * scale_2 + 0.1);
 						// get the neighbour pixel and limit it to image width
 						var c2 = img.getpixel(Math.min(x + 1, img_width - 1), y);
 						set_source_rgb(c2[0], c2[1], c2[2]);
 						var greyscale2 = c2[0] * 0.222 + c2[1] * 0.707 + c2[2] * 0.071;
 						var h5 = 50 * scale_2;
-						var d1 = pc.map(greyscale, 0, 1, h5, 0);
-						var d2 = pc.map(greyscale2, 0, 1, h5, 0);
+						var d1 = m4.map(greyscale, 0, 1, h5, 0);
+						var d2 = m4.map(greyscale2, 0, 1, h5, 0);
 						move_to(px - d1, py + d2);
 						line_to(px + tilewidth - d2, py + d2);
 						stroke();
 						break;
 					case 6:
-						var w6 = pc.map(greyscale, 0, 1, 25, 0);
+						var w6 = m4.map(greyscale, 0, 1, 25, 0);
 						set_source_rgb(col[0], col[1], col[2]);
 						ellipse(px, py, w6 * scale_2, w6 * scale_1);
 						fill();
 						break;
 					case 7:
-						var w7 = pc.map(greyscale, 0, 1, 2, 0.1);
+						var w7 = m4.map(greyscale, 0, 1, 2, 0.1);
 						set_line_width(w7);
 						set_source_rgba(col[0], col[1], col[2], 1 * scale_1);
 						translate(px, py);
@@ -137,7 +137,7 @@ function draw() {
 						set_line_width(1);
 						rectangle(0, 0, 15 * scale_1, 15 * scale_2);
 						stroke();
-						var w9 = pc.map(greyscale, 0, 1, 15, 0.1);
+						var w9 = m4.map(greyscale, 0, 1, 15, 0.1);
 						set_line_width(w9);
 						set_source_rgba(0, 0, 0, 0.4);
 						ellipse(0, 0, 10, 5);

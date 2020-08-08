@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width = 500;
 var height = 500;
@@ -24,7 +24,7 @@ function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 	// this script uses PClone.random()
-	pc = new PClone();
+	m4 = new m4x();
 	tilecount = 20;
 	tilewidth = width / tilecount;
 	tileheight = height / tilecount;
@@ -32,7 +32,7 @@ function setup() {
 
 function draw() {
 	background(1, 1, 1, 1);
-	pc.randomseed(seed);
+	m4.randomseed(seed);
 
 	with (mg) {
 		set_source_rgba(0, 0, 0, 1);
@@ -46,7 +46,7 @@ function draw() {
 
 				// creates a random number between 0. - 1.999.
 				// Math.floor rounds the value to either 0 or 1;
-				var toggle = Math.floor(pc.random(2));
+				var toggle = Math.floor(m4.random(2));
 
 				// within each cell of the grid...
 				// if toggle = 0 a line is drawn from the upper-left to the lower-right corner.

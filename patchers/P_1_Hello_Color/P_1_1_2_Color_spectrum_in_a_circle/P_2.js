@@ -1,10 +1,10 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var width = 500;
 var height = 500;
 var mg; // jit.mgraphics
 var outputmatrix; // the matrix to store each frame of animation
-var pc;
+var m4;
 
 var segment_count;
 var radius;
@@ -16,13 +16,13 @@ setup();
 function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	pc = new PClone();
+	m4 = new m4x();
 	segment_count = 360;
 	radius = 220;
 	maxhue = 360;
 	saturation = width;
 	brightness = height;
-	pc.color_mode('HSB', 360, width, height, 100);
+	m4.color_mode('HSB', 360, width, height, 100);
 }
 
 function draw() {
@@ -31,15 +31,15 @@ function draw() {
 	mg.set_line_width(1);
 	var angle_step = 360 / segment_count;
 	for (var angle = 0; angle < 360; angle += angle_step) {
-		var x1 = width / 2 + Math.cos(pc.radians(angle)) * radius;
-		var y1 = height / 2 + Math.sin(pc.radians(angle)) * radius;
-		var x2 = width / 2 + Math.cos(pc.radians(angle + angle_step)) * radius;
-		var y2 = height / 2 + Math.sin(pc.radians(angle + angle_step)) * radius;
+		var x1 = width / 2 + Math.cos(m4.radians(angle)) * radius;
+		var y1 = height / 2 + Math.sin(m4.radians(angle)) * radius;
+		var x2 = width / 2 + Math.cos(m4.radians(angle + angle_step)) * radius;
+		var y2 = height / 2 + Math.sin(m4.radians(angle + angle_step)) * radius;
 
 		// The example is the book uses HSB (same as HSV)
 		// As far as I can tell you can't change the color mode for mgraphics
 		// So we work in HSB and then simply convert to RGB before drawing
-		var hsb = pc.color(angle, saturation, brightness, 100);
+		var hsb = m4.color(angle, saturation, brightness, 100);
 		mg.set_source_rgba(hsb.normalize().to_rgb());
 		triangle(x1, y1, x2, y2, width / 2, height / 2);
 		mg.fill();

@@ -1,7 +1,7 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg;
-var pc;
+var m4;
 var outputmatrix;
 var width;
 var height;
@@ -24,8 +24,8 @@ function setup() {
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 	outputmatrix.adapt = 1;
 
-	pc = new PClone();
-	pc.color_mode('HSB', 360, 100, 100, 100);
+	m4 = new m4x();
+	m4.color_mode('HSB', 360, 100, 100, 100);
 }
 
 function set_base_hue(v) {
@@ -41,23 +41,23 @@ function set_base_brightness(v) {
 }
 
 function set_color_count(v) {
-	color_count = pc.constrain(v, 2, 100);
+	color_count = m4.constrain(v, 2, 100);
 }
 
 function new_pallette() {
 	background(1, 1, 1, 1);
-	seed = pc.random(100000);
-	pc.randomseed(seed);
+	seed = m4.random(100000);
+	m4.randomseed(seed);
 
 	// ----- Colors -------
 	for (var i = 0; i < color_count; i++) {
 		if (i % 2 == 0) {
-			hue_values[i] = pc.random();
+			hue_values[i] = m4.random();
 			saturation_values[i] = base_saturation;
-			brightness_values[i] = pc.random(0.2, base_brightness);
+			brightness_values[i] = m4.random(0.2, base_brightness);
 		} else {
 			hue_values[i] = base_hue;
-			saturation_values[i] = pc.random(0.2, base_saturation);
+			saturation_values[i] = m4.random(0.2, base_saturation);
 			brightness_values[i] = base_brightness;
 		}
 	}
@@ -66,7 +66,7 @@ function new_pallette() {
 	// count tiles
 	var counter = 0;
 	// row count and row height
-	var row_count = Math.floor(pc.random(5, 30));
+	var row_count = Math.floor(m4.random(5, 30));
 	var row_height = height / row_count;
 
 	// seperate each line is parts
@@ -76,14 +76,14 @@ function new_pallette() {
 		var parts = [];
 		for (var ii = 0; ii < part_count; ii++) {
 			// chance a row is divided in fragments
-			if (pc.random() < 0.075) {
-				var fragments = Math.floor(pc.random(2, 20));
+			if (m4.random() < 0.075) {
+				var fragments = Math.floor(m4.random(2, 20));
 				part_count += fragments;
 				for (var iii = 0; iii < fragments; iii++) {
-					parts.push(pc.random(2));
+					parts.push(m4.random(2));
 				}
 			} else {
-				parts.push(pc.random(2, 20));
+				parts.push(m4.random(2, 20));
 			}
 		}
 
@@ -98,14 +98,14 @@ function new_pallette() {
 		for (var ii = 0; ii < parts.length; ii++) {
 			sum_parts_now += parts[ii];
 
-			var x = pc.map(sum_parts_now, 0, sum_parts_total, 0, width);
+			var x = m4.map(sum_parts_now, 0, sum_parts_total, 0, width);
 			var y = row_height * i;
-			var w = -pc.map(parts[ii], 0, sum_parts_total, 0, width);
+			var w = -m4.map(parts[ii], 0, sum_parts_total, 0, width);
 			var h = row_height;
 
 			var index = counter % color_count;
-			var col = pc.color(hue_values[index], saturation_values[index], brightness_values[index]);
-			// var col = pc.hsb_to_rgb([hue_values[index], saturation_values[index], brightness_values[index]]);
+			var col = m4.color(hue_values[index], saturation_values[index], brightness_values[index]);
+			// var col = m4.hsb_to_rgb([hue_values[index], saturation_values[index], brightness_values[index]]);
 			mg.set_source_rgb(col.normalize().to_rgb());
 			mg.rectangle(x, y, w, h);
 			mg.fill();

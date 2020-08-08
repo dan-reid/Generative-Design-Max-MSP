@@ -1,5 +1,5 @@
 autowatch = 1;
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var mg; // jit.mgraphics
 var outputmatrix;
 var width;

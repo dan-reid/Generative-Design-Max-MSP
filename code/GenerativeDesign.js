@@ -1,7 +1,7 @@
-var { PClone } = require('m4x');
+var { m4x } = require('m4x');
 var { constants } = require('constants');
 
-var pclone = new PClone();
+var m4lone = new PClone();
 
 function GenerativeDesign() {}
 
