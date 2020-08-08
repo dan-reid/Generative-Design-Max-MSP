@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"fontface" : 0,
@@ -446,7 +447,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 53.0, 143.0, 380.0, 22.0 ],
 					"text" : "jit.world P_2_1_1 @floating 1 @fsaa 1 @size 500 500 @dim 500 500"
 				}
@@ -655,12 +656,13 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
 				"name" : "P_2_1_1.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_1_1_Alignment_in_a_grid",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_2_Hello_Shape/P_2_1_1_Alignment_in_a_grid",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

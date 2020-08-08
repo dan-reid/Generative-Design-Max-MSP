@@ -6,6 +6,7 @@ function constants() {
 	this.TWO_PI = Math.PI;
 	this.HALF_PI = Math.PI / 2;
 	this.QUARTER_PI = Math.PI / 4;
+	this.CLASS_NAME = 'M4X';
 }
 
 exports.constants = new constants();
