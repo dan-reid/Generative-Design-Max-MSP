@@ -67,6 +67,13 @@ var calculationMethods = {
 	norm: function (n, start, stop) {
 		return this.map(n, start, stop, 0, 1);
 	},
+	lerp_color: function (col1, col2, a) {
+		var mix1 = this.lerp(col1[0], col2[0], a);
+		var mix2 = this.lerp(col1[1], col2[1], a);
+		var mix3 = this.lerp(col1[2], col2[2], a);
+		var mix4 = this.lerp(col1[3], col2[3], a);
+		return this.color(mix1, mix2, mix3, mix4);
+	},
 };
 
 exports.calculation = calculationMethods;
