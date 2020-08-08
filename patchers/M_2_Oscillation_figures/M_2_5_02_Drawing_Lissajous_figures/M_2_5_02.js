@@ -80,7 +80,7 @@ function draw() {
 }
 
 function calculate_lissajous_points() {
-	m4.randomseed(0);
+	m4.random_seed(0);
 
 	for (var i = 0; i <= pointcount; i++) {
 		var angle = m4.map(i, 0, pointcount, 0, Math.PI * 2);

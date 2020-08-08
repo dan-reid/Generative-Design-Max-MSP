@@ -25,7 +25,7 @@ var randomMethods = {
 			return rand * (max - min) + min;
 		}
 	},
-	randomseed: function (seed) {
+	random_seed: function (seed) {
 		lcg.setSeed(seed);
 		this.seeded = true;
 	},

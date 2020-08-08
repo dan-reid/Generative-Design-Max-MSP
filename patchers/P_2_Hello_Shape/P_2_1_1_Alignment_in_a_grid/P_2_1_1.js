@@ -32,7 +32,7 @@ function setup() {
 
 function draw() {
 	background(1, 1, 1, 1);
-	m4.randomseed(seed);
+	m4.random_seed(seed);
 
 	with (mg) {
 		set_source_rgba(0, 0, 0, 1);

@@ -47,7 +47,7 @@ function set_color_count(v) {
 function new_pallette() {
 	background(1, 1, 1, 1);
 	seed = m4.random(100000);
-	m4.randomseed(seed);
+	m4.random_seed(seed);
 
 	// ----- Colors -------
 	for (var i = 0; i < color_count; i++) {

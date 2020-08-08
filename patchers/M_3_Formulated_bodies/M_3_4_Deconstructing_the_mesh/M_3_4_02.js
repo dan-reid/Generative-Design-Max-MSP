@@ -16,7 +16,7 @@ var seed = 2343;
 var form;
 
 function draw_mesh() {
-	m4.randomseed(seed);
+	m4.random_seed(seed);
 
 	for (var i = 0; i < mesh_count; i++) {
 		var u_min = m4.random(-6, 6);

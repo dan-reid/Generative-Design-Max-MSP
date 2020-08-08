@@ -39,7 +39,7 @@ function setup() {
 
 function draw() {
 	background(1, 1, 1, 1);
-	m4.randomseed(seed);
+	m4.random_seed(seed);
 
 	for (var y = 0; y < tilecount; y++) {
 		for (var x = 0; x < tilecount; x++) {

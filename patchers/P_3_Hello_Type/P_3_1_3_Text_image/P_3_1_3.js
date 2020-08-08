@@ -53,7 +53,7 @@ function draw() {
 		set_font_size(35);
 		posx = 90;
 		posy = 250;
-		m4.randomseed(seed);
+		m4.random_seed(seed);
 
 		for (var i = 0; i < joined_text.length; i++) {
 			var char_uppercase = joined_text.charAt(i).toUpperCase();

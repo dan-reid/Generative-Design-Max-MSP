@@ -55,7 +55,7 @@ function setup() {
 function draw() {
 	background(1, 1, 1, 1);
 
-	m4.randomseed(seed);
+	m4.random_seed(seed);
 
 	if (mousedown) {
 		centrex = mousex - offsetx;
