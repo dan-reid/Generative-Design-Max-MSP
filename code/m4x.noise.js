@@ -173,7 +173,7 @@ var noiseMethods = {
 	noise_seed: function (seed) {
 		lcg.setSeed(seed);
 		perlin = [];
-		for (let i = 0; i < PERLIN_SIZE + 1; i++) {
+		for (var i = 0; i < PERLIN_SIZE + 1; i++) {
 			perlin[i] = lcg.rand();
 		}
 	},
