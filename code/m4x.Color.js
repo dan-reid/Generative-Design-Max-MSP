@@ -13,7 +13,7 @@ function Color() {
 	}
 
 	if (!ColorArray[3]) {
-		ColorArray[3] = ColorArray.props.MAX_4;
+		ColorArray[3] = ColorArray.m4.color_properties.MAX_4;
 	}
 
 	ColorArray.red = ColorArray[0] || 0;
