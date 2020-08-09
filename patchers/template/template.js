@@ -1,4 +1,5 @@
 autowatch = 1;
+var { m4x } = require('m4x');
 var mg;
 var m4;
 var outputmatrix;

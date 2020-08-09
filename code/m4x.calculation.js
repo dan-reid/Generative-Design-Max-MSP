@@ -115,10 +115,10 @@ var calculationMethods = {
 	/**
 	 *
 	 * @method lerp_color
-	 * @param  {m4x.Color} c1  interpolate from this color
-	 * @param  {m4x.Color} c2  interpolate to this color
-	 * @param  {Number}    a 	 number between 0 and 1
-	 * @return {m4x.Color}     interpolated color
+	 * @param  {m4x.Color} col1  interpolate from this color
+	 * @param  {m4x.Color} col2  interpolate to this color
+	 * @param  {Number}    a 	 	 number between 0 and 1
+	 * @return {m4x.Color}     	 interpolated color
 	 */
 
 	lerp_color: function (col1, col2, a) {

@@ -42,5 +42,6 @@ function isInstanceOfGenerativeDesign(inst) {
 }
 
 exports.lcg = lcg;
+exports.isInstanceOf = isInstanceOf;
 exports.isInstanceOfM4X = isInstanceOfM4X;
 exports.isInstanceOfGenerativeDesign = isInstanceOfGenerativeDesign;

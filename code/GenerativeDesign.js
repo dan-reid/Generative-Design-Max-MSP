@@ -1,5 +1,7 @@
 var { Treemap } = require('gd.Treemap');
 var { Mesh } = require('gd.Mesh');
+var { Node } = require('gd.Node');
+var { Attractor } = require('gd.Attractor');
 var { helpers } = require('gd.helpers');
 
 function GenerativeDesign() {
@@ -15,7 +17,7 @@ function GenerativeDesign() {
 	}
 }
 
-var gdSubClasses = [Treemap, Mesh];
+var gdSubClasses = [Treemap, Mesh, Node, Attractor];
 for (var i = 0; i < gdSubClasses.length; i++) {
 	var subClass = gdSubClasses[i];
 	if (subClass.name) {
