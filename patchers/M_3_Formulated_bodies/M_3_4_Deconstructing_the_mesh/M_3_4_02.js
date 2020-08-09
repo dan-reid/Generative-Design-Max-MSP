@@ -5,7 +5,7 @@ var { m4x } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');
 
 var gd = new GenerativeDesign();
-var m4 = new PClone();
+var m4 = new m4x();
 
 var u_count = 10;
 var v_count = 10;
