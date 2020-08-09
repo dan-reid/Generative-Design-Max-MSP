@@ -150,6 +150,7 @@ var noiseMethods = {
 	 * @param {Number} lod 			number of octaves to be used by the noise
 	 * @param {Number} falloff 	falloff factor for each octave
 	 */
+
 	noise_detail: function (lod, falloff) {
 		if (lod > 0) {
 			perlin_octaves = lod;

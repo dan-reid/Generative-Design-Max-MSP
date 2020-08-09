@@ -2,6 +2,19 @@ var { isInstanceOfM4X } = require('util');
 var { constants } = require('constants');
 
 var helperMethods = {
+	/**
+	 * Creates a new m4x.Vector (the datatype for storing vectors). This provides a
+	 * two or three dimensional vector, specifically a Euclidean (also known as
+	 * geometric) vector. A vector is an entity that has both magnitude and
+	 * direction.
+	 *
+	 * @method create_vector
+	 * @param {Number} [x] x component of the vector
+	 * @param {Number} [y] y component of the vector
+	 * @param {Number} [z] z component of the vector
+	 * @return {m4x.Vector}
+	 */
+
 	create_vector: function (x, y, z) {
 		if (isInstanceOfM4X(this)) {
 			return new m4x.Vector(this, arguments);
@@ -9,6 +22,16 @@ var helperMethods = {
 			return new m4x.Vector(x, y, z);
 		}
 	},
+
+	/**
+	 *
+	 * @method color_mode
+	 * @param {Number} mode the color mode as a string ("RBG", "HSB", or "HSL")
+	 * @param {Number} [channel_1] the max value for channel 1
+	 * @param {Number} [channel_2] the max value for channel 2
+	 * @param {Number} [channel_3] the max value for channel 3
+	 * @param {Number} [channel_4] the max value for channel 4
+	 */
 
 	color_mode: function () {
 		if (typeof arguments[0] !== 'string') {
@@ -60,11 +83,22 @@ var helperMethods = {
 		}
 	},
 
-	color: function (r, g, b, a) {
+	/**
+	 * Creates a new m4x.Color (the datatype for storing colors).
+	 *
+	 * @method color
+	 * @param {Number} ch1 the value for channel 1
+	 * @param {Number} ch2 the value for channel 2
+	 * @param {Number} ch3 the value for channel 3
+	 * @param {Number} ch4 the value for channel 4
+	 * @return {m4x.Color}
+	 */
+
+	color: function (ch1, ch2, ch3, ch4) {
 		if (isInstanceOfM4X(this)) {
 			return new m4x.Color(this, arguments);
 		} else {
-			return new m4x.Color(r, g, b, a);
+			return new m4x.Color(ch1, ch2, ch3, ch4);
 		}
 	},
 };
