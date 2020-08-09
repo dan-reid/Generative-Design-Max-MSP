@@ -1,3 +1,5 @@
+// https://github.com/processing/p5.js/blob/main/src/math/noise.js
+
 var { lcg } = require('util');
 
 var PERLIN_YWRAPB = 4;

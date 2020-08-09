@@ -1,3 +1,5 @@
+// https://github.com/processing/p5.js/blob/main/src/utilities/conversion.js
+
 var ColorConverterMethods = {
 	hsba_to_hsla: function (hsba) {
 		if (!(arguments[0] instanceof Array)) {

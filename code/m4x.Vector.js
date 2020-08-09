@@ -1,3 +1,5 @@
+// https://github.com/processing/p5.js/blob/main/src/math/p5.Vector.js
+
 var { isInstanceOfM4X } = require('util');
 
 function Vector() {
