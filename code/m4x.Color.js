@@ -2,30 +2,30 @@ var { isInstanceOfM4X } = require('util');
 var { constants } = require('constants');
 
 function Color() {
-	var ColorArray = [];
+	var self = [];
 	if (isInstanceOfM4X(arguments[0])) {
-		ColorArray.push.apply(ColorArray, arguments[1]);
-		ColorArray.__proto__ = Color.prototype;
-		ColorArray.m4 = arguments[0];
-		ColorArray.props = ColorArray.color_properties;
+		self.push.apply(self, arguments[1]);
+		self.__proto__ = Color.prototype;
+		self.m4 = arguments[0];
+		self.props = self.color_properties;
 	} else {
 		error('Color: calling new Color() directly is not supported. Use m4x.color()');
 	}
 
-	if (!ColorArray[3]) {
-		ColorArray[3] = ColorArray.m4.color_properties.MAX_4;
+	if (!self[3]) {
+		self[3] = self.m4.color_properties.MAX_4;
 	}
 
-	ColorArray.red = ColorArray[0] || 0;
-	ColorArray.green = ColorArray[1] || 0;
-	ColorArray.blue = ColorArray[2] || 0;
+	self.red = self[0] || 0;
+	self.green = self[1] || 0;
+	self.blue = self[2] || 0;
 
-	ColorArray.hue = ColorArray[0] || 0;
-	ColorArray.saturation = ColorArray[1] || 0;
-	ColorArray.brightness = ColorArray[2] || 0;
-	ColorArray.luminosity = ColorArray[2] || 0;
-	ColorArray.alpha = ColorArray[3];
-	return ColorArray;
+	self.hue = self[0] || 0;
+	self.saturation = self[1] || 0;
+	self.brightness = self[2] || 0;
+	self.luminosity = self[2] || 0;
+	self.alpha = self[3];
+	return self;
 }
 
 Color.prototype = new Array();
