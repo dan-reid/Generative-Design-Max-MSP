@@ -1,9 +1,10 @@
 // https://github.com/processing/p5.js/blob/main/src/math/p5.Vector.js
 
-var { isInstanceOfM4X } = require('util');
+var { isInstanceOfM4X, isInstanceOf, everyNumberIsFinite, containsZero } = require('util');
 
 function Vector() {
 	var x, y, z;
+	this.m4 = null;
 	// This is how it comes in with m4x.create_vector()
 	if (isInstanceOfM4X(arguments[0])) {
 		// save reference to M4X if passed in
@@ -53,10 +54,13 @@ Vector.prototype.set = function (x, y, z) {
 };
 
 Vector.prototype.copy = function copy() {
+	if (this.m4) {
+		return this.m4.create_vector(this.x, this.y, this.z);
+	}
 	return new Vector(this.x, this.y, this.z);
 };
 
-Vector.prototype.add = function add(x, y, z) {
+Vector.prototype.add = function (x, y, z) {
 	if (x instanceof Vector) {
 		this.x += x.x || 0;
 		this.y += x.y || 0;
@@ -94,14 +98,77 @@ Vector.prototype.sub = function sub(x, y, z) {
 	}
 };
 
-Vector.prototype.mult = function mult(n) {
-	if (!(typeof n === 'number' && isFinite(n))) {
-		error('Vector.prototype.mult: n is undefined or not a finite number + \n');
+/**
+ * @method mult
+ * @param  {Number} x The number to multiply with the x component of the vector
+ * @param  {Number} y The number to multiply with the y component of the vector
+ * @param  {Number} [z] The number to multiply with the z component of the vector
+ * @chainable
+ */
+
+/**
+ * @method mult
+ * @param  {Number[]} arr The array to multiply with the components of the vector
+ * @chainable
+ */
+
+/**
+ * @method mult
+ * @param  {Vector} v The vector to multiply with the components of the original vector
+ * @chainable
+ */
+
+Vector.prototype.mult = function (x, y, z) {
+	if (x instanceof Vector) {
+		if (typeof x.x === 'number' && typeof x.y === 'number' && typeof x.z === 'number' && isFinite(x.x) && isFinite(x.y) && isFinite(x.z)) {
+			this.x *= x.x;
+			this.y *= x.y;
+			this.z *= x.z;
+		} else {
+			error('Vector.prototype.mult: the passed Vector contains components that are either undefined or not finite numbers + \n');
+		}
 		return this;
 	}
-	this.x *= n;
-	this.y *= n;
-	this.z *= n;
+
+	if (x instanceof Array) {
+		if (everyNumberIsFinite(x)) {
+			if (x.length === 1) {
+				this.x *= x[0];
+				this.y *= x[0];
+				this.z *= x[0];
+			} else if (x.length === 2) {
+				this.x *= x[0];
+				this.y *= x[1];
+			} else if (x.length === 3) {
+				this.x *= x[0];
+				this.y *= x[1];
+				this.z *= x[2];
+			}
+		} else {
+			error('Vector.prototype.mult: the passed array contains components that are either undefined or not finite numbers + \n');
+		}
+		return this;
+	}
+
+	if (everyNumberIsFinite(arguments)) {
+		if (arguments.length === 1) {
+			this.x *= x;
+			this.y *= x;
+			this.z *= x;
+		} else if (arguments.length === 2) {
+			this.x *= x;
+			this.y *= y;
+		} else if (arguments.length === 3) {
+			this.x *= x;
+			this.y *= y;
+			this.z *= z;
+		} else {
+			error('Vector.prototype.mult: one or more of the arguments are either undefined or not finite numbers + \n');
+		}
+		return this;
+	}
+
+	error('Vector.prototype.mult: one or more of the given arguments: ' + x + 'were invalid \n');
 	return this;
 };
 
@@ -109,27 +176,80 @@ Vector.prototype.mult = function mult(n) {
  * Divide the vector by a scalar. The static version of this method creates a
  * new Vector while the non static version acts on the vector directly.
  */
-Vector.prototype.div = function div(n) {
-	if (!(typeof n === 'number' && isFinite(n))) {
-		error('Vector.prototype.div:', 'n is undefined or not a finite number');
+Vector.prototype.div = function div(x, y, z) {
+	if (x instanceof Vector) {
+		if (typeof x.x === 'number' && typeof x.y === 'number' && typeof x.z === 'number' && isFinite(x.x) && isFinite(x.y) && isFinite(x.z)) {
+			if (x.x === 0 || x.y === 0 || x.z === 0) {
+				error('Vector.prototype.div: the passed Vector contains a 0 + \n');
+				return this;
+			}
+			this.x /= x.x;
+			this.y /= x.y;
+			this.z /= x.z;
+		} else {
+			error('Vector.prototype.div: the passed Vector contains components that are either undefined or not finite numbers + \n');
+		}
 		return this;
 	}
-	if (n === 0) {
-		error('Vector.prototype.div:', "can't divide by 0");
+
+	if (x instanceof Array) {
+		if (everyNumberIsFinite(x)) {
+			if (containsZero(x)) {
+				error('Vector.prototype.div: the passed Array contains a 0 + \n');
+				return this;
+			}
+			if (x.length === 1) {
+				this.x /= x[0];
+				this.y /= x[0];
+				this.z /= x[0];
+			} else if (x.length === 2) {
+				this.x /= x[0];
+				this.y /= x[1];
+			} else if (x.length === 3) {
+				this.x /= x[0];
+				this.y /= x[1];
+				this.z /= x[2];
+			}
+		} else {
+			error('Vector.prototype.div: the passed array contains components that are either undefined or not finite numbers \n');
+		}
 		return this;
 	}
-	this.x /= n;
-	this.y /= n;
-	this.z /= n;
+
+	if (everyNumberIsFinite(arguments)) {
+		if (containsZero(arguments)) {
+			error('Vector.prototype.div: one of the given arguments is 0 \n');
+			return this;
+		}
+		if (arguments.length === 1) {
+			this.x /= x;
+			this.y /= x;
+			this.z /= x;
+		} else if (arguments.length === 2) {
+			this.x /= x;
+			this.y /= y;
+		} else if (arguments.length === 3) {
+			this.x /= x;
+			this.y /= y;
+			this.z /= z;
+		} else {
+			error('Vector.prototype.div: one or more of the arguments are either undefined or not finite numbers \n');
+		}
+		return this;
+	}
+
+	error('Vector.prototype.div: one or more of the given arguments were invalid \n');
 	return this;
 };
 
 /**
  * Calculates the magnitude (length) of the vector and returns the result as
- * a float (this is simply the equation sqrt(x*x + y*y + z*z).)
+ * a float (this is simply the equation sqrt(x*x + y*y + z*z))
+ * @method mag
+ * @return {Number} magnitude of the vector
  */
 
-Vector.prototype.mag = function mag() {
+Vector.prototype.mag = function () {
 	return Math.sqrt(this.magsq());
 };
 
@@ -138,13 +258,13 @@ Vector.prototype.mag = function mag() {
  * as a float (this is simply the equation (x*x + y*y + z*z)
  * Faster if the real length is not required in the
  * case of comparing vectors, etc.
+ *
+ * @method magsq
+ * @return {number} squared magnitude of the vector
  */
 
-Vector.prototype.magsq = function magsq() {
-	var x = this.x;
-	var y = this.y;
-	var z = this.z;
-	return x * x + y * y + z * z;
+Vector.prototype.magsq = function () {
+	return this.x * this.x + this.y * this.y + this.z * this.z;
 };
 
 /**
@@ -194,13 +314,19 @@ Vector.prototype.normalize = function normalize() {
 	var len = this.mag();
 	// here we multiply by the reciprocal instead of calling 'div()'
 	// since div duplicates this zero check.
-	if (len !== 0) this.mult(1 / len);
+	if (len !== 0) {
+		this.mult(1 / len);
+	}
 	return this;
 };
 
 /**
  * Limit the magnitude of this vector to the value used for the <b>max</b>
  * parameter.
+ *
+ * @method limit
+ * @param  {Number}    max the maximum magnitude for the vector
+ * @chainable
  */
 
 Vector.prototype.limit = function limit(max) {
@@ -367,14 +493,22 @@ Vector.add = function add(v1, v2, target) {
 	return target;
 };
 
-/*
+/**
  * Subtracts one Vector from another and returns a new one.  The second
  * vector (v2) is subtracted from the first (v1), resulting in v1-v2.
+ * @static
+ * @param  {Vector} v1 a Vector to subtract from
+ * @param  {Vector} v2 a Vector to subtract
+ * @param  {Vector} [target] the vector to receive the result (Optional)
+ * @return {Vector} the resulting Vector
  */
 
 Vector.sub = function sub(v1, v2, target) {
 	if (!target) {
 		target = v1.copy();
+		if (arguments.length === 3) {
+			error('m4x.Vector: The target parameter is undefined, it should be of type m4x.Vector');
+		}
 	} else {
 		target.set(v1);
 	}
@@ -389,6 +523,9 @@ Vector.sub = function sub(v1, v2, target) {
 Vector.mult = function mult(v, n, target) {
 	if (!target) {
 		target = v.copy();
+		if (arguments.length === 3) {
+			error('m4x.Vector: The target parameter is undefined, it should be of type m4x.Vector');
+		}
 	} else {
 		target.set(v);
 	}
@@ -403,6 +540,9 @@ Vector.mult = function mult(v, n, target) {
 Vector.div = function div(v, n, target) {
 	if (!target) {
 		target = v.copy();
+		if (arguments.length === 3) {
+			error('m4x.Vector: The target parameter is undefined, it should be of type m4x.Vector');
+		}
 	} else {
 		target.set(v);
 	}

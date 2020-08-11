@@ -30,6 +30,24 @@ var lcg = (function () {
 	};
 })();
 
+function everyNumberIsFinite(arr) {
+	for (var i = 0; i < arr.length; arr++) {
+		if (typeof arr[i] !== 'number' || !isFinite(arr[i])) {
+			return false;
+		}
+	}
+	return true;
+}
+
+function containsZero(arr) {
+	for (var i = 0; i < arr.length; arr++) {
+		if (arr[i] === 0) {
+			return true;
+		}
+	}
+	return false;
+}
+
 function isInstanceOf(inst, name) {
 	return inst && name && typeof inst === 'object' && inst.constructor && inst.constructor.name === name;
 }
@@ -42,6 +60,8 @@ function isInstanceOfGenerativeDesign(inst) {
 }
 
 exports.lcg = lcg;
+exports.everyNumberIsFinite = everyNumberIsFinite;
+exports.containsZero = containsZero;
 exports.isInstanceOf = isInstanceOf;
 exports.isInstanceOfM4X = isInstanceOfM4X;
 exports.isInstanceOfGenerativeDesign = isInstanceOfGenerativeDesign;
