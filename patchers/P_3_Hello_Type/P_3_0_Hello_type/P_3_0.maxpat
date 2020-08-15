@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 681.0, 504.0 ],
+		"rect" : [ 38.0, 79.0, 680.0, 535.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-13",
@@ -56,7 +57,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 468.0, 353.0, 63.0, 22.0 ],
+					"patching_rect" : [ 475.0, 353.0, 63.0, 22.0 ],
 					"text" : "gd.keyinfo"
 				}
 
@@ -78,8 +79,8 @@
 					"id" : "obj-8",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 382.0, 353.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
@@ -92,7 +93,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 544.0, 382.0, 100.0, 22.0 ],
+					"patching_rect" : [ 475.0, 448.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -104,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 544.0, 415.0, 53.0, 22.0 ],
+					"patching_rect" : [ 475.0, 481.0, 53.0, 22.0 ],
 					"text" : "jit.matrix"
 				}
 
@@ -178,7 +179,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 71.0, 314.0, 330.0, 22.0 ],
 					"text" : "jit.world P_3_0 @floating 1 @size 500 500 @dim 500 500"
 				}
@@ -191,7 +192,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 382.0, 415.0, 67.0, 22.0 ],
+					"patching_rect" : [ 413.0, 415.0, 67.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_3_0.js",
 						"parameter_enable" : 0
@@ -205,7 +206,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 391.5, 459.0, 36.0, 459.0, 36.0, 305.0, 80.5, 305.0 ],
+					"midpoints" : [ 422.5, 459.0, 36.0, 459.0, 36.0, 305.0, 80.5, 305.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
@@ -285,29 +286,43 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-8", 0 ]
+					"source" : [ "obj-8", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-8", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-8", 2 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_3_0.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_3_Hello_Type/P_3_0_Hello_type",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_3_Hello_Type/P_3_0_Hello_type",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gd.mouseinfo.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/interaction",
-				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/Generative Design/patchers/interaction",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
+				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "gd.keyinfo.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/interaction",
-				"patcherrelativepath" : "../../../../../Documents/Max 8/Packages/Generative Design/patchers/interaction",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
+				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}

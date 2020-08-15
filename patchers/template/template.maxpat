@@ -2,14 +2,15 @@
 	"patcher" : 	{
 		"fileversion" : 1,
 		"appversion" : 		{
-			"major" : 7,
-			"minor" : 3,
-			"revision" : 5,
+			"major" : 8,
+			"minor" : 1,
+			"revision" : 4,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 39.0, 79.0, 507.0, 448.0 ],
+		"classnamespace" : "box",
+		"rect" : [ 283.0, 95.0, 507.0, 448.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -36,7 +37,20 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 307.0, 180.0, 81.0, 22.0 ],
+					"text" : "gd.mouseinfo"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"fontname" : "Lato Bold",
 					"fontsize" : 36.0,
@@ -45,7 +59,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 9.0, 345.0, 50.0 ],
-					"style" : "",
 					"text" : "template"
 				}
 
@@ -58,7 +71,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 53.0, 296.0, 37.0, 22.0 ],
-					"style" : "",
 					"text" : "draw"
 				}
 
@@ -71,8 +83,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 78.0, 91.0, 24.0, 24.0 ],
-					"style" : ""
+					"patching_rect" : [ 78.0, 91.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -84,7 +95,6 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 53.0, 383.0, 252.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.gl.videoplane template @transform_reset 2"
 				}
 
@@ -95,9 +105,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_gl_texture", "bang", "" ],
 					"patching_rect" : [ 78.0, 133.0, 248.0, 22.0 ],
-					"style" : "",
 					"text" : "jit.world template @floating 1 @size 640 480"
 				}
 
@@ -115,7 +124,6 @@
 						"parameter_enable" : 0
 					}
 ,
-					"style" : "",
 					"text" : "js template.js"
 				}
 
@@ -130,8 +138,32 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-2", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
+					"midpoints" : [ 202.0, 282.0, 62.5, 282.0 ],
 					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 378.5, 327.0, 62.5, 327.0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 357.833333333333314, 327.0, 62.5, 327.0 ],
+					"source" : [ "obj-3", 2 ]
 				}
 
 			}
@@ -152,19 +184,20 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "template.js",
-				"bootpath" : "~/Documents/Generative_Design_MaxMSP/template",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/template",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
+, 			{
+				"name" : "gd.mouseinfo.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
+				"patcherrelativepath" : "../abstractions",
+				"type" : "JSON",
+				"implicit" : 1
+			}
  ],
-		"autosave" : 0,
-		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color1" : [ 0.376471, 0.384314, 0.4, 1.0 ],
-		"bgfillcolor_color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39
+		"autosave" : 0
 	}
 
 }

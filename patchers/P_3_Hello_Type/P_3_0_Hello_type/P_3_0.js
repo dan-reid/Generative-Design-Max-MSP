@@ -17,12 +17,12 @@ var outputmatrix;
 var bg; // background color
 var width;
 var height;
-var letter; // the letter to draw
+var letter = 'D'; // the letter to draw
 var font;
 var fontsize;
 
-var mouse_x = 0;
-var mouse_y = 0;
+var mousex = 0;
+var mousey = 0;
 var mousedown = 0;
 
 setup();
@@ -40,23 +40,17 @@ function draw() {
 	if (!mousedown) background(1, 1, 1, 1);
 
 	mg.select_font_face('Ariel');
-	mg.set_font_size((mouse_x - width / 2) * 5 + 1);
+	mg.set_font_size((mousex - width / 2) * 5 + 1);
 	var fe = mg.font_extents(); // returns [fontascent, fontdescent, fontheight]
 	var te = mg.text_measure(letter); // returns [width, height]
 	var t_x = width / 2 - te[0] / 2; // divide by letter width to centre the letter horizontally
-	var t_y = mouse_y + fe[0] / 2; // baseline = centre
+	var t_y = mousey + fe[0] / 2; // baseline = centre
 	mg.move_to(t_x, t_y);
 	mg.show_text(letter);
 	mg.fill();
 
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, 'jit_matrix', outputmatrix.name);
-}
-
-function mousemoved(x, y, leftclick, rightclick) {
-	mouse_x = x;
-	mouse_y = y;
-	mousedown = leftclick;
 }
 
 function keypressed(key) {

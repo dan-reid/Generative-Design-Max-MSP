@@ -6,6 +6,10 @@ var outputmatrix;
 var width;
 var height;
 
+// these values are updated by the 3rd & 4th outlets of gd.mouseinfo in the main patch
+var mousex = 0;
+var mousey = 0;
+
 setup();
 
 function setup() {
@@ -15,6 +19,7 @@ function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	// the matrix to store and output the frame
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
+
 	// have the matrix automatically adapt if we change the
 	// dimentions from the patch
 	outputmatrix.adapt = 1;
@@ -31,7 +36,7 @@ function draw() {
 	background(1, 1, 1, 1);
 
 	mg.set_line_width(4);
-	mg.ellipse(width / 2 - 50, height / 2 - 50, 100, 100);
+	mg.ellipse(mousex - 50, mousey - 50, 100, 100);
 	mg.stroke();
 
 	// this should always be last in the draw function
