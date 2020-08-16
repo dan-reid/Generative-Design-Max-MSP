@@ -1,13 +1,12 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg;
 var m4;
 var outputmatrix;
 var width;
 var height;
-var mouseX = 0;
-var mouseY = 0;
-var mousepressed = 0;
 var col = 'black';
 
 setup();
@@ -28,21 +27,24 @@ function setup() {
 }
 
 function draw() {
-	if (mousepressed) {
-		mg.save(); // pushMatrix();
+	if (mousedown) {
+		mg.save(); // push matrix();
 		var vertices = [];
 		mg.translate(width / 2, height / 2);
-		var circle_resolution = Math.floor(m4.map(mouseY + 100, 0, height, 2, 10));
-		var radius = mouseX - width / 2 + 0.5;
+		var circle_resolution = Math.floor(m4.map(mousey + 100, 0, height, 2, 10));
+		var radius = mousex - width / 2 + 0.5;
 		var angle = (Math.PI * 2) / circle_resolution;
 
 		var c;
-		if (col === 'black') {
-			c = m4.color(0, 0, 0, 10);
-		} else if (col === 'blue') {
-			c = m4.color(192, 100, 64, 10);
-		} else if (col === 'gold') {
-			c = m4.color(52, 100, 71, 10);
+		switch (col) {
+			case 'blue':
+				c = m4.color(192, 100, 64, 10);
+				break;
+			case 'gold':
+				c = m4.color(52, 100, 71, 10);
+				break;
+			default:
+				c = m4.color(0, 0, 0, 10);
 		}
 
 		mg.set_source_rgba(c.normalize().to_rgb());
@@ -58,17 +60,11 @@ function draw() {
 			mg.line_to(vertices[i + 1].x, vertices[i + 1].y);
 			mg.stroke();
 		}
-		mg.restore(); // popMatrix();
+		mg.restore(); // pop matrix();
 	}
 	// this should always be last in the draw function
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, 'jit_matrix', outputmatrix.name);
-}
-
-function mousexy(x, y, mp) {
-	mousepressed = mp;
-	mouseX = x;
-	mouseY = y;
 }
 
 function clear() {
