@@ -101,7 +101,7 @@ function calculate_lissajous_points() {
 }
 
 function drawline(vector1, vector2) {
-	var distance = PClone.Vector.dist(vector1, vector2);
+	var distance = m4x.Vector.dist(vector1, vector2);
 	var angle = Math.pow(1 / (distance / connection_radius + 1), 6);
 
 	if (distance <= connection_radius) {
