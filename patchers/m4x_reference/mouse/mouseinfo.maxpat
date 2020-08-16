@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 884.0, 787.0 ],
+		"rect" : [ 34.0, 79.0, 884.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -48,7 +48,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 408.0, 172.0, 387.0, 280.0 ],
-					"presentation_linecount" : 19,
 					"text" : "gd.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('gd.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('gd.mouseinfo') will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
 				}
 
