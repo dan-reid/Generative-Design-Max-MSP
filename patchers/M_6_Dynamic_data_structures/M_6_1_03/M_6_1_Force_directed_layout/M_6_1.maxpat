@@ -109,8 +109,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 9.0, 345.0, 50.0 ],
-					"text" : "Springs"
+					"patching_rect" : [ 25.0, 9.0, 411.0, 50.0 ],
+					"text" : "Force directed layout"
 				}
 
 			}
@@ -146,7 +146,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
 					"patching_rect" : [ 60.0, 418.0, 261.0, 22.0 ],
-					"text" : "jit.gl.videoplane M_6_3_03 @transform_reset 2"
+					"text" : "jit.gl.videoplane M_6_1 @transform_reset 2"
 				}
 
 			}
@@ -158,7 +158,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 25.0, 160.0, 257.0, 22.0 ],
-					"text" : "jit.world M_6_3_03 @floating 1 @size 600 600"
+					"text" : "jit.world M_6_1 @floating 1 @size 600 600"
 				}
 
 			}
@@ -171,11 +171,11 @@
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 60.0, 358.0, 89.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "M_6_3_03.js",
+						"filename" : "M_6_1.js",
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js M_6_3_03.js"
+					"text" : "js M_6_1.js"
 				}
 
 			}
@@ -273,8 +273,8 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "M_6_3_03.js",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_6/M_6_1_03",
+				"name" : "M_6_1.js",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/M_6_Dynamic_data_structures/M_6_1_03/M_6_1_Force_directed_layout",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -282,7 +282,7 @@
 , 			{
 				"name" : "gd.mouseinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
-				"patcherrelativepath" : "../../abstractions",
+				"patcherrelativepath" : "../../../abstractions",
 				"type" : "JSON",
 				"implicit" : 1
 			}
