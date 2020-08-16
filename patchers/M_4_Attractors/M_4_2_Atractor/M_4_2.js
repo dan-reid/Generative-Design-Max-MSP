@@ -1,4 +1,6 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');
 var mg;
@@ -6,9 +8,6 @@ var m4;
 var outputmatrix;
 var width;
 var height;
-var mousex = 0;
-var mousey = 0;
-var mouse_is_pressed = false;
 
 var x_count = 75;
 var y_count = 75;
@@ -42,7 +41,7 @@ function draw() {
 	attractor.y = mousey;
 
 	for (var i = 0; i < node_count; i++) {
-		if (mouse_is_pressed) {
+		if (mousedown) {
 			attractor.attract(nodes[i]);
 		}
 
@@ -76,12 +75,6 @@ function init_grid() {
 		}
 	}
 	return the_nodes;
-}
-
-function mousemoved(x, y, leftbutton, rightbutton) {
-	mousex = x;
-	mousey = y;
-	mouse_is_pressed = leftbutton;
 }
 
 function background(r, g, b, a) {

@@ -1,16 +1,6 @@
-/**
- * changing the size and the position of a letter
- *
- * MOUSE
- * position x          : size
- * position y          : position
- * drag                : draw
- *
- * KEYS
- * a-z                 : change letter
- */
-
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg; // jit.mgraphics
 var outputmatrix;
@@ -20,10 +10,6 @@ var height;
 var letter = 'D'; // the letter to draw
 var font;
 var fontsize;
-
-var mousex = 0;
-var mousey = 0;
-var mousedown = 0;
 
 setup();
 

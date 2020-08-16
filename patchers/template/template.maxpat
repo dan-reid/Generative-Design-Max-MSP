@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 283.0, 95.0, 507.0, 448.0 ],
+		"rect" : [ 96.0, 95.0, 507.0, 448.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -43,9 +43,9 @@
 					"id" : "obj-3",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 4,
-					"outlettype" : [ "", "", "", "" ],
-					"patching_rect" : [ 307.0, 180.0, 81.0, 22.0 ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 305.0, 183.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
 
@@ -106,7 +106,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_gl_texture", "bang", "" ],
-					"patching_rect" : [ 78.0, 133.0, 248.0, 22.0 ],
+					"patching_rect" : [ 78.0, 133.0, 246.0, 22.0 ],
 					"text" : "jit.world template @floating 1 @size 640 480"
 				}
 
@@ -146,7 +146,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 202.0, 282.0, 62.5, 282.0 ],
+					"midpoints" : [ 201.0, 282.0, 62.5, 282.0 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -154,7 +154,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 378.5, 327.0, 62.5, 327.0 ],
+					"midpoints" : [ 376.5, 327.0, 62.5, 327.0 ],
+					"source" : [ "obj-3", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 361.0, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-3", 3 ]
 				}
 
@@ -162,7 +170,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 357.833333333333314, 327.0, 62.5, 327.0 ],
+					"midpoints" : [ 345.5, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-3", 2 ]
 				}
 

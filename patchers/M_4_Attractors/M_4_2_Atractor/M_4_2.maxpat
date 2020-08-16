@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 282.0, 247.0, 87.0, 22.0 ],
+					"patching_rect" : [ 355.0, 246.0, 87.0, 22.0 ],
 					"text" : "loadmess 0.02"
 				}
 
@@ -60,7 +60,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 282.0, 277.0, 50.0, 22.0 ]
+					"patching_rect" : [ 355.0, 276.0, 50.0, 22.0 ]
 				}
 
 			}
@@ -71,7 +71,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 282.0, 309.0, 94.0, 22.0 ],
+					"patching_rect" : [ 355.0, 308.0, 94.0, 22.0 ],
 					"text" : "set_damping $1"
 				}
 
@@ -85,7 +85,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 61.0, 351.0, 26.0 ],
-					"text" : "click and drag within the grid to interact"
+					"text" : "Click and drag within the grid to interact"
 				}
 
 			}
@@ -94,8 +94,8 @@
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 243.0, 204.5, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
@@ -194,7 +194,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 25.0, 161.0, 237.0, 22.0 ],
 					"text" : "jit.world M_4_2 @floating 1 @size 600 600"
 				}
@@ -287,8 +287,24 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 252.5, 346.0, 69.5, 346.0 ],
-					"source" : [ "obj-5", 0 ]
+					"midpoints" : [ 314.5, 345.0, 69.5, 345.0 ],
+					"source" : [ "obj-5", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 299.0, 345.0, 69.5, 345.0 ],
+					"source" : [ "obj-5", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 283.5, 345.0, 69.5, 345.0 ],
+					"source" : [ "obj-5", 2 ]
 				}
 
 			}

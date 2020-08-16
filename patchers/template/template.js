@@ -1,14 +1,14 @@
 autowatch = 1;
+
+// allows access to the mousex & mousey variables
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg;
 var m4;
 var outputmatrix;
 var width;
 var height;
-
-// these values are updated by the 3rd & 4th outlets of gd.mouseinfo in the main patch
-var mousex = 0;
-var mousey = 0;
 
 setup();
 
@@ -37,7 +37,12 @@ function draw() {
 
 	mg.set_line_width(4);
 	mg.ellipse(mousex - 50, mousey - 50, 100, 100);
-	mg.stroke();
+
+	if (mousedown) {
+		mg.fill();
+	} else {
+		mg.stroke();
+	}
 
 	// this should always be last in the draw function
 	mg.matrixcalc(outputmatrix, outputmatrix);

@@ -1,4 +1,6 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg;
 var m4;
@@ -9,9 +11,6 @@ var datapath;
 
 var leftclick = 0;
 var rightclick = 0;
-var mousedown = false;
-var mousex = 0;
-var mousey = 0;
 
 var tilesize = 50;
 var grid_resolution_x;
@@ -126,12 +125,6 @@ function draw_modules() {
 	}
 }
 
-function println() {
-	for (var i = 0; i < arguments.length; i++) {
-		post(arguments[i] + '\n');
-	}
-}
-
 function getpath() {
 	var p = this.patcher.filepath;
 	var n = this.patcher.name;
@@ -191,12 +184,4 @@ function module(m) {
 function mousemoved(x, y, left, right) {
 	leftclick = left;
 	rightclick = right;
-
-	if (leftclick) {
-		mousedown = true;
-		mousex = x;
-		mousey = y;
-	} else {
-		mousedown = false;
-	}
 }

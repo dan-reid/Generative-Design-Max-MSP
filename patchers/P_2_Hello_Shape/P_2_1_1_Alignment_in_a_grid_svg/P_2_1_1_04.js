@@ -1,4 +1,6 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var datapath;
 var mg;
@@ -10,8 +12,6 @@ var tilecount;
 var maxdist;
 var tilewidth;
 var tileheight;
-var mousex = 0;
-var mousey = 0;
 var sizemode = 0;
 var shapesize = 0.5;
 var newshapesize = shapesize;
@@ -79,11 +79,6 @@ function setmodule(m) {
 	if (m == 7) shape = 'module_7.svg';
 }
 
-function mousexy(x, y) {
-	mousex = x;
-	mousey = y;
-}
-
 function getpath() {
 	var p = this.patcher.filepath;
 	var n = this.patcher.name;
@@ -103,8 +98,7 @@ function background(r, g, b, a) {
 
 /*
 you can also copy and paste the svg code straight into the script as text,
-instead of loading a the file. You'll have to add the correct formatting
-so it will be interpeted as text yourself though...
+instead of loading a the file.
 */
 
 // var module_1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?> \

@@ -1,4 +1,6 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg;
 var m4;
@@ -15,11 +17,8 @@ var offsetx;
 var offsety;
 var zoom;
 
-var mousex;
-var mousey;
 var on_click_x = 0;
 var on_click_y = 0;
-var mousedown = 0;
 
 // used to make cursor blink
 var framecount = 0;
@@ -163,14 +162,6 @@ function keypressed(key, caps, shift) {
 			break;
 		default:
 			text += key;
-	}
-}
-
-function mousemoved(x, y, leftclick, rightclick) {
-	mousedown = leftclick;
-	if (mousedown) {
-		mousex = x;
-		mousey = y;
 	}
 }
 

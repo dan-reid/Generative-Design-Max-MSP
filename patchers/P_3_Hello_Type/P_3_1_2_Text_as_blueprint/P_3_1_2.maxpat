@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -57,8 +57,8 @@
 					"id" : "obj-14",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 357.0, 216.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
@@ -247,7 +247,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 33.0, 176.0, 343.0, 22.0 ],
 					"text" : "jit.world P_3_1_2 @floating 1 @size 500 500 @dim 1000 1000"
 				}
@@ -283,15 +283,31 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 428.5, 264.0, 90.0, 264.0, 90.0, 396.0, 51.5, 396.0 ],
-					"source" : [ "obj-14", 1 ]
+					"source" : [ "obj-14", 4 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 366.5, 396.0, 51.5, 396.0 ],
-					"source" : [ "obj-14", 0 ]
+					"midpoints" : [ 413.0, 264.0, 90.0, 264.0, 90.0, 396.0, 51.5, 396.0 ],
+					"source" : [ "obj-14", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 397.5, 291.0, 90.0, 291.0, 90.0, 396.0, 51.5, 396.0 ],
+					"source" : [ "obj-14", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 382.0, 396.0, 51.5, 396.0 ],
+					"source" : [ "obj-14", 1 ]
 				}
 
 			}

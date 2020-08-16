@@ -1,5 +1,5 @@
 autowatch = 1;
-var { m4x } = require('m4x');
+
 var mg; // jit.mgraphics
 var outputmatrix;
 var width;
@@ -18,7 +18,7 @@ var stepsize = 1;
 var diameter = 1;
 var direction;
 var speed = 250; // number of steps per frame
-var posX, posY;
+var pos_x, pos_y;
 
 setup();
 
@@ -27,8 +27,8 @@ function setup() {
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	posX = width / 2;
-	posY = height / 2;
+	pos_x = width / 2;
+	pos_y = height / 2;
 	background(1, 1, 1, 1);
 }
 
@@ -37,34 +37,34 @@ function draw() {
 		direction = Math.floor(Math.random() * 8);
 
 		if (direction == NORTH) {
-			posY -= stepsize;
+			pos_y -= stepsize;
 		} else if (direction == NORTHEAST) {
-			posX += stepsize;
-			posY -= stepsize;
+			pos_x += stepsize;
+			pos_y -= stepsize;
 		} else if (direction == EAST) {
-			posX += stepsize;
+			pos_x += stepsize;
 		} else if (direction == SOUTHEAST) {
-			posX += stepsize;
-			posY += stepsize;
+			pos_x += stepsize;
+			pos_y += stepsize;
 		} else if (direction == SOUTH) {
-			posY += stepsize;
+			pos_y += stepsize;
 		} else if (direction == SOUTHWEST) {
-			posX -= stepsize;
-			posY += stepsize;
+			pos_x -= stepsize;
+			pos_y += stepsize;
 		} else if (direction == WEST) {
-			posX -= stepsize;
+			pos_x -= stepsize;
 		} else if (direction == NORTHWEST) {
-			posX -= stepsize;
-			posY -= stepsize;
+			pos_x -= stepsize;
+			pos_y -= stepsize;
 		}
 
-		if (posX > width) posX = 0;
-		if (posX < 0) posX = width;
-		if (posY > height) posY = 0;
-		if (posY < 0) posY = height;
+		if (pos_x > width) pos_x = 0;
+		if (pos_x < 0) pos_x = width;
+		if (pos_y > height) pos_y = 0;
+		if (pos_y < 0) pos_y = height;
 
 		mg.set_source_rgba(0, 0, 0, 1);
-		mg.ellipse(posX + stepsize / 2, posY + stepsize / 2, diameter, diameter);
+		mg.ellipse(pos_x + stepsize / 2, pos_y + stepsize / 2, diameter, diameter);
 		mg.fill();
 	}
 	mg.matrixcalc(outputmatrix, outputmatrix);

@@ -1,12 +1,12 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var mg;
 var m4;
 var outputmatrix;
 var width;
 var height;
-var mouse_x = 360;
-var mouse_y = 360;
 
 setup();
 
@@ -22,23 +22,18 @@ function setup() {
 }
 
 function draw() {
-	var bg_col = m4.color(mouse_y / 2, 100, 100, 100);
+	var bg_col = m4.color(mousey / 2, 100, 100, 100);
 	background(bg_col.normalize().to_rgb());
 
-	var fg_col = m4.color(360 - mouse_y / 2, 100, 100, 100);
+	var fg_col = m4.color(360 - mousey / 2, 100, 100, 100);
 	mg.set_source_rgb(fg_col.normalize().to_rgb());
 
-	mg.rectangle(360 - (mouse_x + 1) / 2, 360 - (mouse_x + 1) / 2, mouse_x + 1, mouse_x + 1);
+	mg.rectangle(360 - (mousex + 1) / 2, 360 - (mousex + 1) / 2, mousex + 1, mousex + 1);
 	mg.fill();
 
 	// this should always be last in the draw function
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, 'jit_matrix', outputmatrix.name);
-}
-
-function mousemoved(x, y) {
-	mouse_x = x;
-	mouse_y = y;
 }
 
 function background(c) {

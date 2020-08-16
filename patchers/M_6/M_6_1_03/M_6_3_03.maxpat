@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -40,12 +40,25 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Lato Bold",
+					"fontsize" : 16.0,
+					"id" : "obj-10",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 25.0, 66.0, 252.0, 26.0 ],
+					"text" : "Click on the nodes to interact"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 2,
-					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 263.0, 172.5, 81.0, 22.0 ],
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 263.0, 203.5, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
 
@@ -57,7 +70,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 174.0, 332.0, 75.0, 22.0 ],
+					"patching_rect" : [ 174.0, 363.0, 75.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -69,7 +82,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 140.0, 360.0, 109.0, 22.0 ],
+					"patching_rect" : [ 140.0, 391.0, 109.0, 22.0 ],
 					"text" : "jit.matrix @adapt 1"
 				}
 
@@ -84,7 +97,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 144.0, 172.5, 80.0, 35.0 ]
+					"patching_rect" : [ 144.0, 203.5, 80.0, 35.0 ]
 				}
 
 			}
@@ -108,7 +121,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 60.0, 280.0, 37.0, 22.0 ],
+					"patching_rect" : [ 60.0, 311.0, 37.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -121,7 +134,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 25.0, 87.0, 24.0, 24.0 ]
+					"patching_rect" : [ 25.0, 118.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -132,7 +145,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 60.0, 387.0, 261.0, 22.0 ],
+					"patching_rect" : [ 60.0, 418.0, 261.0, 22.0 ],
 					"text" : "jit.gl.videoplane M_6_3_03 @transform_reset 2"
 				}
 
@@ -143,8 +156,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
-					"patching_rect" : [ 25.0, 129.0, 257.0, 22.0 ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
+					"patching_rect" : [ 25.0, 160.0, 257.0, 22.0 ],
 					"text" : "jit.world M_6_3_03 @floating 1 @size 600 600"
 				}
 
@@ -156,7 +169,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 60.0, 327.0, 89.0, 22.0 ],
+					"patching_rect" : [ 60.0, 358.0, 89.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "M_6_3_03.js",
 						"parameter_enable" : 0
@@ -207,7 +220,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 153.5, 265.0, 69.5, 265.0 ],
+					"midpoints" : [ 153.5, 296.0, 69.5, 296.0 ],
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -222,16 +235,32 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 334.5, 312.0, 69.5, 312.0 ],
-					"source" : [ "obj-5", 1 ]
+					"midpoints" : [ 334.5, 343.0, 69.5, 343.0 ],
+					"source" : [ "obj-5", 4 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 272.5, 312.0, 69.5, 312.0 ],
-					"source" : [ "obj-5", 0 ]
+					"midpoints" : [ 319.0, 343.0, 69.5, 343.0 ],
+					"source" : [ "obj-5", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 303.5, 343.0, 69.5, 343.0 ],
+					"source" : [ "obj-5", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 288.0, 343.0, 69.5, 343.0 ],
+					"source" : [ "obj-5", 1 ]
 				}
 
 			}

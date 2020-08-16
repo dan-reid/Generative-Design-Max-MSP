@@ -1,13 +1,12 @@
 autowatch = 1;
+
 var { m4x } = require('m4x');
 var mg; // jit.mgraphics
 var outputmatrix;
 var m4;
 var width;
 var height;
-var mousex = 0;
-var mousey = 0;
-var mousepressed = 0;
+
 var font = 'Ariel';
 var joined_text = '';
 var char_set = [];

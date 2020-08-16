@@ -1,4 +1,6 @@
 autowatch = 1;
+include('gd.mouseinfo');
+
 var { m4x } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');
 var mg;
@@ -6,8 +8,6 @@ var m4;
 var outputmatrix;
 var width;
 var height;
-var mousex = 0;
-var mousey = 0;
 
 var node_count = 50;
 var nodes = [];
@@ -34,6 +34,10 @@ function setup() {
 
 function draw() {
 	background(1, 1, 1, 1);
+
+	if (!mousedown && selected_node !== null) {
+		selected_node = null;
+	}
 
 	// let all nodes repel each other
 	for (var i = 0; i < nodes.length; i++) {
@@ -115,16 +119,6 @@ function mousepressed(x, y) {
 			selected_node = check_node;
 			max_dist = d;
 		}
-	}
-}
-
-function mousemoved(x, y, rightbutton, leftbutton) {
-	mousex = x;
-	mousey = y;
-
-	// mouse released
-	if (!rightbutton && selected_node !== null) {
-		selected_node = null;
 	}
 }
 
