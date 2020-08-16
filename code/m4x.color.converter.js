@@ -55,7 +55,7 @@ var ColorConverterMethods = {
 	 */
 	hsla_to_rgba: function (hsla) {
 		if (!(arguments[0] instanceof Array)) {
-			error('PClone.prototype.hsla_to_rgba expects an array of normalized [H,S,L,A] as input');
+			error('m4x.prototype.hsla_to_rgba expects an array of normalized [H,S,L,A] as input');
 			post();
 			return null;
 		}

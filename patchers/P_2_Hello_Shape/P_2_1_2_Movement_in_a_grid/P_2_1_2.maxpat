@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-14",
@@ -94,7 +95,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 4,
 					"outlettype" : [ "preset", "int", "preset", "int" ],
-					"patching_rect" : [ 388.0, 173.0, 66.0, 19.0 ],
+					"patching_rect" : [ 388.0, 173.0, 80.0, 18.0 ],
 					"preset_data" : [ 						{
 							"number" : 1,
 							"data" : [ 11, "obj-20", "swatch", "list", 1.0, 1.0, 1.0, 1.0, 0.179688, 1.0, 1.0, 11, "obj-25", "swatch", "list", 0.0, 0.0, 0.0, 1.0, 0.492188, 1.0, 0.0, 5, "obj-31", "flonum", "float", 1.0, 5, "obj-32", "flonum", "float", 1.0, 5, "obj-38", "flonum", "float", 0.0, 5, "obj-39", "flonum", "float", 0.0, 5, "obj-41", "flonum", "float", 20.0, 5, "obj-42", "flonum", "float", 10.0 ]
@@ -114,6 +115,10 @@
 , 						{
 							"number" : 5,
 							"data" : [ 11, "obj-20", "swatch", "list", 0.0, 0.251953, 0.375, 0.67, 0.554688, 1.0, 0.1875, 11, "obj-25", "swatch", "list", 1.0, 0.3125, 0.3125, 1.0, 0.0, 1.0, 0.65625, 5, "obj-31", "flonum", "float", 1.0, 5, "obj-32", "flonum", "float", 0.67, 5, "obj-38", "flonum", "float", 22.0, 5, "obj-39", "flonum", "float", 65.0, 5, "obj-41", "flonum", "float", 31.0, 5, "obj-42", "flonum", "float", 32.0 ]
+						}
+, 						{
+							"number" : 6,
+							"data" : [ 11, "obj-20", "swatch", "list", 1.0, 0.875, 0.916015625, 1.0, 0.9453125, 1.0, 0.9375, 11, "obj-25", "swatch", "list", 1.0, 0.3125, 0.3125, 1.0, 1.0, 1.0, 0.65625, 5, "obj-31", "flonum", "float", 1.0, 5, "obj-32", "flonum", "float", 1.0, 5, "obj-38", "flonum", "float", 0.0, 5, "obj-39", "flonum", "float", 10.0, 5, "obj-41", "flonum", "float", 34.0, 5, "obj-42", "flonum", "float", 32.0 ]
 						}
  ]
 				}
@@ -378,7 +383,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 78.0, 133.0, 250.0, 22.0 ],
 					"text" : "jit.world P_2_1_2 @floating 1 @size 600 600"
 				}
@@ -598,7 +603,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_2_1_2.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_2_Hello_Shape/P_2_1_2_Movement_in_a_grid",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_2_Hello_Shape/P_2_1_2_Movement_in_a_grid",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

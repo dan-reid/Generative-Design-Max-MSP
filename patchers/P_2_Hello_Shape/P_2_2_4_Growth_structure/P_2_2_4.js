@@ -21,7 +21,6 @@ function setup() {
 	mg = new JitterObject('jit.mgraphics', width, height);
 	output_matrix = new JitterMatrix(4, 'char', width, height);
 
-	// this script uses the PClone.random() and PClone.dist()
 	m4 = new m4x();
 	x = [];
 	y = [];

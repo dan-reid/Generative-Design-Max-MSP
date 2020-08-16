@@ -3,7 +3,7 @@ var { m4x } = require('m4x');
 var width = 512;
 var height = 128;
 var mg = new JitterObject('jit.mgraphics', width, height); // jit.mgraphics
-var m4 = new PClone(); // PClone library
+var m4 = new m4x();
 var outputmatrix = new JitterMatrix(4, 'char', width, height);
 var noise_offset = 0;
 

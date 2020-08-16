@@ -23,7 +23,7 @@ function setup() {
 	height = 500;
 	mg = new JitterObject('jit.mgraphics', width, height);
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
-	// this script uses PClone.random()
+
 	m4 = new m4x();
 	tilecount = 20;
 	tilewidth = width / tilecount;

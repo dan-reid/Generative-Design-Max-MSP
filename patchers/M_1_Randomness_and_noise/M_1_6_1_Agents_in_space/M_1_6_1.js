@@ -178,8 +178,8 @@ function Ribbon3d(p, n) {
 				sketch.glend();
 				sketch.glbegin('quad_strip');
 			} else {
-				var v1 = PClone.Vector.sub(this.points[i], this.points[i + 1]);
-				var v2 = PClone.Vector.add(this.points[i + 1], this.points[i]);
+				var v1 = m4x.Vector.sub(this.points[i], this.points[i + 1]);
+				var v2 = m4x.Vector.add(this.points[i + 1], this.points[i]);
 				var v3 = v1.cross(v2);
 				v2 = v1.cross(v3);
 				v2.normalize();
