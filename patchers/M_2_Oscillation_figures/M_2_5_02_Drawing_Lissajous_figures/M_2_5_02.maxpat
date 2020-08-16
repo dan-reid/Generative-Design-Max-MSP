@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 30.0, 79.0, 693.0, 414.0 ],
+		"rect" : [ 34.0, 79.0, 693.0, 414.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -153,7 +153,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 53.0, 162.0, 185.5, 35.0 ],
 					"text" : "jit.world M_2_5_02 @floating 1 @size 512 512 @dim 1024 1024"
 				}

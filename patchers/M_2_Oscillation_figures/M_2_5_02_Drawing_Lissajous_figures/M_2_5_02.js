@@ -152,21 +152,9 @@ function reset() {
 	finished = false;
 }
 
-function dim(w, h) {
-	width = w;
-	height = h;
-	mg.dim = [width, height];
-}
-
 function millis() {
 	var ms = new Date().getTime();
 	return ms;
-}
-
-function println() {
-	for (var i = 0; i < arguments.length; i++) {
-		post(arguments[i] + '\n');
-	}
 }
 
 function background(r, g, b, a) {
