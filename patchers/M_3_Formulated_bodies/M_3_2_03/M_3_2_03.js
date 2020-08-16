@@ -1,7 +1,7 @@
 autowatch = 1;
 var { m4x } = require('m4x');
 
-var m4 = new PClone();
+var m4 = new m4x();
 
 var u_count = 40;
 var u_min = -Math.PI;
