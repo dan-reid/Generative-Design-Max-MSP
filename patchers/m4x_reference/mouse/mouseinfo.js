@@ -5,20 +5,27 @@
  */
 include('gd.mouseinfo');
 
-var mg = new JitterObject('jit.mgraphics', 640, 480);
-var outputmatrix = new JitterMatrix(4, 'char', 640, 480);
+var width = 200;
+var height = 200;
+
+var mg = new JitterObject('jit.mgraphics', width, height);
+var outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 function draw() {
 	background([1, 1, 1, 1]);
-	var d = 100;
+	var d = 20;
 	var pos_x = mousex - d / 2;
 	var pos_y = mousey - d / 2;
-	mg.ellipse(pos_x, pos_y, d, d);
+
+	mg.move_to(mousex, 0);
+	mg.line_to(mousex, height);
+	mg.move_to(0, mousey);
+	mg.line_to(width, mousey);
+	mg.stroke();
 
 	if (mousedown) {
+		mg.ellipse(pos_x, pos_y, d, d);
 		mg.fill();
-	} else {
-		mg.stroke();
 	}
 
 	mg.matrixcalc(outputmatrix, outputmatrix);

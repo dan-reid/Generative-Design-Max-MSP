@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 884.0, 480.0 ],
+		"rect" : [ 34.0, 79.0, 810.0, 416.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 7,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -47,7 +47,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 408.0, 172.0, 387.0, 280.0 ],
+					"patching_rect" : [ 407.0, 65.0, 387.0, 280.0 ],
 					"text" : "gd.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('gd.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('gd.mouseinfo') will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
 				}
 
@@ -121,7 +121,7 @@
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 78.0, 133.0, 256.0, 22.0 ],
-					"text" : "jit.world mouseinfo @floating 1 @size 640 480"
+					"text" : "jit.world mouseinfo @floating 1 @size 200 200"
 				}
 
 			}
@@ -167,7 +167,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 0.48851403594017, 0.727128982543945, 0.0, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 386.5, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-3", 4 ]
@@ -176,7 +175,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 0.762727618217468, 0.213821649551392, 0.0, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 371.0, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-3", 3 ]
@@ -185,7 +183,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"color" : [ 0.0, 0.729428887367249, 0.674576580524445, 1.0 ],
 					"destination" : [ "obj-1", 0 ],
 					"midpoints" : [ 355.5, 327.0, 62.5, 327.0 ],
 					"source" : [ "obj-3", 2 ]

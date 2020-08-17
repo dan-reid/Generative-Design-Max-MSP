@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 584.0, 170.0, 491.0, 354.0 ],
+		"rect" : [ 577.0, 130.0, 491.0, 354.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 0,
+		"toolbars_unpinned_last_save" : 7,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -40,6 +40,18 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 184.0, 285.0, 35.0, 22.0 ],
+					"text" : "open"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Lato Bold",
 					"fontsize" : 16.0,
 					"id" : "obj-8",
@@ -47,7 +59,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 66.0, 448.0, 26.0 ],
-					"presentation_linecount" : 2,
 					"text" : "Constrains a value between a minimum and maximum value."
 				}
 
@@ -59,7 +70,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 255.0, 196.0, 81.0, 22.0 ],
+					"patching_rect" : [ 304.0, 194.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
 
@@ -108,8 +119,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 39.0, 326.0, 253.0, 22.0 ],
-					"text" : "jit.gl.videoplane constrain @transform_reset 2"
+					"patching_rect" : [ 39.0, 326.0, 301.0, 22.0 ],
+					"text" : "jit.gl.videoplane constrain.example @transform_reset 2"
 				}
 
 			}
@@ -120,8 +131,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
-					"patching_rect" : [ 25.0, 161.0, 249.0, 22.0 ],
-					"text" : "jit.world constrain @floating 1 @size 150 150"
+					"patching_rect" : [ 25.0, 161.0, 298.0, 22.0 ],
+					"text" : "jit.world constrain.example @floating 1 @size 200 200"
 				}
 
 			}
@@ -132,13 +143,13 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 39.0, 285.0, 81.0, 22.0 ],
+					"patching_rect" : [ 39.0, 285.0, 130.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "constrain.js",
+						"filename" : "constrain.example.js",
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js constrain.js"
+					"text" : "js constrain.example.js"
 				}
 
 			}
@@ -160,7 +171,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 149.5, 225.0, 48.5, 225.0 ],
+					"midpoints" : [ 174.0, 225.0, 48.5, 225.0 ],
 					"source" : [ "obj-2", 1 ]
 				}
 
@@ -168,6 +179,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 375.5, 270.0, 48.5, 270.0 ],
 					"source" : [ "obj-3", 4 ]
 				}
 
@@ -175,6 +187,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 360.0, 270.0, 48.5, 270.0 ],
 					"source" : [ "obj-3", 3 ]
 				}
 
@@ -182,6 +195,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 344.5, 270.0, 48.5, 270.0 ],
 					"source" : [ "obj-3", 2 ]
 				}
 
@@ -200,10 +214,17 @@
 				}
 
 			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "constrain.js",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/m4x_reference/math/constrain",
+				"name" : "constrain.example.js",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/m4x_reference/math/m4x.constrain",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

@@ -13,8 +13,8 @@
 
 include('gd.mouseinfo');
 
-var width = 150;
-var height = 150;
+var width = 200;
+var height = 200;
 
 var { m4x } = require('m4x');
 var m4 = new m4x();
@@ -24,9 +24,11 @@ var outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 function draw() {
 	background([1, 1, 1, 1]);
+	
+	var diff = 60;
 
-	var left_wall = 50;
-	var right_wall = 100;
+	var left_wall = diff;
+	var right_wall = width - diff;
 
 	// xm is just the mousex, while
 	// xc is the mousex, but constrained
