@@ -18,7 +18,6 @@ If you edit any of the `.js` files in the `code` directory you'll need to restar
 ```
 var { m4x } = require('m4x');  // require the library
 var m4 = new m4x()             // create a new m4x instance
-
 ```
 
 ### Calculations
