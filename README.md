@@ -20,7 +20,7 @@ var { m4x } = require('m4x');  // require the library
 var m4 = new m4x()             // create a new m4x instance
 ```
 
-### Calculations
+### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
 
 #### m4x.constrain(val, min, max)
 
