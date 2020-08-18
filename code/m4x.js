@@ -18,24 +18,26 @@ function m4x() {
 		MAX_4: 255,
 	};
 
-	var m4xMethodObjects = [calculation, noise, random, ColorConverter, helpers];
+	var methodObjects = [calculation, noise, random, ColorConverter, helpers];
 
-	for (var i = 0; i < m4xMethodObjects.length; i++) {
-		var methodObject = m4xMethodObjects[i];
-		for (var methodName in methodObject) {
-			var method = methodObject[methodName];
-			if (typeof method === 'function') {
-				this[methodName] = method.bind(this);
+	for (var i = 0; i < methodObjects.length; i++) {
+		var obj = methodObjects[i];
+		for (var key in obj) {
+			var prop = obj[key];
+			if (typeof prop === 'function') {
+				this[key] = prop.bind(this);
+			} else {
+				this[key] = prop;
 			}
 		}
 	}
 }
 
-var m4xSubClasses = [Vector, Color];
-for (var i = 0; i < m4xSubClasses.length; i++) {
-	var subClass = m4xSubClasses[i];
-	if (subClass.name) {
-		m4x[subClass.name] = subClass;
+var classes = [Vector, Color];
+for (var i = 0; i < classes.length; i++) {
+	var theClass = classes[i];
+	if (theClass.name) {
+		m4x[theClass.name] = theClass;
 	}
 }
 

@@ -27,8 +27,8 @@
 include('gd.mouseinfo');
 var { m4x } = require('m4x');
 
-var width = 200;
-var height = 200;
+var width = 100;
+var height = 100;
 
 var m4 = new m4x();
 var mg = new JitterObject('jit.mgraphics', width, height);
@@ -40,18 +40,18 @@ function draw() {
 	var noise_scale = 0.02;
 	var noise_val;
 
-	for (var y = 0; y < height; y += 4) {
-		for (var x = 0; x < width; x += 4) {
+	for (var y = 0; y < height; y += 2) {
+		for (var x = 0; x < width / 2; x += 2) {
 			m4.noise_detail(2, 0.2);
 			noise_val = m4.noise((mousex + x) * noise_scale, (mousey + y) * noise_scale);
 			mg.set_source_rgb(noise_val, noise_val, noise_val);
-			mg.ellipse(x, y, 4, 4);
+			mg.ellipse(x, y, 2, 2);
 			mg.fill();
 
 			m4.noise_detail(8, 0.65);
 			noise_val = m4.noise((mousex + x + width / 2) * noise_scale, (mousey + y) * noise_scale);
 			mg.set_source_rgb(noise_val, noise_val, noise_val);
-			mg.rectangle(x, y, 4, 4);
+			mg.rectangle(x + width / 2, y, 2, 2);
 			mg.fill();
 		}
 	}
