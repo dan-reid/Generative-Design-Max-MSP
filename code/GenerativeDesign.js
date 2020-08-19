@@ -6,23 +6,25 @@ var { Spring } = require('gd.Spring');
 var { helpers } = require('gd.helpers');
 
 function GenerativeDesign() {
-	var gdMethodObjects = [helpers];
-	for (var i = 0; i < gdMethodObjects.length; i++) {
-		var methodObject = gdMethodObjects[i];
-		for (var methodName in methodObject) {
-			var method = methodObject[methodName];
-			if (typeof method === 'function') {
-				this[methodName] = method.bind(this);
+	var methodObjects = [helpers];
+	for (var i = 0; i < methodObjects.length; i++) {
+		var obj = methodObjects[i];
+		for (var key in obj) {
+			var prop = obj[key];
+			if (typeof prop === 'function') {
+				this[key] = prop.bind(this);
+			} else {
+				this[key] = prop;
 			}
 		}
 	}
 }
 
-var gdSubClasses = [Treemap, Mesh, Node, Attractor, Spring];
-for (var i = 0; i < gdSubClasses.length; i++) {
-	var subClass = gdSubClasses[i];
-	if (subClass.name) {
-		GenerativeDesign[subClass.name] = subClass;
+var classes = [Treemap, Mesh, Node, Attractor, Spring];
+for (var i = 0; i < classes.length; i++) {
+	var theClass = classes[i];
+	if (theClass.name) {
+		GenerativeDesign[theClass.name] = theClass;
 	}
 }
 

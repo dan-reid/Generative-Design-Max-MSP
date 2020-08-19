@@ -8,9 +8,9 @@ var PERLIN_ZWRAPB = 8;
 var PERLIN_ZWRAP = 1 << PERLIN_ZWRAPB;
 var PERLIN_SIZE = 4095;
 
-var perlin_octaves = 4; // default to medium smooth
-var perlin_amp_falloff = 0.5; // 50% reduction/octave
-var perlin; // will be initialized lazily by noise()
+// var this.perlin_octaves = 4; // default to medium smooth
+// var this.perlin_amp_falloff = 0.5; // 50% reduction/octave
+// var this.perlin; // will be initialized lazily by noise()
 
 var noiseMethods = {
 	/**
@@ -31,7 +31,7 @@ var noiseMethods = {
 	 *
 	 * The actual noise is structured similar to an audio signal, in respect to the
 	 * function's use of frequencies. Similar to the concept of harmonics in
-	 * physics, perlin noise is computed over several octaves which are added
+	 * physics, this.perlin noise is computed over several octaves which are added
 	 * together for the final result.
 	 *
 	 * Another way to adjust the character of the resulting sequence is the scale of the input
@@ -50,14 +50,18 @@ var noiseMethods = {
 	 *                      coordinates
 	 */
 
+	perlin_octaves: 4,
+	perlin_amp_falloff: 0.5,
+	perlin: null,
+
 	noise: function (x, y, z) {
 		y = y || 0;
 		z = z || 0;
 
-		if (!perlin) {
-			perlin = [];
+		if (!this.perlin) {
+			this.perlin = [];
 			for (var i = 0; i < PERLIN_SIZE + 1; i++) {
-				perlin[i] = Math.random();
+				this.perlin[i] = Math.random();
 			}
 		}
 
@@ -84,29 +88,29 @@ var noiseMethods = {
 
 		var n1, n2, n3;
 
-		for (var o = 0; o < perlin_octaves; o++) {
+		for (var o = 0; o < this.perlin_octaves; o++) {
 			var of = xi + (yi << PERLIN_YWRAPB) + (zi << PERLIN_ZWRAPB);
 
 			rxf = scaled_cosine(xf);
 			ryf = scaled_cosine(yf);
 
-			n1 = perlin[of & PERLIN_SIZE];
-			n1 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n1);
-			n2 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-			n2 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n2);
+			n1 = this.perlin[of & PERLIN_SIZE];
+			n1 += rxf * (this.perlin[(of + 1) & PERLIN_SIZE] - n1);
+			n2 = this.perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
+			n2 += rxf * (this.perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n2);
 			n1 += ryf * (n2 - n1);
 
 			of += PERLIN_ZWRAP;
-			n2 = perlin[of & PERLIN_SIZE];
-			n2 += rxf * (perlin[(of + 1) & PERLIN_SIZE] - n2);
-			n3 = perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
-			n3 += rxf * (perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n3);
+			n2 = this.perlin[of & PERLIN_SIZE];
+			n2 += rxf * (this.perlin[(of + 1) & PERLIN_SIZE] - n2);
+			n3 = this.perlin[(of + PERLIN_YWRAP) & PERLIN_SIZE];
+			n3 += rxf * (this.perlin[(of + PERLIN_YWRAP + 1) & PERLIN_SIZE] - n3);
 			n2 += ryf * (n3 - n2);
 
 			n1 += scaled_cosine(zf) * (n2 - n1);
 
 			r += n1 * ampl;
-			ampl *= perlin_amp_falloff;
+			ampl *= this.perlin_amp_falloff;
 			xi <<= 1;
 			xf *= 2;
 			yi <<= 1;
@@ -155,10 +159,10 @@ var noiseMethods = {
 
 	noise_detail: function (lod, falloff) {
 		if (lod > 0) {
-			perlin_octaves = lod;
+			this.perlin_octaves = lod;
 		}
 		if (falloff > 0) {
-			perlin_amp_falloff = falloff;
+			this.perlin_amp_falloff = falloff;
 		}
 	},
 
@@ -174,9 +178,9 @@ var noiseMethods = {
 
 	noise_seed: function (seed) {
 		lcg.setSeed(seed);
-		perlin = [];
+		this.perlin = [];
 		for (var i = 0; i < PERLIN_SIZE + 1; i++) {
-			perlin[i] = lcg.rand();
+			this.perlin[i] = lcg.rand();
 		}
 	},
 };

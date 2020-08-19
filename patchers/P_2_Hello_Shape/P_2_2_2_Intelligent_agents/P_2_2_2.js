@@ -27,7 +27,7 @@ var speed = 20;
 var dweight = 50;
 var dstroke = 4;
 
-var drawmode = 3;
+var drawmode = 1;
 
 setup();
 
