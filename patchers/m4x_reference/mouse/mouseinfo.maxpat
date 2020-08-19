@@ -26,7 +26,7 @@
 		"toptoolbarpinned" : 0,
 		"righttoolbarpinned" : 0,
 		"bottomtoolbarpinned" : 0,
-		"toolbars_unpinned_last_save" : 7,
+		"toolbars_unpinned_last_save" : 0,
 		"tallnewobj" : 0,
 		"boxanimatetime" : 200,
 		"enablehscroll" : 1,
@@ -40,15 +40,27 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 150.0, 342.0, 35.0, 22.0 ],
+					"text" : "open"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"fontname" : "Lato Bold",
 					"fontsize" : 12.0,
 					"id" : "obj-9",
-					"linecount" : 18,
+					"linecount" : 19,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 407.0, 65.0, 387.0, 280.0 ],
-					"text" : "gd.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('gd.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('gd.mouseinfo') will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
+					"patching_rect" : [ 407.0, 65.0, 387.0, 294.0 ],
+					"text" : "gd.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('gd.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('gd.mouseinfo') (see inside [js]) will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
 				}
 
 			}
@@ -216,6 +228,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
 					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-8", 0 ]
 				}
 
 			}

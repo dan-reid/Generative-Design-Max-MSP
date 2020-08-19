@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 432.0, 364.0 ],
+		"rect" : [ 577.0, 130.0, 554.0, 381.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,26 +40,45 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"fontname" : "Lato",
+					"fontsize" : 16.0,
 					"id" : "obj-13",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 261.5, 172.0, 95.0, 33.0 ],
-					"text" : "Choose a new random seed",
-					"textjustification" : 1
+					"patching_rect" : [ 25.0, 66.5, 450.0, 26.0 ],
+					"presentation_linecount" : 5,
+					"text" : "move the mouse within the window to interact"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-11",
+					"fontname" : "Lato",
+					"id" : "obj-12",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 177.0, 326.5, 84.0, 21.0 ],
+					"text" : "distance"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 0.2, 0.2, 0.2, 0.0 ],
+					"fontname" : "Lato Bold",
+					"fontsize" : 16.0,
+					"id" : "obj-10",
 					"maxclass" : "number",
+					"minimum" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 284.0, 211.0, 50.0, 22.0 ]
+					"patching_rect" : [ 120.0, 324.5, 61.0, 28.0 ],
+					"textcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"tricolor" : [ 0.0, 0.882352941176471, 0.996078431372549, 1.0 ]
 				}
 
 			}
@@ -70,20 +89,20 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 284.0, 239.0, 95.0, 22.0 ],
-					"text" : "setprop seed $1"
+					"patching_rect" : [ 141.5, 285.0, 35.0, 22.0 ],
+					"text" : "open"
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-8",
-					"maxclass" : "message",
-					"numinlets" : 2,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 198.5, 285.0, 35.0, 22.0 ],
-					"text" : "open"
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 274.0, 191.0, 81.0, 22.0 ],
+					"text" : "gd.mouseinfo"
 				}
 
 			}
@@ -95,8 +114,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 38.0, 9.0, 400.0, 50.0 ],
-					"text" : "m4x.random_seed()"
+					"patching_rect" : [ 25.0, 9.0, 455.0, 50.0 ],
+					"text" : "m4x.dist()"
 				}
 
 			}
@@ -107,7 +126,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 239.0, 37.0, 22.0 ],
+					"patching_rect" : [ 39.0, 239.0, 37.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -120,7 +139,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 63.0, 78.0, 24.0, 24.0 ]
+					"patching_rect" : [ 25.0, 119.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -131,8 +150,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 38.0, 326.0, 326.0, 22.0 ],
-					"text" : "jit.gl.videoplane random_seed.example @transform_reset 2"
+					"patching_rect" : [ 39.0, 358.0, 271.0, 22.0 ],
+					"text" : "jit.gl.videoplane dist.example @transform_reset 2"
 				}
 
 			}
@@ -143,8 +162,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
-					"patching_rect" : [ 63.0, 120.0, 322.0, 22.0 ],
-					"text" : "jit.world random_seed.example @floating 1 @size 200 200"
+					"patching_rect" : [ 25.0, 161.0, 268.0, 22.0 ],
+					"text" : "jit.world dist.example @floating 1 @size 200 200"
 				}
 
 			}
@@ -153,20 +172,27 @@
 					"id" : "obj-1",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "" ],
-					"patching_rect" : [ 38.0, 285.0, 155.0, 22.0 ],
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 39.0, 285.0, 100.0, 22.0 ],
 					"saved_object_attributes" : 					{
-						"filename" : "random_seed.example.js",
+						"filename" : "dist.example.js",
 						"parameter_enable" : 0
 					}
 ,
-					"text" : "js random_seed.example.js"
+					"text" : "js dist.example.js"
 				}
 
 			}
  ],
 		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-1", 1 ]
+				}
+
+			}
+, 			{
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-1", 0 ]
@@ -175,16 +201,40 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
-					"source" : [ "obj-11", 0 ]
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-2", 2 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-33", 0 ],
-					"midpoints" : [ 224.0, 225.0, 47.5, 225.0 ],
+					"midpoints" : [ 159.0, 225.0, 48.5, 225.0 ],
 					"source" : [ "obj-2", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 345.5, 270.0, 48.5, 270.0 ],
+					"source" : [ "obj-3", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 330.0, 270.0, 48.5, 270.0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"midpoints" : [ 314.5, 270.0, 48.5, 270.0 ],
+					"source" : [ "obj-3", 2 ]
 				}
 
 			}
@@ -205,23 +255,23 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"source" : [ "obj-8", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-9", 0 ]
 				}
 
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "random_seed.example.js",
-				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/m4x_reference/random",
+				"name" : "dist.example.js",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/m4x_reference/math/m4x.dist",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "gd.mouseinfo.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
+				"patcherrelativepath" : "../../abstractions",
+				"type" : "JSON",
 				"implicit" : 1
 			}
  ],
