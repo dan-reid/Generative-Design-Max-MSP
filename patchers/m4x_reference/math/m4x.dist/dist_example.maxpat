@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 577.0, 130.0, 554.0, 381.0 ],
+		"rect" : [ 577.0, 130.0, 555.0, 396.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -47,7 +47,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 25.0, 66.5, 450.0, 26.0 ],
-					"presentation_linecount" : 5,
 					"text" : "move the mouse within the window to interact"
 				}
 
@@ -59,8 +58,8 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 177.0, 326.5, 84.0, 21.0 ],
-					"text" : "distance"
+					"patching_rect" : [ 173.0, 328.0, 133.0, 21.0 ],
+					"text" : "distance in pixels"
 				}
 
 			}
