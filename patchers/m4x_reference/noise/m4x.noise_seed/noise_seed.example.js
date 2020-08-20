@@ -23,10 +23,11 @@ var outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 var xoff = 0;
 
-m4.noise_seed(99);
+
 background([1, 1, 1, 1]);
 
 function draw() {
+	m4.noise_seed(99);
 	xoff += 0.01;
 	var noise = m4.noise(xoff) * width;
 

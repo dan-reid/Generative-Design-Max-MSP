@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 39.0, 79.0, 428.0, 459.0 ],
+		"rect" : [ 39.0, 79.0, 503.0, 460.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -43,12 +43,11 @@
 					"fontname" : "Lato Regular",
 					"fontsize" : 16.0,
 					"id" : "obj-5",
-					"linecount" : 2,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 61.0, 378.0, 45.0 ],
-					"text" : "A simple example of the GenerativeDesign Node class"
+					"patching_rect" : [ 25.0, 61.0, 419.0, 26.0 ],
+					"text" : "A simple example of the GenerativeDesign.Node class"
 				}
 
 			}
@@ -171,7 +170,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 25.0, 153.0, 237.0, 22.0 ],
 					"text" : "jit.world M_4_1 @floating 1 @size 600 600"
 				}

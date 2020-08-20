@@ -4,13 +4,13 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 38.0, 79.0, 680.0, 535.0 ],
+		"rect" : [ 38.0, 79.0, 578.0, 465.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -45,7 +45,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 226.5, 358.0, 35.0, 22.0 ],
+					"patching_rect" : [ 209.5, 306.0, 35.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -57,7 +57,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
-					"patching_rect" : [ 475.0, 353.0, 63.0, 22.0 ],
+					"patching_rect" : [ 458.0, 301.0, 63.0, 22.0 ],
 					"text" : "gd.keyinfo"
 				}
 
@@ -69,7 +69,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 335.0, 415.0, 35.0, 22.0 ],
+					"patching_rect" : [ 355.0, 363.0, 35.0, 22.0 ],
 					"text" : "open"
 				}
 
@@ -81,7 +81,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 382.0, 353.0, 81.0, 22.0 ],
+					"patching_rect" : [ 365.0, 301.0, 81.0, 22.0 ],
 					"text" : "gd.mouseinfo"
 				}
 
@@ -93,7 +93,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 475.0, 448.0, 100.0, 22.0 ],
+					"patching_rect" : [ 458.0, 396.0, 100.0, 22.0 ],
 					"text" : "exportimage png"
 				}
 
@@ -105,7 +105,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 475.0, 481.0, 53.0, 22.0 ],
+					"patching_rect" : [ 458.0, 429.0, 53.0, 22.0 ],
 					"text" : "jit.matrix"
 				}
 
@@ -131,7 +131,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 255.0, 254.0, 60.0, 22.0 ],
+					"patching_rect" : [ 238.0, 202.0, 60.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -143,7 +143,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 255.0, 282.0, 146.0, 22.0 ],
+					"patching_rect" : [ 238.0, 230.0, 146.0, 22.0 ],
 					"text" : "sendwindow idlemouse 1"
 				}
 
@@ -169,7 +169,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 71.0, 254.0, 35.0, 35.0 ]
+					"patching_rect" : [ 54.0, 202.0, 35.0, 35.0 ]
 				}
 
 			}
@@ -179,8 +179,8 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
-					"patching_rect" : [ 71.0, 314.0, 330.0, 22.0 ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
+					"patching_rect" : [ 54.0, 262.0, 330.0, 22.0 ],
 					"text" : "jit.world P_3_0 @floating 1 @size 500 500 @dim 500 500"
 				}
 
@@ -192,7 +192,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 413.0, 415.0, 67.0, 22.0 ],
+					"patching_rect" : [ 396.0, 363.0, 67.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "P_3_0.js",
 						"parameter_enable" : 0
@@ -206,7 +206,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 422.5, 459.0, 36.0, 459.0, 36.0, 305.0, 80.5, 305.0 ],
+					"midpoints" : [ 405.5, 407.0, 19.0, 407.0, 19.0, 253.0, 63.5, 253.0 ],
 					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}

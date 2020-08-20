@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 234.0, 143.0, 395.0, 249.0 ],
+		"rect" : [ 70.0, 139.0, 460.0, 267.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -40,12 +40,36 @@
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-9",
+					"linecount" : 4,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 19.0, 155.0, 150.0, 60.0 ],
+					"text" : "each time you complile the script, you should notice the pattern generated is the same"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 174.0, 193.0, 50.0, 22.0 ],
+					"text" : "compile"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-5",
 					"maxclass" : "message",
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 337.0, 198.0, 35.0, 22.0 ],
+					"patching_rect" : [ 385.0, 193.0, 35.0, 22.0 ],
 					"text" : "open"
 				}
 
@@ -70,7 +94,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.5, 155.0, 37.0, 22.0 ],
+					"patching_rect" : [ 231.5, 150.0, 37.0, 22.0 ],
 					"text" : "draw"
 				}
 
@@ -83,7 +107,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 38.0, 81.0, 24.0, 24.0 ]
+					"patching_rect" : [ 86.0, 68.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -94,7 +118,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 3,
 					"outlettype" : [ "jit_matrix", "bang", "" ],
-					"patching_rect" : [ 38.0, 123.0, 310.0, 22.0 ],
+					"patching_rect" : [ 86.0, 113.0, 310.0, 22.0 ],
 					"text" : "jit.world noise_seed.example @floating 1 @size 300 300"
 				}
 
@@ -106,7 +130,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 183.5, 198.0, 143.0, 22.0 ],
+					"patching_rect" : [ 231.5, 193.0, 143.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"filename" : "noise_seed.example.js",
 						"parameter_enable" : 0
@@ -120,7 +144,7 @@
 		"lines" : [ 			{
 				"patchline" : 				{
 					"destination" : [ "obj-2", 0 ],
-					"midpoints" : [ 193.0, 233.0, 14.0, 233.0, 14.0, 114.0, 47.5, 114.0 ],
+					"midpoints" : [ 241.0, 242.0, 3.0, 242.0, 3.0, 108.0, 95.5, 108.0 ],
 					"source" : [ "obj-1", 0 ]
 				}
 
@@ -136,6 +160,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-4", 0 ]
 				}
 
 			}

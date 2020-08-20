@@ -3,8 +3,8 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 8,
+			"minor" : 1,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "Default Max 7",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-3",
@@ -419,7 +420,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 77.0, 226.0, 268.0, 22.0 ],
 					"text" : "jit.world P_4_3_1_01 @floating 1 @size 700 600"
 				}
@@ -585,7 +586,7 @@
  ],
 		"dependency_cache" : [ 			{
 				"name" : "P_4_3_1_01.js",
-				"bootpath" : "~/Developer/Generative_Design_MaxMSP/patchers/P_4_Hello_Image/P_4_3_1_Graphic_from_image",
+				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/P_4_Hello_Image/P_4_3_1_Graphic_from_image_1",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1

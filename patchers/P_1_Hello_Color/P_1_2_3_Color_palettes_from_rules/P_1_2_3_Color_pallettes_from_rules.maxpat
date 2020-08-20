@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -238,7 +238,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 139.5, 381.0, 75.0, 22.0 ],
+					"patching_rect" : [ 164.0, 411.0, 75.0, 22.0 ],
 					"text" : "exportimage"
 				}
 
@@ -363,7 +363,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 53.0, 117.0, 248.0, 22.0 ],
 					"text" : "jit.world P_1_2_3 @floating 1 @size 640 480"
 				}

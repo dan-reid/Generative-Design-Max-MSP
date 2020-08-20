@@ -4,7 +4,7 @@
 		"appversion" : 		{
 			"major" : 8,
 			"minor" : 1,
-			"revision" : 4,
+			"revision" : 5,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
@@ -304,12 +304,12 @@
 					"fontname" : "Lato Regular",
 					"fontsize" : 16.0,
 					"id" : "obj-5",
-					"linecount" : 5,
+					"linecount" : 3,
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 25.0, 63.0, 623.0, 102.0 ],
-					"text" : "Counts the frequency of words in a textfile and represents them as a grid of rectangles of varying size. The following example allows you to analyse some of the inauguration speeches of past and present U.S. presidents. The original example from the book uses Goethe's Faust, but trying to load very large textfiles from the script tended to crash max, so things got a little political..."
+					"patching_rect" : [ 25.0, 63.0, 623.0, 64.0 ],
+					"text" : "Counts the frequency of words in a textfile and represents them as a grid of rectangles of varying size. The following example allows you to analyse some of the inauguration speeches of past and present U.S. presidents."
 				}
 
 			}
@@ -356,7 +356,7 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 3,
-					"outlettype" : [ "jit_gl_texture", "bang", "" ],
+					"outlettype" : [ "jit_matrix", "bang", "" ],
 					"patching_rect" : [ 34.0, 229.0, 489.0, 22.0 ],
 					"text" : "jit.world P_3_1_4 @floating 1 @size 512 512 @dim 1024 1024 @windowposition 740 100"
 				}
