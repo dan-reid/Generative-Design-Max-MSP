@@ -76,8 +76,3 @@ For the sake of consistency, this package following the naming convention of `mg
 #### m4x.color(ch1, ch2, ch3, ch4)
 
 #### m4x.color_mode(mode, ch1, ch2, ch3, ch4)
-
-#### m4.color.normalize()
-
-
-#### m4x.hsb_to_rgb(hsb)
