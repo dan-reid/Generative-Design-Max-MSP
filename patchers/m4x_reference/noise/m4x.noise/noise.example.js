@@ -19,7 +19,7 @@
  * @returns {number}    Perlin noise value (between 0 and 1) at specified coordinates
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 var { m4x } = require('m4x');
 
 var width = 200;

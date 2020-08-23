@@ -60,7 +60,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 407.0, 65.0, 387.0, 294.0 ],
-					"text" : "gd.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('gd.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('gd.mouseinfo') (see inside [js]) will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
+					"text" : "m4x.mouseinfo parses mouse data from jit.world. The first two outlets output messages which call:\n\n1 - mousemoved(x. y, leftbutton, rightbutton)\n2 - mousepressed(x, y)\n\nAs the names suggest, mousemoved is called each time the mouse is moved, while mousepressed is called each time the left mouse button is pressed.\n\nThe remaining 3 outlets output the mousex, mousey, and mousedown variables respectively.  The variables are added to the script with include('m4x.mouseinfo'). \n\nBy default, mouse data is only polled when the mouse button in down. However,  adding include('m4x.mouseinfo') (see inside [js]) will automatically find the instance of jit.world in the patch and send the message: sendwindow mouseidle 1 in order to enable continous mouse polling. \n"
 				}
 
 			}
@@ -72,7 +72,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 315.0, 174.0, 81.0, 22.0 ],
-					"text" : "gd.mouseinfo"
+					"text" : "m4x.mouseinfo"
 				}
 
 			}
@@ -247,7 +247,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gd.mouseinfo.maxpat",
+				"name" : "m4x.mouseinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
 				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",

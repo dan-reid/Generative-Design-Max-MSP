@@ -11,7 +11,7 @@
  * @param {number} seed the seed value
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 var { m4x } = require('m4x');
 
 var width = 300;
@@ -22,7 +22,6 @@ var mg = new JitterObject('jit.mgraphics', width, height);
 var outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 var xoff = 0;
-
 
 background([1, 1, 1, 1]);
 

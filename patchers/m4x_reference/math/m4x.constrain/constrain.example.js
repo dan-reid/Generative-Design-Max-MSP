@@ -11,7 +11,7 @@
  * @returns {number}       constrained number
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 
 var width = 200;
 var height = 200;
@@ -24,7 +24,7 @@ var outputmatrix = new JitterMatrix(4, 'char', width, height);
 
 function draw() {
 	background([1, 1, 1, 1]);
-	
+
 	var diff = 60;
 
 	var left_wall = diff;

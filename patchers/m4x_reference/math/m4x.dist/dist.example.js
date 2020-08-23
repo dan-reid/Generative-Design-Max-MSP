@@ -17,7 +17,7 @@
  * @returns {number}       distance between the two points
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 outlets = 2;
 
 var width = 200;

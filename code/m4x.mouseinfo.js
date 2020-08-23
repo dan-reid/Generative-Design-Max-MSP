@@ -28,7 +28,7 @@
 				msg += 'ensure the patch contains a jit.world object and then re-complile your script\n';
 				msg += 'alternatively, you can send jit.world the message: sendwindow idlemouse 1\n';
 				msg += "if your patch doesn't require automatic mouse position polling you can ignore this warning\n";
-				post('gd.mouseinfo (js):', msg);
+				post('m4x.mouseinfo (js):', msg);
 			}
 		}
 	}

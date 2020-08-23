@@ -3,7 +3,7 @@
  * It also automatically enables idlemouse polling in the instance of
  * jit.world located in the main patcher.
  */
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 
 var width = 200;
 var height = 200;

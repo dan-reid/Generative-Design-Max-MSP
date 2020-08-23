@@ -17,7 +17,7 @@
  * @returns {m4x.Vector}   An instance of an m4x.Vector
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 
 var width = 150;
 var height = 150;

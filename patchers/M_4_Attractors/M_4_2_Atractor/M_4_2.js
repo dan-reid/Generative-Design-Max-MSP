@@ -1,5 +1,5 @@
 autowatch = 1;
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 
 var { m4x } = require('m4x');
 var { GenerativeDesign } = require('GenerativeDesign');

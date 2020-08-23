@@ -14,7 +14,7 @@
  * @param 	{number} seed  the seed value
  */
 
-include('gd.mouseinfo');
+include('m4x.mouseinfo');
 var { m4x } = require('m4x');
 
 var width = 200;

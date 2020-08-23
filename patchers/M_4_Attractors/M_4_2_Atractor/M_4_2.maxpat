@@ -96,8 +96,8 @@
 					"numinlets" : 1,
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
-					"patching_rect" : [ 243.0, 204.5, 81.0, 22.0 ],
-					"text" : "gd.mouseinfo"
+					"patching_rect" : [ 243.0, 204.5, 90.0, 22.0 ],
+					"text" : "m4x.mouseinfo"
 				}
 
 			}
@@ -287,7 +287,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 314.5, 345.0, 69.5, 345.0 ],
+					"midpoints" : [ 323.5, 345.0, 69.5, 345.0 ],
 					"source" : [ "obj-5", 4 ]
 				}
 
@@ -295,7 +295,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 299.0, 345.0, 69.5, 345.0 ],
+					"midpoints" : [ 305.75, 345.0, 69.5, 345.0 ],
 					"source" : [ "obj-5", 3 ]
 				}
 
@@ -303,7 +303,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
-					"midpoints" : [ 283.5, 345.0, 69.5, 345.0 ],
+					"midpoints" : [ 288.0, 345.0, 69.5, 345.0 ],
 					"source" : [ "obj-5", 2 ]
 				}
 
@@ -331,7 +331,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gd.mouseinfo.maxpat",
+				"name" : "m4x.mouseinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
 				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",

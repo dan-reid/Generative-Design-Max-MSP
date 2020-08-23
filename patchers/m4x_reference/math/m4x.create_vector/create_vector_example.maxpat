@@ -71,7 +71,7 @@
 					"numoutlets" : 5,
 					"outlettype" : [ "", "", "", "", "" ],
 					"patching_rect" : [ 260.0, 196.0, 81.0, 22.0 ],
-					"text" : "gd.mouseinfo"
+					"text" : "m4x.mouseinfo"
 				}
 
 			}
@@ -219,7 +219,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gd.mouseinfo.maxpat",
+				"name" : "m4x.mouseinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
 				"patcherrelativepath" : "../../../abstractions",
 				"type" : "JSON",
