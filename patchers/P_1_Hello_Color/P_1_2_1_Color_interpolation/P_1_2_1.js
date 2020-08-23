@@ -22,7 +22,7 @@ function setup() {
 	tilecount_x = 10;
 	tilecount_y = 10;
 
-	m4.color_mode('HSB');
+	m4.color_mode('HSB', 360, 100, 100);
 	shakecolors();
 }
 
@@ -40,13 +40,13 @@ function draw() {
 			var amount = m4.map(x, 0, tilecount_x - 1, 0, 1);
 			var col;
 			if (interpolate_shortest) {
-				m4.color_mode('RGB');
+				m4.color_mode('RGB', 360, 100, 100);
 				col = m4.lerp_color(col1, col2, amount);
-				mg.set_source_rgba(col.normalize());
+				mg.set_source_rgba(col);
 			} else {
-				m4.color_mode('HSB');
+				m4.color_mode('HSB', 360, 100, 100);
 				col = m4.lerp_color(col1, col2, amount);
-				mg.set_source_rgba(col.normalize().to_rgb());
+				mg.set_source_rgba(col);
 			}
 
 			mg.rectangle(posX, posY, tilewidth, tileheight);
@@ -67,16 +67,12 @@ function background(r, g, b, a) {
 }
 
 function shakecolors() {
-	m4.color_mode('HSB');
+	m4.color_mode('HSB', 360, 100, 100);
 	for (var i = 0; i < tilecount_y; i++) {
 		colors_left[i] = m4.color(m4.random(0, 60), m4.random(0, 100), 100);
 		colors_right[i] = m4.color(m4.random(160, 190), 100, m4.random(0, 100));
 	}
 }
-
-// function Color(chnl1, chnl2, chnl3, chnl4) {
-//   this.channels = [chnl1, chnl2, chnl3, chnl4];
-// }
 
 function setGridXY(x, y) {
 	tilecount_x = x;

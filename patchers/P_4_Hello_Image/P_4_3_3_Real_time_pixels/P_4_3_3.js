@@ -51,7 +51,7 @@ function draw() {
 
 		// set the line color to the current pixel's color
 		var col = m4.color(c[0], c[1], c[2]);
-		mg.set_source_rgb(col.normalize());
+		mg.set_source_rgb(col);
 
 		// move the cursor to the current point and draw the squiggle
 		mg.move_to(x, y);

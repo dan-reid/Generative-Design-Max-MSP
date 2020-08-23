@@ -47,7 +47,7 @@ function draw() {
 				c = m4.color(0, 0, 0, 10);
 		}
 
-		mg.set_source_rgba(c.normalize().to_rgb());
+		mg.set_source_rgba(c);
 
 		for (var i = 0; i <= circle_resolution; i++) {
 			var x = Math.cos(angle * i) * radius;

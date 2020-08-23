@@ -19,7 +19,6 @@ function setup() {
 	m4 = new m4x();
 	segment_count = 360;
 	radius = 220;
-	maxhue = 360;
 	saturation = width;
 	brightness = height;
 	m4.color_mode('HSB', 360, width, height, 100);
@@ -36,11 +35,8 @@ function draw() {
 		var x2 = width / 2 + Math.cos(m4.radians(angle + angle_step)) * radius;
 		var y2 = height / 2 + Math.sin(m4.radians(angle + angle_step)) * radius;
 
-		// The example is the book uses HSB (same as HSV)
-		// As far as I can tell you can't change the color mode for mgraphics
-		// So we work in HSB and then simply convert to RGB before drawing
-		var hsb = m4.color(angle, saturation, brightness, 100);
-		mg.set_source_rgba(hsb.normalize().to_rgb());
+		var col = m4.color(angle, saturation, brightness);
+		mg.set_source_rgba(col);
 		triangle(x1, y1, x2, y2, width / 2, height / 2);
 		mg.fill();
 	}

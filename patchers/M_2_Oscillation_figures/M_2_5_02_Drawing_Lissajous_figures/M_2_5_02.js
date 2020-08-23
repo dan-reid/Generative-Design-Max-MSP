@@ -110,7 +110,7 @@ function drawline(vector1, vector2) {
 		var alpha = angle * line_alpha + (pointindex % 2) * 2;
 		var col = m4.color(hue, saturation_value, brightness, alpha);
 
-		mg.set_source_rgba(col.normalize().to_rgb());
+		mg.set_source_rgba(col);
 		mg.set_line_width(line_weight);
 		mg.move_to(vector1.x, vector1.y);
 		mg.line_to(vector2.x, vector2.y);

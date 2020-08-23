@@ -35,7 +35,7 @@ function draw() {
 
 	var col = m4.color(255, 0, 255);
 
-	mg.set_source_rgb(col.normalize());
+	mg.set_source_rgb(col);
 	mg.move_to(vec.x, vec.y);
 	mg.line_to(mousex, mousey);
 	mg.stroke();

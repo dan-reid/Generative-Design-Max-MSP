@@ -106,7 +106,7 @@ function new_pallette() {
 			var index = counter % color_count;
 			var col = m4.color(hue_values[index], saturation_values[index], brightness_values[index]);
 			// var col = m4.hsb_to_rgb([hue_values[index], saturation_values[index], brightness_values[index]]);
-			mg.set_source_rgb(col.normalize().to_rgb());
+			mg.set_source_rgb(col);
 			mg.rectangle(x, y, w, h);
 			mg.fill();
 			counter++;

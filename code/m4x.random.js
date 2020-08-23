@@ -3,6 +3,7 @@
 var { lcg } = require('util');
 
 var randomMethods = {
+	seeded: false,
 	random: function (min, max) {
 		var rand;
 		if (this.seeded) {

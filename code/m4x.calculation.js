@@ -1,5 +1,7 @@
 // https://github.com/processing/p5.js/blob/main/src/math/calculation.js
 
+var { constants } = require('constants');
+
 var calculationMethods = {
 	/**
 	 * @method constrain
@@ -115,18 +117,55 @@ var calculationMethods = {
 	/**
 	 *
 	 * @method lerp_color
-	 * @param  {m4x.Color} col1  interpolate from this color
-	 * @param  {m4x.Color} col2  interpolate to this color
-	 * @param  {Number}    a 	 	 number between 0 and 1
+	 * @param  {m4x.Color} c1  	 interpolate from this color
+	 * @param  {m4x.Color} c2  	 interpolate to this color
+	 * @param  {Number}    amt 	 number between 0 and 1
 	 * @return {m4x.Color}     	 interpolated color
 	 */
 
-	lerp_color: function (col1, col2, a) {
-		var mix1 = this.lerp(col1[0], col2[0], a);
-		var mix2 = this.lerp(col1[1], col2[1], a);
-		var mix3 = this.lerp(col1[2], col2[2], a);
-		var mix4 = this.lerp(col1[3], col2[3], a);
-		return this.color(mix1, mix2, mix3, mix4);
+	lerp_color: function (c1, c2, amt) {
+		var mode = this.color_properties.mode;
+		var maxes = this.color_properties.maxes;
+		var l0, l1, l2, l3;
+		var from_array, to_array;
+
+		if (mode === constants.RGB) {
+			from_array = c1.levels.map(function (level) {
+				return level / 255;
+			});
+
+			to_array = c2.levels.map(function (level) {
+				return level / 255;
+			});
+		} else if (mode === constants.HSB) {
+			c1._get_brightness(); // Cache hsba so it definitely exists.
+			c2._get_brightness();
+			from_array = c1.hsba;
+			to_array = c2.hsba;
+		} else if (mode === constants.HSL) {
+			c1._get_lightness(); // Cache hsla so it definitely exists.
+			c2._get_lightness();
+			from_array = c1.hsla;
+			to_array = c2.hsla;
+		} else {
+			throw new Error('m4x.lerp_color: ' + mode + ' cannot be used for interpolation.');
+		}
+
+		// Prevent extrapolation.
+		amt = Math.max(Math.min(amt, 1), 0);
+
+		l0 = this.lerp(from_array[0], to_array[0], amt);
+		l1 = this.lerp(from_array[1], to_array[1], amt);
+		l2 = this.lerp(from_array[2], to_array[2], amt);
+		l3 = this.lerp(from_array[3], to_array[3], amt);
+
+		// Scale components.
+		l0 *= maxes[mode][0];
+		l1 *= maxes[mode][1];
+		l2 *= maxes[mode][2];
+		l3 *= maxes[mode][3];
+
+		return this.color(l0, l1, l2, l3);
 	},
 };
 

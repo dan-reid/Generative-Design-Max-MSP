@@ -22,11 +22,11 @@ function setup() {
 }
 
 function draw() {
-	var bg_col = m4.color(mousey / 2, 100, 100, 100);
-	background(bg_col.normalize().to_rgb());
+	var bg_col = m4.color(mousey / 2, 100, 100);
+	background(bg_col);
 
-	var fg_col = m4.color(360 - mousey / 2, 100, 100, 100);
-	mg.set_source_rgb(fg_col.normalize().to_rgb());
+	var fg_col = m4.color(360 - mousey / 2, 100, 100);
+	mg.set_source_rgba(fg_col);
 
 	mg.rectangle(360 - (mousex + 1) / 2, 360 - (mousex + 1) / 2, mousex + 1, mousex + 1);
 	mg.fill();

@@ -72,21 +72,21 @@ function draw() {
 
 			translate(posx, posy);
 			col = m4.color(139, 39, 221, char_alpha);
-			set_source_rgba(col.normalize());
+			set_source_rgba(col);
 			if (drawlines) {
 				move_to(0, 0);
 				line_to(new_posx, new_posy);
 				stroke();
 			}
 			col = m4.color(212, 175, 55, char_alpha);
-			set_source_rgba(col.normalize());
+			set_source_rgba(col);
 			if (drawellipses) {
 				ellipse(0, 0, charsize / 10, charsize / 10);
 				fill();
 			}
 			if (drawtext) {
 				col = m4.color(0, 0, 0, char_alpha);
-				set_source_rgba(col.normalize());
+				set_source_rgba(col);
 				move_to(new_posx, new_posy);
 				text_path(joined_text.charAt(i));
 				fill();

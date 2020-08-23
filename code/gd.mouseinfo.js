@@ -23,8 +23,6 @@
 			}
 			if (jit_world && jit_world.valid) {
 				jit_world.message('sendwindow', 'idlemouse', 1);
-				var msg = 'enabled idlemouse polling for jit.window\n';
-				post('gd.mouseinfo (js):', msg);
 			} else {
 				var msg = "warning - couldn't automatically enable idlemouse polling\n";
 				msg += 'ensure the patch contains a jit.world object and then re-complile your script\n';

@@ -15,7 +15,7 @@ function plot_perlin_noise() {
 		noise_offset = x / 150;
 		y = m4.noise(noise_offset + random_offset) * height; // scale to height
 		var col = m4.color(0, 130, 164);
-		mg.set_source_rgb(col.normalize());
+		mg.set_source_rgb(col);
 		mg.line_to(x, y);
 		mg.stroke();
 		mg.set_source_rgb(0, 0, 0);

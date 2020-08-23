@@ -61,7 +61,7 @@ function draw() {
 				for (var x = 0; x < frame.dim[0]; x++) {
 					var c = frame.getcell(x, y);
 					var col = m4.color(c[0], c[1], c[2]);
-					set_source_rgb(col.normalize());
+					set_source_rgb(col);
 					rectangle(posX + x, posY + y, 1, 1);
 					fill();
 				}

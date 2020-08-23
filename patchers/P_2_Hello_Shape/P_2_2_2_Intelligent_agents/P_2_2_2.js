@@ -81,10 +81,10 @@ function draw() {
 					mg.set_source_rgb(0, 0, 0);
 				} else if (drawmode === 2) {
 					var col = m4.color(52, 100, distance / dstroke);
-					mg.set_source_rgb(col.normalize().to_rgb());
+					mg.set_source_rgb(col);
 				} else if (drawmode === 3) {
 					var col = m4.color(192, 100, 64, distance / dstroke);
-					mg.set_source_rgb(col.normalize().to_rgb());
+					mg.set_source_rgb(col);
 				}
 				mg.move_to(pos_x, pos_y);
 				mg.line_to(x_cross, y_cross);

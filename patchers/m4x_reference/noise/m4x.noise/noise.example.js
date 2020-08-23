@@ -36,7 +36,7 @@ function draw() {
 	for (var x = 0; x < width; x++) {
 		var noise_val = m4.noise((mousex + x) * noise_scale, mousey * noise_scale);
 		var col = m4.color(51, 51, 51, noise_val * 255);
-		mg.set_source_rgba(col.normalize());
+		mg.set_source_rgba(col);
 		mg.move_to(x, mousey + noise_val * 80);
 		mg.line_to(x, height);
 		mg.stroke();

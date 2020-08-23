@@ -9,15 +9,6 @@ var { Vector } = require('m4x.Vector');
 var { Color } = require('m4x.Color');
 
 function m4x() {
-	this.seeded = false;
-	this.color_properties = {
-		mode: constants.RGB,
-		MAX_1: 255,
-		MAX_2: 255,
-		MAX_3: 255,
-		MAX_4: 255,
-	};
-
 	var methodObjects = [calculation, noise, random, ColorConverter, helpers];
 
 	for (var i = 0; i < methodObjects.length; i++) {

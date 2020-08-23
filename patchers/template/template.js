@@ -1,41 +1,35 @@
 autowatch = 1;
 
-// allows access to the mousex & mousey variables
+// include mousex & mousey variables
 include('gd.mouseinfo');
 
 var { m4x } = require('m4x');
 var mg;
 var m4;
 var outputmatrix;
-var width;
-var height;
+
+var width = 640;
+var height = 480;
 
 setup();
 
 function setup() {
-	width = 640;
-	height = 480;
 	// jit.mgraphics
 	mg = new JitterObject('jit.mgraphics', width, height);
 	// the matrix to store and output the frame
 	outputmatrix = new JitterMatrix(4, 'char', width, height);
 
-	// have the matrix automatically adapt if we change the
-	// dimentions from the patch
-	outputmatrix.adapt = 1;
-
-	// Contains some common math, color functions and classes
-	// from the p5js library:
-	// dist(), map(), constrain(), radians(), degrees(), lerp()
-	// normalize(), hsba_to_rgba()
-	// random(), noise(), and Vector();
 	m4 = new m4x();
+	m4.color_mode('HSB', 360, 100, 100);
 }
 
 function draw() {
 	background(1, 1, 1, 1);
 
+	var col = m4.color(180, 100, 100);
+
 	mg.set_line_width(4);
+	mg.set_source_rgba(col);
 	mg.ellipse(mousex - 50, mousey - 50, 100, 100);
 
 	if (mousedown) {
@@ -47,18 +41,6 @@ function draw() {
 	// this should always be last in the draw function
 	mg.matrixcalc(outputmatrix, outputmatrix);
 	outlet(0, 'jit_matrix', outputmatrix.name);
-}
-
-function dim(w, h) {
-	width = w;
-	height = h;
-	mg.dim = [width, height];
-}
-
-function println() {
-	for (var i = 0; i < arguments.length; i++) {
-		post(arguments[i] + '\n');
-	}
 }
 
 function background(r, g, b, a) {

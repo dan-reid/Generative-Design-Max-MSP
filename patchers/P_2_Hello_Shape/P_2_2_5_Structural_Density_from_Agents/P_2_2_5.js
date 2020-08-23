@@ -74,7 +74,7 @@ function draw() {
 			}
 			if (closest_circle) {
 				var col = m4.color(102, 229, 102);
-				mg.set_source_rgb(col.normalize());
+				mg.set_source_rgb(col);
 				mg.move_to(circles[i].x, circles[i].y);
 				mg.line_to(closest_circle.x, closest_circle.y);
 				mg.stroke();

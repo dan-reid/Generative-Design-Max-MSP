@@ -23,64 +23,53 @@ var helperMethods = {
 		}
 	},
 
+	color_properties: {
+		mode: constants.RGB,
+		maxes: {
+			RGB: [255, 255, 255, 255],
+			HSB: [360, 100, 100, 100],
+			HSL: [360, 100, 100, 100],
+		},
+	},
+
 	/**
 	 *
 	 * @method color_mode
-	 * @param {Number} mode the color mode as a string ("RBG", "HSB", or "HSL")
-	 * @param {Number} [channel_1] the max value for channel 1
-	 * @param {Number} [channel_2] the max value for channel 2
-	 * @param {Number} [channel_3] the max value for channel 3
-	 * @param {Number} [channel_4] the max value for channel 4
+	 *
+	 * @param {string} 	mode
+	 * @param {Number} 	max1     range for the red or hue depending on the current color mode
+	 * @param {Number} 	max2     range for the green or saturation depending on the current color mode
+	 * @param {Number} 	max3     range for the blue or brightness/lightness depending on the current color mode
+	 * @param {Number} 	[maxA]   range for the alpha
+	 * @chainable
 	 */
 
-	color_mode: function () {
-		if (typeof arguments[0] !== 'string') {
-			error('color_mode: first argument must specify the color mode and be of type: string');
-		} else {
-			var valid_modes = [constants.RGB, constants.HSB, constants.HSL];
-			if (valid_modes.indexOf(arguments[0]) < 0)
-				error('color_mode: ' + arguments[0] + ' is not a valid mode. Color mode must be either: RGB, HSB, or HSL');
-		}
-		if (arguments.length === 1) {
-			// only mode specified, set all props to defaults
-			this.color_properties.mode = arguments[0];
-			switch (arguments[0]) {
-				case constants.RGB:
-					this.color_properties.MAX_1 = 255;
-					this.color_properties.MAX_2 = 255;
-					this.color_properties.MAX_3 = 255;
-					this.color_properties.MAX_4 = 255;
-					break;
-				case constants.HSL:
-				case constants.HSB:
-					this.color_properties.MAX_1 = 360;
-					this.color_properties.MAX_2 = 100;
-					this.color_properties.MAX_3 = 100;
-					this.color_properties.MAX_4 = 100;
+	color_mode: function (mode, max1, max2, max3, maxA) {
+		if (mode === constants.RGB || mode === constants.HSB || mode === constants.HSL) {
+			// Set color mode.
+			this.color_properties.mode = mode;
+			// Set color maxes.
+			if (arguments.length === 2) {
+				this.color_properties.maxes[mode][0] = max1; // Red
+				this.color_properties.maxes[mode][1] = max1; // Green
+				this.color_properties.maxes[mode][2] = max1; // Blue
+				this.color_properties.maxes[mode][3] = max1; // Alpha
+			} else if (arguments.length === 4) {
+				this.color_properties.maxes[mode][0] = max1; // Red
+				this.color_properties.maxes[mode][1] = max2; // Green
+				this.color_properties.maxes[mode][2] = max3; // Blue
+			} else if (arguments.length === 5) {
+				this.color_properties.maxes[mode][0] = max1; // Red
+				this.color_properties.maxes[mode][1] = max2; // Green
+				this.color_properties.maxes[mode][2] = max3; // Blue
+				this.color_properties.maxes[mode][3] = maxA; // Alpha
+			} else {
+				throw new Error('m4x.color_mode: invalid arguments');
 			}
-		} else if (arguments.length === 2) {
-			// mode and one value specified, set all props to value
-			this.color_properties.mode = arguments[0];
-			this.color_properties.MAX_1 = arguments[1];
-			this.color_properties.MAX_2 = arguments[1];
-			this.color_properties.MAX_3 = arguments[1];
-			this.color_properties.MAX_4 = arguments[1];
-		} else if (arguments.length === 4) {
-			// mode and 3 value specified, set alpha to default value
-			this.color_properties.mode = arguments[0];
-			this.color_properties.MAX_1 = arguments[1];
-			this.color_properties.MAX_2 = arguments[2];
-			this.color_properties.MAX_3 = arguments[3];
-			this.color_properties.MAX_4 = arguments[0] === constants.RGB ? 255 : 100;
-		} else if (arguments.length === 5) {
-			this.color_properties.mode = arguments[0];
-			this.color_properties.MAX_1 = arguments[1];
-			this.color_properties.MAX_2 = arguments[2];
-			this.color_properties.MAX_3 = arguments[3];
-			this.color_properties.MAX_4 = arguments[4];
 		} else {
-			error('color_mode: invalid arguments');
+			throw new Error('m4x.color_mode: ' + mode + ' is not a valid color mode');
 		}
+		return this;
 	},
 
 	/**
@@ -94,11 +83,11 @@ var helperMethods = {
 	 * @return {m4x.Color}
 	 */
 
-	color: function (ch1, ch2, ch3, ch4) {
+	color: function () {
 		if (isInstanceOfM4X(this)) {
 			return new m4x.Color(this, arguments);
 		} else {
-			return new m4x.Color(ch1, ch2, ch3, ch4);
+			return new m4x.Color(arguments);
 		}
 	},
 };

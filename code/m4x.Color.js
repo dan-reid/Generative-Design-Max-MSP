@@ -1,179 +1,192 @@
 var { isInstanceOfM4X } = require('util');
 var { constants } = require('constants');
 
-function Color() {
+function Color(m4Inst, vals) {
+	if (!isInstanceOfM4X(m4Inst)) {
+		throw new Error('Color: calling new Color() directly is not supported. Use m4x.color()');
+	}
+
+	// in order to make color compatable with mgraphics we need to make Color be of type Array
 	var self = [];
-	if (isInstanceOfM4X(arguments[0])) {
-		self.push.apply(self, arguments[1]);
-		self.__proto__ = Color.prototype;
-		self.m4 = arguments[0];
-		self.props = self.color_properties;
-	} else {
-		error('Color: calling new Color() directly is not supported. Use m4x.color()');
-	}
-
-	if (!self[3]) {
-		self[3] = self.m4.color_properties.MAX_4;
-	}
-
-	self.red = self[0] || 0;
-	self.green = self[1] || 0;
-	self.blue = self[2] || 0;
-
-	self.hue = self[0] || 0;
-	self.saturation = self[1] || 0;
-	self.brightness = self[2] || 0;
-	self.luminosity = self[2] || 0;
-	self.alpha = self[3];
+	self.push.apply(self, vals);
+	self.__proto__ = Color.prototype;
+	self.m4Inst = m4Inst;
+	self._store_settings(m4Inst.color_properties.mode, m4Inst.color_properties.maxes);
+	self._normalize_channels();
+	self._calculate_levels();
 	return self;
 }
 
 Color.prototype = new Array();
 
-Color.prototype.normalize = function () {
-	this[0] = this.m4.map(this[0], 0, this.m4.color_properties.MAX_1, 0, 1);
-	this[1] = this.m4.map(this[1], 0, this.m4.color_properties.MAX_2, 0, 1);
-	this[2] = this.m4.map(this[2], 0, this.m4.color_properties.MAX_3, 0, 1);
-	this[3] = this.m4.map(this[3], 0, this.m4.color_properties.MAX_4, 0, 1);
-	return this;
-};
+Color.prototype._normalize_channels = function () {
+	var num_args = this.length;
+	var mode = this.mode;
+	var maxes = this.maxes[mode];
 
-Color.prototype.to_hsb = function () {
-	var a = [this[0], this[1], this[2], this[3]];
-	if (this.get_mode() === constants.HSB) {
+	if (num_args >= 3) {
+		var r = this[0];
+		var g = this[1];
+		var b = this[2];
+		var a = this[3];
+
+		this[0] = r / maxes[0];
+		this[1] = g / maxes[1];
+		this[2] = b / maxes[2];
+
+		if (typeof a === 'number') {
+			this[3] = a / maxes[3];
+		} else {
+			this[3] = 1;
+		}
+
+		var rgba;
+		if (mode === constants.RGB) {
+			return this;
+		} else if (mode === constants.HSL) {
+			rgba = this.m4Inst.hsla_to_rgba(this);
+		} else if (mode === constants.HSB) {
+			rgba = this.m4Inst.hsba_to_rgba(this);
+		}
+
+		this[0] = rgba[0];
+		this[1] = rgba[1];
+		this[2] = rgba[2];
+		this[3] = rgba[3];
+
 		return this;
-	} else if (this.get_mode() === constants.RGB) {
-		var rgb = this.m4.rgba_to_hsba(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-	} else if (this.get_mode() === constants.HSL) {
-		var rgb = this.m4.hsla_to_hsba(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-	} else {
-		error('Color.prototype.to_hsb: invalid color_mode: ' + this.get_mode() + '\n');
-	}
-};
+	} else if ((num_args === 1 || num_args === 2) && typeof this[0] === 'number') {
+		var val = this[0];
+		var a = this[1];
 
-Color.prototype.to_rgb = function () {
-	var a = [this[0], this[1], this[2], this[3]];
-	if (this.get_mode() === constants.RGB) {
+		this[0] = val / maxes[2];
+		this[1] = val / maxes[2];
+		this[2] = val / maxes[2];
+
+		// Alpha may be undefined, so default it to 100%.
+		if (typeof a === 'number') {
+			this[3] = a / maxes[3];
+		} else {
+			this[3] = 1;
+		}
+
 		return this;
-	} else if (this.get_mode() === constants.HSB) {
-		var rgb = this.m4.hsba_to_rgba(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-	} else if (this.get_mode() === constants.HSL) {
-		var rgb = this.m4.hsla_to_rgba(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
 	} else {
-		error('Color.prototype.to_rgb: invalid color_mode: ' + this.get_mode() + '\n');
+		throw new Error(arguments + ' is not a valid color representation');
 	}
 };
 
-Color.prototype.to_hsl = function () {
-	var a = [this[0], this[1], this[2], this[3]];
-	if (this.get_mode() === constants.HSL) {
-		return this;
-	} else if (this.get_mode() === constants.HSB) {
-		var rgb = this.m4.hsba_to_hsla(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
-	} else if (this.get_mode() === constants.RGB) {
-		var rgb = this.m4.rgba_to_hsla(a);
-		return this.m4.color(rgb[0], rgb[1], rgb[2], rgb[3]);
+Color.prototype._store_settings = function (mode, maxes) {
+	this.mode = mode;
+	this.maxes = maxes;
+};
+
+Color.prototype.set_red = function (r) {
+	this[0] = r / this.maxes[this.mode][0];
+	this._calculate_levels();
+};
+
+Color.prototype.set_green = function (g) {
+	this[1] = g / this.maxes[this.mode][1];
+	this._calculate_levels();
+};
+
+Color.prototype.set_blue = function (b) {
+	this[2] = b / this.maxes[this.mode][2];
+	this._calculate_levels();
+};
+
+Color.prototype.set_alpha = function (a) {
+	this[3] = a / this.maxes[this.mode][3];
+	this._calculate_levels();
+};
+
+Color.prototype._calculate_levels = function () {
+	const array = [this[0], this[1], this[2], this[3]];
+	// (loop backwards for performance)
+	const levels = (this.levels = new Array(array.length));
+	for (var i = array.length - 1; i >= 0; --i) {
+		levels[i] = Math.round(array[i] * 255);
+	}
+};
+
+Color.prototype._get_maxes = function () {
+	return this.maxes;
+};
+
+Color.prototype._get_mode = function () {
+	return this.mode;
+};
+
+Color.prototype._get_red = function () {
+	return this[0] * this.maxes[constants.RGB][0];
+};
+
+Color.prototype._get_green = function () {
+	return this[1] * this.maxes[constants.RGB][1];
+};
+
+Color.prototype._get_blue = function () {
+	return this[2] * this.maxes[constants.RGB][2];
+};
+
+Color.prototype._get_alpha = function () {
+	return this[3] * this.maxes[constants.RGB][3];
+};
+
+/**
+ * Hue is the same in HSB and HSL, but the maximum value may be different.
+ * This function will return the HSB-normalized saturation when supplied with
+ * an HSB color object, but will default to the HSL-normalized saturation
+ * otherwise.
+ */
+
+Color.prototype._get_hue = function () {
+	if (this.mode === constants.HSB) {
+		if (!this.hsba) {
+			this.hsba = this.m4Inst.rgba_to_hsba(this);
+		}
+		return this.hsba[0] * this.maxes[constants.HSB][0];
 	} else {
-		error('Color.prototype.to_hsl: invalid color_mode: ' + this.get_mode() + '\n');
+		if (!this.hsla) {
+			this.hsba = this.m4Inst.rgba_to_hsla(this);
+		}
+		return this.hsla[0] * this.maxes[constants.HSL][0];
 	}
 };
 
-Color.prototype.get_props = function () {
-	return this.m4.color_properties;
-};
-
-Color.prototype.get_mode = function () {
-	return this.m4.color_properties.mode;
-};
-
 /**
- * Returns the red channel
+ * Saturation is scaled differently in HSB and HSL. This function will return
+ * the HSB saturation when supplied with an HSB color object, but will default
+ * to the HSL saturation otherwise.
  */
 
-Color.prototype.get_red = function () {
-	if (this.get_mode() !== constants.RGB) {
-		error('Color.prototype.get_red: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+Color.prototype._get_saturation = function () {
+	if (this.mode === constants.HSB) {
+		if (!this.hsba) {
+			this.hsba = this.m4Inst.rgba_to_hsba(this);
+		}
+		return this.hsba[1] * this.maxes[constants.HSB][1];
+	} else {
+		if (!this.hsla) {
+			this.hsba = this.m4Inst.rgba_to_hsla(this);
+		}
+		return this.hsla[1] * this.maxes[constants.HSL][1];
 	}
-	return this.red;
 };
 
-/**
- * Returns the green channel
- */
-
-Color.prototype.get_green = function () {
-	if (this.get_mode() !== constants.RGB) {
-		error('Color.prototype.get_green: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+Color.prototype._get_brightness = function () {
+	if (!this.hsba) {
+		this.hsba = this.m4Inst.rgba_to_hsba(this);
 	}
-	return this.green;
+	return this.hsba[2] * this.maxes[constants.HSB][2];
 };
 
-/**
- * Returns the blue channel
- */
-
-Color.prototype.get_blue = function () {
-	if (this.get_mode() !== constants.RGB) {
-		error('Color.prototype.get_blue: you are accessing an RGB property but color_mode is currently set to ' + this.get_mode() + '\n');
+Color.prototype._get_lightness = function () {
+	if (!this.hsla) {
+		this.hsla = this.m4Inst.rgba_to_hsla(this);
 	}
-	return this.blue;
-};
-
-/**
- * Returns the hue value
- */
-
-Color.prototype.get_hue = function () {
-	if (this.get_mode() !== constants.HSB) {
-		error('Color.prototype.get_hue: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
-	}
-	return this.hue;
-};
-
-/**
- * Returns the saturation value
- */
-
-Color.prototype.get_saturation = function () {
-	if (this.get_mode() !== constants.HSB) {
-		error('Color.prototype.get_saturation: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
-	}
-	return this.saturation;
-};
-
-/**
- * Returns the brightness value
- */
-
-Color.prototype.get_brightness = function () {
-	if (this.get_mode() !== constants.HSB) {
-		error('Color.prototype.get_brightness: you are accessing a HSB property but color_mode is currently set to ' + this.get_mode() + '\n');
-	}
-	return this.brightness;
-};
-
-/**
- * Returns the luminosity value
- */
-
-Color.prototype.get_luminosity = function () {
-	if (this.get_mode() !== constants.HSL) {
-		error('Color.prototype.get_luminosity: you are accessing a HSL property but color_mode is currently set to ' + this.get_mode() + '\n');
-	}
-	return this.luminosity;
-};
-
-/**
- * Returns the alpha value
- */
-
-Color.prototype.get_alpha = function () {
-	return this.alpha;
+	return this.hsla[2] * this.maxes[constants.HSL][2];
 };
 
 exports.Color = Color;

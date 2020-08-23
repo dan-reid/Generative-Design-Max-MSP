@@ -78,7 +78,7 @@ function draw() {
 	mg.scale(zoom, zoom);
 
 	var col = m4.color(palette[act_color_index][0], palette[act_color_index][1], palette[act_color_index][2]);
-	mg.set_source_rgba(col.normalize());
+	mg.set_source_rgba(col);
 
 	mg.save();
 	act_color_index = 0;
@@ -143,7 +143,7 @@ function draw() {
 				mg.rotate(Math.floor(m4.random(8)) * (Math.PI / 4));
 				act_color_index = (act_color_index + 1) % palette.length;
 				var col = m4.color(palette[act_color_index][0], palette[act_color_index][1], palette[act_color_index][2]);
-				mg.set_source_rgb(col.normalize());
+				mg.set_source_rgb(col);
 				mg.rectangle(0, -25, 10, 35);
 				mg.fill();
 				break;
