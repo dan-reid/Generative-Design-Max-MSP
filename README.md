@@ -33,7 +33,7 @@ However, it does add some functionality that didn't exist in `mgraphics` or `js`
 - A perlin noise genertor.
 
 ### Naming convention
-For the sake of consistency, this package following the naming convention of `mgraphics` and therefor all method names are in snake_case rather then camelCase. 
+For the sake of consistency, this package following the naming convention of `mgraphics` and therefore all method names are in snake_case rather then camelCase. 
 
 ### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
 
