@@ -72,7 +72,7 @@ For the sake of consistency, this package following the naming convention of `mg
 #### m4x.noise_seed(seed)
 
 ### Color
-```
+```jsdoc
 /**
  * @method color(gray, [alpha])
  * @method color(v1, v2, v3, [alpha])
