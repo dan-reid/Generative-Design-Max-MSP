@@ -58,7 +58,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 458.0, 301.0, 63.0, 22.0 ],
-					"text" : "gd.keyinfo"
+					"text" : "m4x.keyinfo"
 				}
 
 			}
@@ -320,7 +320,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gd.keyinfo.maxpat",
+				"name" : "m4x.keyinfo.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
 				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",

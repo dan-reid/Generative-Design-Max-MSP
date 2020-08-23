@@ -70,7 +70,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 211.0, 560.0, 171.0, 22.0 ],
-					"text" : "gd.hsb2rgb @channel_order 1"
+					"text" : "m4x.jit.hsb2rgb @channel_order 1"
 				}
 
 			}
@@ -726,7 +726,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "gd.hsb2rgb.maxpat",
+				"name" : "m4x.jit.hsb2rgb.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative-Design-Max-MSP/patchers/abstractions",
 				"patcherrelativepath" : "../../abstractions",
 				"type" : "JSON",

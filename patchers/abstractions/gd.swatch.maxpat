@@ -271,7 +271,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "jit_matrix" ],
 					"patching_rect" : [ 75.0, 395.0, 69.0, 22.0 ],
-					"text" : "gd.hsb2rgb"
+					"text" : "m4x.jit.hsb2rgb"
 				}
 
 			}
@@ -441,7 +441,7 @@
 			}
  ],
 		"dependency_cache" : [ 			{
-				"name" : "gd.hsb2rgb.maxpat",
+				"name" : "m4x.jit.hsb2rgb.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/Generative Design/patchers/color conversion",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
