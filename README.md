@@ -13,7 +13,7 @@ If you edit any of the `.js` files in the `code` directory you'll need to restar
 
 `m4x` is a library of useful functions cloned from the [p5js](https://p5js.org/) library. If you're wondering about the name, `m4x` is leet speak for `max`. It was mainly chosen because it contained "m4", which - given it's a Max ripoff of p5js - I felt was somewhat fitting. 
 
-Of course, like almost all library names, I am embarrassed and ashamed of it but not enough to actually go the effort of changing it, so on we go...
+Naturally, I have grown to hate the name - but not enough to actually go the effort of changing it, so on we go...
 
 ### Usage
 
@@ -23,9 +23,14 @@ var m4 = new m4x()             // create a new m4x instance
 ```
 
 ### Drawing
-`m4x` does not contain any of the drawing methods from the p5js libray so you will still need to use `mgraphics` to actually draw thing to the window. The reason for this is that the purpose of this package is not to try to reinvent the wheel or create a full clone of p5js for Max but rather to make transitioning from the p5js way of doing thing to the `mgraphics` way of doing things a little easier. 
+`m4x` doesn't contain any of the drawing methods from the p5js libray, so you will still need to use `mgraphics` to actually draw things to the window. 
 
-It also adds some functionality that didn't exist in `mgraphics` or `js` in the Max realm such as p5's Color class (made compatible with `mgraphics`), p5's seedable random number genertor, and p5's perlin noise genertor.
+The reason for this is that the purpose of this package is not to try to reinvent the wheel or create a full clone of p5js inside Max, but rather to make transitioning from the p5js way of doing thing to the `mgraphics` way of doing things a little easier. 
+
+However, it does add some functionality that didn't exist in `mgraphics` or `js` in the Max realm in general, notably: 
+- A Color class with `RGB`, `HSB`, & `HSL` modes (all made compatible with `mgraphics` so you don't have to worry about color conversion)
+- A seedable random number genertor 
+- A perlin noise genertor.
 
 ### Naming convention
 For the sake of consistency, this package following the naming convention of `mgraphics` and therefor all method names are in snake_case rather then camelCase. 
