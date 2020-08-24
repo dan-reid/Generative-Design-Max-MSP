@@ -20,8 +20,8 @@ var rowdirection = 'both';
 // you can set a min and max word length here:
 // if you'd perfer not to, just the min to 0, and the
 // max to some really high number.
-var minwordlength = 3,
-	maxwordlength = 10;
+var minwordlength = 3;
+var maxwordlength = 10;
 
 setup();
 

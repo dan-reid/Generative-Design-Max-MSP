@@ -38,7 +38,7 @@ function draw() {
 
 	var wall_col = m4.color(150);
 
-	mg.set_source_rgb(wall_col.normalize());
+	mg.set_source_rgb(wall_col);
 	mg.move_to(left_wall, 0);
 	mg.line_to(left_wall, height);
 
@@ -54,12 +54,12 @@ function draw() {
 
 	var ball1_x = xm - ball_radius;
 	var ball1_y = 33 - ball_radius;
-	mg.set_source_rgb(ball_col_1.normalize());
+	mg.set_source_rgb(ball_col_1);
 	mg.ellipse(ball1_x, ball1_y, ball_diameter, ball_diameter);
 
 	var ball2_x = xc - ball_radius;
 	var ball2_y = 66 - ball_radius;
-	mg.set_source_rgb(ball_col_2.normalize());
+	mg.set_source_rgb(ball_col_2);
 	mg.ellipse(ball2_x, ball2_y, ball_diameter, ball_diameter);
 
 	mg.fill();
