@@ -33,7 +33,7 @@ However, it does add some functionality that didn't exist in `mgraphics` or `js`
 - A perlin noise genertor.
 
 ### Naming convention
-For the sake of consistency, this package following the naming convention of `mgraphics` and therefor all method names are in snake_case rather then camelCase. 
+For the sake of consistency, this package following the naming convention of `mgraphics` and therefore all method names are in snake_case rather then camelCase. 
 
 ### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
 
@@ -72,7 +72,32 @@ For the sake of consistency, this package following the naming convention of `mg
 #### m4x.noise_seed(seed)
 
 ### Color
-
-#### m4x.color(ch1, ch2, ch3, ch4)
+```javascript
+/**
+ * @method color(gray, [alpha])
+ * @method color(v1, v2, v3, [alpha])
+ *
+ * Creates colors for storing in variables of the color datatype.
+ * The parameters are interpreted as RGB or HSB values depending on the current color_mode().
+ * The default mode is RGB values from 0 to 255 and, therefore, the function call color(255, 204, 0)
+ * will return a bright yellow color.
+ *
+ * Note that if only one value is provided to color(), it will be interpreted as a grayscale value.
+ * Add a second value, and it will be used for alpha transparency. When three values are specified,
+ * they are interpreted as either RGB or HSB values. Adding a fourth value applies alpha transparency.
+ *
+ * Regardless of color_mode, the m4x.Color() class will adjust its values internally to ensure they are compatible with mgraphics
+ *
+ * Parameters
+ * @param {number} gray     number specifying value between white and black.
+ * @param {number} [alpha]  alpha value relative to current color range (default is 0-255) (Optional)
+ * @param {number} v1       red or hue value relative to the current color range
+ * @param {number} v2       green or saturation value relative to the current color range
+ * @param {number} v3       blue or brightness value relative to the current color range
+ *
+ * @returns {m4x.Color}
+ *
+ */
+```
 
 #### m4x.color_mode(mode, ch1, ch2, ch3, ch4)
