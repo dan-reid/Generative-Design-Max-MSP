@@ -40,7 +40,7 @@ However, it does add some functionality that didn't exist in `mgraphics` or `js`
 
 ### p5.js versus mgraphics & m4x
 
-The following gives an overview of some differences you'll come across when moving a `p5` sketch to `mgraphics`. The list is by no means exhaustive and I recommend you take a look at the `mgraphics` [referance](https://docs.cycling74.com/max7/refpages/jit.mgraphics) as well as read up on [JavaScript in the Max realm](https://docs.cycling74.com/max8/vignettes/javascript_usage_topic). However, hopefully these few tips will offer a quick solution to some common 'gothcas'.
+The following gives an overview of some differences you'll come across when moving a `p5` sketch to `mgraphics`. The list is by no means exhaustive and I recommend you take a look at the `mgraphics` [referance](https://docs.cycling74.com/max7/refpages/jit.mgraphics) as well as read up on [JavaScript in the Max realm](https://docs.cycling74.com/max8/vignettes/javascript_usage_topic). However, hopefully these few tips will offer a quick solution to some common gotchas.
 
 ### creating a new mgraphics instance
 
@@ -165,70 +165,36 @@ mgraphics.rectangle(50, 50, 10, 10);
 mgraphics.fill();
 ```
 
-### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
+### m4x API
 
-#### m4x.constrain(val, min, max)
+#### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
 
-#### m4x.dist(x1, y1, [z1], x2, y2, [z2])
+- m4x.constrain(val, min, max)
+- m4x.dist(x1, y1, [z1], x2, y2, [z2])
+- m4x.lerp(start, stop, amount)
+- m4x.mag(x, y)
+- m4x.radians(degreees)
+- m4x.degrees(radians)
+- m4x.map(n, start1, stop1, start2, stop2, [withinBounds])
+- m4x.norm(n, start, stop)
 
-#### m4x.lerp(start, stop, amount)
+#### [Math]
 
-#### m4x.mag(x, y)
+- m4x.Vector([x], [y], [z])
+- m4x.create_vector([x], [y], [z])
 
-#### m4x.radians(degreees)
+#### [Random]
 
-#### m4x.degrees(radians)
+- m4x.random([min], [max])
+- m4x.random_seed(seed)
 
-#### m4x.map(n, start1, stop1, start2, stop2, [withinBounds])
+#### Noise
 
-#### m4x.norm(n, start, stop)
-
-### Math
-
-#### m4x.create_vector([x], [y], [z])
-
-### Random
-
-#### m4x.random([min], [max])
-
-#### m4x.random_seed(seed)
-
-### Noise
-
-#### m4x.noise(x, [y], [z])
-
-#### m4x.noise_detail(lod, falloff)
-
-#### m4x.noise_seed(seed)
+- m4x.noise(x, [y], [z])
+- m4x.noise_detail(lod, falloff)
+- m4x.noise_seed(seed)
 
 ### Color
 
-```javascript
-/**
- * @method color(gray, [alpha])
- * @method color(v1, v2, v3, [alpha])
- *
- * Creates colors for storing in variables of the color datatype.
- * The parameters are interpreted as RGB or HSB values depending on the current color_mode().
- * The default mode is RGB values from 0 to 255 and, therefore, the function call color(255, 204, 0)
- * will return a bright yellow color.
- *
- * Note that if only one value is provided to color(), it will be interpreted as a grayscale value.
- * Add a second value, and it will be used for alpha transparency. When three values are specified,
- * they are interpreted as either RGB or HSB values. Adding a fourth value applies alpha transparency.
- *
- * Regardless of color_mode, the m4x.Color() class will adjust its values internally to ensure they are compatible with mgraphics
- *
- * Parameters
- * @param {number} gray     number specifying value between white and black.
- * @param {number} [alpha]  alpha value relative to current color range (default is 0-255) (Optional)
- * @param {number} v1       red or hue value relative to the current color range
- * @param {number} v2       green or saturation value relative to the current color range
- * @param {number} v3       blue or brightness value relative to the current color range
- *
- * @returns {m4x.Color}
- *
- */
-```
-
-#### m4x.color_mode(mode, ch1, ch2, ch3, ch4)
+- m4x.color(ch1, ch2, ch3, ch4)
+- m4x.color_mode(mode, ch1, ch2, ch3, ch4)
