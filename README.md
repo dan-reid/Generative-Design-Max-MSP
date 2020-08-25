@@ -95,7 +95,7 @@ p5.rect(x, y, w, h);
 mgraphics.rectangle(x, y, w, h);
 ```
 
-### line
+### move_to and line_to
 
 Drawing a line in `mgraphics` requires two functions. First, you use `move_to` to define the line's start point, then `line_to` to define the line's end point.
 
@@ -129,9 +129,9 @@ mgraphics.rectangle(50, 50, 20, 30);
 mgraphics.fill(); // without this, the shape isn't actually drawn
 ```
 
-### color
+### Color
 
-When using `mgraphics`, color values are normalized between 0 - 1 and are alway ing RGB colour space. While in many instances, this is perfectly fine - it can sometimes feel less intuitive in work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and support RBG, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
+When using `mgraphics`, color values are normalized between 0 - 1 and are always in RGB colour space. While this is perfectly fine in many instances - it can sometimes feel less intuitive in work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and supports RBG, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
 
 ```javascript
 var { m4x } = require('m4x');
