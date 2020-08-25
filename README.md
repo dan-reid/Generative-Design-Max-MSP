@@ -42,7 +42,7 @@ However, it does add some functionality that didn't exist in `mgraphics` or `js`
 
 The following gives an overview of some differences you'll come across when moving a `p5` sketch to `mgraphics`. The list is by no means exhaustive and I recommend you take a look at the `mgraphics` [referance](https://docs.cycling74.com/max7/refpages/jit.mgraphics) as well as read up on [JavaScript in the Max realm](https://docs.cycling74.com/max8/vignettes/javascript_usage_topic). However, hopefully these few tips will help ease the transition a little:
 
-#### creating a new mgraphics instance
+### creating a new mgraphics instance
 
 ```javascript
 var width = 200;
@@ -63,7 +63,7 @@ function draw() {
 }
 ```
 
-#### ellipse
+### ellipse
 
 In p5js the `x` & `y` parameters give the location of the centre point. However, in mgraphics they give the location of the upper-left corner of the shape. To offset them to the centre point, you need to subtract the radius:
 
@@ -80,7 +80,7 @@ var radius = diamater / 2;
 mgraphics.ellipse(x - radius, y - radius, diameter, diameter);
 ```
 
-#### rectangle
+### rectangle
 
 ```javascript
 var x = 0;
@@ -95,7 +95,7 @@ p5.rect(x, y, w, h);
 mgraphics.rectangle(x, y, w, h);
 ```
 
-#### line
+### line
 
 Drawing a line in `mgraphics` requires two functions. First, you use `move_to` to define the line's start point, then `line_to` to define the line's end point.
 
@@ -113,7 +113,7 @@ mgraphics.move_to(x1, y1);
 mgraphics.line_to(x2, y2);
 ```
 
-#### fill() and stroke()
+### fill() and stroke()
 
 One of the most important differences between `p5` and `mgraphics` are the fill() and stroke() functions. In the p5 world, they simply set the the stroke and fill color. However, in the `mgraphics` world they are actually required to draw the shape and we need to use `set_source_rgba` to set the drawing color.
 
@@ -129,7 +129,7 @@ mgraphics.rectangle(50, 50, 20, 30);
 mgraphics.fill(); // without this, the shape isn't actually drawn
 ```
 
-#### color
+### color
 
     When using `mgraphics`, color values are normalized between 0 - 1 and are alway ing RGB colour space. While in many instances, this is perfectly fine - it can sometimes feel less intuitive in work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and support RBG, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
 
