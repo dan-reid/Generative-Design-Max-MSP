@@ -58,7 +58,7 @@ function draw() {
 	}
 
 	var spring_color = m4.color(0, 130, 164);
-	mg.set_source_rgb(spring_color.normalize());
+	mg.set_source_rgb(spring_color);
 	for (var i = 0; i < springs.length; i++) {
 		mg.move_to(springs[i].from_node.x, springs[i].from_node.y);
 		mg.line_to(springs[i].to_node.x, springs[i].to_node.y);
