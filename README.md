@@ -178,24 +178,24 @@ mgraphics.fill();
 - m4x.map(n, start1, stop1, start2, stop2, [withinBounds])
 - m4x.norm(n, start, stop)
 
-#### [Math]
+#### [Math](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.math.js)
 
-- m4x.Vector([x], [y], [z])
+- [m4x.Vector([x], [y], [z])](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.Vector.js)
 - m4x.create_vector([x], [y], [z])
 
-#### [Random]
+#### [Random](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.random.js)
 
 - m4x.random([min], [max])
 - m4x.random_seed(seed)
 
-#### Noise
+#### [Noise](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.noise.js)
 
 - m4x.noise(x, [y], [z])
 - m4x.noise_detail(lod, falloff)
 - m4x.noise_seed(seed)
 
-### Color
+### [Color](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.Color.js)
 
-- m4x.color(ch1, ch2, ch3, ch4)
+- [m4x.color(ch1, ch2, ch3, ch4)](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/master/code/m4x.color.helpers.js)
 - m4x.lerp_color(c1, c2)
 - m4x.color_mode(mode, ch1, ch2, ch3, ch4)
