@@ -5,7 +5,7 @@ This is a port of the [Generative Design](http://www.generative-gestaltung.de/) 
 ## Installation
 
 1. Clone or download this repo and move it to your Max Packages folder.
-2. If Max was running when you added the package, restart it.
+2. Restart Max.
 
 If you edit any of the `.js` files in the `code` directory you'll need to restart Max for the changes to take affect.
 
@@ -38,9 +38,9 @@ However, it does add some functionality that didn't exist in `mgraphics` or `js`
 - A seedable random number genertor
 - A perlin noise genertor.
 
-### p5.js versus mgraphics
+### p5.js versus mgraphics & m4x
 
-The following gives an overview of some differences you'll come across when moving a `p5` sketch to `mgraphics`. The list is by no means exhaustive and I recommend you take a look at the `mgraphics` [referance](https://docs.cycling74.com/max7/refpages/jit.mgraphics) as well as read up on [JavaScript in the Max realm](https://docs.cycling74.com/max8/vignettes/javascript_usage_topic). However, hopefully these few tips will help ease the transition a little:
+The following gives an overview of some differences you'll come across when moving a `p5` sketch to `mgraphics`. The list is by no means exhaustive and I recommend you take a look at the `mgraphics` [referance](https://docs.cycling74.com/max7/refpages/jit.mgraphics) as well as read up on [JavaScript in the Max realm](https://docs.cycling74.com/max8/vignettes/javascript_usage_topic). However, hopefully these few tips will offer a quick solution to some common 'gothcas'.
 
 ### creating a new mgraphics instance
 
@@ -115,7 +115,7 @@ mgraphics.line_to(x2, y2);
 
 ### fill() and stroke()
 
-One of the most important differences between `p5` and `mgraphics` are the fill() and stroke() functions. In the p5 world, they simply set the the stroke and fill color. However, in the `mgraphics` world they are actually required to draw the shape and we need to use `set_source_rgba` to set the drawing color.
+One of the most important differences between `p5` and `mgraphics` are the fill() and stroke() functions. In the p5 world, they simply set the the stroke and fill color. However, with `mgraphics` they are actually required to draw the shape and we need to use `set_source_rgba` to set the drawing color.
 
 ```javascript
 // p5js - draws a red rectangle
@@ -129,9 +129,25 @@ mgraphics.rectangle(50, 50, 20, 30);
 mgraphics.fill(); // without this, the shape isn't actually drawn
 ```
 
+### pushMatrix and popMatrix
+
+In `mgraphics`, we use `mgraphics.save()` in place of `p5`'s `pushMatrix()` and `mgraphics.restore()` in place of `p5`'s `popMatrix()`.
+
+```javascript
+mgraphics.rectangle(0, 0, 50, 50);
+
+mgraphics.save(); // push matrix
+mgraphics.translate(30, 20);
+
+mgraphics.ellipse(0, 0, 50, 50);
+mgraphics.restore(); // pop matrix
+
+mgraphics.rectangle(15, 10, 50, 50);
+```
+
 ### Color
 
-When using `mgraphics`, color values are normalized between 0 - 1 and are always in RGB colour space. While this is perfectly fine in many instances - it can sometimes feel less intuitive in work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and supports RBG, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
+When using `mgraphics`, color values are normalized between 0 - 1 and are always in RGB colour space. While this is perfectly fine in many instances, sometimes it feels less intuitive to work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and supports RGB, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
 
 ```javascript
 var { m4x } = require('m4x');
