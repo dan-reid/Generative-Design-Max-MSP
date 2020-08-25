@@ -1,15 +1,15 @@
-var { constants } = require('constants');
 var { calculation } = require('m4x.calculation');
 var { noise } = require('m4x.noise');
 var { random } = require('m4x.random');
 var { ColorConverter } = require('m4x.color.converter');
-var { helpers } = require('m4x.helpers');
+var { colorHelpers } = require('m4x.color.helpers');
+var { math } = require('m4x.math');
 
 var { Vector } = require('m4x.Vector');
 var { Color } = require('m4x.Color');
 
 function m4x() {
-	var methodObjects = [calculation, noise, random, ColorConverter, helpers];
+	var methodObjects = [calculation, noise, random, ColorConverter, colorHelpers, math];
 
 	for (var i = 0; i < methodObjects.length; i++) {
 		var obj = methodObjects[i];

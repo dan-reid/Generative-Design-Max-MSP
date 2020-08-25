@@ -197,4 +197,5 @@ mgraphics.fill();
 ### Color
 
 - m4x.color(ch1, ch2, ch3, ch4)
+- m4x.lerp_color(c1, c2)
 - m4x.color_mode(mode, ch1, ch2, ch3, ch4)
