@@ -131,7 +131,23 @@ mgraphics.fill(); // without this, the shape isn't actually drawn
 
 #### color
 
-In the mgraphics world, color values are normalized between 0 - 1 and are alway use RGB colour space. While in many instances, this is perfectly fine - it can sometimes feel less intuitive in work in this way. However, using the `m4x` library you have access to a clone of `p5`'s color object, which support RBG, HSB, and HSL color modes and is fully compatible with `mgraphics`.
+    When using `mgraphics`, color values are normalized between 0 - 1 and are alway ing RGB colour space. While in many instances, this is perfectly fine - it can sometimes feel less intuitive in work in this way. To get around this you can use the `m4x.color()` which is a clone of `p5`'s color object and support RBG, HSB, and HSL color modes while remaining fully compatible with `mgraphics`.
+
+    ```javascript
+    var { m4x } = require('m4x');
+    var m4 = new m4x();
+
+    var lovely_green = m4.color(51, 200, 100);
+    mgraphics.set_source_rgba(lovely_green);
+    mgraphics.rectangle(50, 50, 20, 30);
+    mgraphics.fill();
+
+    m4.color_mode('HSB', 360, 100, 100);
+    var mellow_yellow = m4.color(56, 99, 100);
+    mgraphics.set_source_rgba(mellow_yellow);
+    mgraphics.rectangle(50, 50, 10, 10);
+    mgraphics.fill();
+    ```
 
 ### [Calculations](https://github.com/danreidxy/Generative-Design-Max-MSP/blob/add-examples/code/m4x.calculation.js)
 
