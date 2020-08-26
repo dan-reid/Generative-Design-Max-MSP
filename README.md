@@ -1,6 +1,6 @@
 # Generative Design Max MSP Package
 
-This is a port of the [Generative Design](http://www.generative-gestaltung.de/) library and stetch examples to Max/MSP. It also includes some of the functionality of the [p5js](https://p5js.org/) library to make porting the examples a little less painfull. Full credit should be given to the authors of the Generative Design book and the p5.js creators and community.
+This is a port of the [Generative Design](http://www.generative-gestaltung.de/) library and examples to Max/MSP. It also includes some of the functionality of the [p5js](https://p5js.org/) library to make porting the examples a little less painfull. Full credit should be given to the authors of the Generative Design book and the p5.js creators and community.
 
 ## Installation
 
@@ -13,7 +13,7 @@ If you edit any of the `.js` files in the `code` directory you'll need to restar
 
 `m4x` is a library of useful functions cloned from the [p5js](https://p5js.org/) library. If you're wondering about the name, `m4x` is leet speak for `max`. It was mainly chosen because it contained "m4", which - given it's a Max ripoff of p5js - I felt was somewhat fitting.
 
-Naturally, I have grown to hate the name - but not enough to actually go the effort of changing it, so on we go...
+Naturally, I have grown to hate the name - but not enough to actually go the effort of changing it so on we go...
 
 ### Usage
 
@@ -24,7 +24,7 @@ var m4 = new m4x()             // create a new m4x instance
 
 ### Naming convention
 
-For the sake of consistency, this package following the naming convention of `mgraphics` and therefore all method names are in snake_case rather then camelCase.
+For the sake of consistency, this package follows the naming convention of `mgraphics` and therefore all method names are in snake_case rather then camelCase.
 
 ### Drawing
 
@@ -32,7 +32,7 @@ For the sake of consistency, this package following the naming convention of `mg
 
 The reason for this is that the purpose of this package is not to try to reinvent the wheel or create a full clone of p5js inside Max, but rather to make transitioning from the p5js way of doing thing to the `mgraphics` way of doing things a little easier.
 
-However, it does add some functionality that didn't exist in `mgraphics` or `js` in the Max realm in general, notably:
+However, it does add some handy functionality that doesn't exist in `mgraphics` or `js` in the Max realm in general, notably:
 
 - A Color class with `RGB`, `HSB`, & `HSL` modes (all made compatible with `mgraphics` so you don't have to worry about color conversion)
 - A seedable random number genertor
@@ -69,7 +69,7 @@ In p5js the `x` & `y` parameters give the location of the centre point. However,
 
 ```javascript
 var x = width / 2;
-var y = width / 2;
+var y = height / 2;
 var diameter = 50;
 
 // p5
